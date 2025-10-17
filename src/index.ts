@@ -1,4 +1,4 @@
-import { Eval } from "braintrust";
+import { Eval, login } from "braintrust";
 
 export interface Env {
   BRAINTRUST_API_KEY: string;
@@ -6,8 +6,12 @@ export interface Env {
 }
 
 async function runEval(env: Env) {
-  const result = await Eval("cloudflare-worker-eval", {
+  // Authenticate with Braintrust using the API key
+  await login({
     apiKey: env.BRAINTRUST_API_KEY,
+  });
+
+  const result = await Eval("cloudflare-worker-eval", {
     data: () => [
       { input: "What is 2+2?", expected: "4" },
       { input: "What is the capital of France?", expected: "Paris" },

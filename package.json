@@ -11,7 +11,7 @@
   "license": "ISC",
   "description": "Cloudflare Worker running Braintrust evals",
   "dependencies": {
-    "braintrust": "^0.0.157"
+    "braintrust": "^0.4.5"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20241127.0",

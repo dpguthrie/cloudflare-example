@@ -1,0 +1,18 @@
+name = "braintrust-eval-worker"
+main = "src/index.ts"
+compatibility_date = "2024-09-23"
+compatibility_flags = ["nodejs_compat"]
+
+# Uncomment to run on a schedule (daily at midnight UTC)
+# [triggers]
+# crons = ["0 0 * * *"]
+
+# You'll need to set these secrets:
+# wrangler secret put BRAINTRUST_API_KEY
+# wrangler secret put OPENAI_API_KEY
+
+[observability]
+[observability.logs]
+enabled = true
+head_sampling_rate = 1
+invocation_logs = true
