@@ -5,45 +5,113 @@
 **Question:** Can I use Braintrust with Vitest on Cloudflare Workers?
 
 **Answer:**
-- ❌ **Braintrust SDK** (Eval, init, traced) - Cannot import directly in Vitest
-- ✅ **Direct REST API + OpenTelemetry** - Works perfectly with direct imports!
+- ✅ **Logging SDK** (`init`, `traced`, `log`) - Works with `deps.optimizer` config! (RECOMMENDED)
+- ❌ **Eval()** - Does not work (Node.js-only function)
+- ✅ **Direct REST API + OpenTelemetry** - Also works with direct imports!
 
 ## The Problem
 
-The Braintrust SDK has dependencies (uuid, node:os, node:child_process) that aren't available in Vitest's Cloudflare Workers test environment.
+The Braintrust SDK has dependencies that weren't available in Vitest's Cloudflare Workers test environment.
 
 ```typescript
-// ❌ This DOES NOT work in Vitest
-import { Eval, init } from 'braintrust';
+// ❌ This used to NOT work
+import { init } from 'braintrust';
 
 test('my test', async () => {
-  await Eval('test', { ... }); // Error: Module resolution
+  const experiment = init({ ... }); // Error: Module resolution
 });
 ```
 
-## The Solution: Direct REST API
+## The Solution: deps.optimizer (RECOMMENDED)
 
-Use Braintrust's REST APIs directly instead of the SDK:
+Configure Vitest to bundle the Braintrust SDK using `deps.optimizer.ssr.include`:
 
 ```typescript
-// ✅ This WORKS in Vitest!
-import { runExperimentWithDirectAPI } from './direct-api';
+// vitest.config.ts
+import { defineWorkersConfig } from '@cloudflare/vitest-pool-workers/config';
 
-test('my test', async () => {
-  const result = await runExperimentWithDirectAPI(env);
-  expect(result.summary).toBeDefined();
+export default defineWorkersConfig({
+  resolve: {
+    conditions: ['import', 'module', 'node', 'default'],
+  },
+  test: {
+    deps: {
+      optimizer: {
+        ssr: {
+          enabled: true,
+          include: [
+            'braintrust',
+            'uuid',
+            '@opentelemetry/api',
+            '@opentelemetry/sdk-trace-base',
+            '@opentelemetry/exporter-trace-otlp-http',
+          ],
+        },
+      },
+    },
+  },
 });
 ```
 
-**Proof:** See `test/integration/direct-import-works.test.ts` - this test directly imports and calls the function!
+Now you can directly import and use the Logging SDK:
+
+```typescript
+// ✅ This WORKS with deps.optimizer!
+import { init, login, wrapOpenAI } from 'braintrust';
+import OpenAI from 'openai';
+
+test('my test', async () => {
+  await login({ apiKey: env.BRAINTRUST_API_KEY });
+
+  const experiment = init({
+    project: 'my-project',
+    experiment: 'my-experiment'
+  });
+
+  const client = wrapOpenAI(new OpenAI({ apiKey: env.OPENAI_API_KEY }));
+
+  await experiment.traced(async (span) => {
+    const response = await client.chat.completions.create({
+      model: 'gpt-4o-mini',
+      messages: [{ role: 'user', content: 'Hello!' }],
+    });
+
+    span.log({
+      input: 'Hello!',
+      output: response.choices[0].message.content,
+      scores: { test: 1 },
+    });
+  });
+
+  const summary = await experiment.summarize();
+  expect(summary).toBeDefined();
+});
+```
+
+**Proof:** See `test/integration/logging-sdk-optimizer.test.ts` - full working example!
+
+## Alternative: Direct REST API
+
+If you prefer not to use the SDK at all, use Braintrust's REST APIs directly:
+
+```typescript
+// ✅ This also WORKS!
+const response = await fetch('https://api.braintrust.dev/v1/experiment', {
+  method: 'POST',
+  headers: { 'Authorization': `Bearer ${apiKey}` },
+  body: JSON.stringify({ project_id, name }),
+});
+```
+
+**Proof:** See `test/integration/direct-import-works.test.ts`
 
 ## Comparison
 
-| Approach | Production | Vitest Direct Import | Vitest HTTP Test |
-|----------|-----------|---------------------|------------------|
-| **Eval()** | ✅ Works | ❌ No | ✅ Yes |
-| **Logging SDK** | ✅ Works | ❌ No | ✅ Yes |
-| **Direct API** | ✅ Works | ✅ **YES!** | ✅ Yes |
+| Approach | Production | Vitest Direct Import | Configuration Required |
+|----------|-----------|---------------------|----------------------|
+| **Eval()** | ✅ Works | ❌ No | N/A |
+| **Logging SDK** | ✅ Works | ✅ **YES!** (deps.optimizer) | Medium - config file |
+| **Direct API** | ✅ Works | ✅ **YES!** | Low - just code |
 
 ## How to Use Direct API
 

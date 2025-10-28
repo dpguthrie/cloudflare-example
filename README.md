@@ -33,6 +33,8 @@ This example demonstrates **three ways** to run Braintrust experiments on Cloudf
 
 **🎯 Want to use Braintrust with Vitest?** See [docs/VITEST_SOLUTION.md](./docs/VITEST_SOLUTION.md) for the complete guide.
 
+**❓ Why doesn't Eval() work in Vitest?** See [docs/WHY_EVAL_DOESNT_WORK.md](./docs/WHY_EVAL_DOESNT_WORK.md) for the technical explanation.
+
 ### Approach 1: Eval() Function
 
 **Best for:** Simple, standard evaluations with minimal setup.

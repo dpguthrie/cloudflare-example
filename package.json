@@ -19,7 +19,6 @@
     "@opentelemetry/resources": "^2.2.0",
     "@opentelemetry/sdk-trace-base": "^2.2.0",
     "@opentelemetry/semantic-conventions": "^1.37.0",
-    "braintrust": "^0.4.5",
     "openai": "^6.4.0"
   },
   "devDependencies": {

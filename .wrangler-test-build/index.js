@@ -1177,455 +1177,21 @@ var init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_process = __
   }
 });
 
-// node_modules/@vercel/functions/headers.js
-var require_headers = __commonJS({
-  "node_modules/@vercel/functions/headers.js"(exports, module) {
-    "use strict";
+// ../braintrust/node_modules/.pnpm/@vercel+functions@1.0.2/node_modules/@vercel/functions/index.js
+var require_functions = __commonJS({
+  "../braintrust/node_modules/.pnpm/@vercel+functions@1.0.2/node_modules/@vercel/functions/index.js"(exports) {
     init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_process();
     init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_console();
     init_performance2();
-    var __defProp4 = Object.defineProperty;
-    var __getOwnPropDesc4 = Object.getOwnPropertyDescriptor;
-    var __getOwnPropNames4 = Object.getOwnPropertyNames;
-    var __hasOwnProp4 = Object.prototype.hasOwnProperty;
-    var __export4 = /* @__PURE__ */ __name((target, all) => {
-      for (var name in all)
-        __defProp4(target, name, { get: all[name], enumerable: true });
-    }, "__export");
-    var __copyProps4 = /* @__PURE__ */ __name((to, from, except, desc) => {
-      if (from && typeof from === "object" || typeof from === "function") {
-        for (let key of __getOwnPropNames4(from))
-          if (!__hasOwnProp4.call(to, key) && key !== except)
-            __defProp4(to, key, { get: /* @__PURE__ */ __name(() => from[key], "get"), enumerable: !(desc = __getOwnPropDesc4(from, key)) || desc.enumerable });
-      }
-      return to;
-    }, "__copyProps");
-    var __toCommonJS3 = /* @__PURE__ */ __name((mod) => __copyProps4(__defProp4({}, "__esModule", { value: true }), mod), "__toCommonJS");
-    var headers_exports = {};
-    __export4(headers_exports, {
-      CITY_HEADER_NAME: /* @__PURE__ */ __name(() => CITY_HEADER_NAME, "CITY_HEADER_NAME"),
-      COUNTRY_HEADER_NAME: /* @__PURE__ */ __name(() => COUNTRY_HEADER_NAME, "COUNTRY_HEADER_NAME"),
-      EMOJI_FLAG_UNICODE_STARTING_POSITION: /* @__PURE__ */ __name(() => EMOJI_FLAG_UNICODE_STARTING_POSITION, "EMOJI_FLAG_UNICODE_STARTING_POSITION"),
-      IP_HEADER_NAME: /* @__PURE__ */ __name(() => IP_HEADER_NAME, "IP_HEADER_NAME"),
-      LATITUDE_HEADER_NAME: /* @__PURE__ */ __name(() => LATITUDE_HEADER_NAME, "LATITUDE_HEADER_NAME"),
-      LONGITUDE_HEADER_NAME: /* @__PURE__ */ __name(() => LONGITUDE_HEADER_NAME, "LONGITUDE_HEADER_NAME"),
-      POSTAL_CODE_HEADER_NAME: /* @__PURE__ */ __name(() => POSTAL_CODE_HEADER_NAME, "POSTAL_CODE_HEADER_NAME"),
-      REGION_HEADER_NAME: /* @__PURE__ */ __name(() => REGION_HEADER_NAME, "REGION_HEADER_NAME"),
-      REQUEST_ID_HEADER_NAME: /* @__PURE__ */ __name(() => REQUEST_ID_HEADER_NAME, "REQUEST_ID_HEADER_NAME"),
-      geolocation: /* @__PURE__ */ __name(() => geolocation2, "geolocation"),
-      ipAddress: /* @__PURE__ */ __name(() => ipAddress2, "ipAddress")
-    });
-    module.exports = __toCommonJS3(headers_exports);
-    var CITY_HEADER_NAME = "x-vercel-ip-city";
-    var COUNTRY_HEADER_NAME = "x-vercel-ip-country";
-    var IP_HEADER_NAME = "x-real-ip";
-    var LATITUDE_HEADER_NAME = "x-vercel-ip-latitude";
-    var LONGITUDE_HEADER_NAME = "x-vercel-ip-longitude";
-    var REGION_HEADER_NAME = "x-vercel-ip-country-region";
-    var POSTAL_CODE_HEADER_NAME = "x-vercel-ip-postal-code";
-    var REQUEST_ID_HEADER_NAME = "x-vercel-id";
-    var EMOJI_FLAG_UNICODE_STARTING_POSITION = 127397;
-    function getHeader(headers, key) {
-      return headers.get(key) ?? void 0;
-    }
-    __name(getHeader, "getHeader");
-    function getHeaderWithDecode(request, key) {
-      const header = getHeader(request.headers, key);
-      return header ? decodeURIComponent(header) : void 0;
-    }
-    __name(getHeaderWithDecode, "getHeaderWithDecode");
-    function getFlag(countryCode) {
-      const regex = new RegExp("^[A-Z]{2}$").test(countryCode);
-      if (!countryCode || !regex)
-        return void 0;
-      return String.fromCodePoint(
-        ...countryCode.split("").map((char) => EMOJI_FLAG_UNICODE_STARTING_POSITION + char.charCodeAt(0))
-      );
-    }
-    __name(getFlag, "getFlag");
-    function ipAddress2(input) {
-      const headers = "headers" in input ? input.headers : input;
-      return getHeader(headers, IP_HEADER_NAME);
-    }
-    __name(ipAddress2, "ipAddress");
-    function getRegionFromRequestId(requestId) {
-      if (!requestId) {
-        return "dev1";
-      }
-      return requestId.split(":")[0];
-    }
-    __name(getRegionFromRequestId, "getRegionFromRequestId");
-    function geolocation2(request) {
-      return {
-        // city name may be encoded to support multi-byte characters
-        city: getHeaderWithDecode(request, CITY_HEADER_NAME),
-        country: getHeader(request.headers, COUNTRY_HEADER_NAME),
-        flag: getFlag(getHeader(request.headers, COUNTRY_HEADER_NAME)),
-        countryRegion: getHeader(request.headers, REGION_HEADER_NAME),
-        region: getRegionFromRequestId(
-          getHeader(request.headers, REQUEST_ID_HEADER_NAME)
-        ),
-        latitude: getHeader(request.headers, LATITUDE_HEADER_NAME),
-        longitude: getHeader(request.headers, LONGITUDE_HEADER_NAME),
-        postalCode: getHeader(request.headers, POSTAL_CODE_HEADER_NAME)
-      };
-    }
-    __name(geolocation2, "geolocation");
-  }
-});
-
-// node_modules/@vercel/functions/get-env.js
-var require_get_env = __commonJS({
-  "node_modules/@vercel/functions/get-env.js"(exports, module) {
-    "use strict";
-    init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_process();
-    init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_console();
-    init_performance2();
-    var __defProp4 = Object.defineProperty;
-    var __getOwnPropDesc4 = Object.getOwnPropertyDescriptor;
-    var __getOwnPropNames4 = Object.getOwnPropertyNames;
-    var __hasOwnProp4 = Object.prototype.hasOwnProperty;
-    var __export4 = /* @__PURE__ */ __name((target, all) => {
-      for (var name in all)
-        __defProp4(target, name, { get: all[name], enumerable: true });
-    }, "__export");
-    var __copyProps4 = /* @__PURE__ */ __name((to, from, except, desc) => {
-      if (from && typeof from === "object" || typeof from === "function") {
-        for (let key of __getOwnPropNames4(from))
-          if (!__hasOwnProp4.call(to, key) && key !== except)
-            __defProp4(to, key, { get: /* @__PURE__ */ __name(() => from[key], "get"), enumerable: !(desc = __getOwnPropDesc4(from, key)) || desc.enumerable });
-      }
-      return to;
-    }, "__copyProps");
-    var __toCommonJS3 = /* @__PURE__ */ __name((mod) => __copyProps4(__defProp4({}, "__esModule", { value: true }), mod), "__toCommonJS");
-    var get_env_exports = {};
-    __export4(get_env_exports, {
-      getEnv: /* @__PURE__ */ __name(() => getEnv2, "getEnv")
-    });
-    module.exports = __toCommonJS3(get_env_exports);
-    var getEnv2 = /* @__PURE__ */ __name((env2 = process.env) => ({
-      /**
-       * An indicator to show that System Environment Variables have been exposed to your project's Deployments.
-       * @example "1"
-       */
-      VERCEL: get(env2, "VERCEL"),
-      /**
-       * An indicator that the code is running in a Continuous Integration environment.
-       * @example "1"
-       */
-      CI: get(env2, "CI"),
-      /**
-       * The Environment that the app is deployed and running on.
-       * @example "production"
-       */
-      VERCEL_ENV: get(env2, "VERCEL_ENV"),
-      /**
-       * The domain name of the generated deployment URL. The value does not include the protocol scheme https://.
-       * NOTE: This Variable cannot be used in conjunction with Standard Deployment Protection.
-       * @example "*.vercel.app"
-       */
-      VERCEL_URL: get(env2, "VERCEL_URL"),
-      /**
-       * The domain name of the generated Git branch URL. The value does not include the protocol scheme https://.
-       * @example "*-git-*.vercel.app"
-       */
-      VERCEL_BRANCH_URL: get(env2, "VERCEL_BRANCH_URL"),
-      /**
-       * A production domain name of the project. This is useful to reliably generate links that point to production such as OG-image URLs.
-       * The value does not include the protocol scheme https://.
-       * @example "myproject.vercel.app"
-       */
-      VERCEL_PROJECT_PRODUCTION_URL: get(env2, "VERCEL_PROJECT_PRODUCTION_URL"),
-      /**
-       * The ID of the Region where the app is running.
-       *
-       * Possible values:
-       * - arn1 (Stockholm, Sweden)
-       * - bom1 (Mumbai, India)
-       * - cdg1 (Paris, France)
-       * - cle1 (Cleveland, USA)
-       * - cpt1 (Cape Town, South Africa)
-       * - dub1 (Dublin, Ireland)
-       * - fra1 (Frankfurt, Germany)
-       * - gru1 (São Paulo, Brazil)
-       * - hkg1 (Hong Kong)
-       * - hnd1 (Tokyo, Japan)
-       * - iad1 (Washington, D.C., USA)
-       * - icn1 (Seoul, South Korea)
-       * - kix1 (Osaka, Japan)
-       * - lhr1 (London, United Kingdom)
-       * - pdx1 (Portland, USA)
-       * - sfo1 (San Francisco, USA)
-       * - sin1 (Singapore)
-       * - syd1 (Sydney, Australia)
-       * - dev1 (Development Region)
-       *
-       * @example "iad1"
-       */
-      VERCEL_REGION: get(env2, "VERCEL_REGION"),
-      /**
-       * The unique identifier for the deployment, which can be used to implement Skew Protection.
-       * @example "dpl_7Gw5ZMBpQA8h9GF832KGp7nwbuh3"
-       */
-      VERCEL_DEPLOYMENT_ID: get(env2, "VERCEL_DEPLOYMENT_ID"),
-      /**
-       * When Skew Protection is enabled in Project Settings, this value is set to 1.
-       * @example "1"
-       */
-      VERCEL_SKEW_PROTECTION_ENABLED: get(env2, "VERCEL_SKEW_PROTECTION_ENABLED"),
-      /**
-       * The Protection Bypass for Automation value, if the secret has been generated in the project's Deployment Protection settings.
-       */
-      VERCEL_AUTOMATION_BYPASS_SECRET: get(env2, "VERCEL_AUTOMATION_BYPASS_SECRET"),
-      /**
-       * The Git Provider the deployment is triggered from.
-       * @example "github"
-       */
-      VERCEL_GIT_PROVIDER: get(env2, "VERCEL_GIT_PROVIDER"),
-      /**
-       * The origin repository the deployment is triggered from.
-       * @example "my-site"
-       */
-      VERCEL_GIT_REPO_SLUG: get(env2, "VERCEL_GIT_REPO_SLUG"),
-      /**
-       * The account that owns the repository the deployment is triggered from.
-       * @example "acme"
-       */
-      VERCEL_GIT_REPO_OWNER: get(env2, "VERCEL_GIT_REPO_OWNER"),
-      /**
-       * The ID of the repository the deployment is triggered from.
-       * @example "117716146"
-       */
-      VERCEL_GIT_REPO_ID: get(env2, "VERCEL_GIT_REPO_ID"),
-      /**
-       * The git branch of the commit the deployment was triggered by.
-       * @example "improve-about-page"
-       */
-      VERCEL_GIT_COMMIT_REF: get(env2, "VERCEL_GIT_COMMIT_REF"),
-      /**
-       * The git SHA of the commit the deployment was triggered by.
-       * @example "fa1eade47b73733d6312d5abfad33ce9e4068081"
-       */
-      VERCEL_GIT_COMMIT_SHA: get(env2, "VERCEL_GIT_COMMIT_SHA"),
-      /**
-       * The message attached to the commit the deployment was triggered by.
-       * @example "Update about page"
-       */
-      VERCEL_GIT_COMMIT_MESSAGE: get(env2, "VERCEL_GIT_COMMIT_MESSAGE"),
-      /**
-       * The username attached to the author of the commit that the project was deployed by.
-       * @example "johndoe"
-       */
-      VERCEL_GIT_COMMIT_AUTHOR_LOGIN: get(env2, "VERCEL_GIT_COMMIT_AUTHOR_LOGIN"),
-      /**
-       * The name attached to the author of the commit that the project was deployed by.
-       * @example "John Doe"
-       */
-      VERCEL_GIT_COMMIT_AUTHOR_NAME: get(env2, "VERCEL_GIT_COMMIT_AUTHOR_NAME"),
-      /**
-       * The git SHA of the last successful deployment for the project and branch.
-       * NOTE: This Variable is only exposed when an Ignored Build Step is provided.
-       * @example "fa1eade47b73733d6312d5abfad33ce9e4068080"
-       */
-      VERCEL_GIT_PREVIOUS_SHA: get(env2, "VERCEL_GIT_PREVIOUS_SHA"),
-      /**
-       * The pull request id the deployment was triggered by. If a deployment is created on a branch before a pull request is made, this value will be an empty string.
-       * @example "23"
-       */
-      VERCEL_GIT_PULL_REQUEST_ID: get(env2, "VERCEL_GIT_PULL_REQUEST_ID")
-    }), "getEnv");
-    var get = /* @__PURE__ */ __name((env2, key) => {
-      const value = env2[key];
-      return value === "" ? void 0 : value;
-    }, "get");
-  }
-});
-
-// node_modules/@vercel/functions/get-context.js
-var require_get_context = __commonJS({
-  "node_modules/@vercel/functions/get-context.js"(exports, module) {
-    "use strict";
-    init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_process();
-    init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_console();
-    init_performance2();
-    var __defProp4 = Object.defineProperty;
-    var __getOwnPropDesc4 = Object.getOwnPropertyDescriptor;
-    var __getOwnPropNames4 = Object.getOwnPropertyNames;
-    var __hasOwnProp4 = Object.prototype.hasOwnProperty;
-    var __export4 = /* @__PURE__ */ __name((target, all) => {
-      for (var name in all)
-        __defProp4(target, name, { get: all[name], enumerable: true });
-    }, "__export");
-    var __copyProps4 = /* @__PURE__ */ __name((to, from, except, desc) => {
-      if (from && typeof from === "object" || typeof from === "function") {
-        for (let key of __getOwnPropNames4(from))
-          if (!__hasOwnProp4.call(to, key) && key !== except)
-            __defProp4(to, key, { get: /* @__PURE__ */ __name(() => from[key], "get"), enumerable: !(desc = __getOwnPropDesc4(from, key)) || desc.enumerable });
-      }
-      return to;
-    }, "__copyProps");
-    var __toCommonJS3 = /* @__PURE__ */ __name((mod) => __copyProps4(__defProp4({}, "__esModule", { value: true }), mod), "__toCommonJS");
-    var get_context_exports = {};
-    __export4(get_context_exports, {
-      SYMBOL_FOR_REQ_CONTEXT: /* @__PURE__ */ __name(() => SYMBOL_FOR_REQ_CONTEXT, "SYMBOL_FOR_REQ_CONTEXT"),
-      getContext: /* @__PURE__ */ __name(() => getContext, "getContext")
-    });
-    module.exports = __toCommonJS3(get_context_exports);
-    var SYMBOL_FOR_REQ_CONTEXT = Symbol.for("@vercel/request-context");
-    function getContext() {
-      const fromSymbol = globalThis;
-      return fromSymbol[SYMBOL_FOR_REQ_CONTEXT]?.get?.() ?? {};
-    }
-    __name(getContext, "getContext");
-  }
-});
-
-// node_modules/@vercel/functions/wait-until.js
-var require_wait_until = __commonJS({
-  "node_modules/@vercel/functions/wait-until.js"(exports, module) {
-    "use strict";
-    init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_process();
-    init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_console();
-    init_performance2();
-    var __defProp4 = Object.defineProperty;
-    var __getOwnPropDesc4 = Object.getOwnPropertyDescriptor;
-    var __getOwnPropNames4 = Object.getOwnPropertyNames;
-    var __hasOwnProp4 = Object.prototype.hasOwnProperty;
-    var __export4 = /* @__PURE__ */ __name((target, all) => {
-      for (var name in all)
-        __defProp4(target, name, { get: all[name], enumerable: true });
-    }, "__export");
-    var __copyProps4 = /* @__PURE__ */ __name((to, from, except, desc) => {
-      if (from && typeof from === "object" || typeof from === "function") {
-        for (let key of __getOwnPropNames4(from))
-          if (!__hasOwnProp4.call(to, key) && key !== except)
-            __defProp4(to, key, { get: /* @__PURE__ */ __name(() => from[key], "get"), enumerable: !(desc = __getOwnPropDesc4(from, key)) || desc.enumerable });
-      }
-      return to;
-    }, "__copyProps");
-    var __toCommonJS3 = /* @__PURE__ */ __name((mod) => __copyProps4(__defProp4({}, "__esModule", { value: true }), mod), "__toCommonJS");
-    var wait_until_exports = {};
-    __export4(wait_until_exports, {
-      waitUntil: /* @__PURE__ */ __name(() => waitUntil3, "waitUntil")
-    });
-    module.exports = __toCommonJS3(wait_until_exports);
-    var import_get_context = require_get_context();
-    var waitUntil3 = /* @__PURE__ */ __name((promise) => {
+    exports.waitUntil = (promise) => {
       if (promise === null || typeof promise !== "object" || typeof promise.then !== "function") {
         throw new TypeError(
           `waitUntil can only be called with a Promise, got ${typeof promise}`
         );
       }
-      return (0, import_get_context.getContext)().waitUntil?.(promise);
-    }, "waitUntil");
-  }
-});
-
-// node_modules/@vercel/functions/middleware.js
-var require_middleware = __commonJS({
-  "node_modules/@vercel/functions/middleware.js"(exports, module) {
-    "use strict";
-    init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_process();
-    init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_console();
-    init_performance2();
-    var __defProp4 = Object.defineProperty;
-    var __getOwnPropDesc4 = Object.getOwnPropertyDescriptor;
-    var __getOwnPropNames4 = Object.getOwnPropertyNames;
-    var __hasOwnProp4 = Object.prototype.hasOwnProperty;
-    var __export4 = /* @__PURE__ */ __name((target, all) => {
-      for (var name in all)
-        __defProp4(target, name, { get: all[name], enumerable: true });
-    }, "__export");
-    var __copyProps4 = /* @__PURE__ */ __name((to, from, except, desc) => {
-      if (from && typeof from === "object" || typeof from === "function") {
-        for (let key of __getOwnPropNames4(from))
-          if (!__hasOwnProp4.call(to, key) && key !== except)
-            __defProp4(to, key, { get: /* @__PURE__ */ __name(() => from[key], "get"), enumerable: !(desc = __getOwnPropDesc4(from, key)) || desc.enumerable });
-      }
-      return to;
-    }, "__copyProps");
-    var __toCommonJS3 = /* @__PURE__ */ __name((mod) => __copyProps4(__defProp4({}, "__esModule", { value: true }), mod), "__toCommonJS");
-    var middleware_exports = {};
-    __export4(middleware_exports, {
-      next: /* @__PURE__ */ __name(() => next2, "next"),
-      rewrite: /* @__PURE__ */ __name(() => rewrite2, "rewrite")
-    });
-    module.exports = __toCommonJS3(middleware_exports);
-    function handleMiddlewareField(init2, headers) {
-      if (init2?.request?.headers) {
-        if (!(init2.request.headers instanceof Headers)) {
-          throw new Error("request.headers must be an instance of Headers");
-        }
-        const keys = [];
-        for (const [key, value] of init2.request.headers) {
-          headers.set("x-middleware-request-" + key, value);
-          keys.push(key);
-        }
-        headers.set("x-middleware-override-headers", keys.join(","));
-      }
-    }
-    __name(handleMiddlewareField, "handleMiddlewareField");
-    function rewrite2(destination, init2) {
-      const headers = new Headers(init2?.headers ?? {});
-      headers.set("x-middleware-rewrite", String(destination));
-      handleMiddlewareField(init2, headers);
-      return new Response(null, {
-        ...init2,
-        headers
-      });
-    }
-    __name(rewrite2, "rewrite");
-    function next2(init2) {
-      const headers = new Headers(init2?.headers ?? {});
-      headers.set("x-middleware-next", "1");
-      handleMiddlewareField(init2, headers);
-      return new Response(null, {
-        ...init2,
-        headers
-      });
-    }
-    __name(next2, "next");
-  }
-});
-
-// node_modules/@vercel/functions/index.js
-var require_functions = __commonJS({
-  "node_modules/@vercel/functions/index.js"(exports, module) {
-    "use strict";
-    init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_process();
-    init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_console();
-    init_performance2();
-    var __defProp4 = Object.defineProperty;
-    var __getOwnPropDesc4 = Object.getOwnPropertyDescriptor;
-    var __getOwnPropNames4 = Object.getOwnPropertyNames;
-    var __hasOwnProp4 = Object.prototype.hasOwnProperty;
-    var __export4 = /* @__PURE__ */ __name((target, all) => {
-      for (var name in all)
-        __defProp4(target, name, { get: all[name], enumerable: true });
-    }, "__export");
-    var __copyProps4 = /* @__PURE__ */ __name((to, from, except, desc) => {
-      if (from && typeof from === "object" || typeof from === "function") {
-        for (let key of __getOwnPropNames4(from))
-          if (!__hasOwnProp4.call(to, key) && key !== except)
-            __defProp4(to, key, { get: /* @__PURE__ */ __name(() => from[key], "get"), enumerable: !(desc = __getOwnPropDesc4(from, key)) || desc.enumerable });
-      }
-      return to;
-    }, "__copyProps");
-    var __toCommonJS3 = /* @__PURE__ */ __name((mod) => __copyProps4(__defProp4({}, "__esModule", { value: true }), mod), "__toCommonJS");
-    var src_exports = {};
-    __export4(src_exports, {
-      geolocation: /* @__PURE__ */ __name(() => import_headers25.geolocation, "geolocation"),
-      getEnv: /* @__PURE__ */ __name(() => import_get_env.getEnv, "getEnv"),
-      ipAddress: /* @__PURE__ */ __name(() => import_headers25.ipAddress, "ipAddress"),
-      next: /* @__PURE__ */ __name(() => import_middleware.next, "next"),
-      rewrite: /* @__PURE__ */ __name(() => import_middleware.rewrite, "rewrite"),
-      waitUntil: /* @__PURE__ */ __name(() => import_wait_until.waitUntil, "waitUntil")
-    });
-    module.exports = __toCommonJS3(src_exports);
-    var import_headers25 = require_headers();
-    var import_get_env = require_get_env();
-    var import_wait_until = require_wait_until();
-    var import_middleware = require_middleware();
+      const ctx = globalThis[Symbol.for("@vercel/request-context")]?.get?.() ?? {};
+      ctx.waitUntil?.(promise);
+    };
   }
 });
 
@@ -2630,20 +2196,6 @@ var require_util = __commonJS({
   }
 });
 
-// node_modules/supports-color/browser.js
-var require_browser2 = __commonJS({
-  "node_modules/supports-color/browser.js"(exports, module) {
-    "use strict";
-    init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_process();
-    init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_console();
-    init_performance2();
-    module.exports = {
-      stdout: false,
-      stderr: false
-    };
-  }
-});
-
 // node_modules/debug/src/node.js
 var require_node = __commonJS({
   "node_modules/debug/src/node.js"(exports, module) {
@@ -2665,7 +2217,7 @@ var require_node = __commonJS({
     );
     exports.colors = [6, 2, 3, 4, 5, 1];
     try {
-      const supportsColor = require_browser2();
+      const supportsColor = __require("supports-color");
       if (supportsColor && (supportsColor.stderr || supportsColor).level >= 2) {
         exports.colors = [
           20,
@@ -2842,9 +2394,9 @@ var require_src = __commonJS({
   }
 });
 
-// node_modules/@kwsites/file-exists/dist/src/index.js
+// ../braintrust/node_modules/.pnpm/@kwsites+file-exists@1.1.1/node_modules/@kwsites/file-exists/dist/src/index.js
 var require_src2 = __commonJS({
-  "node_modules/@kwsites/file-exists/dist/src/index.js"(exports) {
+  "../braintrust/node_modules/.pnpm/@kwsites+file-exists@1.1.1/node_modules/@kwsites/file-exists/dist/src/index.js"(exports) {
     "use strict";
     init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_process();
     init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_console();
@@ -2891,9 +2443,9 @@ var require_src2 = __commonJS({
   }
 });
 
-// node_modules/@kwsites/file-exists/dist/index.js
+// ../braintrust/node_modules/.pnpm/@kwsites+file-exists@1.1.1/node_modules/@kwsites/file-exists/dist/index.js
 var require_dist = __commonJS({
-  "node_modules/@kwsites/file-exists/dist/index.js"(exports) {
+  "../braintrust/node_modules/.pnpm/@kwsites+file-exists@1.1.1/node_modules/@kwsites/file-exists/dist/index.js"(exports) {
     "use strict";
     init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_process();
     init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_console();
@@ -2907,9 +2459,9 @@ var require_dist = __commonJS({
   }
 });
 
-// node_modules/@kwsites/promise-deferred/dist/index.js
+// ../braintrust/node_modules/.pnpm/@kwsites+promise-deferred@1.1.1/node_modules/@kwsites/promise-deferred/dist/index.js
 var require_dist2 = __commonJS({
-  "node_modules/@kwsites/promise-deferred/dist/index.js"(exports) {
+  "../braintrust/node_modules/.pnpm/@kwsites+promise-deferred@1.1.1/node_modules/@kwsites/promise-deferred/dist/index.js"(exports) {
     "use strict";
     init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_process();
     init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_console();
@@ -2953,1481 +2505,9 @@ var require_dist2 = __commonJS({
   }
 });
 
-// node_modules/color-name/index.js
-var require_color_name = __commonJS({
-  "node_modules/color-name/index.js"(exports, module) {
-    "use strict";
-    init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_process();
-    init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_console();
-    init_performance2();
-    module.exports = {
-      "aliceblue": [240, 248, 255],
-      "antiquewhite": [250, 235, 215],
-      "aqua": [0, 255, 255],
-      "aquamarine": [127, 255, 212],
-      "azure": [240, 255, 255],
-      "beige": [245, 245, 220],
-      "bisque": [255, 228, 196],
-      "black": [0, 0, 0],
-      "blanchedalmond": [255, 235, 205],
-      "blue": [0, 0, 255],
-      "blueviolet": [138, 43, 226],
-      "brown": [165, 42, 42],
-      "burlywood": [222, 184, 135],
-      "cadetblue": [95, 158, 160],
-      "chartreuse": [127, 255, 0],
-      "chocolate": [210, 105, 30],
-      "coral": [255, 127, 80],
-      "cornflowerblue": [100, 149, 237],
-      "cornsilk": [255, 248, 220],
-      "crimson": [220, 20, 60],
-      "cyan": [0, 255, 255],
-      "darkblue": [0, 0, 139],
-      "darkcyan": [0, 139, 139],
-      "darkgoldenrod": [184, 134, 11],
-      "darkgray": [169, 169, 169],
-      "darkgreen": [0, 100, 0],
-      "darkgrey": [169, 169, 169],
-      "darkkhaki": [189, 183, 107],
-      "darkmagenta": [139, 0, 139],
-      "darkolivegreen": [85, 107, 47],
-      "darkorange": [255, 140, 0],
-      "darkorchid": [153, 50, 204],
-      "darkred": [139, 0, 0],
-      "darksalmon": [233, 150, 122],
-      "darkseagreen": [143, 188, 143],
-      "darkslateblue": [72, 61, 139],
-      "darkslategray": [47, 79, 79],
-      "darkslategrey": [47, 79, 79],
-      "darkturquoise": [0, 206, 209],
-      "darkviolet": [148, 0, 211],
-      "deeppink": [255, 20, 147],
-      "deepskyblue": [0, 191, 255],
-      "dimgray": [105, 105, 105],
-      "dimgrey": [105, 105, 105],
-      "dodgerblue": [30, 144, 255],
-      "firebrick": [178, 34, 34],
-      "floralwhite": [255, 250, 240],
-      "forestgreen": [34, 139, 34],
-      "fuchsia": [255, 0, 255],
-      "gainsboro": [220, 220, 220],
-      "ghostwhite": [248, 248, 255],
-      "gold": [255, 215, 0],
-      "goldenrod": [218, 165, 32],
-      "gray": [128, 128, 128],
-      "green": [0, 128, 0],
-      "greenyellow": [173, 255, 47],
-      "grey": [128, 128, 128],
-      "honeydew": [240, 255, 240],
-      "hotpink": [255, 105, 180],
-      "indianred": [205, 92, 92],
-      "indigo": [75, 0, 130],
-      "ivory": [255, 255, 240],
-      "khaki": [240, 230, 140],
-      "lavender": [230, 230, 250],
-      "lavenderblush": [255, 240, 245],
-      "lawngreen": [124, 252, 0],
-      "lemonchiffon": [255, 250, 205],
-      "lightblue": [173, 216, 230],
-      "lightcoral": [240, 128, 128],
-      "lightcyan": [224, 255, 255],
-      "lightgoldenrodyellow": [250, 250, 210],
-      "lightgray": [211, 211, 211],
-      "lightgreen": [144, 238, 144],
-      "lightgrey": [211, 211, 211],
-      "lightpink": [255, 182, 193],
-      "lightsalmon": [255, 160, 122],
-      "lightseagreen": [32, 178, 170],
-      "lightskyblue": [135, 206, 250],
-      "lightslategray": [119, 136, 153],
-      "lightslategrey": [119, 136, 153],
-      "lightsteelblue": [176, 196, 222],
-      "lightyellow": [255, 255, 224],
-      "lime": [0, 255, 0],
-      "limegreen": [50, 205, 50],
-      "linen": [250, 240, 230],
-      "magenta": [255, 0, 255],
-      "maroon": [128, 0, 0],
-      "mediumaquamarine": [102, 205, 170],
-      "mediumblue": [0, 0, 205],
-      "mediumorchid": [186, 85, 211],
-      "mediumpurple": [147, 112, 219],
-      "mediumseagreen": [60, 179, 113],
-      "mediumslateblue": [123, 104, 238],
-      "mediumspringgreen": [0, 250, 154],
-      "mediumturquoise": [72, 209, 204],
-      "mediumvioletred": [199, 21, 133],
-      "midnightblue": [25, 25, 112],
-      "mintcream": [245, 255, 250],
-      "mistyrose": [255, 228, 225],
-      "moccasin": [255, 228, 181],
-      "navajowhite": [255, 222, 173],
-      "navy": [0, 0, 128],
-      "oldlace": [253, 245, 230],
-      "olive": [128, 128, 0],
-      "olivedrab": [107, 142, 35],
-      "orange": [255, 165, 0],
-      "orangered": [255, 69, 0],
-      "orchid": [218, 112, 214],
-      "palegoldenrod": [238, 232, 170],
-      "palegreen": [152, 251, 152],
-      "paleturquoise": [175, 238, 238],
-      "palevioletred": [219, 112, 147],
-      "papayawhip": [255, 239, 213],
-      "peachpuff": [255, 218, 185],
-      "peru": [205, 133, 63],
-      "pink": [255, 192, 203],
-      "plum": [221, 160, 221],
-      "powderblue": [176, 224, 230],
-      "purple": [128, 0, 128],
-      "rebeccapurple": [102, 51, 153],
-      "red": [255, 0, 0],
-      "rosybrown": [188, 143, 143],
-      "royalblue": [65, 105, 225],
-      "saddlebrown": [139, 69, 19],
-      "salmon": [250, 128, 114],
-      "sandybrown": [244, 164, 96],
-      "seagreen": [46, 139, 87],
-      "seashell": [255, 245, 238],
-      "sienna": [160, 82, 45],
-      "silver": [192, 192, 192],
-      "skyblue": [135, 206, 235],
-      "slateblue": [106, 90, 205],
-      "slategray": [112, 128, 144],
-      "slategrey": [112, 128, 144],
-      "snow": [255, 250, 250],
-      "springgreen": [0, 255, 127],
-      "steelblue": [70, 130, 180],
-      "tan": [210, 180, 140],
-      "teal": [0, 128, 128],
-      "thistle": [216, 191, 216],
-      "tomato": [255, 99, 71],
-      "turquoise": [64, 224, 208],
-      "violet": [238, 130, 238],
-      "wheat": [245, 222, 179],
-      "white": [255, 255, 255],
-      "whitesmoke": [245, 245, 245],
-      "yellow": [255, 255, 0],
-      "yellowgreen": [154, 205, 50]
-    };
-  }
-});
-
-// node_modules/color-convert/conversions.js
-var require_conversions = __commonJS({
-  "node_modules/color-convert/conversions.js"(exports, module) {
-    init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_process();
-    init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_console();
-    init_performance2();
-    var cssKeywords = require_color_name();
-    var reverseKeywords = {};
-    for (const key of Object.keys(cssKeywords)) {
-      reverseKeywords[cssKeywords[key]] = key;
-    }
-    var convert = {
-      rgb: { channels: 3, labels: "rgb" },
-      hsl: { channels: 3, labels: "hsl" },
-      hsv: { channels: 3, labels: "hsv" },
-      hwb: { channels: 3, labels: "hwb" },
-      cmyk: { channels: 4, labels: "cmyk" },
-      xyz: { channels: 3, labels: "xyz" },
-      lab: { channels: 3, labels: "lab" },
-      lch: { channels: 3, labels: "lch" },
-      hex: { channels: 1, labels: ["hex"] },
-      keyword: { channels: 1, labels: ["keyword"] },
-      ansi16: { channels: 1, labels: ["ansi16"] },
-      ansi256: { channels: 1, labels: ["ansi256"] },
-      hcg: { channels: 3, labels: ["h", "c", "g"] },
-      apple: { channels: 3, labels: ["r16", "g16", "b16"] },
-      gray: { channels: 1, labels: ["gray"] }
-    };
-    module.exports = convert;
-    for (const model of Object.keys(convert)) {
-      if (!("channels" in convert[model])) {
-        throw new Error("missing channels property: " + model);
-      }
-      if (!("labels" in convert[model])) {
-        throw new Error("missing channel labels property: " + model);
-      }
-      if (convert[model].labels.length !== convert[model].channels) {
-        throw new Error("channel and label counts mismatch: " + model);
-      }
-      const { channels, labels } = convert[model];
-      delete convert[model].channels;
-      delete convert[model].labels;
-      Object.defineProperty(convert[model], "channels", { value: channels });
-      Object.defineProperty(convert[model], "labels", { value: labels });
-    }
-    convert.rgb.hsl = function(rgb) {
-      const r = rgb[0] / 255;
-      const g = rgb[1] / 255;
-      const b = rgb[2] / 255;
-      const min = Math.min(r, g, b);
-      const max = Math.max(r, g, b);
-      const delta = max - min;
-      let h;
-      let s;
-      if (max === min) {
-        h = 0;
-      } else if (r === max) {
-        h = (g - b) / delta;
-      } else if (g === max) {
-        h = 2 + (b - r) / delta;
-      } else if (b === max) {
-        h = 4 + (r - g) / delta;
-      }
-      h = Math.min(h * 60, 360);
-      if (h < 0) {
-        h += 360;
-      }
-      const l = (min + max) / 2;
-      if (max === min) {
-        s = 0;
-      } else if (l <= 0.5) {
-        s = delta / (max + min);
-      } else {
-        s = delta / (2 - max - min);
-      }
-      return [h, s * 100, l * 100];
-    };
-    convert.rgb.hsv = function(rgb) {
-      let rdif;
-      let gdif;
-      let bdif;
-      let h;
-      let s;
-      const r = rgb[0] / 255;
-      const g = rgb[1] / 255;
-      const b = rgb[2] / 255;
-      const v = Math.max(r, g, b);
-      const diff = v - Math.min(r, g, b);
-      const diffc = /* @__PURE__ */ __name(function(c) {
-        return (v - c) / 6 / diff + 1 / 2;
-      }, "diffc");
-      if (diff === 0) {
-        h = 0;
-        s = 0;
-      } else {
-        s = diff / v;
-        rdif = diffc(r);
-        gdif = diffc(g);
-        bdif = diffc(b);
-        if (r === v) {
-          h = bdif - gdif;
-        } else if (g === v) {
-          h = 1 / 3 + rdif - bdif;
-        } else if (b === v) {
-          h = 2 / 3 + gdif - rdif;
-        }
-        if (h < 0) {
-          h += 1;
-        } else if (h > 1) {
-          h -= 1;
-        }
-      }
-      return [
-        h * 360,
-        s * 100,
-        v * 100
-      ];
-    };
-    convert.rgb.hwb = function(rgb) {
-      const r = rgb[0];
-      const g = rgb[1];
-      let b = rgb[2];
-      const h = convert.rgb.hsl(rgb)[0];
-      const w = 1 / 255 * Math.min(r, Math.min(g, b));
-      b = 1 - 1 / 255 * Math.max(r, Math.max(g, b));
-      return [h, w * 100, b * 100];
-    };
-    convert.rgb.cmyk = function(rgb) {
-      const r = rgb[0] / 255;
-      const g = rgb[1] / 255;
-      const b = rgb[2] / 255;
-      const k = Math.min(1 - r, 1 - g, 1 - b);
-      const c = (1 - r - k) / (1 - k) || 0;
-      const m = (1 - g - k) / (1 - k) || 0;
-      const y = (1 - b - k) / (1 - k) || 0;
-      return [c * 100, m * 100, y * 100, k * 100];
-    };
-    function comparativeDistance(x, y) {
-      return (x[0] - y[0]) ** 2 + (x[1] - y[1]) ** 2 + (x[2] - y[2]) ** 2;
-    }
-    __name(comparativeDistance, "comparativeDistance");
-    convert.rgb.keyword = function(rgb) {
-      const reversed = reverseKeywords[rgb];
-      if (reversed) {
-        return reversed;
-      }
-      let currentClosestDistance = Infinity;
-      let currentClosestKeyword;
-      for (const keyword of Object.keys(cssKeywords)) {
-        const value = cssKeywords[keyword];
-        const distance = comparativeDistance(rgb, value);
-        if (distance < currentClosestDistance) {
-          currentClosestDistance = distance;
-          currentClosestKeyword = keyword;
-        }
-      }
-      return currentClosestKeyword;
-    };
-    convert.keyword.rgb = function(keyword) {
-      return cssKeywords[keyword];
-    };
-    convert.rgb.xyz = function(rgb) {
-      let r = rgb[0] / 255;
-      let g = rgb[1] / 255;
-      let b = rgb[2] / 255;
-      r = r > 0.04045 ? ((r + 0.055) / 1.055) ** 2.4 : r / 12.92;
-      g = g > 0.04045 ? ((g + 0.055) / 1.055) ** 2.4 : g / 12.92;
-      b = b > 0.04045 ? ((b + 0.055) / 1.055) ** 2.4 : b / 12.92;
-      const x = r * 0.4124 + g * 0.3576 + b * 0.1805;
-      const y = r * 0.2126 + g * 0.7152 + b * 0.0722;
-      const z = r * 0.0193 + g * 0.1192 + b * 0.9505;
-      return [x * 100, y * 100, z * 100];
-    };
-    convert.rgb.lab = function(rgb) {
-      const xyz = convert.rgb.xyz(rgb);
-      let x = xyz[0];
-      let y = xyz[1];
-      let z = xyz[2];
-      x /= 95.047;
-      y /= 100;
-      z /= 108.883;
-      x = x > 8856e-6 ? x ** (1 / 3) : 7.787 * x + 16 / 116;
-      y = y > 8856e-6 ? y ** (1 / 3) : 7.787 * y + 16 / 116;
-      z = z > 8856e-6 ? z ** (1 / 3) : 7.787 * z + 16 / 116;
-      const l = 116 * y - 16;
-      const a = 500 * (x - y);
-      const b = 200 * (y - z);
-      return [l, a, b];
-    };
-    convert.hsl.rgb = function(hsl) {
-      const h = hsl[0] / 360;
-      const s = hsl[1] / 100;
-      const l = hsl[2] / 100;
-      let t2;
-      let t3;
-      let val;
-      if (s === 0) {
-        val = l * 255;
-        return [val, val, val];
-      }
-      if (l < 0.5) {
-        t2 = l * (1 + s);
-      } else {
-        t2 = l + s - l * s;
-      }
-      const t1 = 2 * l - t2;
-      const rgb = [0, 0, 0];
-      for (let i = 0; i < 3; i++) {
-        t3 = h + 1 / 3 * -(i - 1);
-        if (t3 < 0) {
-          t3++;
-        }
-        if (t3 > 1) {
-          t3--;
-        }
-        if (6 * t3 < 1) {
-          val = t1 + (t2 - t1) * 6 * t3;
-        } else if (2 * t3 < 1) {
-          val = t2;
-        } else if (3 * t3 < 2) {
-          val = t1 + (t2 - t1) * (2 / 3 - t3) * 6;
-        } else {
-          val = t1;
-        }
-        rgb[i] = val * 255;
-      }
-      return rgb;
-    };
-    convert.hsl.hsv = function(hsl) {
-      const h = hsl[0];
-      let s = hsl[1] / 100;
-      let l = hsl[2] / 100;
-      let smin = s;
-      const lmin = Math.max(l, 0.01);
-      l *= 2;
-      s *= l <= 1 ? l : 2 - l;
-      smin *= lmin <= 1 ? lmin : 2 - lmin;
-      const v = (l + s) / 2;
-      const sv = l === 0 ? 2 * smin / (lmin + smin) : 2 * s / (l + s);
-      return [h, sv * 100, v * 100];
-    };
-    convert.hsv.rgb = function(hsv) {
-      const h = hsv[0] / 60;
-      const s = hsv[1] / 100;
-      let v = hsv[2] / 100;
-      const hi = Math.floor(h) % 6;
-      const f = h - Math.floor(h);
-      const p = 255 * v * (1 - s);
-      const q = 255 * v * (1 - s * f);
-      const t = 255 * v * (1 - s * (1 - f));
-      v *= 255;
-      switch (hi) {
-        case 0:
-          return [v, t, p];
-        case 1:
-          return [q, v, p];
-        case 2:
-          return [p, v, t];
-        case 3:
-          return [p, q, v];
-        case 4:
-          return [t, p, v];
-        case 5:
-          return [v, p, q];
-      }
-    };
-    convert.hsv.hsl = function(hsv) {
-      const h = hsv[0];
-      const s = hsv[1] / 100;
-      const v = hsv[2] / 100;
-      const vmin = Math.max(v, 0.01);
-      let sl;
-      let l;
-      l = (2 - s) * v;
-      const lmin = (2 - s) * vmin;
-      sl = s * vmin;
-      sl /= lmin <= 1 ? lmin : 2 - lmin;
-      sl = sl || 0;
-      l /= 2;
-      return [h, sl * 100, l * 100];
-    };
-    convert.hwb.rgb = function(hwb) {
-      const h = hwb[0] / 360;
-      let wh = hwb[1] / 100;
-      let bl = hwb[2] / 100;
-      const ratio = wh + bl;
-      let f;
-      if (ratio > 1) {
-        wh /= ratio;
-        bl /= ratio;
-      }
-      const i = Math.floor(6 * h);
-      const v = 1 - bl;
-      f = 6 * h - i;
-      if ((i & 1) !== 0) {
-        f = 1 - f;
-      }
-      const n = wh + f * (v - wh);
-      let r;
-      let g;
-      let b;
-      switch (i) {
-        default:
-        case 6:
-        case 0:
-          r = v;
-          g = n;
-          b = wh;
-          break;
-        case 1:
-          r = n;
-          g = v;
-          b = wh;
-          break;
-        case 2:
-          r = wh;
-          g = v;
-          b = n;
-          break;
-        case 3:
-          r = wh;
-          g = n;
-          b = v;
-          break;
-        case 4:
-          r = n;
-          g = wh;
-          b = v;
-          break;
-        case 5:
-          r = v;
-          g = wh;
-          b = n;
-          break;
-      }
-      return [r * 255, g * 255, b * 255];
-    };
-    convert.cmyk.rgb = function(cmyk) {
-      const c = cmyk[0] / 100;
-      const m = cmyk[1] / 100;
-      const y = cmyk[2] / 100;
-      const k = cmyk[3] / 100;
-      const r = 1 - Math.min(1, c * (1 - k) + k);
-      const g = 1 - Math.min(1, m * (1 - k) + k);
-      const b = 1 - Math.min(1, y * (1 - k) + k);
-      return [r * 255, g * 255, b * 255];
-    };
-    convert.xyz.rgb = function(xyz) {
-      const x = xyz[0] / 100;
-      const y = xyz[1] / 100;
-      const z = xyz[2] / 100;
-      let r;
-      let g;
-      let b;
-      r = x * 3.2406 + y * -1.5372 + z * -0.4986;
-      g = x * -0.9689 + y * 1.8758 + z * 0.0415;
-      b = x * 0.0557 + y * -0.204 + z * 1.057;
-      r = r > 31308e-7 ? 1.055 * r ** (1 / 2.4) - 0.055 : r * 12.92;
-      g = g > 31308e-7 ? 1.055 * g ** (1 / 2.4) - 0.055 : g * 12.92;
-      b = b > 31308e-7 ? 1.055 * b ** (1 / 2.4) - 0.055 : b * 12.92;
-      r = Math.min(Math.max(0, r), 1);
-      g = Math.min(Math.max(0, g), 1);
-      b = Math.min(Math.max(0, b), 1);
-      return [r * 255, g * 255, b * 255];
-    };
-    convert.xyz.lab = function(xyz) {
-      let x = xyz[0];
-      let y = xyz[1];
-      let z = xyz[2];
-      x /= 95.047;
-      y /= 100;
-      z /= 108.883;
-      x = x > 8856e-6 ? x ** (1 / 3) : 7.787 * x + 16 / 116;
-      y = y > 8856e-6 ? y ** (1 / 3) : 7.787 * y + 16 / 116;
-      z = z > 8856e-6 ? z ** (1 / 3) : 7.787 * z + 16 / 116;
-      const l = 116 * y - 16;
-      const a = 500 * (x - y);
-      const b = 200 * (y - z);
-      return [l, a, b];
-    };
-    convert.lab.xyz = function(lab) {
-      const l = lab[0];
-      const a = lab[1];
-      const b = lab[2];
-      let x;
-      let y;
-      let z;
-      y = (l + 16) / 116;
-      x = a / 500 + y;
-      z = y - b / 200;
-      const y2 = y ** 3;
-      const x2 = x ** 3;
-      const z2 = z ** 3;
-      y = y2 > 8856e-6 ? y2 : (y - 16 / 116) / 7.787;
-      x = x2 > 8856e-6 ? x2 : (x - 16 / 116) / 7.787;
-      z = z2 > 8856e-6 ? z2 : (z - 16 / 116) / 7.787;
-      x *= 95.047;
-      y *= 100;
-      z *= 108.883;
-      return [x, y, z];
-    };
-    convert.lab.lch = function(lab) {
-      const l = lab[0];
-      const a = lab[1];
-      const b = lab[2];
-      let h;
-      const hr = Math.atan2(b, a);
-      h = hr * 360 / 2 / Math.PI;
-      if (h < 0) {
-        h += 360;
-      }
-      const c = Math.sqrt(a * a + b * b);
-      return [l, c, h];
-    };
-    convert.lch.lab = function(lch) {
-      const l = lch[0];
-      const c = lch[1];
-      const h = lch[2];
-      const hr = h / 360 * 2 * Math.PI;
-      const a = c * Math.cos(hr);
-      const b = c * Math.sin(hr);
-      return [l, a, b];
-    };
-    convert.rgb.ansi16 = function(args, saturation = null) {
-      const [r, g, b] = args;
-      let value = saturation === null ? convert.rgb.hsv(args)[2] : saturation;
-      value = Math.round(value / 50);
-      if (value === 0) {
-        return 30;
-      }
-      let ansi = 30 + (Math.round(b / 255) << 2 | Math.round(g / 255) << 1 | Math.round(r / 255));
-      if (value === 2) {
-        ansi += 60;
-      }
-      return ansi;
-    };
-    convert.hsv.ansi16 = function(args) {
-      return convert.rgb.ansi16(convert.hsv.rgb(args), args[2]);
-    };
-    convert.rgb.ansi256 = function(args) {
-      const r = args[0];
-      const g = args[1];
-      const b = args[2];
-      if (r === g && g === b) {
-        if (r < 8) {
-          return 16;
-        }
-        if (r > 248) {
-          return 231;
-        }
-        return Math.round((r - 8) / 247 * 24) + 232;
-      }
-      const ansi = 16 + 36 * Math.round(r / 255 * 5) + 6 * Math.round(g / 255 * 5) + Math.round(b / 255 * 5);
-      return ansi;
-    };
-    convert.ansi16.rgb = function(args) {
-      let color = args % 10;
-      if (color === 0 || color === 7) {
-        if (args > 50) {
-          color += 3.5;
-        }
-        color = color / 10.5 * 255;
-        return [color, color, color];
-      }
-      const mult = (~~(args > 50) + 1) * 0.5;
-      const r = (color & 1) * mult * 255;
-      const g = (color >> 1 & 1) * mult * 255;
-      const b = (color >> 2 & 1) * mult * 255;
-      return [r, g, b];
-    };
-    convert.ansi256.rgb = function(args) {
-      if (args >= 232) {
-        const c = (args - 232) * 10 + 8;
-        return [c, c, c];
-      }
-      args -= 16;
-      let rem;
-      const r = Math.floor(args / 36) / 5 * 255;
-      const g = Math.floor((rem = args % 36) / 6) / 5 * 255;
-      const b = rem % 6 / 5 * 255;
-      return [r, g, b];
-    };
-    convert.rgb.hex = function(args) {
-      const integer = ((Math.round(args[0]) & 255) << 16) + ((Math.round(args[1]) & 255) << 8) + (Math.round(args[2]) & 255);
-      const string = integer.toString(16).toUpperCase();
-      return "000000".substring(string.length) + string;
-    };
-    convert.hex.rgb = function(args) {
-      const match = args.toString(16).match(/[a-f0-9]{6}|[a-f0-9]{3}/i);
-      if (!match) {
-        return [0, 0, 0];
-      }
-      let colorString = match[0];
-      if (match[0].length === 3) {
-        colorString = colorString.split("").map((char) => {
-          return char + char;
-        }).join("");
-      }
-      const integer = parseInt(colorString, 16);
-      const r = integer >> 16 & 255;
-      const g = integer >> 8 & 255;
-      const b = integer & 255;
-      return [r, g, b];
-    };
-    convert.rgb.hcg = function(rgb) {
-      const r = rgb[0] / 255;
-      const g = rgb[1] / 255;
-      const b = rgb[2] / 255;
-      const max = Math.max(Math.max(r, g), b);
-      const min = Math.min(Math.min(r, g), b);
-      const chroma = max - min;
-      let grayscale;
-      let hue;
-      if (chroma < 1) {
-        grayscale = min / (1 - chroma);
-      } else {
-        grayscale = 0;
-      }
-      if (chroma <= 0) {
-        hue = 0;
-      } else if (max === r) {
-        hue = (g - b) / chroma % 6;
-      } else if (max === g) {
-        hue = 2 + (b - r) / chroma;
-      } else {
-        hue = 4 + (r - g) / chroma;
-      }
-      hue /= 6;
-      hue %= 1;
-      return [hue * 360, chroma * 100, grayscale * 100];
-    };
-    convert.hsl.hcg = function(hsl) {
-      const s = hsl[1] / 100;
-      const l = hsl[2] / 100;
-      const c = l < 0.5 ? 2 * s * l : 2 * s * (1 - l);
-      let f = 0;
-      if (c < 1) {
-        f = (l - 0.5 * c) / (1 - c);
-      }
-      return [hsl[0], c * 100, f * 100];
-    };
-    convert.hsv.hcg = function(hsv) {
-      const s = hsv[1] / 100;
-      const v = hsv[2] / 100;
-      const c = s * v;
-      let f = 0;
-      if (c < 1) {
-        f = (v - c) / (1 - c);
-      }
-      return [hsv[0], c * 100, f * 100];
-    };
-    convert.hcg.rgb = function(hcg) {
-      const h = hcg[0] / 360;
-      const c = hcg[1] / 100;
-      const g = hcg[2] / 100;
-      if (c === 0) {
-        return [g * 255, g * 255, g * 255];
-      }
-      const pure = [0, 0, 0];
-      const hi = h % 1 * 6;
-      const v = hi % 1;
-      const w = 1 - v;
-      let mg = 0;
-      switch (Math.floor(hi)) {
-        case 0:
-          pure[0] = 1;
-          pure[1] = v;
-          pure[2] = 0;
-          break;
-        case 1:
-          pure[0] = w;
-          pure[1] = 1;
-          pure[2] = 0;
-          break;
-        case 2:
-          pure[0] = 0;
-          pure[1] = 1;
-          pure[2] = v;
-          break;
-        case 3:
-          pure[0] = 0;
-          pure[1] = w;
-          pure[2] = 1;
-          break;
-        case 4:
-          pure[0] = v;
-          pure[1] = 0;
-          pure[2] = 1;
-          break;
-        default:
-          pure[0] = 1;
-          pure[1] = 0;
-          pure[2] = w;
-      }
-      mg = (1 - c) * g;
-      return [
-        (c * pure[0] + mg) * 255,
-        (c * pure[1] + mg) * 255,
-        (c * pure[2] + mg) * 255
-      ];
-    };
-    convert.hcg.hsv = function(hcg) {
-      const c = hcg[1] / 100;
-      const g = hcg[2] / 100;
-      const v = c + g * (1 - c);
-      let f = 0;
-      if (v > 0) {
-        f = c / v;
-      }
-      return [hcg[0], f * 100, v * 100];
-    };
-    convert.hcg.hsl = function(hcg) {
-      const c = hcg[1] / 100;
-      const g = hcg[2] / 100;
-      const l = g * (1 - c) + 0.5 * c;
-      let s = 0;
-      if (l > 0 && l < 0.5) {
-        s = c / (2 * l);
-      } else if (l >= 0.5 && l < 1) {
-        s = c / (2 * (1 - l));
-      }
-      return [hcg[0], s * 100, l * 100];
-    };
-    convert.hcg.hwb = function(hcg) {
-      const c = hcg[1] / 100;
-      const g = hcg[2] / 100;
-      const v = c + g * (1 - c);
-      return [hcg[0], (v - c) * 100, (1 - v) * 100];
-    };
-    convert.hwb.hcg = function(hwb) {
-      const w = hwb[1] / 100;
-      const b = hwb[2] / 100;
-      const v = 1 - b;
-      const c = v - w;
-      let g = 0;
-      if (c < 1) {
-        g = (v - c) / (1 - c);
-      }
-      return [hwb[0], c * 100, g * 100];
-    };
-    convert.apple.rgb = function(apple) {
-      return [apple[0] / 65535 * 255, apple[1] / 65535 * 255, apple[2] / 65535 * 255];
-    };
-    convert.rgb.apple = function(rgb) {
-      return [rgb[0] / 255 * 65535, rgb[1] / 255 * 65535, rgb[2] / 255 * 65535];
-    };
-    convert.gray.rgb = function(args) {
-      return [args[0] / 100 * 255, args[0] / 100 * 255, args[0] / 100 * 255];
-    };
-    convert.gray.hsl = function(args) {
-      return [0, 0, args[0]];
-    };
-    convert.gray.hsv = convert.gray.hsl;
-    convert.gray.hwb = function(gray) {
-      return [0, 100, gray[0]];
-    };
-    convert.gray.cmyk = function(gray) {
-      return [0, 0, 0, gray[0]];
-    };
-    convert.gray.lab = function(gray) {
-      return [gray[0], 0, 0];
-    };
-    convert.gray.hex = function(gray) {
-      const val = Math.round(gray[0] / 100 * 255) & 255;
-      const integer = (val << 16) + (val << 8) + val;
-      const string = integer.toString(16).toUpperCase();
-      return "000000".substring(string.length) + string;
-    };
-    convert.rgb.gray = function(rgb) {
-      const val = (rgb[0] + rgb[1] + rgb[2]) / 3;
-      return [val / 255 * 100];
-    };
-  }
-});
-
-// node_modules/color-convert/route.js
-var require_route = __commonJS({
-  "node_modules/color-convert/route.js"(exports, module) {
-    init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_process();
-    init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_console();
-    init_performance2();
-    var conversions = require_conversions();
-    function buildGraph() {
-      const graph = {};
-      const models = Object.keys(conversions);
-      for (let len = models.length, i = 0; i < len; i++) {
-        graph[models[i]] = {
-          // http://jsperf.com/1-vs-infinity
-          // micro-opt, but this is simple.
-          distance: -1,
-          parent: null
-        };
-      }
-      return graph;
-    }
-    __name(buildGraph, "buildGraph");
-    function deriveBFS(fromModel) {
-      const graph = buildGraph();
-      const queue2 = [fromModel];
-      graph[fromModel].distance = 0;
-      while (queue2.length) {
-        const current = queue2.pop();
-        const adjacents = Object.keys(conversions[current]);
-        for (let len = adjacents.length, i = 0; i < len; i++) {
-          const adjacent = adjacents[i];
-          const node = graph[adjacent];
-          if (node.distance === -1) {
-            node.distance = graph[current].distance + 1;
-            node.parent = current;
-            queue2.unshift(adjacent);
-          }
-        }
-      }
-      return graph;
-    }
-    __name(deriveBFS, "deriveBFS");
-    function link3(from, to) {
-      return function(args) {
-        return to(from(args));
-      };
-    }
-    __name(link3, "link");
-    function wrapConversion(toModel, graph) {
-      const path4 = [graph[toModel].parent, toModel];
-      let fn = conversions[graph[toModel].parent][toModel];
-      let cur = graph[toModel].parent;
-      while (graph[cur].parent) {
-        path4.unshift(graph[cur].parent);
-        fn = link3(conversions[graph[cur].parent][cur], fn);
-        cur = graph[cur].parent;
-      }
-      fn.conversion = path4;
-      return fn;
-    }
-    __name(wrapConversion, "wrapConversion");
-    module.exports = function(fromModel) {
-      const graph = deriveBFS(fromModel);
-      const conversion = {};
-      const models = Object.keys(graph);
-      for (let len = models.length, i = 0; i < len; i++) {
-        const toModel = models[i];
-        const node = graph[toModel];
-        if (node.parent === null) {
-          continue;
-        }
-        conversion[toModel] = wrapConversion(toModel, graph);
-      }
-      return conversion;
-    };
-  }
-});
-
-// node_modules/color-convert/index.js
-var require_color_convert = __commonJS({
-  "node_modules/color-convert/index.js"(exports, module) {
-    init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_process();
-    init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_console();
-    init_performance2();
-    var conversions = require_conversions();
-    var route = require_route();
-    var convert = {};
-    var models = Object.keys(conversions);
-    function wrapRaw(fn) {
-      const wrappedFn = /* @__PURE__ */ __name(function(...args) {
-        const arg0 = args[0];
-        if (arg0 === void 0 || arg0 === null) {
-          return arg0;
-        }
-        if (arg0.length > 1) {
-          args = arg0;
-        }
-        return fn(args);
-      }, "wrappedFn");
-      if ("conversion" in fn) {
-        wrappedFn.conversion = fn.conversion;
-      }
-      return wrappedFn;
-    }
-    __name(wrapRaw, "wrapRaw");
-    function wrapRounded(fn) {
-      const wrappedFn = /* @__PURE__ */ __name(function(...args) {
-        const arg0 = args[0];
-        if (arg0 === void 0 || arg0 === null) {
-          return arg0;
-        }
-        if (arg0.length > 1) {
-          args = arg0;
-        }
-        const result = fn(args);
-        if (typeof result === "object") {
-          for (let len = result.length, i = 0; i < len; i++) {
-            result[i] = Math.round(result[i]);
-          }
-        }
-        return result;
-      }, "wrappedFn");
-      if ("conversion" in fn) {
-        wrappedFn.conversion = fn.conversion;
-      }
-      return wrappedFn;
-    }
-    __name(wrapRounded, "wrapRounded");
-    models.forEach((fromModel) => {
-      convert[fromModel] = {};
-      Object.defineProperty(convert[fromModel], "channels", { value: conversions[fromModel].channels });
-      Object.defineProperty(convert[fromModel], "labels", { value: conversions[fromModel].labels });
-      const routes = route(fromModel);
-      const routeModels = Object.keys(routes);
-      routeModels.forEach((toModel) => {
-        const fn = routes[toModel];
-        convert[fromModel][toModel] = wrapRounded(fn);
-        convert[fromModel][toModel].raw = wrapRaw(fn);
-      });
-    });
-    module.exports = convert;
-  }
-});
-
-// node_modules/ansi-styles/index.js
-var require_ansi_styles = __commonJS({
-  "node_modules/ansi-styles/index.js"(exports, module) {
-    "use strict";
-    init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_process();
-    init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_console();
-    init_performance2();
-    var wrapAnsi16 = /* @__PURE__ */ __name((fn, offset) => (...args) => {
-      const code = fn(...args);
-      return `\x1B[${code + offset}m`;
-    }, "wrapAnsi16");
-    var wrapAnsi256 = /* @__PURE__ */ __name((fn, offset) => (...args) => {
-      const code = fn(...args);
-      return `\x1B[${38 + offset};5;${code}m`;
-    }, "wrapAnsi256");
-    var wrapAnsi16m = /* @__PURE__ */ __name((fn, offset) => (...args) => {
-      const rgb = fn(...args);
-      return `\x1B[${38 + offset};2;${rgb[0]};${rgb[1]};${rgb[2]}m`;
-    }, "wrapAnsi16m");
-    var ansi2ansi = /* @__PURE__ */ __name((n) => n, "ansi2ansi");
-    var rgb2rgb = /* @__PURE__ */ __name((r, g, b) => [r, g, b], "rgb2rgb");
-    var setLazyProperty = /* @__PURE__ */ __name((object, property, get) => {
-      Object.defineProperty(object, property, {
-        get: /* @__PURE__ */ __name(() => {
-          const value = get();
-          Object.defineProperty(object, property, {
-            value,
-            enumerable: true,
-            configurable: true
-          });
-          return value;
-        }, "get"),
-        enumerable: true,
-        configurable: true
-      });
-    }, "setLazyProperty");
-    var colorConvert;
-    var makeDynamicStyles = /* @__PURE__ */ __name((wrap2, targetSpace, identity, isBackground) => {
-      if (colorConvert === void 0) {
-        colorConvert = require_color_convert();
-      }
-      const offset = isBackground ? 10 : 0;
-      const styles = {};
-      for (const [sourceSpace, suite] of Object.entries(colorConvert)) {
-        const name = sourceSpace === "ansi16" ? "ansi" : sourceSpace;
-        if (sourceSpace === targetSpace) {
-          styles[name] = wrap2(identity, offset);
-        } else if (typeof suite === "object") {
-          styles[name] = wrap2(suite[targetSpace], offset);
-        }
-      }
-      return styles;
-    }, "makeDynamicStyles");
-    function assembleStyles() {
-      const codes = /* @__PURE__ */ new Map();
-      const styles = {
-        modifier: {
-          reset: [0, 0],
-          // 21 isn't widely supported and 22 does the same thing
-          bold: [1, 22],
-          dim: [2, 22],
-          italic: [3, 23],
-          underline: [4, 24],
-          inverse: [7, 27],
-          hidden: [8, 28],
-          strikethrough: [9, 29]
-        },
-        color: {
-          black: [30, 39],
-          red: [31, 39],
-          green: [32, 39],
-          yellow: [33, 39],
-          blue: [34, 39],
-          magenta: [35, 39],
-          cyan: [36, 39],
-          white: [37, 39],
-          // Bright color
-          blackBright: [90, 39],
-          redBright: [91, 39],
-          greenBright: [92, 39],
-          yellowBright: [93, 39],
-          blueBright: [94, 39],
-          magentaBright: [95, 39],
-          cyanBright: [96, 39],
-          whiteBright: [97, 39]
-        },
-        bgColor: {
-          bgBlack: [40, 49],
-          bgRed: [41, 49],
-          bgGreen: [42, 49],
-          bgYellow: [43, 49],
-          bgBlue: [44, 49],
-          bgMagenta: [45, 49],
-          bgCyan: [46, 49],
-          bgWhite: [47, 49],
-          // Bright color
-          bgBlackBright: [100, 49],
-          bgRedBright: [101, 49],
-          bgGreenBright: [102, 49],
-          bgYellowBright: [103, 49],
-          bgBlueBright: [104, 49],
-          bgMagentaBright: [105, 49],
-          bgCyanBright: [106, 49],
-          bgWhiteBright: [107, 49]
-        }
-      };
-      styles.color.gray = styles.color.blackBright;
-      styles.bgColor.bgGray = styles.bgColor.bgBlackBright;
-      styles.color.grey = styles.color.blackBright;
-      styles.bgColor.bgGrey = styles.bgColor.bgBlackBright;
-      for (const [groupName, group3] of Object.entries(styles)) {
-        for (const [styleName, style] of Object.entries(group3)) {
-          styles[styleName] = {
-            open: `\x1B[${style[0]}m`,
-            close: `\x1B[${style[1]}m`
-          };
-          group3[styleName] = styles[styleName];
-          codes.set(style[0], style[1]);
-        }
-        Object.defineProperty(styles, groupName, {
-          value: group3,
-          enumerable: false
-        });
-      }
-      Object.defineProperty(styles, "codes", {
-        value: codes,
-        enumerable: false
-      });
-      styles.color.close = "\x1B[39m";
-      styles.bgColor.close = "\x1B[49m";
-      setLazyProperty(styles.color, "ansi", () => makeDynamicStyles(wrapAnsi16, "ansi16", ansi2ansi, false));
-      setLazyProperty(styles.color, "ansi256", () => makeDynamicStyles(wrapAnsi256, "ansi256", ansi2ansi, false));
-      setLazyProperty(styles.color, "ansi16m", () => makeDynamicStyles(wrapAnsi16m, "rgb", rgb2rgb, false));
-      setLazyProperty(styles.bgColor, "ansi", () => makeDynamicStyles(wrapAnsi16, "ansi16", ansi2ansi, true));
-      setLazyProperty(styles.bgColor, "ansi256", () => makeDynamicStyles(wrapAnsi256, "ansi256", ansi2ansi, true));
-      setLazyProperty(styles.bgColor, "ansi16m", () => makeDynamicStyles(wrapAnsi16m, "rgb", rgb2rgb, true));
-      return styles;
-    }
-    __name(assembleStyles, "assembleStyles");
-    Object.defineProperty(module, "exports", {
-      enumerable: true,
-      get: assembleStyles
-    });
-  }
-});
-
-// node_modules/chalk/source/util.js
-var require_util2 = __commonJS({
-  "node_modules/chalk/source/util.js"(exports, module) {
-    "use strict";
-    init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_process();
-    init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_console();
-    init_performance2();
-    var stringReplaceAll = /* @__PURE__ */ __name((string, substring, replacer) => {
-      let index = string.indexOf(substring);
-      if (index === -1) {
-        return string;
-      }
-      const substringLength = substring.length;
-      let endIndex = 0;
-      let returnValue = "";
-      do {
-        returnValue += string.substr(endIndex, index - endIndex) + substring + replacer;
-        endIndex = index + substringLength;
-        index = string.indexOf(substring, endIndex);
-      } while (index !== -1);
-      returnValue += string.substr(endIndex);
-      return returnValue;
-    }, "stringReplaceAll");
-    var stringEncaseCRLFWithFirstIndex = /* @__PURE__ */ __name((string, prefix, postfix, index) => {
-      let endIndex = 0;
-      let returnValue = "";
-      do {
-        const gotCR = string[index - 1] === "\r";
-        returnValue += string.substr(endIndex, (gotCR ? index - 1 : index) - endIndex) + prefix + (gotCR ? "\r\n" : "\n") + postfix;
-        endIndex = index + 1;
-        index = string.indexOf("\n", endIndex);
-      } while (index !== -1);
-      returnValue += string.substr(endIndex);
-      return returnValue;
-    }, "stringEncaseCRLFWithFirstIndex");
-    module.exports = {
-      stringReplaceAll,
-      stringEncaseCRLFWithFirstIndex
-    };
-  }
-});
-
-// node_modules/chalk/source/templates.js
-var require_templates = __commonJS({
-  "node_modules/chalk/source/templates.js"(exports, module) {
-    "use strict";
-    init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_process();
-    init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_console();
-    init_performance2();
-    var TEMPLATE_REGEX = /(?:\\(u(?:[a-f\d]{4}|\{[a-f\d]{1,6}\})|x[a-f\d]{2}|.))|(?:\{(~)?(\w+(?:\([^)]*\))?(?:\.\w+(?:\([^)]*\))?)*)(?:[ \t]|(?=\r?\n)))|(\})|((?:.|[\r\n\f])+?)/gi;
-    var STYLE_REGEX = /(?:^|\.)(\w+)(?:\(([^)]*)\))?/g;
-    var STRING_REGEX = /^(['"])((?:\\.|(?!\1)[^\\])*)\1$/;
-    var ESCAPE_REGEX = /\\(u(?:[a-f\d]{4}|{[a-f\d]{1,6}})|x[a-f\d]{2}|.)|([^\\])/gi;
-    var ESCAPES = /* @__PURE__ */ new Map([
-      ["n", "\n"],
-      ["r", "\r"],
-      ["t", "	"],
-      ["b", "\b"],
-      ["f", "\f"],
-      ["v", "\v"],
-      ["0", "\0"],
-      ["\\", "\\"],
-      ["e", "\x1B"],
-      ["a", "\x07"]
-    ]);
-    function unescape2(c) {
-      const u = c[0] === "u";
-      const bracket = c[1] === "{";
-      if (u && !bracket && c.length === 5 || c[0] === "x" && c.length === 3) {
-        return String.fromCharCode(parseInt(c.slice(1), 16));
-      }
-      if (u && bracket) {
-        return String.fromCodePoint(parseInt(c.slice(2, -1), 16));
-      }
-      return ESCAPES.get(c) || c;
-    }
-    __name(unescape2, "unescape");
-    function parseArguments(name, arguments_) {
-      const results = [];
-      const chunks = arguments_.trim().split(/\s*,\s*/g);
-      let matches;
-      for (const chunk of chunks) {
-        const number = Number(chunk);
-        if (!Number.isNaN(number)) {
-          results.push(number);
-        } else if (matches = chunk.match(STRING_REGEX)) {
-          results.push(matches[2].replace(ESCAPE_REGEX, (m, escape2, character) => escape2 ? unescape2(escape2) : character));
-        } else {
-          throw new Error(`Invalid Chalk template style argument: ${chunk} (in style '${name}')`);
-        }
-      }
-      return results;
-    }
-    __name(parseArguments, "parseArguments");
-    function parseStyle(style) {
-      STYLE_REGEX.lastIndex = 0;
-      const results = [];
-      let matches;
-      while ((matches = STYLE_REGEX.exec(style)) !== null) {
-        const name = matches[1];
-        if (matches[2]) {
-          const args = parseArguments(name, matches[2]);
-          results.push([name].concat(args));
-        } else {
-          results.push([name]);
-        }
-      }
-      return results;
-    }
-    __name(parseStyle, "parseStyle");
-    function buildStyle(chalk2, styles) {
-      const enabled = {};
-      for (const layer of styles) {
-        for (const style of layer.styles) {
-          enabled[style[0]] = layer.inverse ? null : style.slice(1);
-        }
-      }
-      let current = chalk2;
-      for (const [styleName, styles2] of Object.entries(enabled)) {
-        if (!Array.isArray(styles2)) {
-          continue;
-        }
-        if (!(styleName in current)) {
-          throw new Error(`Unknown Chalk style: ${styleName}`);
-        }
-        current = styles2.length > 0 ? current[styleName](...styles2) : current[styleName];
-      }
-      return current;
-    }
-    __name(buildStyle, "buildStyle");
-    module.exports = (chalk2, temporary) => {
-      const styles = [];
-      const chunks = [];
-      let chunk = [];
-      temporary.replace(TEMPLATE_REGEX, (m, escapeCharacter, inverse, style, close2, character) => {
-        if (escapeCharacter) {
-          chunk.push(unescape2(escapeCharacter));
-        } else if (style) {
-          const string = chunk.join("");
-          chunk = [];
-          chunks.push(styles.length === 0 ? string : buildStyle(chalk2, styles)(string));
-          styles.push({ inverse, styles: parseStyle(style) });
-        } else if (close2) {
-          if (styles.length === 0) {
-            throw new Error("Found extraneous } in Chalk template literal");
-          }
-          chunks.push(buildStyle(chalk2, styles)(chunk.join("")));
-          chunk = [];
-          styles.pop();
-        } else {
-          chunk.push(character);
-        }
-      });
-      chunks.push(chunk.join(""));
-      if (styles.length > 0) {
-        const errMessage = `Chalk template literal is missing ${styles.length} closing bracket${styles.length === 1 ? "" : "s"} (\`}\`)`;
-        throw new Error(errMessage);
-      }
-      return chunks.join("");
-    };
-  }
-});
-
-// node_modules/chalk/source/index.js
-var require_source = __commonJS({
-  "node_modules/chalk/source/index.js"(exports, module) {
-    "use strict";
-    init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_process();
-    init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_console();
-    init_performance2();
-    var ansiStyles = require_ansi_styles();
-    var { stdout: stdoutColor, stderr: stderrColor } = require_browser2();
-    var {
-      stringReplaceAll,
-      stringEncaseCRLFWithFirstIndex
-    } = require_util2();
-    var { isArray: isArray4 } = Array;
-    var levelMapping = [
-      "ansi",
-      "ansi",
-      "ansi256",
-      "ansi16m"
-    ];
-    var styles = /* @__PURE__ */ Object.create(null);
-    var applyOptions = /* @__PURE__ */ __name((object, options = {}) => {
-      if (options.level && !(Number.isInteger(options.level) && options.level >= 0 && options.level <= 3)) {
-        throw new Error("The `level` option should be an integer from 0 to 3");
-      }
-      const colorLevel = stdoutColor ? stdoutColor.level : 0;
-      object.level = options.level === void 0 ? colorLevel : options.level;
-    }, "applyOptions");
-    var ChalkClass = class {
-      static {
-        __name(this, "ChalkClass");
-      }
-      constructor(options) {
-        return chalkFactory(options);
-      }
-    };
-    var chalkFactory = /* @__PURE__ */ __name((options) => {
-      const chalk3 = {};
-      applyOptions(chalk3, options);
-      chalk3.template = (...arguments_) => chalkTag(chalk3.template, ...arguments_);
-      Object.setPrototypeOf(chalk3, Chalk.prototype);
-      Object.setPrototypeOf(chalk3.template, chalk3);
-      chalk3.template.constructor = () => {
-        throw new Error("`chalk.constructor()` is deprecated. Use `new chalk.Instance()` instead.");
-      };
-      chalk3.template.Instance = ChalkClass;
-      return chalk3.template;
-    }, "chalkFactory");
-    function Chalk(options) {
-      return chalkFactory(options);
-    }
-    __name(Chalk, "Chalk");
-    for (const [styleName, style] of Object.entries(ansiStyles)) {
-      styles[styleName] = {
-        get() {
-          const builder = createBuilder(this, createStyler(style.open, style.close, this._styler), this._isEmpty);
-          Object.defineProperty(this, styleName, { value: builder });
-          return builder;
-        }
-      };
-    }
-    styles.visible = {
-      get() {
-        const builder = createBuilder(this, this._styler, true);
-        Object.defineProperty(this, "visible", { value: builder });
-        return builder;
-      }
-    };
-    var usedModels = ["rgb", "hex", "keyword", "hsl", "hsv", "hwb", "ansi", "ansi256"];
-    for (const model of usedModels) {
-      styles[model] = {
-        get() {
-          const { level } = this;
-          return function(...arguments_) {
-            const styler = createStyler(ansiStyles.color[levelMapping[level]][model](...arguments_), ansiStyles.color.close, this._styler);
-            return createBuilder(this, styler, this._isEmpty);
-          };
-        }
-      };
-    }
-    for (const model of usedModels) {
-      const bgModel = "bg" + model[0].toUpperCase() + model.slice(1);
-      styles[bgModel] = {
-        get() {
-          const { level } = this;
-          return function(...arguments_) {
-            const styler = createStyler(ansiStyles.bgColor[levelMapping[level]][model](...arguments_), ansiStyles.bgColor.close, this._styler);
-            return createBuilder(this, styler, this._isEmpty);
-          };
-        }
-      };
-    }
-    var proto = Object.defineProperties(() => {
-    }, {
-      ...styles,
-      level: {
-        enumerable: true,
-        get() {
-          return this._generator.level;
-        },
-        set(level) {
-          this._generator.level = level;
-        }
-      }
-    });
-    var createStyler = /* @__PURE__ */ __name((open3, close2, parent) => {
-      let openAll;
-      let closeAll;
-      if (parent === void 0) {
-        openAll = open3;
-        closeAll = close2;
-      } else {
-        openAll = parent.openAll + open3;
-        closeAll = close2 + parent.closeAll;
-      }
-      return {
-        open: open3,
-        close: close2,
-        openAll,
-        closeAll,
-        parent
-      };
-    }, "createStyler");
-    var createBuilder = /* @__PURE__ */ __name((self, _styler, _isEmpty) => {
-      const builder = /* @__PURE__ */ __name((...arguments_) => {
-        if (isArray4(arguments_[0]) && isArray4(arguments_[0].raw)) {
-          return applyStyle(builder, chalkTag(builder, ...arguments_));
-        }
-        return applyStyle(builder, arguments_.length === 1 ? "" + arguments_[0] : arguments_.join(" "));
-      }, "builder");
-      Object.setPrototypeOf(builder, proto);
-      builder._generator = self;
-      builder._styler = _styler;
-      builder._isEmpty = _isEmpty;
-      return builder;
-    }, "createBuilder");
-    var applyStyle = /* @__PURE__ */ __name((self, string) => {
-      if (self.level <= 0 || !string) {
-        return self._isEmpty ? "" : string;
-      }
-      let styler = self._styler;
-      if (styler === void 0) {
-        return string;
-      }
-      const { openAll, closeAll } = styler;
-      if (string.indexOf("\x1B") !== -1) {
-        while (styler !== void 0) {
-          string = stringReplaceAll(string, styler.close, styler.open);
-          styler = styler.parent;
-        }
-      }
-      const lfIndex = string.indexOf("\n");
-      if (lfIndex !== -1) {
-        string = stringEncaseCRLFWithFirstIndex(string, closeAll, openAll, lfIndex);
-      }
-      return openAll + string + closeAll;
-    }, "applyStyle");
-    var template;
-    var chalkTag = /* @__PURE__ */ __name((chalk3, ...strings) => {
-      const [firstString] = strings;
-      if (!isArray4(firstString) || !isArray4(firstString.raw)) {
-        return strings.join(" ");
-      }
-      const arguments_ = strings.slice(1);
-      const parts = [firstString.raw[0]];
-      for (let i = 1; i < firstString.length; i++) {
-        parts.push(
-          String(arguments_[i - 1]).replace(/[{}\\]/g, "\\$&"),
-          String(firstString.raw[i])
-        );
-      }
-      if (template === void 0) {
-        template = require_templates();
-      }
-      return template(chalk3, parts.join(""));
-    }, "chalkTag");
-    Object.defineProperties(Chalk.prototype, styles);
-    var chalk2 = Chalk();
-    chalk2.supportsColor = stdoutColor;
-    chalk2.stderr = Chalk({ level: stderrColor ? stderrColor.level : 0 });
-    chalk2.stderr.supportsColor = stderrColor;
-    module.exports = chalk2;
-  }
-});
-
-// node_modules/pluralize/pluralize.js
+// ../braintrust/node_modules/.pnpm/pluralize@8.0.0/node_modules/pluralize/pluralize.js
 var require_pluralize = __commonJS({
-  "node_modules/pluralize/pluralize.js"(exports, module) {
+  "../braintrust/node_modules/.pnpm/pluralize@8.0.0/node_modules/pluralize/pluralize.js"(exports, module) {
     init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_process();
     init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_console();
     init_performance2();
@@ -4787,1131 +2867,9 @@ var require_pluralize = __commonJS({
   }
 });
 
-// node_modules/cli-progress/lib/eta.js
-var require_eta = __commonJS({
-  "node_modules/cli-progress/lib/eta.js"(exports, module) {
-    init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_process();
-    init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_console();
-    init_performance2();
-    var ETA = class {
-      static {
-        __name(this, "ETA");
-      }
-      constructor(length, initTime, initValue) {
-        this.etaBufferLength = length || 100;
-        this.valueBuffer = [initValue];
-        this.timeBuffer = [initTime];
-        this.eta = "0";
-      }
-      // add new values to calculation buffer
-      update(time3, value, total) {
-        this.valueBuffer.push(value);
-        this.timeBuffer.push(time3);
-        this.calculate(total - value);
-      }
-      // fetch estimated time
-      getTime() {
-        return this.eta;
-      }
-      // eta calculation - request number of remaining events
-      calculate(remaining) {
-        const currentBufferSize = this.valueBuffer.length;
-        const buffer = Math.min(this.etaBufferLength, currentBufferSize);
-        const v_diff = this.valueBuffer[currentBufferSize - 1] - this.valueBuffer[currentBufferSize - buffer];
-        const t_diff = this.timeBuffer[currentBufferSize - 1] - this.timeBuffer[currentBufferSize - buffer];
-        const vt_rate = v_diff / t_diff;
-        this.valueBuffer = this.valueBuffer.slice(-this.etaBufferLength);
-        this.timeBuffer = this.timeBuffer.slice(-this.etaBufferLength);
-        const eta = Math.ceil(remaining / vt_rate / 1e3);
-        if (isNaN(eta)) {
-          this.eta = "NULL";
-        } else if (!isFinite(eta)) {
-          this.eta = "INF";
-        } else if (eta > 1e7) {
-          this.eta = "INF";
-        } else if (eta < 0) {
-          this.eta = 0;
-        } else {
-          this.eta = eta;
-        }
-      }
-    };
-    module.exports = ETA;
-  }
-});
-
-// node_modules/unenv/dist/runtime/node/internal/readline/interface.mjs
-import { EventEmitter as EventEmitter3 } from "node:events";
-var Interface;
-var init_interface = __esm({
-  "node_modules/unenv/dist/runtime/node/internal/readline/interface.mjs"() {
-    init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_process();
-    init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_console();
-    init_performance2();
-    Interface = class extends EventEmitter3 {
-      static {
-        __name(this, "Interface");
-      }
-      terminal = false;
-      line = "";
-      cursor = 0;
-      getPrompt() {
-        return "";
-      }
-      setPrompt(prompt) {
-      }
-      prompt(preserveCursor) {
-      }
-      question(query, options, callback) {
-        callback && typeof callback === "function" && callback("");
-      }
-      resume() {
-        return this;
-      }
-      close() {
-      }
-      write(data, key) {
-      }
-      getCursorPos() {
-        return {
-          rows: 0,
-          cols: 0
-        };
-      }
-      pause() {
-        return this;
-      }
-      async *[Symbol.asyncIterator]() {
-        yield "";
-      }
-    };
-  }
-});
-
-// node_modules/unenv/dist/runtime/node/internal/readline/promises/interface.mjs
-var Interface2;
-var init_interface2 = __esm({
-  "node_modules/unenv/dist/runtime/node/internal/readline/promises/interface.mjs"() {
-    init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_process();
-    init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_console();
-    init_performance2();
-    init_interface();
-    Interface2 = class extends Interface {
-      static {
-        __name(this, "Interface");
-      }
-      question(query, options) {
-        return Promise.resolve("");
-      }
-    };
-  }
-});
-
-// node_modules/unenv/dist/runtime/node/internal/readline/promises/readline.mjs
-var Readline;
-var init_readline = __esm({
-  "node_modules/unenv/dist/runtime/node/internal/readline/promises/readline.mjs"() {
-    init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_process();
-    init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_console();
-    init_performance2();
-    Readline = class {
-      static {
-        __name(this, "Readline");
-      }
-      clearLine(dir4) {
-        return this;
-      }
-      clearScreenDown() {
-        return this;
-      }
-      commit() {
-        return Promise.resolve();
-      }
-      cursorTo(x, y) {
-        return this;
-      }
-      moveCursor(dx, dy) {
-        return this;
-      }
-      rollback() {
-        return this;
-      }
-    };
-  }
-});
-
-// node_modules/unenv/dist/runtime/node/readline/promises.mjs
-var createInterface, promises_default2;
-var init_promises3 = __esm({
-  "node_modules/unenv/dist/runtime/node/readline/promises.mjs"() {
-    init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_process();
-    init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_console();
-    init_performance2();
-    init_interface2();
-    init_readline();
-    createInterface = /* @__PURE__ */ __name(() => new Interface2(), "createInterface");
-    promises_default2 = {
-      Interface: Interface2,
-      Readline,
-      createInterface
-    };
-  }
-});
-
-// node_modules/unenv/dist/runtime/node/readline.mjs
-var clearLine, clearScreenDown, createInterface2, cursorTo, emitKeypressEvents, moveCursor, readline_default;
-var init_readline2 = __esm({
-  "node_modules/unenv/dist/runtime/node/readline.mjs"() {
-    init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_process();
-    init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_console();
-    init_performance2();
-    init_noop();
-    init_promises3();
-    init_interface();
-    clearLine = /* @__PURE__ */ __name(() => false, "clearLine");
-    clearScreenDown = /* @__PURE__ */ __name(() => false, "clearScreenDown");
-    createInterface2 = /* @__PURE__ */ __name(() => new Interface(), "createInterface");
-    cursorTo = /* @__PURE__ */ __name(() => false, "cursorTo");
-    emitKeypressEvents = noop_default;
-    moveCursor = /* @__PURE__ */ __name(() => false, "moveCursor");
-    readline_default = {
-      clearLine,
-      clearScreenDown,
-      createInterface: createInterface2,
-      cursorTo,
-      emitKeypressEvents,
-      moveCursor,
-      Interface,
-      promises: promises_default2
-    };
-  }
-});
-
-// node-built-in-modules:readline
-var require_readline = __commonJS({
-  "node-built-in-modules:readline"(exports, module) {
-    init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_process();
-    init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_console();
-    init_performance2();
-    init_readline2();
-    module.exports = readline_default;
-  }
-});
-
-// node_modules/cli-progress/lib/terminal.js
-var require_terminal = __commonJS({
-  "node_modules/cli-progress/lib/terminal.js"(exports, module) {
-    init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_process();
-    init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_console();
-    init_performance2();
-    var _readline = require_readline();
-    var Terminal = class {
-      static {
-        __name(this, "Terminal");
-      }
-      constructor(outputStream) {
-        this.stream = outputStream;
-        this.linewrap = true;
-        this.dy = 0;
-      }
-      // save cursor position + settings
-      cursorSave() {
-        if (!this.stream.isTTY) {
-          return;
-        }
-        this.stream.write("\x1B7");
-      }
-      // restore last cursor position + settings
-      cursorRestore() {
-        if (!this.stream.isTTY) {
-          return;
-        }
-        this.stream.write("\x1B8");
-      }
-      // show/hide cursor
-      cursor(enabled) {
-        if (!this.stream.isTTY) {
-          return;
-        }
-        if (enabled) {
-          this.stream.write("\x1B[?25h");
-        } else {
-          this.stream.write("\x1B[?25l");
-        }
-      }
-      // change cursor positionn
-      cursorTo(x = null, y = null) {
-        if (!this.stream.isTTY) {
-          return;
-        }
-        _readline.cursorTo(this.stream, x, y);
-      }
-      // change relative cursor position
-      cursorRelative(dx = null, dy = null) {
-        if (!this.stream.isTTY) {
-          return;
-        }
-        this.dy = this.dy + dy;
-        _readline.moveCursor(this.stream, dx, dy);
-      }
-      // relative reset
-      cursorRelativeReset() {
-        if (!this.stream.isTTY) {
-          return;
-        }
-        _readline.moveCursor(this.stream, 0, -this.dy);
-        _readline.cursorTo(this.stream, 0, null);
-        this.dy = 0;
-      }
-      // clear to the right from cursor
-      clearRight() {
-        if (!this.stream.isTTY) {
-          return;
-        }
-        _readline.clearLine(this.stream, 1);
-      }
-      // clear the full line
-      clearLine() {
-        if (!this.stream.isTTY) {
-          return;
-        }
-        _readline.clearLine(this.stream, 0);
-      }
-      // clear everyting beyond the current line
-      clearBottom() {
-        if (!this.stream.isTTY) {
-          return;
-        }
-        _readline.clearScreenDown(this.stream);
-      }
-      // add new line; increment counter
-      newline() {
-        this.stream.write("\n");
-        this.dy++;
-      }
-      // write content to output stream
-      // @TODO use string-width to strip length
-      write(s, rawWrite = false) {
-        if (this.linewrap === true && rawWrite === false) {
-          this.stream.write(s.substr(0, this.getWidth()));
-        } else {
-          this.stream.write(s);
-        }
-      }
-      // control line wrapping
-      lineWrapping(enabled) {
-        if (!this.stream.isTTY) {
-          return;
-        }
-        this.linewrap = enabled;
-        if (enabled) {
-          this.stream.write("\x1B[?7h");
-        } else {
-          this.stream.write("\x1B[?7l");
-        }
-      }
-      // tty environment ?
-      isTTY() {
-        return this.stream.isTTY === true;
-      }
-      // get terminal width
-      getWidth() {
-        return this.stream.columns || (this.stream.isTTY ? 80 : 200);
-      }
-    };
-    module.exports = Terminal;
-  }
-});
-
-// node_modules/ansi-regex/index.js
-var require_ansi_regex = __commonJS({
-  "node_modules/ansi-regex/index.js"(exports, module) {
-    "use strict";
-    init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_process();
-    init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_console();
-    init_performance2();
-    module.exports = ({ onlyFirst = false } = {}) => {
-      const pattern = [
-        "[\\u001B\\u009B][[\\]()#;?]*(?:(?:(?:(?:;[-a-zA-Z\\d\\/#&.:=?%@~_]+)*|[a-zA-Z\\d]+(?:;[-a-zA-Z\\d\\/#&.:=?%@~_]*)*)?\\u0007)",
-        "(?:(?:\\d{1,4}(?:;\\d{0,4})*)?[\\dA-PR-TZcf-ntqry=><~]))"
-      ].join("|");
-      return new RegExp(pattern, onlyFirst ? void 0 : "g");
-    };
-  }
-});
-
-// node_modules/strip-ansi/index.js
-var require_strip_ansi = __commonJS({
-  "node_modules/strip-ansi/index.js"(exports, module) {
-    "use strict";
-    init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_process();
-    init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_console();
-    init_performance2();
-    var ansiRegex = require_ansi_regex();
-    module.exports = (string) => typeof string === "string" ? string.replace(ansiRegex(), "") : string;
-  }
-});
-
-// node_modules/is-fullwidth-code-point/index.js
-var require_is_fullwidth_code_point = __commonJS({
-  "node_modules/is-fullwidth-code-point/index.js"(exports, module) {
-    "use strict";
-    init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_process();
-    init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_console();
-    init_performance2();
-    var isFullwidthCodePoint = /* @__PURE__ */ __name((codePoint) => {
-      if (Number.isNaN(codePoint)) {
-        return false;
-      }
-      if (codePoint >= 4352 && (codePoint <= 4447 || // Hangul Jamo
-      codePoint === 9001 || // LEFT-POINTING ANGLE BRACKET
-      codePoint === 9002 || // RIGHT-POINTING ANGLE BRACKET
-      // CJK Radicals Supplement .. Enclosed CJK Letters and Months
-      11904 <= codePoint && codePoint <= 12871 && codePoint !== 12351 || // Enclosed CJK Letters and Months .. CJK Unified Ideographs Extension A
-      12880 <= codePoint && codePoint <= 19903 || // CJK Unified Ideographs .. Yi Radicals
-      19968 <= codePoint && codePoint <= 42182 || // Hangul Jamo Extended-A
-      43360 <= codePoint && codePoint <= 43388 || // Hangul Syllables
-      44032 <= codePoint && codePoint <= 55203 || // CJK Compatibility Ideographs
-      63744 <= codePoint && codePoint <= 64255 || // Vertical Forms
-      65040 <= codePoint && codePoint <= 65049 || // CJK Compatibility Forms .. Small Form Variants
-      65072 <= codePoint && codePoint <= 65131 || // Halfwidth and Fullwidth Forms
-      65281 <= codePoint && codePoint <= 65376 || 65504 <= codePoint && codePoint <= 65510 || // Kana Supplement
-      110592 <= codePoint && codePoint <= 110593 || // Enclosed Ideographic Supplement
-      127488 <= codePoint && codePoint <= 127569 || // CJK Unified Ideographs Extension B .. Tertiary Ideographic Plane
-      131072 <= codePoint && codePoint <= 262141)) {
-        return true;
-      }
-      return false;
-    }, "isFullwidthCodePoint");
-    module.exports = isFullwidthCodePoint;
-    module.exports.default = isFullwidthCodePoint;
-  }
-});
-
-// node_modules/emoji-regex/index.js
-var require_emoji_regex = __commonJS({
-  "node_modules/emoji-regex/index.js"(exports, module) {
-    "use strict";
-    init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_process();
-    init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_console();
-    init_performance2();
-    module.exports = function() {
-      return /\uD83C\uDFF4\uDB40\uDC67\uDB40\uDC62(?:\uDB40\uDC65\uDB40\uDC6E\uDB40\uDC67|\uDB40\uDC73\uDB40\uDC63\uDB40\uDC74|\uDB40\uDC77\uDB40\uDC6C\uDB40\uDC73)\uDB40\uDC7F|\uD83D\uDC68(?:\uD83C\uDFFC\u200D(?:\uD83E\uDD1D\u200D\uD83D\uDC68\uD83C\uDFFB|\uD83C[\uDF3E\uDF73\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E[\uDDAF-\uDDB3\uDDBC\uDDBD])|\uD83C\uDFFF\u200D(?:\uD83E\uDD1D\u200D\uD83D\uDC68(?:\uD83C[\uDFFB-\uDFFE])|\uD83C[\uDF3E\uDF73\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E[\uDDAF-\uDDB3\uDDBC\uDDBD])|\uD83C\uDFFE\u200D(?:\uD83E\uDD1D\u200D\uD83D\uDC68(?:\uD83C[\uDFFB-\uDFFD])|\uD83C[\uDF3E\uDF73\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E[\uDDAF-\uDDB3\uDDBC\uDDBD])|\uD83C\uDFFD\u200D(?:\uD83E\uDD1D\u200D\uD83D\uDC68(?:\uD83C[\uDFFB\uDFFC])|\uD83C[\uDF3E\uDF73\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E[\uDDAF-\uDDB3\uDDBC\uDDBD])|\u200D(?:\u2764\uFE0F\u200D(?:\uD83D\uDC8B\u200D)?\uD83D\uDC68|(?:\uD83D[\uDC68\uDC69])\u200D(?:\uD83D\uDC66\u200D\uD83D\uDC66|\uD83D\uDC67\u200D(?:\uD83D[\uDC66\uDC67]))|\uD83D\uDC66\u200D\uD83D\uDC66|\uD83D\uDC67\u200D(?:\uD83D[\uDC66\uDC67])|(?:\uD83D[\uDC68\uDC69])\u200D(?:\uD83D[\uDC66\uDC67])|[\u2695\u2696\u2708]\uFE0F|\uD83D[\uDC66\uDC67]|\uD83C[\uDF3E\uDF73\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E[\uDDAF-\uDDB3\uDDBC\uDDBD])|(?:\uD83C\uDFFB\u200D[\u2695\u2696\u2708]|\uD83C\uDFFF\u200D[\u2695\u2696\u2708]|\uD83C\uDFFE\u200D[\u2695\u2696\u2708]|\uD83C\uDFFD\u200D[\u2695\u2696\u2708]|\uD83C\uDFFC\u200D[\u2695\u2696\u2708])\uFE0F|\uD83C\uDFFB\u200D(?:\uD83C[\uDF3E\uDF73\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E[\uDDAF-\uDDB3\uDDBC\uDDBD])|\uD83C[\uDFFB-\uDFFF])|(?:\uD83E\uDDD1\uD83C\uDFFB\u200D\uD83E\uDD1D\u200D\uD83E\uDDD1|\uD83D\uDC69\uD83C\uDFFC\u200D\uD83E\uDD1D\u200D\uD83D\uDC69)\uD83C\uDFFB|\uD83E\uDDD1(?:\uD83C\uDFFF\u200D\uD83E\uDD1D\u200D\uD83E\uDDD1(?:\uD83C[\uDFFB-\uDFFF])|\u200D\uD83E\uDD1D\u200D\uD83E\uDDD1)|(?:\uD83E\uDDD1\uD83C\uDFFE\u200D\uD83E\uDD1D\u200D\uD83E\uDDD1|\uD83D\uDC69\uD83C\uDFFF\u200D\uD83E\uDD1D\u200D(?:\uD83D[\uDC68\uDC69]))(?:\uD83C[\uDFFB-\uDFFE])|(?:\uD83E\uDDD1\uD83C\uDFFC\u200D\uD83E\uDD1D\u200D\uD83E\uDDD1|\uD83D\uDC69\uD83C\uDFFD\u200D\uD83E\uDD1D\u200D\uD83D\uDC69)(?:\uD83C[\uDFFB\uDFFC])|\uD83D\uDC69(?:\uD83C\uDFFE\u200D(?:\uD83E\uDD1D\u200D\uD83D\uDC68(?:\uD83C[\uDFFB-\uDFFD\uDFFF])|\uD83C[\uDF3E\uDF73\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E[\uDDAF-\uDDB3\uDDBC\uDDBD])|\uD83C\uDFFC\u200D(?:\uD83E\uDD1D\u200D\uD83D\uDC68(?:\uD83C[\uDFFB\uDFFD-\uDFFF])|\uD83C[\uDF3E\uDF73\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E[\uDDAF-\uDDB3\uDDBC\uDDBD])|\uD83C\uDFFB\u200D(?:\uD83E\uDD1D\u200D\uD83D\uDC68(?:\uD83C[\uDFFC-\uDFFF])|\uD83C[\uDF3E\uDF73\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E[\uDDAF-\uDDB3\uDDBC\uDDBD])|\uD83C\uDFFD\u200D(?:\uD83E\uDD1D\u200D\uD83D\uDC68(?:\uD83C[\uDFFB\uDFFC\uDFFE\uDFFF])|\uD83C[\uDF3E\uDF73\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E[\uDDAF-\uDDB3\uDDBC\uDDBD])|\u200D(?:\u2764\uFE0F\u200D(?:\uD83D\uDC8B\u200D(?:\uD83D[\uDC68\uDC69])|\uD83D[\uDC68\uDC69])|\uD83C[\uDF3E\uDF73\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E[\uDDAF-\uDDB3\uDDBC\uDDBD])|\uD83C\uDFFF\u200D(?:\uD83C[\uDF3E\uDF73\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E[\uDDAF-\uDDB3\uDDBC\uDDBD]))|\uD83D\uDC69\u200D\uD83D\uDC69\u200D(?:\uD83D\uDC66\u200D\uD83D\uDC66|\uD83D\uDC67\u200D(?:\uD83D[\uDC66\uDC67]))|(?:\uD83E\uDDD1\uD83C\uDFFD\u200D\uD83E\uDD1D\u200D\uD83E\uDDD1|\uD83D\uDC69\uD83C\uDFFE\u200D\uD83E\uDD1D\u200D\uD83D\uDC69)(?:\uD83C[\uDFFB-\uDFFD])|\uD83D\uDC69\u200D\uD83D\uDC66\u200D\uD83D\uDC66|\uD83D\uDC69\u200D\uD83D\uDC69\u200D(?:\uD83D[\uDC66\uDC67])|(?:\uD83D\uDC41\uFE0F\u200D\uD83D\uDDE8|\uD83D\uDC69(?:\uD83C\uDFFF\u200D[\u2695\u2696\u2708]|\uD83C\uDFFE\u200D[\u2695\u2696\u2708]|\uD83C\uDFFC\u200D[\u2695\u2696\u2708]|\uD83C\uDFFB\u200D[\u2695\u2696\u2708]|\uD83C\uDFFD\u200D[\u2695\u2696\u2708]|\u200D[\u2695\u2696\u2708])|(?:(?:\u26F9|\uD83C[\uDFCB\uDFCC]|\uD83D\uDD75)\uFE0F|\uD83D\uDC6F|\uD83E[\uDD3C\uDDDE\uDDDF])\u200D[\u2640\u2642]|(?:\u26F9|\uD83C[\uDFCB\uDFCC]|\uD83D\uDD75)(?:\uD83C[\uDFFB-\uDFFF])\u200D[\u2640\u2642]|(?:\uD83C[\uDFC3\uDFC4\uDFCA]|\uD83D[\uDC6E\uDC71\uDC73\uDC77\uDC81\uDC82\uDC86\uDC87\uDE45-\uDE47\uDE4B\uDE4D\uDE4E\uDEA3\uDEB4-\uDEB6]|\uD83E[\uDD26\uDD37-\uDD39\uDD3D\uDD3E\uDDB8\uDDB9\uDDCD-\uDDCF\uDDD6-\uDDDD])(?:(?:\uD83C[\uDFFB-\uDFFF])\u200D[\u2640\u2642]|\u200D[\u2640\u2642])|\uD83C\uDFF4\u200D\u2620)\uFE0F|\uD83D\uDC69\u200D\uD83D\uDC67\u200D(?:\uD83D[\uDC66\uDC67])|\uD83C\uDFF3\uFE0F\u200D\uD83C\uDF08|\uD83D\uDC15\u200D\uD83E\uDDBA|\uD83D\uDC69\u200D\uD83D\uDC66|\uD83D\uDC69\u200D\uD83D\uDC67|\uD83C\uDDFD\uD83C\uDDF0|\uD83C\uDDF4\uD83C\uDDF2|\uD83C\uDDF6\uD83C\uDDE6|[#\*0-9]\uFE0F\u20E3|\uD83C\uDDE7(?:\uD83C[\uDDE6\uDDE7\uDDE9-\uDDEF\uDDF1-\uDDF4\uDDF6-\uDDF9\uDDFB\uDDFC\uDDFE\uDDFF])|\uD83C\uDDF9(?:\uD83C[\uDDE6\uDDE8\uDDE9\uDDEB-\uDDED\uDDEF-\uDDF4\uDDF7\uDDF9\uDDFB\uDDFC\uDDFF])|\uD83C\uDDEA(?:\uD83C[\uDDE6\uDDE8\uDDEA\uDDEC\uDDED\uDDF7-\uDDFA])|\uD83E\uDDD1(?:\uD83C[\uDFFB-\uDFFF])|\uD83C\uDDF7(?:\uD83C[\uDDEA\uDDF4\uDDF8\uDDFA\uDDFC])|\uD83D\uDC69(?:\uD83C[\uDFFB-\uDFFF])|\uD83C\uDDF2(?:\uD83C[\uDDE6\uDDE8-\uDDED\uDDF0-\uDDFF])|\uD83C\uDDE6(?:\uD83C[\uDDE8-\uDDEC\uDDEE\uDDF1\uDDF2\uDDF4\uDDF6-\uDDFA\uDDFC\uDDFD\uDDFF])|\uD83C\uDDF0(?:\uD83C[\uDDEA\uDDEC-\uDDEE\uDDF2\uDDF3\uDDF5\uDDF7\uDDFC\uDDFE\uDDFF])|\uD83C\uDDED(?:\uD83C[\uDDF0\uDDF2\uDDF3\uDDF7\uDDF9\uDDFA])|\uD83C\uDDE9(?:\uD83C[\uDDEA\uDDEC\uDDEF\uDDF0\uDDF2\uDDF4\uDDFF])|\uD83C\uDDFE(?:\uD83C[\uDDEA\uDDF9])|\uD83C\uDDEC(?:\uD83C[\uDDE6\uDDE7\uDDE9-\uDDEE\uDDF1-\uDDF3\uDDF5-\uDDFA\uDDFC\uDDFE])|\uD83C\uDDF8(?:\uD83C[\uDDE6-\uDDEA\uDDEC-\uDDF4\uDDF7-\uDDF9\uDDFB\uDDFD-\uDDFF])|\uD83C\uDDEB(?:\uD83C[\uDDEE-\uDDF0\uDDF2\uDDF4\uDDF7])|\uD83C\uDDF5(?:\uD83C[\uDDE6\uDDEA-\uDDED\uDDF0-\uDDF3\uDDF7-\uDDF9\uDDFC\uDDFE])|\uD83C\uDDFB(?:\uD83C[\uDDE6\uDDE8\uDDEA\uDDEC\uDDEE\uDDF3\uDDFA])|\uD83C\uDDF3(?:\uD83C[\uDDE6\uDDE8\uDDEA-\uDDEC\uDDEE\uDDF1\uDDF4\uDDF5\uDDF7\uDDFA\uDDFF])|\uD83C\uDDE8(?:\uD83C[\uDDE6\uDDE8\uDDE9\uDDEB-\uDDEE\uDDF0-\uDDF5\uDDF7\uDDFA-\uDDFF])|\uD83C\uDDF1(?:\uD83C[\uDDE6-\uDDE8\uDDEE\uDDF0\uDDF7-\uDDFB\uDDFE])|\uD83C\uDDFF(?:\uD83C[\uDDE6\uDDF2\uDDFC])|\uD83C\uDDFC(?:\uD83C[\uDDEB\uDDF8])|\uD83C\uDDFA(?:\uD83C[\uDDE6\uDDEC\uDDF2\uDDF3\uDDF8\uDDFE\uDDFF])|\uD83C\uDDEE(?:\uD83C[\uDDE8-\uDDEA\uDDF1-\uDDF4\uDDF6-\uDDF9])|\uD83C\uDDEF(?:\uD83C[\uDDEA\uDDF2\uDDF4\uDDF5])|(?:\uD83C[\uDFC3\uDFC4\uDFCA]|\uD83D[\uDC6E\uDC71\uDC73\uDC77\uDC81\uDC82\uDC86\uDC87\uDE45-\uDE47\uDE4B\uDE4D\uDE4E\uDEA3\uDEB4-\uDEB6]|\uD83E[\uDD26\uDD37-\uDD39\uDD3D\uDD3E\uDDB8\uDDB9\uDDCD-\uDDCF\uDDD6-\uDDDD])(?:\uD83C[\uDFFB-\uDFFF])|(?:\u26F9|\uD83C[\uDFCB\uDFCC]|\uD83D\uDD75)(?:\uD83C[\uDFFB-\uDFFF])|(?:[\u261D\u270A-\u270D]|\uD83C[\uDF85\uDFC2\uDFC7]|\uD83D[\uDC42\uDC43\uDC46-\uDC50\uDC66\uDC67\uDC6B-\uDC6D\uDC70\uDC72\uDC74-\uDC76\uDC78\uDC7C\uDC83\uDC85\uDCAA\uDD74\uDD7A\uDD90\uDD95\uDD96\uDE4C\uDE4F\uDEC0\uDECC]|\uD83E[\uDD0F\uDD18-\uDD1C\uDD1E\uDD1F\uDD30-\uDD36\uDDB5\uDDB6\uDDBB\uDDD2-\uDDD5])(?:\uD83C[\uDFFB-\uDFFF])|(?:[\u231A\u231B\u23E9-\u23EC\u23F0\u23F3\u25FD\u25FE\u2614\u2615\u2648-\u2653\u267F\u2693\u26A1\u26AA\u26AB\u26BD\u26BE\u26C4\u26C5\u26CE\u26D4\u26EA\u26F2\u26F3\u26F5\u26FA\u26FD\u2705\u270A\u270B\u2728\u274C\u274E\u2753-\u2755\u2757\u2795-\u2797\u27B0\u27BF\u2B1B\u2B1C\u2B50\u2B55]|\uD83C[\uDC04\uDCCF\uDD8E\uDD91-\uDD9A\uDDE6-\uDDFF\uDE01\uDE1A\uDE2F\uDE32-\uDE36\uDE38-\uDE3A\uDE50\uDE51\uDF00-\uDF20\uDF2D-\uDF35\uDF37-\uDF7C\uDF7E-\uDF93\uDFA0-\uDFCA\uDFCF-\uDFD3\uDFE0-\uDFF0\uDFF4\uDFF8-\uDFFF]|\uD83D[\uDC00-\uDC3E\uDC40\uDC42-\uDCFC\uDCFF-\uDD3D\uDD4B-\uDD4E\uDD50-\uDD67\uDD7A\uDD95\uDD96\uDDA4\uDDFB-\uDE4F\uDE80-\uDEC5\uDECC\uDED0-\uDED2\uDED5\uDEEB\uDEEC\uDEF4-\uDEFA\uDFE0-\uDFEB]|\uD83E[\uDD0D-\uDD3A\uDD3C-\uDD45\uDD47-\uDD71\uDD73-\uDD76\uDD7A-\uDDA2\uDDA5-\uDDAA\uDDAE-\uDDCA\uDDCD-\uDDFF\uDE70-\uDE73\uDE78-\uDE7A\uDE80-\uDE82\uDE90-\uDE95])|(?:[#\*0-9\xA9\xAE\u203C\u2049\u2122\u2139\u2194-\u2199\u21A9\u21AA\u231A\u231B\u2328\u23CF\u23E9-\u23F3\u23F8-\u23FA\u24C2\u25AA\u25AB\u25B6\u25C0\u25FB-\u25FE\u2600-\u2604\u260E\u2611\u2614\u2615\u2618\u261D\u2620\u2622\u2623\u2626\u262A\u262E\u262F\u2638-\u263A\u2640\u2642\u2648-\u2653\u265F\u2660\u2663\u2665\u2666\u2668\u267B\u267E\u267F\u2692-\u2697\u2699\u269B\u269C\u26A0\u26A1\u26AA\u26AB\u26B0\u26B1\u26BD\u26BE\u26C4\u26C5\u26C8\u26CE\u26CF\u26D1\u26D3\u26D4\u26E9\u26EA\u26F0-\u26F5\u26F7-\u26FA\u26FD\u2702\u2705\u2708-\u270D\u270F\u2712\u2714\u2716\u271D\u2721\u2728\u2733\u2734\u2744\u2747\u274C\u274E\u2753-\u2755\u2757\u2763\u2764\u2795-\u2797\u27A1\u27B0\u27BF\u2934\u2935\u2B05-\u2B07\u2B1B\u2B1C\u2B50\u2B55\u3030\u303D\u3297\u3299]|\uD83C[\uDC04\uDCCF\uDD70\uDD71\uDD7E\uDD7F\uDD8E\uDD91-\uDD9A\uDDE6-\uDDFF\uDE01\uDE02\uDE1A\uDE2F\uDE32-\uDE3A\uDE50\uDE51\uDF00-\uDF21\uDF24-\uDF93\uDF96\uDF97\uDF99-\uDF9B\uDF9E-\uDFF0\uDFF3-\uDFF5\uDFF7-\uDFFF]|\uD83D[\uDC00-\uDCFD\uDCFF-\uDD3D\uDD49-\uDD4E\uDD50-\uDD67\uDD6F\uDD70\uDD73-\uDD7A\uDD87\uDD8A-\uDD8D\uDD90\uDD95\uDD96\uDDA4\uDDA5\uDDA8\uDDB1\uDDB2\uDDBC\uDDC2-\uDDC4\uDDD1-\uDDD3\uDDDC-\uDDDE\uDDE1\uDDE3\uDDE8\uDDEF\uDDF3\uDDFA-\uDE4F\uDE80-\uDEC5\uDECB-\uDED2\uDED5\uDEE0-\uDEE5\uDEE9\uDEEB\uDEEC\uDEF0\uDEF3-\uDEFA\uDFE0-\uDFEB]|\uD83E[\uDD0D-\uDD3A\uDD3C-\uDD45\uDD47-\uDD71\uDD73-\uDD76\uDD7A-\uDDA2\uDDA5-\uDDAA\uDDAE-\uDDCA\uDDCD-\uDDFF\uDE70-\uDE73\uDE78-\uDE7A\uDE80-\uDE82\uDE90-\uDE95])\uFE0F|(?:[\u261D\u26F9\u270A-\u270D]|\uD83C[\uDF85\uDFC2-\uDFC4\uDFC7\uDFCA-\uDFCC]|\uD83D[\uDC42\uDC43\uDC46-\uDC50\uDC66-\uDC78\uDC7C\uDC81-\uDC83\uDC85-\uDC87\uDC8F\uDC91\uDCAA\uDD74\uDD75\uDD7A\uDD90\uDD95\uDD96\uDE45-\uDE47\uDE4B-\uDE4F\uDEA3\uDEB4-\uDEB6\uDEC0\uDECC]|\uD83E[\uDD0F\uDD18-\uDD1F\uDD26\uDD30-\uDD39\uDD3C-\uDD3E\uDDB5\uDDB6\uDDB8\uDDB9\uDDBB\uDDCD-\uDDCF\uDDD1-\uDDDD])/g;
-    };
-  }
-});
-
-// node_modules/string-width/index.js
-var require_string_width = __commonJS({
-  "node_modules/string-width/index.js"(exports, module) {
-    "use strict";
-    init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_process();
-    init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_console();
-    init_performance2();
-    var stripAnsi = require_strip_ansi();
-    var isFullwidthCodePoint = require_is_fullwidth_code_point();
-    var emojiRegex2 = require_emoji_regex();
-    var stringWidth = /* @__PURE__ */ __name((string) => {
-      if (typeof string !== "string" || string.length === 0) {
-        return 0;
-      }
-      string = stripAnsi(string);
-      if (string.length === 0) {
-        return 0;
-      }
-      string = string.replace(emojiRegex2(), "  ");
-      let width = 0;
-      for (let i = 0; i < string.length; i++) {
-        const code = string.codePointAt(i);
-        if (code <= 31 || code >= 127 && code <= 159) {
-          continue;
-        }
-        if (code >= 768 && code <= 879) {
-          continue;
-        }
-        if (code > 65535) {
-          i++;
-        }
-        width += isFullwidthCodePoint(code) ? 2 : 1;
-      }
-      return width;
-    }, "stringWidth");
-    module.exports = stringWidth;
-    module.exports.default = stringWidth;
-  }
-});
-
-// node_modules/cli-progress/lib/format-value.js
-var require_format_value = __commonJS({
-  "node_modules/cli-progress/lib/format-value.js"(exports, module) {
-    init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_process();
-    init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_console();
-    init_performance2();
-    module.exports = /* @__PURE__ */ __name(function formatValue(v, options, type) {
-      if (options.autopadding !== true) {
-        return v;
-      }
-      function autopadding(value, length) {
-        return (options.autopaddingChar + value).slice(-length);
-      }
-      __name(autopadding, "autopadding");
-      switch (type) {
-        case "percentage":
-          return autopadding(v, 3);
-        default:
-          return v;
-      }
-    }, "formatValue");
-  }
-});
-
-// node_modules/cli-progress/lib/format-bar.js
-var require_format_bar = __commonJS({
-  "node_modules/cli-progress/lib/format-bar.js"(exports, module) {
-    init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_process();
-    init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_console();
-    init_performance2();
-    module.exports = /* @__PURE__ */ __name(function formatBar(progress, options) {
-      const completeSize = Math.round(progress * options.barsize);
-      const incompleteSize = options.barsize - completeSize;
-      return options.barCompleteString.substr(0, completeSize) + options.barGlue + options.barIncompleteString.substr(0, incompleteSize);
-    }, "formatBar");
-  }
-});
-
-// node_modules/cli-progress/lib/format-time.js
-var require_format_time = __commonJS({
-  "node_modules/cli-progress/lib/format-time.js"(exports, module) {
-    init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_process();
-    init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_console();
-    init_performance2();
-    module.exports = /* @__PURE__ */ __name(function formatTime(t, options, roundToMultipleOf) {
-      function round(input) {
-        if (roundToMultipleOf) {
-          return roundToMultipleOf * Math.round(input / roundToMultipleOf);
-        } else {
-          return input;
-        }
-      }
-      __name(round, "round");
-      function autopadding(v) {
-        return (options.autopaddingChar + v).slice(-2);
-      }
-      __name(autopadding, "autopadding");
-      if (t > 3600) {
-        return autopadding(Math.floor(t / 3600)) + "h" + autopadding(round(t % 3600 / 60)) + "m";
-      } else if (t > 60) {
-        return autopadding(Math.floor(t / 60)) + "m" + autopadding(round(t % 60)) + "s";
-      } else if (t > 10) {
-        return autopadding(round(t)) + "s";
-      } else {
-        return autopadding(t) + "s";
-      }
-    }, "formatTime");
-  }
-});
-
-// node_modules/cli-progress/lib/formatter.js
-var require_formatter = __commonJS({
-  "node_modules/cli-progress/lib/formatter.js"(exports, module) {
-    init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_process();
-    init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_console();
-    init_performance2();
-    var _stringWidth = require_string_width();
-    var _defaultFormatValue = require_format_value();
-    var _defaultFormatBar = require_format_bar();
-    var _defaultFormatTime = require_format_time();
-    module.exports = /* @__PURE__ */ __name(function defaultFormatter(options, params, payload) {
-      let s = options.format;
-      const formatTime = options.formatTime || _defaultFormatTime;
-      const formatValue = options.formatValue || _defaultFormatValue;
-      const formatBar = options.formatBar || _defaultFormatBar;
-      const percentage = Math.floor(params.progress * 100) + "";
-      const stopTime = params.stopTime || Date.now();
-      const elapsedTime = Math.round((stopTime - params.startTime) / 1e3);
-      const context3 = Object.assign({}, payload, {
-        bar: formatBar(params.progress, options),
-        percentage: formatValue(percentage, options, "percentage"),
-        total: formatValue(params.total, options, "total"),
-        value: formatValue(params.value, options, "value"),
-        eta: formatValue(params.eta, options, "eta"),
-        eta_formatted: formatTime(params.eta, options, 5),
-        duration: formatValue(elapsedTime, options, "duration"),
-        duration_formatted: formatTime(elapsedTime, options, 1)
-      });
-      s = s.replace(/\{(\w+)\}/g, function(match, key) {
-        if (typeof context3[key] !== "undefined") {
-          return context3[key];
-        }
-        return match;
-      });
-      const fullMargin = Math.max(0, params.maxWidth - _stringWidth(s) - 2);
-      const halfMargin = Math.floor(fullMargin / 2);
-      switch (options.align) {
-        // fill start-of-line with whitespaces
-        case "right":
-          s = fullMargin > 0 ? " ".repeat(fullMargin) + s : s;
-          break;
-        // distribute whitespaces to left+right
-        case "center":
-          s = halfMargin > 0 ? " ".repeat(halfMargin) + s : s;
-          break;
-        // default: left align, no additional whitespaces
-        case "left":
-        default:
-          break;
-      }
-      return s;
-    }, "defaultFormatter");
-  }
-});
-
-// node_modules/cli-progress/lib/options.js
-var require_options = __commonJS({
-  "node_modules/cli-progress/lib/options.js"(exports, module) {
-    init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_process();
-    init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_console();
-    init_performance2();
-    function mergeOption(v, defaultValue) {
-      if (typeof v === "undefined" || v === null) {
-        return defaultValue;
-      } else {
-        return v;
-      }
-    }
-    __name(mergeOption, "mergeOption");
-    module.exports = {
-      // set global options
-      parse: /* @__PURE__ */ __name(function parse4(rawOptions, preset) {
-        const options = {};
-        const opt = Object.assign({}, preset, rawOptions);
-        options.throttleTime = 1e3 / mergeOption(opt.fps, 10);
-        options.stream = mergeOption(opt.stream, process.stderr);
-        options.terminal = mergeOption(opt.terminal, null);
-        options.clearOnComplete = mergeOption(opt.clearOnComplete, false);
-        options.stopOnComplete = mergeOption(opt.stopOnComplete, false);
-        options.barsize = mergeOption(opt.barsize, 40);
-        options.align = mergeOption(opt.align, "left");
-        options.hideCursor = mergeOption(opt.hideCursor, false);
-        options.linewrap = mergeOption(opt.linewrap, false);
-        options.barGlue = mergeOption(opt.barGlue, "");
-        options.barCompleteChar = mergeOption(opt.barCompleteChar, "=");
-        options.barIncompleteChar = mergeOption(opt.barIncompleteChar, "-");
-        options.format = mergeOption(opt.format, "progress [{bar}] {percentage}% | ETA: {eta}s | {value}/{total}");
-        options.formatTime = mergeOption(opt.formatTime, null);
-        options.formatValue = mergeOption(opt.formatValue, null);
-        options.formatBar = mergeOption(opt.formatBar, null);
-        options.etaBufferLength = mergeOption(opt.etaBuffer, 10);
-        options.etaAsynchronousUpdate = mergeOption(opt.etaAsynchronousUpdate, false);
-        options.progressCalculationRelative = mergeOption(opt.progressCalculationRelative, false);
-        options.synchronousUpdate = mergeOption(opt.synchronousUpdate, true);
-        options.noTTYOutput = mergeOption(opt.noTTYOutput, false);
-        options.notTTYSchedule = mergeOption(opt.notTTYSchedule, 2e3);
-        options.emptyOnZero = mergeOption(opt.emptyOnZero, false);
-        options.forceRedraw = mergeOption(opt.forceRedraw, false);
-        options.autopadding = mergeOption(opt.autopadding, false);
-        options.gracefulExit = mergeOption(opt.gracefulExit, false);
-        return options;
-      }, "parse"),
-      // derived options: instance specific, has to be created for every bar element
-      assignDerivedOptions: /* @__PURE__ */ __name(function assignDerivedOptions(options) {
-        options.barCompleteString = options.barCompleteChar.repeat(options.barsize + 1);
-        options.barIncompleteString = options.barIncompleteChar.repeat(options.barsize + 1);
-        options.autopaddingChar = options.autopadding ? mergeOption(options.autopaddingChar, "   ") : "";
-        return options;
-      }, "assignDerivedOptions")
-    };
-  }
-});
-
-// node-built-in-modules:events
-import libDefault2 from "events";
-var require_events = __commonJS({
-  "node-built-in-modules:events"(exports, module) {
-    init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_process();
-    init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_console();
-    init_performance2();
-    module.exports = libDefault2;
-  }
-});
-
-// node_modules/cli-progress/lib/generic-bar.js
-var require_generic_bar = __commonJS({
-  "node_modules/cli-progress/lib/generic-bar.js"(exports, module) {
-    init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_process();
-    init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_console();
-    init_performance2();
-    var _ETA = require_eta();
-    var _Terminal = require_terminal();
-    var _formatter = require_formatter();
-    var _options = require_options();
-    var _EventEmitter = require_events();
-    module.exports = class GenericBar extends _EventEmitter {
-      static {
-        __name(this, "GenericBar");
-      }
-      constructor(options) {
-        super();
-        this.options = _options.assignDerivedOptions(options);
-        this.terminal = this.options.terminal ? this.options.terminal : new _Terminal(this.options.stream);
-        this.value = 0;
-        this.startValue = 0;
-        this.total = 100;
-        this.lastDrawnString = null;
-        this.startTime = null;
-        this.stopTime = null;
-        this.lastRedraw = Date.now();
-        this.eta = new _ETA(this.options.etaBufferLength, 0, 0);
-        this.payload = {};
-        this.isActive = false;
-        this.formatter = typeof this.options.format === "function" ? this.options.format : _formatter;
-      }
-      // internal render function
-      render(forceRendering = false) {
-        const params = {
-          progress: this.getProgress(),
-          eta: this.eta.getTime(),
-          startTime: this.startTime,
-          stopTime: this.stopTime,
-          total: this.total,
-          value: this.value,
-          maxWidth: this.terminal.getWidth()
-        };
-        if (this.options.etaAsynchronousUpdate) {
-          this.updateETA();
-        }
-        const s = this.formatter(this.options, params, this.payload);
-        const forceRedraw = forceRendering || this.options.forceRedraw || this.options.noTTYOutput && !this.terminal.isTTY();
-        if (forceRedraw || this.lastDrawnString != s) {
-          this.emit("redraw-pre");
-          this.terminal.cursorTo(0, null);
-          this.terminal.write(s);
-          this.terminal.clearRight();
-          this.lastDrawnString = s;
-          this.lastRedraw = Date.now();
-          this.emit("redraw-post");
-        }
-      }
-      // start the progress bar
-      start(total, startValue, payload) {
-        this.value = startValue || 0;
-        this.total = typeof total !== "undefined" && total >= 0 ? total : 100;
-        this.startValue = startValue || 0;
-        this.payload = payload || {};
-        this.startTime = Date.now();
-        this.stopTime = null;
-        this.lastDrawnString = "";
-        this.eta = new _ETA(this.options.etaBufferLength, this.startTime, this.value);
-        this.isActive = true;
-        this.emit("start", total, startValue);
-      }
-      // stop the bar
-      stop() {
-        this.isActive = false;
-        this.stopTime = Date.now();
-        this.emit("stop", this.total, this.value);
-      }
-      // update the bar value
-      // update(value, payload)
-      // update(payload)
-      update(arg0, arg1 = {}) {
-        if (typeof arg0 === "number") {
-          this.value = arg0;
-          this.eta.update(Date.now(), arg0, this.total);
-        }
-        const payloadData = (typeof arg0 === "object" ? arg0 : arg1) || {};
-        this.emit("update", this.total, this.value);
-        for (const key in payloadData) {
-          this.payload[key] = payloadData[key];
-        }
-        if (this.value >= this.getTotal() && this.options.stopOnComplete) {
-          this.stop();
-        }
-      }
-      // calculate the actual progress value
-      getProgress() {
-        let progress = this.value / this.total;
-        if (this.options.progressCalculationRelative) {
-          progress = (this.value - this.startValue) / (this.total - this.startValue);
-        }
-        if (isNaN(progress)) {
-          progress = this.options && this.options.emptyOnZero ? 0 : 1;
-        }
-        progress = Math.min(Math.max(progress, 0), 1);
-        return progress;
-      }
-      // update the bar value
-      // increment(delta, payload)
-      // increment(payload)
-      increment(arg0 = 1, arg1 = {}) {
-        if (typeof arg0 === "object") {
-          this.update(this.value + 1, arg0);
-        } else {
-          this.update(this.value + arg0, arg1);
-        }
-      }
-      // get the total (limit) value
-      getTotal() {
-        return this.total;
-      }
-      // set the total (limit) value
-      setTotal(total) {
-        if (typeof total !== "undefined" && total >= 0) {
-          this.total = total;
-        }
-      }
-      // force eta calculation update (long running processes)
-      updateETA() {
-        this.eta.update(Date.now(), this.value, this.total);
-      }
-    };
-  }
-});
-
-// node_modules/cli-progress/lib/single-bar.js
-var require_single_bar = __commonJS({
-  "node_modules/cli-progress/lib/single-bar.js"(exports, module) {
-    init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_process();
-    init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_console();
-    init_performance2();
-    var _GenericBar = require_generic_bar();
-    var _options = require_options();
-    module.exports = class SingleBar extends _GenericBar {
-      static {
-        __name(this, "SingleBar");
-      }
-      constructor(options, preset) {
-        super(_options.parse(options, preset));
-        this.timer = null;
-        if (this.options.noTTYOutput && this.terminal.isTTY() === false) {
-          this.options.synchronousUpdate = false;
-        }
-        this.schedulingRate = this.terminal.isTTY() ? this.options.throttleTime : this.options.notTTYSchedule;
-        this.sigintCallback = null;
-      }
-      // internal render function
-      render() {
-        if (this.timer) {
-          clearTimeout(this.timer);
-          this.timer = null;
-        }
-        super.render();
-        if (this.options.noTTYOutput && this.terminal.isTTY() === false) {
-          this.terminal.newline();
-        }
-        this.timer = setTimeout(this.render.bind(this), this.schedulingRate);
-      }
-      update(current, payload) {
-        if (!this.timer) {
-          return;
-        }
-        super.update(current, payload);
-        if (this.options.synchronousUpdate && this.lastRedraw + this.options.throttleTime * 2 < Date.now()) {
-          this.render();
-        }
-      }
-      // start the progress bar
-      start(total, startValue, payload) {
-        if (this.options.noTTYOutput === false && this.terminal.isTTY() === false) {
-          return;
-        }
-        if (this.sigintCallback === null && this.options.gracefulExit) {
-          this.sigintCallback = this.stop.bind(this);
-          process.once("SIGINT", this.sigintCallback);
-          process.once("SIGTERM", this.sigintCallback);
-        }
-        this.terminal.cursorSave();
-        if (this.options.hideCursor === true) {
-          this.terminal.cursor(false);
-        }
-        if (this.options.linewrap === false) {
-          this.terminal.lineWrapping(false);
-        }
-        super.start(total, startValue, payload);
-        this.render();
-      }
-      // stop the bar
-      stop() {
-        if (!this.timer) {
-          return;
-        }
-        if (this.sigintCallback) {
-          process.removeListener("SIGINT", this.sigintCallback);
-          process.removeListener("SIGTERM", this.sigintCallback);
-          this.sigintCallback = null;
-        }
-        this.render();
-        super.stop();
-        clearTimeout(this.timer);
-        this.timer = null;
-        if (this.options.hideCursor === true) {
-          this.terminal.cursor(true);
-        }
-        if (this.options.linewrap === false) {
-          this.terminal.lineWrapping(true);
-        }
-        this.terminal.cursorRestore();
-        if (this.options.clearOnComplete) {
-          this.terminal.cursorTo(0, null);
-          this.terminal.clearLine();
-        } else {
-          this.terminal.newline();
-        }
-      }
-    };
-  }
-});
-
-// node_modules/cli-progress/lib/multi-bar.js
-var require_multi_bar = __commonJS({
-  "node_modules/cli-progress/lib/multi-bar.js"(exports, module) {
-    init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_process();
-    init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_console();
-    init_performance2();
-    var _Terminal = require_terminal();
-    var _BarElement = require_generic_bar();
-    var _options = require_options();
-    var _EventEmitter = require_events();
-    module.exports = class MultiBar extends _EventEmitter {
-      static {
-        __name(this, "MultiBar");
-      }
-      constructor(options, preset) {
-        super();
-        this.bars = [];
-        this.options = _options.parse(options, preset);
-        this.options.synchronousUpdate = false;
-        this.terminal = this.options.terminal ? this.options.terminal : new _Terminal(this.options.stream);
-        this.timer = null;
-        this.isActive = false;
-        this.schedulingRate = this.terminal.isTTY() ? this.options.throttleTime : this.options.notTTYSchedule;
-        this.loggingBuffer = [];
-        this.sigintCallback = null;
-      }
-      // add a new bar to the stack
-      create(total, startValue, payload, barOptions = {}) {
-        const bar = new _BarElement(Object.assign(
-          {},
-          // global options
-          this.options,
-          // terminal instance
-          {
-            terminal: this.terminal
-          },
-          // overrides
-          barOptions
-        ));
-        this.bars.push(bar);
-        if (this.options.noTTYOutput === false && this.terminal.isTTY() === false) {
-          return bar;
-        }
-        if (this.sigintCallback === null && this.options.gracefulExit) {
-          this.sigintCallback = this.stop.bind(this);
-          process.once("SIGINT", this.sigintCallback);
-          process.once("SIGTERM", this.sigintCallback);
-        }
-        if (!this.isActive) {
-          if (this.options.hideCursor === true) {
-            this.terminal.cursor(false);
-          }
-          if (this.options.linewrap === false) {
-            this.terminal.lineWrapping(false);
-          }
-          this.timer = setTimeout(this.update.bind(this), this.schedulingRate);
-        }
-        this.isActive = true;
-        bar.start(total, startValue, payload);
-        this.emit("start");
-        return bar;
-      }
-      // remove a bar from the stack
-      remove(bar) {
-        const index = this.bars.indexOf(bar);
-        if (index < 0) {
-          return false;
-        }
-        this.bars.splice(index, 1);
-        this.update();
-        this.terminal.newline();
-        this.terminal.clearBottom();
-        return true;
-      }
-      // internal update routine
-      update() {
-        if (this.timer) {
-          clearTimeout(this.timer);
-          this.timer = null;
-        }
-        this.emit("update-pre");
-        this.terminal.cursorRelativeReset();
-        this.emit("redraw-pre");
-        if (this.loggingBuffer.length > 0) {
-          this.terminal.clearLine();
-          while (this.loggingBuffer.length > 0) {
-            this.terminal.write(this.loggingBuffer.shift(), true);
-          }
-        }
-        for (let i = 0; i < this.bars.length; i++) {
-          if (i > 0) {
-            this.terminal.newline();
-          }
-          this.bars[i].render();
-        }
-        this.emit("redraw-post");
-        if (this.options.noTTYOutput && this.terminal.isTTY() === false) {
-          this.terminal.newline();
-          this.terminal.newline();
-        }
-        this.timer = setTimeout(this.update.bind(this), this.schedulingRate);
-        this.emit("update-post");
-        if (this.options.stopOnComplete && !this.bars.find((bar) => bar.isActive)) {
-          this.stop();
-        }
-      }
-      stop() {
-        clearTimeout(this.timer);
-        this.timer = null;
-        if (this.sigintCallback) {
-          process.removeListener("SIGINT", this.sigintCallback);
-          process.removeListener("SIGTERM", this.sigintCallback);
-          this.sigintCallback = null;
-        }
-        this.isActive = false;
-        if (this.options.hideCursor === true) {
-          this.terminal.cursor(true);
-        }
-        if (this.options.linewrap === false) {
-          this.terminal.lineWrapping(true);
-        }
-        this.terminal.cursorRelativeReset();
-        this.emit("stop-pre-clear");
-        if (this.options.clearOnComplete) {
-          this.terminal.clearBottom();
-        } else {
-          for (let i = 0; i < this.bars.length; i++) {
-            if (i > 0) {
-              this.terminal.newline();
-            }
-            this.bars[i].render();
-            this.bars[i].stop();
-          }
-          this.terminal.newline();
-        }
-        this.emit("stop");
-      }
-      log(s) {
-        this.loggingBuffer.push(s);
-      }
-    };
-  }
-});
-
-// node_modules/cli-progress/presets/legacy.js
-var require_legacy = __commonJS({
-  "node_modules/cli-progress/presets/legacy.js"(exports, module) {
-    init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_process();
-    init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_console();
-    init_performance2();
-    module.exports = {
-      format: "progress [{bar}] {percentage}% | ETA: {eta}s | {value}/{total}",
-      barCompleteChar: "=",
-      barIncompleteChar: "-"
-    };
-  }
-});
-
-// node_modules/cli-progress/presets/shades-classic.js
-var require_shades_classic = __commonJS({
-  "node_modules/cli-progress/presets/shades-classic.js"(exports, module) {
-    init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_process();
-    init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_console();
-    init_performance2();
-    module.exports = {
-      format: " {bar} {percentage}% | ETA: {eta}s | {value}/{total}",
-      barCompleteChar: "\u2588",
-      barIncompleteChar: "\u2591"
-    };
-  }
-});
-
-// node_modules/cli-progress/presets/shades-grey.js
-var require_shades_grey = __commonJS({
-  "node_modules/cli-progress/presets/shades-grey.js"(exports, module) {
-    init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_process();
-    init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_console();
-    init_performance2();
-    module.exports = {
-      format: " \x1B[90m{bar}\x1B[0m {percentage}% | ETA: {eta}s | {value}/{total}",
-      barCompleteChar: "\u2588",
-      barIncompleteChar: "\u2591"
-    };
-  }
-});
-
-// node_modules/cli-progress/presets/rect.js
-var require_rect = __commonJS({
-  "node_modules/cli-progress/presets/rect.js"(exports, module) {
-    init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_process();
-    init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_console();
-    init_performance2();
-    module.exports = {
-      format: " {bar}\u25A0 {percentage}% | ETA: {eta}s | {value}/{total}",
-      barCompleteChar: "\u25A0",
-      barIncompleteChar: " "
-    };
-  }
-});
-
-// node_modules/cli-progress/presets/index.js
-var require_presets = __commonJS({
-  "node_modules/cli-progress/presets/index.js"(exports, module) {
-    init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_process();
-    init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_console();
-    init_performance2();
-    var _legacy = require_legacy();
-    var _shades_classic = require_shades_classic();
-    var _shades_grey = require_shades_grey();
-    var _rect = require_rect();
-    module.exports = {
-      legacy: _legacy,
-      shades_classic: _shades_classic,
-      shades_grey: _shades_grey,
-      rect: _rect
-    };
-  }
-});
-
-// node_modules/cli-progress/cli-progress.js
-var require_cli_progress = __commonJS({
-  "node_modules/cli-progress/cli-progress.js"(exports, module) {
-    init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_process();
-    init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_console();
-    init_performance2();
-    var _SingleBar = require_single_bar();
-    var _MultiBar = require_multi_bar();
-    var _Presets = require_presets();
-    var _Formatter = require_formatter();
-    var _defaultFormatValue = require_format_value();
-    var _defaultFormatBar = require_format_bar();
-    var _defaultFormatTime = require_format_time();
-    module.exports = {
-      Bar: _SingleBar,
-      SingleBar: _SingleBar,
-      MultiBar: _MultiBar,
-      Presets: _Presets,
-      Format: {
-        Formatter: _Formatter,
-        BarFormat: _defaultFormatBar,
-        ValueFormat: _defaultFormatValue,
-        TimeFormat: _defaultFormatTime
-      }
-    };
-  }
-});
-
-// node_modules/slugify/slugify.js
+// ../braintrust/node_modules/.pnpm/slugify@1.6.6/node_modules/slugify/slugify.js
 var require_slugify = __commonJS({
-  "node_modules/slugify/slugify.js"(exports, module) {
+  "../braintrust/node_modules/.pnpm/slugify@1.6.6/node_modules/slugify/slugify.js"(exports, module) {
     init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_process();
     init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_console();
     init_performance2();
@@ -5968,17 +2926,1746 @@ init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_process();
 init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_console();
 init_performance2();
 
-// node_modules/braintrust/dist/index.mjs
+// ../braintrust/sdk/js/dist/index.mjs
 init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_process();
 init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_console();
 init_performance2();
 
-// node_modules/uuid/dist/esm-browser/index.js
+// ../braintrust/sdk/js/dist/chunk-KUYZXZV7.mjs
+init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_process();
+init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_console();
+init_performance2();
+var __defProp2 = Object.defineProperty;
+var __getOwnPropDesc2 = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames2 = Object.getOwnPropertyNames;
+var __hasOwnProp2 = Object.prototype.hasOwnProperty;
+var __require2 = /* @__PURE__ */ ((x) => typeof __require !== "undefined" ? __require : typeof Proxy !== "undefined" ? new Proxy(x, {
+  get: /* @__PURE__ */ __name((a, b) => (typeof __require !== "undefined" ? __require : a)[b], "get")
+}) : x)(function(x) {
+  if (typeof __require !== "undefined") return __require.apply(this, arguments);
+  throw Error('Dynamic require of "' + x + '" is not supported');
+});
+var __esm2 = /* @__PURE__ */ __name((fn, res) => /* @__PURE__ */ __name(function __init() {
+  return fn && (res = (0, fn[__getOwnPropNames2(fn)[0]])(fn = 0)), res;
+}, "__init"), "__esm");
+var __export2 = /* @__PURE__ */ __name((target, all) => {
+  for (var name in all)
+    __defProp2(target, name, { get: all[name], enumerable: true });
+}, "__export");
+var __copyProps2 = /* @__PURE__ */ __name((to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames2(from))
+      if (!__hasOwnProp2.call(to, key) && key !== except)
+        __defProp2(to, key, { get: /* @__PURE__ */ __name(() => from[key], "get"), enumerable: !(desc = __getOwnPropDesc2(from, key)) || desc.enumerable });
+  }
+  return to;
+}, "__copyProps");
+var __toCommonJS = /* @__PURE__ */ __name((mod) => __copyProps2(__defProp2({}, "__esModule", { value: true }), mod), "__toCommonJS");
+var _globalThis;
+var init_globalThis = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+api@1.9.0/node_modules/@opentelemetry/api/build/esm/platform/node/globalThis.js"() {
+    "use strict";
+    _globalThis = typeof globalThis === "object" ? globalThis : global;
+  }
+});
+var init_node = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+api@1.9.0/node_modules/@opentelemetry/api/build/esm/platform/node/index.js"() {
+    "use strict";
+    init_globalThis();
+  }
+});
+var init_platform = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+api@1.9.0/node_modules/@opentelemetry/api/build/esm/platform/index.js"() {
+    "use strict";
+    init_node();
+  }
+});
+var VERSION;
+var init_version = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+api@1.9.0/node_modules/@opentelemetry/api/build/esm/version.js"() {
+    "use strict";
+    VERSION = "1.9.0";
+  }
+});
+function _makeCompatibilityCheck(ownVersion) {
+  var acceptedVersions = /* @__PURE__ */ new Set([ownVersion]);
+  var rejectedVersions = /* @__PURE__ */ new Set();
+  var myVersionMatch = ownVersion.match(re);
+  if (!myVersionMatch) {
+    return function() {
+      return false;
+    };
+  }
+  var ownVersionParsed = {
+    major: +myVersionMatch[1],
+    minor: +myVersionMatch[2],
+    patch: +myVersionMatch[3],
+    prerelease: myVersionMatch[4]
+  };
+  if (ownVersionParsed.prerelease != null) {
+    return /* @__PURE__ */ __name(function isExactmatch(globalVersion) {
+      return globalVersion === ownVersion;
+    }, "isExactmatch");
+  }
+  function _reject(v) {
+    rejectedVersions.add(v);
+    return false;
+  }
+  __name(_reject, "_reject");
+  function _accept(v) {
+    acceptedVersions.add(v);
+    return true;
+  }
+  __name(_accept, "_accept");
+  return /* @__PURE__ */ __name(function isCompatible2(globalVersion) {
+    if (acceptedVersions.has(globalVersion)) {
+      return true;
+    }
+    if (rejectedVersions.has(globalVersion)) {
+      return false;
+    }
+    var globalVersionMatch = globalVersion.match(re);
+    if (!globalVersionMatch) {
+      return _reject(globalVersion);
+    }
+    var globalVersionParsed = {
+      major: +globalVersionMatch[1],
+      minor: +globalVersionMatch[2],
+      patch: +globalVersionMatch[3],
+      prerelease: globalVersionMatch[4]
+    };
+    if (globalVersionParsed.prerelease != null) {
+      return _reject(globalVersion);
+    }
+    if (ownVersionParsed.major !== globalVersionParsed.major) {
+      return _reject(globalVersion);
+    }
+    if (ownVersionParsed.major === 0) {
+      if (ownVersionParsed.minor === globalVersionParsed.minor && ownVersionParsed.patch <= globalVersionParsed.patch) {
+        return _accept(globalVersion);
+      }
+      return _reject(globalVersion);
+    }
+    if (ownVersionParsed.minor <= globalVersionParsed.minor) {
+      return _accept(globalVersion);
+    }
+    return _reject(globalVersion);
+  }, "isCompatible2");
+}
+__name(_makeCompatibilityCheck, "_makeCompatibilityCheck");
+var re;
+var isCompatible;
+var init_semver = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+api@1.9.0/node_modules/@opentelemetry/api/build/esm/internal/semver.js"() {
+    "use strict";
+    init_version();
+    re = /^(\d+)\.(\d+)\.(\d+)(-(.+))?$/;
+    isCompatible = _makeCompatibilityCheck(VERSION);
+  }
+});
+function registerGlobal(type, instance, diag3, allowOverride) {
+  var _a4;
+  if (allowOverride === void 0) {
+    allowOverride = false;
+  }
+  var api = _global[GLOBAL_OPENTELEMETRY_API_KEY] = (_a4 = _global[GLOBAL_OPENTELEMETRY_API_KEY]) !== null && _a4 !== void 0 ? _a4 : {
+    version: VERSION
+  };
+  if (!allowOverride && api[type]) {
+    var err = new Error("@opentelemetry/api: Attempted duplicate registration of API: " + type);
+    diag3.error(err.stack || err.message);
+    return false;
+  }
+  if (api.version !== VERSION) {
+    var err = new Error("@opentelemetry/api: Registration of version v" + api.version + " for " + type + " does not match previously registered API v" + VERSION);
+    diag3.error(err.stack || err.message);
+    return false;
+  }
+  api[type] = instance;
+  diag3.debug("@opentelemetry/api: Registered a global for " + type + " v" + VERSION + ".");
+  return true;
+}
+__name(registerGlobal, "registerGlobal");
+function getGlobal(type) {
+  var _a4, _b;
+  var globalVersion = (_a4 = _global[GLOBAL_OPENTELEMETRY_API_KEY]) === null || _a4 === void 0 ? void 0 : _a4.version;
+  if (!globalVersion || !isCompatible(globalVersion)) {
+    return;
+  }
+  return (_b = _global[GLOBAL_OPENTELEMETRY_API_KEY]) === null || _b === void 0 ? void 0 : _b[type];
+}
+__name(getGlobal, "getGlobal");
+function unregisterGlobal(type, diag3) {
+  diag3.debug("@opentelemetry/api: Unregistering a global for " + type + " v" + VERSION + ".");
+  var api = _global[GLOBAL_OPENTELEMETRY_API_KEY];
+  if (api) {
+    delete api[type];
+  }
+}
+__name(unregisterGlobal, "unregisterGlobal");
+var major;
+var GLOBAL_OPENTELEMETRY_API_KEY;
+var _global;
+var init_global_utils = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+api@1.9.0/node_modules/@opentelemetry/api/build/esm/internal/global-utils.js"() {
+    "use strict";
+    init_platform();
+    init_version();
+    init_semver();
+    major = VERSION.split(".")[0];
+    GLOBAL_OPENTELEMETRY_API_KEY = Symbol.for("opentelemetry.js.api." + major);
+    _global = _globalThis;
+  }
+});
+function logProxy(funcName, namespace, args) {
+  var logger = getGlobal("diag");
+  if (!logger) {
+    return;
+  }
+  args.unshift(namespace);
+  return logger[funcName].apply(logger, __spreadArray([], __read(args), false));
+}
+__name(logProxy, "logProxy");
+var __read;
+var __spreadArray;
+var DiagComponentLogger;
+var init_ComponentLogger = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+api@1.9.0/node_modules/@opentelemetry/api/build/esm/diag/ComponentLogger.js"() {
+    "use strict";
+    init_global_utils();
+    __read = /* @__PURE__ */ __name(function(o, n) {
+      var m = typeof Symbol === "function" && o[Symbol.iterator];
+      if (!m) return o;
+      var i = m.call(o), r, ar = [], e;
+      try {
+        while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
+      } catch (error4) {
+        e = { error: error4 };
+      } finally {
+        try {
+          if (r && !r.done && (m = i["return"])) m.call(i);
+        } finally {
+          if (e) throw e.error;
+        }
+      }
+      return ar;
+    }, "__read");
+    __spreadArray = /* @__PURE__ */ __name(function(to, from, pack) {
+      if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+        if (ar || !(i in from)) {
+          if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+          ar[i] = from[i];
+        }
+      }
+      return to.concat(ar || Array.prototype.slice.call(from));
+    }, "__spreadArray");
+    DiagComponentLogger = /** @class */
+    function() {
+      function DiagComponentLogger2(props) {
+        this._namespace = props.namespace || "DiagComponentLogger";
+      }
+      __name(DiagComponentLogger2, "DiagComponentLogger2");
+      DiagComponentLogger2.prototype.debug = function() {
+        var args = [];
+        for (var _i = 0; _i < arguments.length; _i++) {
+          args[_i] = arguments[_i];
+        }
+        return logProxy("debug", this._namespace, args);
+      };
+      DiagComponentLogger2.prototype.error = function() {
+        var args = [];
+        for (var _i = 0; _i < arguments.length; _i++) {
+          args[_i] = arguments[_i];
+        }
+        return logProxy("error", this._namespace, args);
+      };
+      DiagComponentLogger2.prototype.info = function() {
+        var args = [];
+        for (var _i = 0; _i < arguments.length; _i++) {
+          args[_i] = arguments[_i];
+        }
+        return logProxy("info", this._namespace, args);
+      };
+      DiagComponentLogger2.prototype.warn = function() {
+        var args = [];
+        for (var _i = 0; _i < arguments.length; _i++) {
+          args[_i] = arguments[_i];
+        }
+        return logProxy("warn", this._namespace, args);
+      };
+      DiagComponentLogger2.prototype.verbose = function() {
+        var args = [];
+        for (var _i = 0; _i < arguments.length; _i++) {
+          args[_i] = arguments[_i];
+        }
+        return logProxy("verbose", this._namespace, args);
+      };
+      return DiagComponentLogger2;
+    }();
+  }
+});
+var DiagLogLevel;
+var init_types = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+api@1.9.0/node_modules/@opentelemetry/api/build/esm/diag/types.js"() {
+    "use strict";
+    (function(DiagLogLevel2) {
+      DiagLogLevel2[DiagLogLevel2["NONE"] = 0] = "NONE";
+      DiagLogLevel2[DiagLogLevel2["ERROR"] = 30] = "ERROR";
+      DiagLogLevel2[DiagLogLevel2["WARN"] = 50] = "WARN";
+      DiagLogLevel2[DiagLogLevel2["INFO"] = 60] = "INFO";
+      DiagLogLevel2[DiagLogLevel2["DEBUG"] = 70] = "DEBUG";
+      DiagLogLevel2[DiagLogLevel2["VERBOSE"] = 80] = "VERBOSE";
+      DiagLogLevel2[DiagLogLevel2["ALL"] = 9999] = "ALL";
+    })(DiagLogLevel || (DiagLogLevel = {}));
+  }
+});
+function createLogLevelDiagLogger(maxLevel, logger) {
+  if (maxLevel < DiagLogLevel.NONE) {
+    maxLevel = DiagLogLevel.NONE;
+  } else if (maxLevel > DiagLogLevel.ALL) {
+    maxLevel = DiagLogLevel.ALL;
+  }
+  logger = logger || {};
+  function _filterFunc(funcName, theLevel) {
+    var theFunc = logger[funcName];
+    if (typeof theFunc === "function" && maxLevel >= theLevel) {
+      return theFunc.bind(logger);
+    }
+    return function() {
+    };
+  }
+  __name(_filterFunc, "_filterFunc");
+  return {
+    error: _filterFunc("error", DiagLogLevel.ERROR),
+    warn: _filterFunc("warn", DiagLogLevel.WARN),
+    info: _filterFunc("info", DiagLogLevel.INFO),
+    debug: _filterFunc("debug", DiagLogLevel.DEBUG),
+    verbose: _filterFunc("verbose", DiagLogLevel.VERBOSE)
+  };
+}
+__name(createLogLevelDiagLogger, "createLogLevelDiagLogger");
+var init_logLevelLogger = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+api@1.9.0/node_modules/@opentelemetry/api/build/esm/diag/internal/logLevelLogger.js"() {
+    "use strict";
+    init_types();
+  }
+});
+var __read2;
+var __spreadArray2;
+var API_NAME;
+var DiagAPI;
+var init_diag = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+api@1.9.0/node_modules/@opentelemetry/api/build/esm/api/diag.js"() {
+    "use strict";
+    init_ComponentLogger();
+    init_logLevelLogger();
+    init_types();
+    init_global_utils();
+    __read2 = /* @__PURE__ */ __name(function(o, n) {
+      var m = typeof Symbol === "function" && o[Symbol.iterator];
+      if (!m) return o;
+      var i = m.call(o), r, ar = [], e;
+      try {
+        while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
+      } catch (error4) {
+        e = { error: error4 };
+      } finally {
+        try {
+          if (r && !r.done && (m = i["return"])) m.call(i);
+        } finally {
+          if (e) throw e.error;
+        }
+      }
+      return ar;
+    }, "__read2");
+    __spreadArray2 = /* @__PURE__ */ __name(function(to, from, pack) {
+      if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+        if (ar || !(i in from)) {
+          if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+          ar[i] = from[i];
+        }
+      }
+      return to.concat(ar || Array.prototype.slice.call(from));
+    }, "__spreadArray2");
+    API_NAME = "diag";
+    DiagAPI = /** @class */
+    function() {
+      function DiagAPI2() {
+        function _logProxy(funcName) {
+          return function() {
+            var args = [];
+            for (var _i = 0; _i < arguments.length; _i++) {
+              args[_i] = arguments[_i];
+            }
+            var logger = getGlobal("diag");
+            if (!logger)
+              return;
+            return logger[funcName].apply(logger, __spreadArray2([], __read2(args), false));
+          };
+        }
+        __name(_logProxy, "_logProxy");
+        var self = this;
+        var setLogger = /* @__PURE__ */ __name(function(logger, optionsOrLogLevel) {
+          var _a4, _b, _c;
+          if (optionsOrLogLevel === void 0) {
+            optionsOrLogLevel = { logLevel: DiagLogLevel.INFO };
+          }
+          if (logger === self) {
+            var err = new Error("Cannot use diag as the logger for itself. Please use a DiagLogger implementation like ConsoleDiagLogger or a custom implementation");
+            self.error((_a4 = err.stack) !== null && _a4 !== void 0 ? _a4 : err.message);
+            return false;
+          }
+          if (typeof optionsOrLogLevel === "number") {
+            optionsOrLogLevel = {
+              logLevel: optionsOrLogLevel
+            };
+          }
+          var oldLogger = getGlobal("diag");
+          var newLogger = createLogLevelDiagLogger((_b = optionsOrLogLevel.logLevel) !== null && _b !== void 0 ? _b : DiagLogLevel.INFO, logger);
+          if (oldLogger && !optionsOrLogLevel.suppressOverrideMessage) {
+            var stack = (_c = new Error().stack) !== null && _c !== void 0 ? _c : "<failed to generate stacktrace>";
+            oldLogger.warn("Current logger will be overwritten from " + stack);
+            newLogger.warn("Current logger will overwrite one already registered from " + stack);
+          }
+          return registerGlobal("diag", newLogger, self, true);
+        }, "setLogger");
+        self.setLogger = setLogger;
+        self.disable = function() {
+          unregisterGlobal(API_NAME, self);
+        };
+        self.createComponentLogger = function(options) {
+          return new DiagComponentLogger(options);
+        };
+        self.verbose = _logProxy("verbose");
+        self.debug = _logProxy("debug");
+        self.info = _logProxy("info");
+        self.warn = _logProxy("warn");
+        self.error = _logProxy("error");
+      }
+      __name(DiagAPI2, "DiagAPI2");
+      DiagAPI2.instance = function() {
+        if (!this._instance) {
+          this._instance = new DiagAPI2();
+        }
+        return this._instance;
+      };
+      return DiagAPI2;
+    }();
+  }
+});
+var diag;
+var init_diag_api = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+api@1.9.0/node_modules/@opentelemetry/api/build/esm/diag-api.js"() {
+    "use strict";
+    init_diag();
+    diag = DiagAPI.instance();
+  }
+});
+var __read3;
+var __values;
+var BaggageImpl;
+var init_baggage_impl = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+api@1.9.0/node_modules/@opentelemetry/api/build/esm/baggage/internal/baggage-impl.js"() {
+    "use strict";
+    __read3 = /* @__PURE__ */ __name(function(o, n) {
+      var m = typeof Symbol === "function" && o[Symbol.iterator];
+      if (!m) return o;
+      var i = m.call(o), r, ar = [], e;
+      try {
+        while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
+      } catch (error4) {
+        e = { error: error4 };
+      } finally {
+        try {
+          if (r && !r.done && (m = i["return"])) m.call(i);
+        } finally {
+          if (e) throw e.error;
+        }
+      }
+      return ar;
+    }, "__read3");
+    __values = /* @__PURE__ */ __name(function(o) {
+      var s = typeof Symbol === "function" && Symbol.iterator, m = s && o[s], i = 0;
+      if (m) return m.call(o);
+      if (o && typeof o.length === "number") return {
+        next: /* @__PURE__ */ __name(function() {
+          if (o && i >= o.length) o = void 0;
+          return { value: o && o[i++], done: !o };
+        }, "next")
+      };
+      throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");
+    }, "__values");
+    BaggageImpl = /** @class */
+    function() {
+      function BaggageImpl2(entries) {
+        this._entries = entries ? new Map(entries) : /* @__PURE__ */ new Map();
+      }
+      __name(BaggageImpl2, "BaggageImpl2");
+      BaggageImpl2.prototype.getEntry = function(key) {
+        var entry = this._entries.get(key);
+        if (!entry) {
+          return void 0;
+        }
+        return Object.assign({}, entry);
+      };
+      BaggageImpl2.prototype.getAllEntries = function() {
+        return Array.from(this._entries.entries()).map(function(_a4) {
+          var _b = __read3(_a4, 2), k = _b[0], v = _b[1];
+          return [k, v];
+        });
+      };
+      BaggageImpl2.prototype.setEntry = function(key, entry) {
+        var newBaggage = new BaggageImpl2(this._entries);
+        newBaggage._entries.set(key, entry);
+        return newBaggage;
+      };
+      BaggageImpl2.prototype.removeEntry = function(key) {
+        var newBaggage = new BaggageImpl2(this._entries);
+        newBaggage._entries.delete(key);
+        return newBaggage;
+      };
+      BaggageImpl2.prototype.removeEntries = function() {
+        var e_1, _a4;
+        var keys = [];
+        for (var _i = 0; _i < arguments.length; _i++) {
+          keys[_i] = arguments[_i];
+        }
+        var newBaggage = new BaggageImpl2(this._entries);
+        try {
+          for (var keys_1 = __values(keys), keys_1_1 = keys_1.next(); !keys_1_1.done; keys_1_1 = keys_1.next()) {
+            var key = keys_1_1.value;
+            newBaggage._entries.delete(key);
+          }
+        } catch (e_1_1) {
+          e_1 = { error: e_1_1 };
+        } finally {
+          try {
+            if (keys_1_1 && !keys_1_1.done && (_a4 = keys_1.return)) _a4.call(keys_1);
+          } finally {
+            if (e_1) throw e_1.error;
+          }
+        }
+        return newBaggage;
+      };
+      BaggageImpl2.prototype.clear = function() {
+        return new BaggageImpl2();
+      };
+      return BaggageImpl2;
+    }();
+  }
+});
+var baggageEntryMetadataSymbol;
+var init_symbol = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+api@1.9.0/node_modules/@opentelemetry/api/build/esm/baggage/internal/symbol.js"() {
+    "use strict";
+    baggageEntryMetadataSymbol = Symbol("BaggageEntryMetadata");
+  }
+});
+function createBaggage(entries) {
+  if (entries === void 0) {
+    entries = {};
+  }
+  return new BaggageImpl(new Map(Object.entries(entries)));
+}
+__name(createBaggage, "createBaggage");
+function baggageEntryMetadataFromString(str2) {
+  if (typeof str2 !== "string") {
+    diag2.error("Cannot create baggage metadata from unknown type: " + typeof str2);
+    str2 = "";
+  }
+  return {
+    __TYPE__: baggageEntryMetadataSymbol,
+    toString: /* @__PURE__ */ __name(function() {
+      return str2;
+    }, "toString")
+  };
+}
+__name(baggageEntryMetadataFromString, "baggageEntryMetadataFromString");
+var diag2;
+var init_utils2 = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+api@1.9.0/node_modules/@opentelemetry/api/build/esm/baggage/utils.js"() {
+    "use strict";
+    init_diag();
+    init_baggage_impl();
+    init_symbol();
+    diag2 = DiagAPI.instance();
+  }
+});
+function createContextKey(description) {
+  return Symbol.for(description);
+}
+__name(createContextKey, "createContextKey");
+var BaseContext;
+var ROOT_CONTEXT;
+var init_context = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+api@1.9.0/node_modules/@opentelemetry/api/build/esm/context/context.js"() {
+    "use strict";
+    BaseContext = /** @class */
+    /* @__PURE__ */ function() {
+      function BaseContext2(parentContext) {
+        var self = this;
+        self._currentContext = parentContext ? new Map(parentContext) : /* @__PURE__ */ new Map();
+        self.getValue = function(key) {
+          return self._currentContext.get(key);
+        };
+        self.setValue = function(key, value) {
+          var context22 = new BaseContext2(self._currentContext);
+          context22._currentContext.set(key, value);
+          return context22;
+        };
+        self.deleteValue = function(key) {
+          var context22 = new BaseContext2(self._currentContext);
+          context22._currentContext.delete(key);
+          return context22;
+        };
+      }
+      __name(BaseContext2, "BaseContext2");
+      return BaseContext2;
+    }();
+    ROOT_CONTEXT = new BaseContext();
+  }
+});
+var consoleMap;
+var DiagConsoleLogger;
+var init_consoleLogger = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+api@1.9.0/node_modules/@opentelemetry/api/build/esm/diag/consoleLogger.js"() {
+    "use strict";
+    consoleMap = [
+      { n: "error", c: "error" },
+      { n: "warn", c: "warn" },
+      { n: "info", c: "info" },
+      { n: "debug", c: "debug" },
+      { n: "verbose", c: "trace" }
+    ];
+    DiagConsoleLogger = /** @class */
+    /* @__PURE__ */ function() {
+      function DiagConsoleLogger2() {
+        function _consoleFunc(funcName) {
+          return function() {
+            var args = [];
+            for (var _i = 0; _i < arguments.length; _i++) {
+              args[_i] = arguments[_i];
+            }
+            if (console) {
+              var theFunc = console[funcName];
+              if (typeof theFunc !== "function") {
+                theFunc = console.log;
+              }
+              if (typeof theFunc === "function") {
+                return theFunc.apply(console, args);
+              }
+            }
+          };
+        }
+        __name(_consoleFunc, "_consoleFunc");
+        for (var i = 0; i < consoleMap.length; i++) {
+          this[consoleMap[i].n] = _consoleFunc(consoleMap[i].c);
+        }
+      }
+      __name(DiagConsoleLogger2, "DiagConsoleLogger2");
+      return DiagConsoleLogger2;
+    }();
+  }
+});
+function createNoopMeter() {
+  return NOOP_METER;
+}
+__name(createNoopMeter, "createNoopMeter");
+var __extends;
+var NoopMeter;
+var NoopMetric;
+var NoopCounterMetric;
+var NoopUpDownCounterMetric;
+var NoopGaugeMetric;
+var NoopHistogramMetric;
+var NoopObservableMetric;
+var NoopObservableCounterMetric;
+var NoopObservableGaugeMetric;
+var NoopObservableUpDownCounterMetric;
+var NOOP_METER;
+var NOOP_COUNTER_METRIC;
+var NOOP_GAUGE_METRIC;
+var NOOP_HISTOGRAM_METRIC;
+var NOOP_UP_DOWN_COUNTER_METRIC;
+var NOOP_OBSERVABLE_COUNTER_METRIC;
+var NOOP_OBSERVABLE_GAUGE_METRIC;
+var NOOP_OBSERVABLE_UP_DOWN_COUNTER_METRIC;
+var init_NoopMeter = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+api@1.9.0/node_modules/@opentelemetry/api/build/esm/metrics/NoopMeter.js"() {
+    "use strict";
+    __extends = /* @__PURE__ */ function() {
+      var extendStatics = /* @__PURE__ */ __name(function(d, b) {
+        extendStatics = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function(d2, b2) {
+          d2.__proto__ = b2;
+        } || function(d2, b2) {
+          for (var p in b2) if (Object.prototype.hasOwnProperty.call(b2, p)) d2[p] = b2[p];
+        };
+        return extendStatics(d, b);
+      }, "extendStatics");
+      return function(d, b) {
+        if (typeof b !== "function" && b !== null)
+          throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() {
+          this.constructor = d;
+        }
+        __name(__, "__");
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+      };
+    }();
+    NoopMeter = /** @class */
+    function() {
+      function NoopMeter2() {
+      }
+      __name(NoopMeter2, "NoopMeter2");
+      NoopMeter2.prototype.createGauge = function(_name, _options) {
+        return NOOP_GAUGE_METRIC;
+      };
+      NoopMeter2.prototype.createHistogram = function(_name, _options) {
+        return NOOP_HISTOGRAM_METRIC;
+      };
+      NoopMeter2.prototype.createCounter = function(_name, _options) {
+        return NOOP_COUNTER_METRIC;
+      };
+      NoopMeter2.prototype.createUpDownCounter = function(_name, _options) {
+        return NOOP_UP_DOWN_COUNTER_METRIC;
+      };
+      NoopMeter2.prototype.createObservableGauge = function(_name, _options) {
+        return NOOP_OBSERVABLE_GAUGE_METRIC;
+      };
+      NoopMeter2.prototype.createObservableCounter = function(_name, _options) {
+        return NOOP_OBSERVABLE_COUNTER_METRIC;
+      };
+      NoopMeter2.prototype.createObservableUpDownCounter = function(_name, _options) {
+        return NOOP_OBSERVABLE_UP_DOWN_COUNTER_METRIC;
+      };
+      NoopMeter2.prototype.addBatchObservableCallback = function(_callback, _observables) {
+      };
+      NoopMeter2.prototype.removeBatchObservableCallback = function(_callback) {
+      };
+      return NoopMeter2;
+    }();
+    NoopMetric = /** @class */
+    /* @__PURE__ */ function() {
+      function NoopMetric2() {
+      }
+      __name(NoopMetric2, "NoopMetric2");
+      return NoopMetric2;
+    }();
+    NoopCounterMetric = /** @class */
+    function(_super) {
+      __extends(NoopCounterMetric2, _super);
+      function NoopCounterMetric2() {
+        return _super !== null && _super.apply(this, arguments) || this;
+      }
+      __name(NoopCounterMetric2, "NoopCounterMetric2");
+      NoopCounterMetric2.prototype.add = function(_value, _attributes) {
+      };
+      return NoopCounterMetric2;
+    }(NoopMetric);
+    NoopUpDownCounterMetric = /** @class */
+    function(_super) {
+      __extends(NoopUpDownCounterMetric2, _super);
+      function NoopUpDownCounterMetric2() {
+        return _super !== null && _super.apply(this, arguments) || this;
+      }
+      __name(NoopUpDownCounterMetric2, "NoopUpDownCounterMetric2");
+      NoopUpDownCounterMetric2.prototype.add = function(_value, _attributes) {
+      };
+      return NoopUpDownCounterMetric2;
+    }(NoopMetric);
+    NoopGaugeMetric = /** @class */
+    function(_super) {
+      __extends(NoopGaugeMetric2, _super);
+      function NoopGaugeMetric2() {
+        return _super !== null && _super.apply(this, arguments) || this;
+      }
+      __name(NoopGaugeMetric2, "NoopGaugeMetric2");
+      NoopGaugeMetric2.prototype.record = function(_value, _attributes) {
+      };
+      return NoopGaugeMetric2;
+    }(NoopMetric);
+    NoopHistogramMetric = /** @class */
+    function(_super) {
+      __extends(NoopHistogramMetric2, _super);
+      function NoopHistogramMetric2() {
+        return _super !== null && _super.apply(this, arguments) || this;
+      }
+      __name(NoopHistogramMetric2, "NoopHistogramMetric2");
+      NoopHistogramMetric2.prototype.record = function(_value, _attributes) {
+      };
+      return NoopHistogramMetric2;
+    }(NoopMetric);
+    NoopObservableMetric = /** @class */
+    function() {
+      function NoopObservableMetric2() {
+      }
+      __name(NoopObservableMetric2, "NoopObservableMetric2");
+      NoopObservableMetric2.prototype.addCallback = function(_callback) {
+      };
+      NoopObservableMetric2.prototype.removeCallback = function(_callback) {
+      };
+      return NoopObservableMetric2;
+    }();
+    NoopObservableCounterMetric = /** @class */
+    function(_super) {
+      __extends(NoopObservableCounterMetric2, _super);
+      function NoopObservableCounterMetric2() {
+        return _super !== null && _super.apply(this, arguments) || this;
+      }
+      __name(NoopObservableCounterMetric2, "NoopObservableCounterMetric2");
+      return NoopObservableCounterMetric2;
+    }(NoopObservableMetric);
+    NoopObservableGaugeMetric = /** @class */
+    function(_super) {
+      __extends(NoopObservableGaugeMetric2, _super);
+      function NoopObservableGaugeMetric2() {
+        return _super !== null && _super.apply(this, arguments) || this;
+      }
+      __name(NoopObservableGaugeMetric2, "NoopObservableGaugeMetric2");
+      return NoopObservableGaugeMetric2;
+    }(NoopObservableMetric);
+    NoopObservableUpDownCounterMetric = /** @class */
+    function(_super) {
+      __extends(NoopObservableUpDownCounterMetric2, _super);
+      function NoopObservableUpDownCounterMetric2() {
+        return _super !== null && _super.apply(this, arguments) || this;
+      }
+      __name(NoopObservableUpDownCounterMetric2, "NoopObservableUpDownCounterMetric2");
+      return NoopObservableUpDownCounterMetric2;
+    }(NoopObservableMetric);
+    NOOP_METER = new NoopMeter();
+    NOOP_COUNTER_METRIC = new NoopCounterMetric();
+    NOOP_GAUGE_METRIC = new NoopGaugeMetric();
+    NOOP_HISTOGRAM_METRIC = new NoopHistogramMetric();
+    NOOP_UP_DOWN_COUNTER_METRIC = new NoopUpDownCounterMetric();
+    NOOP_OBSERVABLE_COUNTER_METRIC = new NoopObservableCounterMetric();
+    NOOP_OBSERVABLE_GAUGE_METRIC = new NoopObservableGaugeMetric();
+    NOOP_OBSERVABLE_UP_DOWN_COUNTER_METRIC = new NoopObservableUpDownCounterMetric();
+  }
+});
+var ValueType;
+var init_Metric = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+api@1.9.0/node_modules/@opentelemetry/api/build/esm/metrics/Metric.js"() {
+    "use strict";
+    (function(ValueType2) {
+      ValueType2[ValueType2["INT"] = 0] = "INT";
+      ValueType2[ValueType2["DOUBLE"] = 1] = "DOUBLE";
+    })(ValueType || (ValueType = {}));
+  }
+});
+var defaultTextMapGetter;
+var defaultTextMapSetter;
+var init_TextMapPropagator = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+api@1.9.0/node_modules/@opentelemetry/api/build/esm/propagation/TextMapPropagator.js"() {
+    "use strict";
+    defaultTextMapGetter = {
+      get: /* @__PURE__ */ __name(function(carrier, key) {
+        if (carrier == null) {
+          return void 0;
+        }
+        return carrier[key];
+      }, "get"),
+      keys: /* @__PURE__ */ __name(function(carrier) {
+        if (carrier == null) {
+          return [];
+        }
+        return Object.keys(carrier);
+      }, "keys")
+    };
+    defaultTextMapSetter = {
+      set: /* @__PURE__ */ __name(function(carrier, key, value) {
+        if (carrier == null) {
+          return;
+        }
+        carrier[key] = value;
+      }, "set")
+    };
+  }
+});
+var __read4;
+var __spreadArray3;
+var NoopContextManager;
+var init_NoopContextManager = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+api@1.9.0/node_modules/@opentelemetry/api/build/esm/context/NoopContextManager.js"() {
+    "use strict";
+    init_context();
+    __read4 = /* @__PURE__ */ __name(function(o, n) {
+      var m = typeof Symbol === "function" && o[Symbol.iterator];
+      if (!m) return o;
+      var i = m.call(o), r, ar = [], e;
+      try {
+        while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
+      } catch (error4) {
+        e = { error: error4 };
+      } finally {
+        try {
+          if (r && !r.done && (m = i["return"])) m.call(i);
+        } finally {
+          if (e) throw e.error;
+        }
+      }
+      return ar;
+    }, "__read4");
+    __spreadArray3 = /* @__PURE__ */ __name(function(to, from, pack) {
+      if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+        if (ar || !(i in from)) {
+          if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+          ar[i] = from[i];
+        }
+      }
+      return to.concat(ar || Array.prototype.slice.call(from));
+    }, "__spreadArray3");
+    NoopContextManager = /** @class */
+    function() {
+      function NoopContextManager2() {
+      }
+      __name(NoopContextManager2, "NoopContextManager2");
+      NoopContextManager2.prototype.active = function() {
+        return ROOT_CONTEXT;
+      };
+      NoopContextManager2.prototype.with = function(_context, fn, thisArg) {
+        var args = [];
+        for (var _i = 3; _i < arguments.length; _i++) {
+          args[_i - 3] = arguments[_i];
+        }
+        return fn.call.apply(fn, __spreadArray3([thisArg], __read4(args), false));
+      };
+      NoopContextManager2.prototype.bind = function(_context, target) {
+        return target;
+      };
+      NoopContextManager2.prototype.enable = function() {
+        return this;
+      };
+      NoopContextManager2.prototype.disable = function() {
+        return this;
+      };
+      return NoopContextManager2;
+    }();
+  }
+});
+var __read5;
+var __spreadArray4;
+var API_NAME2;
+var NOOP_CONTEXT_MANAGER;
+var ContextAPI;
+var init_context2 = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+api@1.9.0/node_modules/@opentelemetry/api/build/esm/api/context.js"() {
+    "use strict";
+    init_NoopContextManager();
+    init_global_utils();
+    init_diag();
+    __read5 = /* @__PURE__ */ __name(function(o, n) {
+      var m = typeof Symbol === "function" && o[Symbol.iterator];
+      if (!m) return o;
+      var i = m.call(o), r, ar = [], e;
+      try {
+        while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
+      } catch (error4) {
+        e = { error: error4 };
+      } finally {
+        try {
+          if (r && !r.done && (m = i["return"])) m.call(i);
+        } finally {
+          if (e) throw e.error;
+        }
+      }
+      return ar;
+    }, "__read5");
+    __spreadArray4 = /* @__PURE__ */ __name(function(to, from, pack) {
+      if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+        if (ar || !(i in from)) {
+          if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+          ar[i] = from[i];
+        }
+      }
+      return to.concat(ar || Array.prototype.slice.call(from));
+    }, "__spreadArray4");
+    API_NAME2 = "context";
+    NOOP_CONTEXT_MANAGER = new NoopContextManager();
+    ContextAPI = /** @class */
+    function() {
+      function ContextAPI2() {
+      }
+      __name(ContextAPI2, "ContextAPI2");
+      ContextAPI2.getInstance = function() {
+        if (!this._instance) {
+          this._instance = new ContextAPI2();
+        }
+        return this._instance;
+      };
+      ContextAPI2.prototype.setGlobalContextManager = function(contextManager) {
+        return registerGlobal(API_NAME2, contextManager, DiagAPI.instance());
+      };
+      ContextAPI2.prototype.active = function() {
+        return this._getContextManager().active();
+      };
+      ContextAPI2.prototype.with = function(context22, fn, thisArg) {
+        var _a4;
+        var args = [];
+        for (var _i = 3; _i < arguments.length; _i++) {
+          args[_i - 3] = arguments[_i];
+        }
+        return (_a4 = this._getContextManager()).with.apply(_a4, __spreadArray4([context22, fn, thisArg], __read5(args), false));
+      };
+      ContextAPI2.prototype.bind = function(context22, target) {
+        return this._getContextManager().bind(context22, target);
+      };
+      ContextAPI2.prototype._getContextManager = function() {
+        return getGlobal(API_NAME2) || NOOP_CONTEXT_MANAGER;
+      };
+      ContextAPI2.prototype.disable = function() {
+        this._getContextManager().disable();
+        unregisterGlobal(API_NAME2, DiagAPI.instance());
+      };
+      return ContextAPI2;
+    }();
+  }
+});
+var TraceFlags;
+var init_trace_flags = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+api@1.9.0/node_modules/@opentelemetry/api/build/esm/trace/trace_flags.js"() {
+    "use strict";
+    (function(TraceFlags2) {
+      TraceFlags2[TraceFlags2["NONE"] = 0] = "NONE";
+      TraceFlags2[TraceFlags2["SAMPLED"] = 1] = "SAMPLED";
+    })(TraceFlags || (TraceFlags = {}));
+  }
+});
+var INVALID_SPANID;
+var INVALID_TRACEID;
+var INVALID_SPAN_CONTEXT;
+var init_invalid_span_constants = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+api@1.9.0/node_modules/@opentelemetry/api/build/esm/trace/invalid-span-constants.js"() {
+    "use strict";
+    init_trace_flags();
+    INVALID_SPANID = "0000000000000000";
+    INVALID_TRACEID = "00000000000000000000000000000000";
+    INVALID_SPAN_CONTEXT = {
+      traceId: INVALID_TRACEID,
+      spanId: INVALID_SPANID,
+      traceFlags: TraceFlags.NONE
+    };
+  }
+});
+var NonRecordingSpan;
+var init_NonRecordingSpan = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+api@1.9.0/node_modules/@opentelemetry/api/build/esm/trace/NonRecordingSpan.js"() {
+    "use strict";
+    init_invalid_span_constants();
+    NonRecordingSpan = /** @class */
+    function() {
+      function NonRecordingSpan2(_spanContext) {
+        if (_spanContext === void 0) {
+          _spanContext = INVALID_SPAN_CONTEXT;
+        }
+        this._spanContext = _spanContext;
+      }
+      __name(NonRecordingSpan2, "NonRecordingSpan2");
+      NonRecordingSpan2.prototype.spanContext = function() {
+        return this._spanContext;
+      };
+      NonRecordingSpan2.prototype.setAttribute = function(_key, _value) {
+        return this;
+      };
+      NonRecordingSpan2.prototype.setAttributes = function(_attributes) {
+        return this;
+      };
+      NonRecordingSpan2.prototype.addEvent = function(_name, _attributes) {
+        return this;
+      };
+      NonRecordingSpan2.prototype.addLink = function(_link) {
+        return this;
+      };
+      NonRecordingSpan2.prototype.addLinks = function(_links) {
+        return this;
+      };
+      NonRecordingSpan2.prototype.setStatus = function(_status) {
+        return this;
+      };
+      NonRecordingSpan2.prototype.updateName = function(_name) {
+        return this;
+      };
+      NonRecordingSpan2.prototype.end = function(_endTime) {
+      };
+      NonRecordingSpan2.prototype.isRecording = function() {
+        return false;
+      };
+      NonRecordingSpan2.prototype.recordException = function(_exception, _time) {
+      };
+      return NonRecordingSpan2;
+    }();
+  }
+});
+function getSpan(context22) {
+  return context22.getValue(SPAN_KEY) || void 0;
+}
+__name(getSpan, "getSpan");
+function getActiveSpan() {
+  return getSpan(ContextAPI.getInstance().active());
+}
+__name(getActiveSpan, "getActiveSpan");
+function setSpan(context22, span) {
+  return context22.setValue(SPAN_KEY, span);
+}
+__name(setSpan, "setSpan");
+function deleteSpan(context22) {
+  return context22.deleteValue(SPAN_KEY);
+}
+__name(deleteSpan, "deleteSpan");
+function setSpanContext(context22, spanContext) {
+  return setSpan(context22, new NonRecordingSpan(spanContext));
+}
+__name(setSpanContext, "setSpanContext");
+function getSpanContext(context22) {
+  var _a4;
+  return (_a4 = getSpan(context22)) === null || _a4 === void 0 ? void 0 : _a4.spanContext();
+}
+__name(getSpanContext, "getSpanContext");
+var SPAN_KEY;
+var init_context_utils = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+api@1.9.0/node_modules/@opentelemetry/api/build/esm/trace/context-utils.js"() {
+    "use strict";
+    init_context();
+    init_NonRecordingSpan();
+    init_context2();
+    SPAN_KEY = createContextKey("OpenTelemetry Context Key SPAN");
+  }
+});
+function isValidTraceId(traceId) {
+  return VALID_TRACEID_REGEX.test(traceId) && traceId !== INVALID_TRACEID;
+}
+__name(isValidTraceId, "isValidTraceId");
+function isValidSpanId(spanId) {
+  return VALID_SPANID_REGEX.test(spanId) && spanId !== INVALID_SPANID;
+}
+__name(isValidSpanId, "isValidSpanId");
+function isSpanContextValid(spanContext) {
+  return isValidTraceId(spanContext.traceId) && isValidSpanId(spanContext.spanId);
+}
+__name(isSpanContextValid, "isSpanContextValid");
+function wrapSpanContext(spanContext) {
+  return new NonRecordingSpan(spanContext);
+}
+__name(wrapSpanContext, "wrapSpanContext");
+var VALID_TRACEID_REGEX;
+var VALID_SPANID_REGEX;
+var init_spancontext_utils = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+api@1.9.0/node_modules/@opentelemetry/api/build/esm/trace/spancontext-utils.js"() {
+    "use strict";
+    init_invalid_span_constants();
+    init_NonRecordingSpan();
+    VALID_TRACEID_REGEX = /^([0-9a-f]{32})$/i;
+    VALID_SPANID_REGEX = /^[0-9a-f]{16}$/i;
+  }
+});
+function isSpanContext(spanContext) {
+  return typeof spanContext === "object" && typeof spanContext["spanId"] === "string" && typeof spanContext["traceId"] === "string" && typeof spanContext["traceFlags"] === "number";
+}
+__name(isSpanContext, "isSpanContext");
+var contextApi;
+var NoopTracer;
+var init_NoopTracer = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+api@1.9.0/node_modules/@opentelemetry/api/build/esm/trace/NoopTracer.js"() {
+    "use strict";
+    init_context2();
+    init_context_utils();
+    init_NonRecordingSpan();
+    init_spancontext_utils();
+    contextApi = ContextAPI.getInstance();
+    NoopTracer = /** @class */
+    function() {
+      function NoopTracer2() {
+      }
+      __name(NoopTracer2, "NoopTracer2");
+      NoopTracer2.prototype.startSpan = function(name, options, context22) {
+        if (context22 === void 0) {
+          context22 = contextApi.active();
+        }
+        var root = Boolean(options === null || options === void 0 ? void 0 : options.root);
+        if (root) {
+          return new NonRecordingSpan();
+        }
+        var parentFromContext = context22 && getSpanContext(context22);
+        if (isSpanContext(parentFromContext) && isSpanContextValid(parentFromContext)) {
+          return new NonRecordingSpan(parentFromContext);
+        } else {
+          return new NonRecordingSpan();
+        }
+      };
+      NoopTracer2.prototype.startActiveSpan = function(name, arg2, arg3, arg4) {
+        var opts;
+        var ctx;
+        var fn;
+        if (arguments.length < 2) {
+          return;
+        } else if (arguments.length === 2) {
+          fn = arg2;
+        } else if (arguments.length === 3) {
+          opts = arg2;
+          fn = arg3;
+        } else {
+          opts = arg2;
+          ctx = arg3;
+          fn = arg4;
+        }
+        var parentContext = ctx !== null && ctx !== void 0 ? ctx : contextApi.active();
+        var span = this.startSpan(name, opts, parentContext);
+        var contextWithSpanSet = setSpan(parentContext, span);
+        return contextApi.with(contextWithSpanSet, fn, void 0, span);
+      };
+      return NoopTracer2;
+    }();
+  }
+});
+var NOOP_TRACER;
+var ProxyTracer;
+var init_ProxyTracer = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+api@1.9.0/node_modules/@opentelemetry/api/build/esm/trace/ProxyTracer.js"() {
+    "use strict";
+    init_NoopTracer();
+    NOOP_TRACER = new NoopTracer();
+    ProxyTracer = /** @class */
+    function() {
+      function ProxyTracer2(_provider, name, version2, options) {
+        this._provider = _provider;
+        this.name = name;
+        this.version = version2;
+        this.options = options;
+      }
+      __name(ProxyTracer2, "ProxyTracer2");
+      ProxyTracer2.prototype.startSpan = function(name, options, context22) {
+        return this._getTracer().startSpan(name, options, context22);
+      };
+      ProxyTracer2.prototype.startActiveSpan = function(_name, _options, _context, _fn) {
+        var tracer = this._getTracer();
+        return Reflect.apply(tracer.startActiveSpan, tracer, arguments);
+      };
+      ProxyTracer2.prototype._getTracer = function() {
+        if (this._delegate) {
+          return this._delegate;
+        }
+        var tracer = this._provider.getDelegateTracer(this.name, this.version, this.options);
+        if (!tracer) {
+          return NOOP_TRACER;
+        }
+        this._delegate = tracer;
+        return this._delegate;
+      };
+      return ProxyTracer2;
+    }();
+  }
+});
+var NoopTracerProvider;
+var init_NoopTracerProvider = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+api@1.9.0/node_modules/@opentelemetry/api/build/esm/trace/NoopTracerProvider.js"() {
+    "use strict";
+    init_NoopTracer();
+    NoopTracerProvider = /** @class */
+    function() {
+      function NoopTracerProvider2() {
+      }
+      __name(NoopTracerProvider2, "NoopTracerProvider2");
+      NoopTracerProvider2.prototype.getTracer = function(_name, _version, _options) {
+        return new NoopTracer();
+      };
+      return NoopTracerProvider2;
+    }();
+  }
+});
+var NOOP_TRACER_PROVIDER;
+var ProxyTracerProvider;
+var init_ProxyTracerProvider = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+api@1.9.0/node_modules/@opentelemetry/api/build/esm/trace/ProxyTracerProvider.js"() {
+    "use strict";
+    init_ProxyTracer();
+    init_NoopTracerProvider();
+    NOOP_TRACER_PROVIDER = new NoopTracerProvider();
+    ProxyTracerProvider = /** @class */
+    function() {
+      function ProxyTracerProvider2() {
+      }
+      __name(ProxyTracerProvider2, "ProxyTracerProvider2");
+      ProxyTracerProvider2.prototype.getTracer = function(name, version2, options) {
+        var _a4;
+        return (_a4 = this.getDelegateTracer(name, version2, options)) !== null && _a4 !== void 0 ? _a4 : new ProxyTracer(this, name, version2, options);
+      };
+      ProxyTracerProvider2.prototype.getDelegate = function() {
+        var _a4;
+        return (_a4 = this._delegate) !== null && _a4 !== void 0 ? _a4 : NOOP_TRACER_PROVIDER;
+      };
+      ProxyTracerProvider2.prototype.setDelegate = function(delegate) {
+        this._delegate = delegate;
+      };
+      ProxyTracerProvider2.prototype.getDelegateTracer = function(name, version2, options) {
+        var _a4;
+        return (_a4 = this._delegate) === null || _a4 === void 0 ? void 0 : _a4.getTracer(name, version2, options);
+      };
+      return ProxyTracerProvider2;
+    }();
+  }
+});
+var SamplingDecision;
+var init_SamplingResult = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+api@1.9.0/node_modules/@opentelemetry/api/build/esm/trace/SamplingResult.js"() {
+    "use strict";
+    (function(SamplingDecision22) {
+      SamplingDecision22[SamplingDecision22["NOT_RECORD"] = 0] = "NOT_RECORD";
+      SamplingDecision22[SamplingDecision22["RECORD"] = 1] = "RECORD";
+      SamplingDecision22[SamplingDecision22["RECORD_AND_SAMPLED"] = 2] = "RECORD_AND_SAMPLED";
+    })(SamplingDecision || (SamplingDecision = {}));
+  }
+});
+var SpanKind;
+var init_span_kind = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+api@1.9.0/node_modules/@opentelemetry/api/build/esm/trace/span_kind.js"() {
+    "use strict";
+    (function(SpanKind2) {
+      SpanKind2[SpanKind2["INTERNAL"] = 0] = "INTERNAL";
+      SpanKind2[SpanKind2["SERVER"] = 1] = "SERVER";
+      SpanKind2[SpanKind2["CLIENT"] = 2] = "CLIENT";
+      SpanKind2[SpanKind2["PRODUCER"] = 3] = "PRODUCER";
+      SpanKind2[SpanKind2["CONSUMER"] = 4] = "CONSUMER";
+    })(SpanKind || (SpanKind = {}));
+  }
+});
+var SpanStatusCode;
+var init_status = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+api@1.9.0/node_modules/@opentelemetry/api/build/esm/trace/status.js"() {
+    "use strict";
+    (function(SpanStatusCode2) {
+      SpanStatusCode2[SpanStatusCode2["UNSET"] = 0] = "UNSET";
+      SpanStatusCode2[SpanStatusCode2["OK"] = 1] = "OK";
+      SpanStatusCode2[SpanStatusCode2["ERROR"] = 2] = "ERROR";
+    })(SpanStatusCode || (SpanStatusCode = {}));
+  }
+});
+function validateKey(key) {
+  return VALID_KEY_REGEX.test(key);
+}
+__name(validateKey, "validateKey");
+function validateValue(value) {
+  return VALID_VALUE_BASE_REGEX.test(value) && !INVALID_VALUE_COMMA_EQUAL_REGEX.test(value);
+}
+__name(validateValue, "validateValue");
+var VALID_KEY_CHAR_RANGE;
+var VALID_KEY;
+var VALID_VENDOR_KEY;
+var VALID_KEY_REGEX;
+var VALID_VALUE_BASE_REGEX;
+var INVALID_VALUE_COMMA_EQUAL_REGEX;
+var init_tracestate_validators = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+api@1.9.0/node_modules/@opentelemetry/api/build/esm/trace/internal/tracestate-validators.js"() {
+    "use strict";
+    VALID_KEY_CHAR_RANGE = "[_0-9a-z-*/]";
+    VALID_KEY = "[a-z]" + VALID_KEY_CHAR_RANGE + "{0,255}";
+    VALID_VENDOR_KEY = "[a-z0-9]" + VALID_KEY_CHAR_RANGE + "{0,240}@[a-z]" + VALID_KEY_CHAR_RANGE + "{0,13}";
+    VALID_KEY_REGEX = new RegExp("^(?:" + VALID_KEY + "|" + VALID_VENDOR_KEY + ")$");
+    VALID_VALUE_BASE_REGEX = /^[ -~]{0,255}[!-~]$/;
+    INVALID_VALUE_COMMA_EQUAL_REGEX = /,|=/;
+  }
+});
+var MAX_TRACE_STATE_ITEMS;
+var MAX_TRACE_STATE_LEN;
+var LIST_MEMBERS_SEPARATOR;
+var LIST_MEMBER_KEY_VALUE_SPLITTER;
+var TraceStateImpl;
+var init_tracestate_impl = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+api@1.9.0/node_modules/@opentelemetry/api/build/esm/trace/internal/tracestate-impl.js"() {
+    "use strict";
+    init_tracestate_validators();
+    MAX_TRACE_STATE_ITEMS = 32;
+    MAX_TRACE_STATE_LEN = 512;
+    LIST_MEMBERS_SEPARATOR = ",";
+    LIST_MEMBER_KEY_VALUE_SPLITTER = "=";
+    TraceStateImpl = /** @class */
+    function() {
+      function TraceStateImpl2(rawTraceState) {
+        this._internalState = /* @__PURE__ */ new Map();
+        if (rawTraceState)
+          this._parse(rawTraceState);
+      }
+      __name(TraceStateImpl2, "TraceStateImpl2");
+      TraceStateImpl2.prototype.set = function(key, value) {
+        var traceState = this._clone();
+        if (traceState._internalState.has(key)) {
+          traceState._internalState.delete(key);
+        }
+        traceState._internalState.set(key, value);
+        return traceState;
+      };
+      TraceStateImpl2.prototype.unset = function(key) {
+        var traceState = this._clone();
+        traceState._internalState.delete(key);
+        return traceState;
+      };
+      TraceStateImpl2.prototype.get = function(key) {
+        return this._internalState.get(key);
+      };
+      TraceStateImpl2.prototype.serialize = function() {
+        var _this = this;
+        return this._keys().reduce(function(agg, key) {
+          agg.push(key + LIST_MEMBER_KEY_VALUE_SPLITTER + _this.get(key));
+          return agg;
+        }, []).join(LIST_MEMBERS_SEPARATOR);
+      };
+      TraceStateImpl2.prototype._parse = function(rawTraceState) {
+        if (rawTraceState.length > MAX_TRACE_STATE_LEN)
+          return;
+        this._internalState = rawTraceState.split(LIST_MEMBERS_SEPARATOR).reverse().reduce(function(agg, part) {
+          var listMember = part.trim();
+          var i = listMember.indexOf(LIST_MEMBER_KEY_VALUE_SPLITTER);
+          if (i !== -1) {
+            var key = listMember.slice(0, i);
+            var value = listMember.slice(i + 1, part.length);
+            if (validateKey(key) && validateValue(value)) {
+              agg.set(key, value);
+            } else {
+            }
+          }
+          return agg;
+        }, /* @__PURE__ */ new Map());
+        if (this._internalState.size > MAX_TRACE_STATE_ITEMS) {
+          this._internalState = new Map(Array.from(this._internalState.entries()).reverse().slice(0, MAX_TRACE_STATE_ITEMS));
+        }
+      };
+      TraceStateImpl2.prototype._keys = function() {
+        return Array.from(this._internalState.keys()).reverse();
+      };
+      TraceStateImpl2.prototype._clone = function() {
+        var traceState = new TraceStateImpl2();
+        traceState._internalState = new Map(this._internalState);
+        return traceState;
+      };
+      return TraceStateImpl2;
+    }();
+  }
+});
+function createTraceState(rawTraceState) {
+  return new TraceStateImpl(rawTraceState);
+}
+__name(createTraceState, "createTraceState");
+var init_utils22 = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+api@1.9.0/node_modules/@opentelemetry/api/build/esm/trace/internal/utils.js"() {
+    "use strict";
+    init_tracestate_impl();
+  }
+});
+var context2;
+var init_context_api = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+api@1.9.0/node_modules/@opentelemetry/api/build/esm/context-api.js"() {
+    "use strict";
+    init_context2();
+    context2 = ContextAPI.getInstance();
+  }
+});
+var NoopMeterProvider;
+var NOOP_METER_PROVIDER;
+var init_NoopMeterProvider = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+api@1.9.0/node_modules/@opentelemetry/api/build/esm/metrics/NoopMeterProvider.js"() {
+    "use strict";
+    init_NoopMeter();
+    NoopMeterProvider = /** @class */
+    function() {
+      function NoopMeterProvider2() {
+      }
+      __name(NoopMeterProvider2, "NoopMeterProvider2");
+      NoopMeterProvider2.prototype.getMeter = function(_name, _version, _options) {
+        return NOOP_METER;
+      };
+      return NoopMeterProvider2;
+    }();
+    NOOP_METER_PROVIDER = new NoopMeterProvider();
+  }
+});
+var API_NAME3;
+var MetricsAPI;
+var init_metrics = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+api@1.9.0/node_modules/@opentelemetry/api/build/esm/api/metrics.js"() {
+    "use strict";
+    init_NoopMeterProvider();
+    init_global_utils();
+    init_diag();
+    API_NAME3 = "metrics";
+    MetricsAPI = /** @class */
+    function() {
+      function MetricsAPI2() {
+      }
+      __name(MetricsAPI2, "MetricsAPI2");
+      MetricsAPI2.getInstance = function() {
+        if (!this._instance) {
+          this._instance = new MetricsAPI2();
+        }
+        return this._instance;
+      };
+      MetricsAPI2.prototype.setGlobalMeterProvider = function(provider) {
+        return registerGlobal(API_NAME3, provider, DiagAPI.instance());
+      };
+      MetricsAPI2.prototype.getMeterProvider = function() {
+        return getGlobal(API_NAME3) || NOOP_METER_PROVIDER;
+      };
+      MetricsAPI2.prototype.getMeter = function(name, version2, options) {
+        return this.getMeterProvider().getMeter(name, version2, options);
+      };
+      MetricsAPI2.prototype.disable = function() {
+        unregisterGlobal(API_NAME3, DiagAPI.instance());
+      };
+      return MetricsAPI2;
+    }();
+  }
+});
+var metrics;
+var init_metrics_api = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+api@1.9.0/node_modules/@opentelemetry/api/build/esm/metrics-api.js"() {
+    "use strict";
+    init_metrics();
+    metrics = MetricsAPI.getInstance();
+  }
+});
+var NoopTextMapPropagator;
+var init_NoopTextMapPropagator = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+api@1.9.0/node_modules/@opentelemetry/api/build/esm/propagation/NoopTextMapPropagator.js"() {
+    "use strict";
+    NoopTextMapPropagator = /** @class */
+    function() {
+      function NoopTextMapPropagator2() {
+      }
+      __name(NoopTextMapPropagator2, "NoopTextMapPropagator2");
+      NoopTextMapPropagator2.prototype.inject = function(_context, _carrier) {
+      };
+      NoopTextMapPropagator2.prototype.extract = function(context22, _carrier) {
+        return context22;
+      };
+      NoopTextMapPropagator2.prototype.fields = function() {
+        return [];
+      };
+      return NoopTextMapPropagator2;
+    }();
+  }
+});
+function getBaggage(context22) {
+  return context22.getValue(BAGGAGE_KEY) || void 0;
+}
+__name(getBaggage, "getBaggage");
+function getActiveBaggage() {
+  return getBaggage(ContextAPI.getInstance().active());
+}
+__name(getActiveBaggage, "getActiveBaggage");
+function setBaggage(context22, baggage) {
+  return context22.setValue(BAGGAGE_KEY, baggage);
+}
+__name(setBaggage, "setBaggage");
+function deleteBaggage(context22) {
+  return context22.deleteValue(BAGGAGE_KEY);
+}
+__name(deleteBaggage, "deleteBaggage");
+var BAGGAGE_KEY;
+var init_context_helpers = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+api@1.9.0/node_modules/@opentelemetry/api/build/esm/baggage/context-helpers.js"() {
+    "use strict";
+    init_context2();
+    init_context();
+    BAGGAGE_KEY = createContextKey("OpenTelemetry Baggage Key");
+  }
+});
+var API_NAME4;
+var NOOP_TEXT_MAP_PROPAGATOR;
+var PropagationAPI;
+var init_propagation = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+api@1.9.0/node_modules/@opentelemetry/api/build/esm/api/propagation.js"() {
+    "use strict";
+    init_global_utils();
+    init_NoopTextMapPropagator();
+    init_TextMapPropagator();
+    init_context_helpers();
+    init_utils2();
+    init_diag();
+    API_NAME4 = "propagation";
+    NOOP_TEXT_MAP_PROPAGATOR = new NoopTextMapPropagator();
+    PropagationAPI = /** @class */
+    function() {
+      function PropagationAPI2() {
+        this.createBaggage = createBaggage;
+        this.getBaggage = getBaggage;
+        this.getActiveBaggage = getActiveBaggage;
+        this.setBaggage = setBaggage;
+        this.deleteBaggage = deleteBaggage;
+      }
+      __name(PropagationAPI2, "PropagationAPI2");
+      PropagationAPI2.getInstance = function() {
+        if (!this._instance) {
+          this._instance = new PropagationAPI2();
+        }
+        return this._instance;
+      };
+      PropagationAPI2.prototype.setGlobalPropagator = function(propagator) {
+        return registerGlobal(API_NAME4, propagator, DiagAPI.instance());
+      };
+      PropagationAPI2.prototype.inject = function(context22, carrier, setter) {
+        if (setter === void 0) {
+          setter = defaultTextMapSetter;
+        }
+        return this._getGlobalPropagator().inject(context22, carrier, setter);
+      };
+      PropagationAPI2.prototype.extract = function(context22, carrier, getter) {
+        if (getter === void 0) {
+          getter = defaultTextMapGetter;
+        }
+        return this._getGlobalPropagator().extract(context22, carrier, getter);
+      };
+      PropagationAPI2.prototype.fields = function() {
+        return this._getGlobalPropagator().fields();
+      };
+      PropagationAPI2.prototype.disable = function() {
+        unregisterGlobal(API_NAME4, DiagAPI.instance());
+      };
+      PropagationAPI2.prototype._getGlobalPropagator = function() {
+        return getGlobal(API_NAME4) || NOOP_TEXT_MAP_PROPAGATOR;
+      };
+      return PropagationAPI2;
+    }();
+  }
+});
+var propagation;
+var init_propagation_api = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+api@1.9.0/node_modules/@opentelemetry/api/build/esm/propagation-api.js"() {
+    "use strict";
+    init_propagation();
+    propagation = PropagationAPI.getInstance();
+  }
+});
+var API_NAME5;
+var TraceAPI;
+var init_trace = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+api@1.9.0/node_modules/@opentelemetry/api/build/esm/api/trace.js"() {
+    "use strict";
+    init_global_utils();
+    init_ProxyTracerProvider();
+    init_spancontext_utils();
+    init_context_utils();
+    init_diag();
+    API_NAME5 = "trace";
+    TraceAPI = /** @class */
+    function() {
+      function TraceAPI2() {
+        this._proxyTracerProvider = new ProxyTracerProvider();
+        this.wrapSpanContext = wrapSpanContext;
+        this.isSpanContextValid = isSpanContextValid;
+        this.deleteSpan = deleteSpan;
+        this.getSpan = getSpan;
+        this.getActiveSpan = getActiveSpan;
+        this.getSpanContext = getSpanContext;
+        this.setSpan = setSpan;
+        this.setSpanContext = setSpanContext;
+      }
+      __name(TraceAPI2, "TraceAPI2");
+      TraceAPI2.getInstance = function() {
+        if (!this._instance) {
+          this._instance = new TraceAPI2();
+        }
+        return this._instance;
+      };
+      TraceAPI2.prototype.setGlobalTracerProvider = function(provider) {
+        var success = registerGlobal(API_NAME5, this._proxyTracerProvider, DiagAPI.instance());
+        if (success) {
+          this._proxyTracerProvider.setDelegate(provider);
+        }
+        return success;
+      };
+      TraceAPI2.prototype.getTracerProvider = function() {
+        return getGlobal(API_NAME5) || this._proxyTracerProvider;
+      };
+      TraceAPI2.prototype.getTracer = function(name, version2) {
+        return this.getTracerProvider().getTracer(name, version2);
+      };
+      TraceAPI2.prototype.disable = function() {
+        unregisterGlobal(API_NAME5, DiagAPI.instance());
+        this._proxyTracerProvider = new ProxyTracerProvider();
+      };
+      return TraceAPI2;
+    }();
+  }
+});
+var trace3;
+var init_trace_api = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+api@1.9.0/node_modules/@opentelemetry/api/build/esm/trace-api.js"() {
+    "use strict";
+    init_trace();
+    trace3 = TraceAPI.getInstance();
+  }
+});
+var esm_exports = {};
+__export2(esm_exports, {
+  DiagConsoleLogger: /* @__PURE__ */ __name(() => DiagConsoleLogger, "DiagConsoleLogger"),
+  DiagLogLevel: /* @__PURE__ */ __name(() => DiagLogLevel, "DiagLogLevel"),
+  INVALID_SPANID: /* @__PURE__ */ __name(() => INVALID_SPANID, "INVALID_SPANID"),
+  INVALID_SPAN_CONTEXT: /* @__PURE__ */ __name(() => INVALID_SPAN_CONTEXT, "INVALID_SPAN_CONTEXT"),
+  INVALID_TRACEID: /* @__PURE__ */ __name(() => INVALID_TRACEID, "INVALID_TRACEID"),
+  ProxyTracer: /* @__PURE__ */ __name(() => ProxyTracer, "ProxyTracer"),
+  ProxyTracerProvider: /* @__PURE__ */ __name(() => ProxyTracerProvider, "ProxyTracerProvider"),
+  ROOT_CONTEXT: /* @__PURE__ */ __name(() => ROOT_CONTEXT, "ROOT_CONTEXT"),
+  SamplingDecision: /* @__PURE__ */ __name(() => SamplingDecision, "SamplingDecision"),
+  SpanKind: /* @__PURE__ */ __name(() => SpanKind, "SpanKind"),
+  SpanStatusCode: /* @__PURE__ */ __name(() => SpanStatusCode, "SpanStatusCode"),
+  TraceFlags: /* @__PURE__ */ __name(() => TraceFlags, "TraceFlags"),
+  ValueType: /* @__PURE__ */ __name(() => ValueType, "ValueType"),
+  baggageEntryMetadataFromString: /* @__PURE__ */ __name(() => baggageEntryMetadataFromString, "baggageEntryMetadataFromString"),
+  context: /* @__PURE__ */ __name(() => context2, "context"),
+  createContextKey: /* @__PURE__ */ __name(() => createContextKey, "createContextKey"),
+  createNoopMeter: /* @__PURE__ */ __name(() => createNoopMeter, "createNoopMeter"),
+  createTraceState: /* @__PURE__ */ __name(() => createTraceState, "createTraceState"),
+  default: /* @__PURE__ */ __name(() => esm_default, "default"),
+  defaultTextMapGetter: /* @__PURE__ */ __name(() => defaultTextMapGetter, "defaultTextMapGetter"),
+  defaultTextMapSetter: /* @__PURE__ */ __name(() => defaultTextMapSetter, "defaultTextMapSetter"),
+  diag: /* @__PURE__ */ __name(() => diag, "diag"),
+  isSpanContextValid: /* @__PURE__ */ __name(() => isSpanContextValid, "isSpanContextValid"),
+  isValidSpanId: /* @__PURE__ */ __name(() => isValidSpanId, "isValidSpanId"),
+  isValidTraceId: /* @__PURE__ */ __name(() => isValidTraceId, "isValidTraceId"),
+  metrics: /* @__PURE__ */ __name(() => metrics, "metrics"),
+  propagation: /* @__PURE__ */ __name(() => propagation, "propagation"),
+  trace: /* @__PURE__ */ __name(() => trace3, "trace")
+});
+var esm_default;
+var init_esm = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+api@1.9.0/node_modules/@opentelemetry/api/build/esm/index.js"() {
+    "use strict";
+    init_utils2();
+    init_context();
+    init_consoleLogger();
+    init_types();
+    init_NoopMeter();
+    init_Metric();
+    init_TextMapPropagator();
+    init_ProxyTracer();
+    init_ProxyTracerProvider();
+    init_SamplingResult();
+    init_span_kind();
+    init_status();
+    init_trace_flags();
+    init_utils22();
+    init_spancontext_utils();
+    init_invalid_span_constants();
+    init_context_api();
+    init_diag_api();
+    init_metrics_api();
+    init_propagation_api();
+    init_trace_api();
+    esm_default = {
+      context: context2,
+      diag,
+      metrics,
+      propagation,
+      trace: trace3
+    };
+  }
+});
+
+// ../braintrust/node_modules/.pnpm/uuid@9.0.1/node_modules/uuid/dist/esm-browser/index.js
 init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_process();
 init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_console();
 init_performance2();
 
-// node_modules/uuid/dist/esm-browser/rng.js
+// ../braintrust/node_modules/.pnpm/uuid@9.0.1/node_modules/uuid/dist/esm-browser/rng.js
 init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_process();
 init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_console();
 init_performance2();
@@ -5995,30 +4682,30 @@ function rng() {
 }
 __name(rng, "rng");
 
-// node_modules/uuid/dist/esm-browser/stringify.js
+// ../braintrust/node_modules/.pnpm/uuid@9.0.1/node_modules/uuid/dist/esm-browser/stringify.js
 init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_process();
 init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_console();
 init_performance2();
 
-// node_modules/uuid/dist/esm-browser/validate.js
+// ../braintrust/node_modules/.pnpm/uuid@9.0.1/node_modules/uuid/dist/esm-browser/validate.js
 init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_process();
 init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_console();
 init_performance2();
 
-// node_modules/uuid/dist/esm-browser/regex.js
+// ../braintrust/node_modules/.pnpm/uuid@9.0.1/node_modules/uuid/dist/esm-browser/regex.js
 init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_process();
 init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_console();
 init_performance2();
 var regex_default = /^(?:[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}|00000000-0000-0000-0000-000000000000)$/i;
 
-// node_modules/uuid/dist/esm-browser/validate.js
+// ../braintrust/node_modules/.pnpm/uuid@9.0.1/node_modules/uuid/dist/esm-browser/validate.js
 function validate(uuid) {
   return typeof uuid === "string" && regex_default.test(uuid);
 }
 __name(validate, "validate");
 var validate_default = validate;
 
-// node_modules/uuid/dist/esm-browser/stringify.js
+// ../braintrust/node_modules/.pnpm/uuid@9.0.1/node_modules/uuid/dist/esm-browser/stringify.js
 var byteToHex = [];
 for (let i = 0; i < 256; ++i) {
   byteToHex.push((i + 256).toString(16).slice(1));
@@ -6037,7 +4724,7 @@ function stringify(arr, offset = 0) {
 __name(stringify, "stringify");
 var stringify_default = stringify;
 
-// node_modules/uuid/dist/esm-browser/parse.js
+// ../braintrust/node_modules/.pnpm/uuid@9.0.1/node_modules/uuid/dist/esm-browser/parse.js
 init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_process();
 init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_console();
 init_performance2();
@@ -6068,12 +4755,12 @@ function parse(uuid) {
 __name(parse, "parse");
 var parse_default = parse;
 
-// node_modules/uuid/dist/esm-browser/v4.js
+// ../braintrust/node_modules/.pnpm/uuid@9.0.1/node_modules/uuid/dist/esm-browser/v4.js
 init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_process();
 init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_console();
 init_performance2();
 
-// node_modules/uuid/dist/esm-browser/native.js
+// ../braintrust/node_modules/.pnpm/uuid@9.0.1/node_modules/uuid/dist/esm-browser/native.js
 init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_process();
 init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_console();
 init_performance2();
@@ -6082,7 +4769,7 @@ var native_default = {
   randomUUID
 };
 
-// node_modules/uuid/dist/esm-browser/v4.js
+// ../braintrust/node_modules/.pnpm/uuid@9.0.1/node_modules/uuid/dist/esm-browser/v4.js
 function v4(options, buf, offset) {
   if (native_default.randomUUID && !buf && !options) {
     return native_default.randomUUID();
@@ -6103,12 +4790,17 @@ function v4(options, buf, offset) {
 __name(v4, "v4");
 var v4_default = v4;
 
-// node_modules/zod/v3/index.js
+// ../braintrust/node_modules/.pnpm/zod@3.25.34/node_modules/zod/dist/esm/index.js
 init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_process();
 init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_console();
 init_performance2();
 
-// node_modules/zod/v3/external.js
+// ../braintrust/node_modules/.pnpm/zod@3.25.34/node_modules/zod/dist/esm/v3/index.js
+init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_process();
+init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_console();
+init_performance2();
+
+// ../braintrust/node_modules/.pnpm/zod@3.25.34/node_modules/zod/dist/esm/v3/external.js
 var external_exports = {};
 __export(external_exports, {
   BRAND: () => BRAND,
@@ -6223,22 +4915,22 @@ init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_process();
 init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_console();
 init_performance2();
 
-// node_modules/zod/v3/errors.js
+// ../braintrust/node_modules/.pnpm/zod@3.25.34/node_modules/zod/dist/esm/v3/errors.js
 init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_process();
 init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_console();
 init_performance2();
 
-// node_modules/zod/v3/locales/en.js
+// ../braintrust/node_modules/.pnpm/zod@3.25.34/node_modules/zod/dist/esm/v3/locales/en.js
 init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_process();
 init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_console();
 init_performance2();
 
-// node_modules/zod/v3/ZodError.js
+// ../braintrust/node_modules/.pnpm/zod@3.25.34/node_modules/zod/dist/esm/v3/ZodError.js
 init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_process();
 init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_console();
 init_performance2();
 
-// node_modules/zod/v3/helpers/util.js
+// ../braintrust/node_modules/.pnpm/zod@3.25.34/node_modules/zod/dist/esm/v3/helpers/util.js
 init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_process();
 init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_console();
 init_performance2();
@@ -6378,7 +5070,7 @@ var getParsedType = /* @__PURE__ */ __name((data) => {
   }
 }, "getParsedType");
 
-// node_modules/zod/v3/ZodError.js
+// ../braintrust/node_modules/.pnpm/zod@3.25.34/node_modules/zod/dist/esm/v3/ZodError.js
 var ZodIssueCode = util.arrayToEnum([
   "invalid_type",
   "invalid_literal",
@@ -6481,9 +5173,8 @@ var ZodError = class _ZodError extends Error {
     const formErrors = [];
     for (const sub of this.issues) {
       if (sub.path.length > 0) {
-        const firstEl = sub.path[0];
-        fieldErrors[firstEl] = fieldErrors[firstEl] || [];
-        fieldErrors[firstEl].push(mapper(sub));
+        fieldErrors[sub.path[0]] = fieldErrors[sub.path[0]] || [];
+        fieldErrors[sub.path[0]].push(mapper(sub));
       } else {
         formErrors.push(mapper(sub));
       }
@@ -6499,7 +5190,7 @@ ZodError.create = (issues) => {
   return error4;
 };
 
-// node_modules/zod/v3/locales/en.js
+// ../braintrust/node_modules/.pnpm/zod@3.25.34/node_modules/zod/dist/esm/v3/locales/en.js
 var errorMap = /* @__PURE__ */ __name((issue, _ctx) => {
   let message;
   switch (issue.code) {
@@ -6561,8 +5252,6 @@ var errorMap = /* @__PURE__ */ __name((issue, _ctx) => {
         message = `String must contain ${issue.exact ? "exactly" : issue.inclusive ? `at least` : `over`} ${issue.minimum} character(s)`;
       else if (issue.type === "number")
         message = `Number must be ${issue.exact ? `exactly equal to ` : issue.inclusive ? `greater than or equal to ` : `greater than `}${issue.minimum}`;
-      else if (issue.type === "bigint")
-        message = `Number must be ${issue.exact ? `exactly equal to ` : issue.inclusive ? `greater than or equal to ` : `greater than `}${issue.minimum}`;
       else if (issue.type === "date")
         message = `Date must be ${issue.exact ? `exactly equal to ` : issue.inclusive ? `greater than or equal to ` : `greater than `}${new Date(Number(issue.minimum))}`;
       else
@@ -6602,7 +5291,7 @@ var errorMap = /* @__PURE__ */ __name((issue, _ctx) => {
 }, "errorMap");
 var en_default = errorMap;
 
-// node_modules/zod/v3/errors.js
+// ../braintrust/node_modules/.pnpm/zod@3.25.34/node_modules/zod/dist/esm/v3/errors.js
 var overrideErrorMap = en_default;
 function setErrorMap(map2) {
   overrideErrorMap = map2;
@@ -6613,7 +5302,7 @@ function getErrorMap() {
 }
 __name(getErrorMap, "getErrorMap");
 
-// node_modules/zod/v3/helpers/parseUtil.js
+// ../braintrust/node_modules/.pnpm/zod@3.25.34/node_modules/zod/dist/esm/v3/helpers/parseUtil.js
 init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_process();
 init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_console();
 init_performance2();
@@ -6730,12 +5419,17 @@ var isDirty = /* @__PURE__ */ __name((x) => x.status === "dirty", "isDirty");
 var isValid = /* @__PURE__ */ __name((x) => x.status === "valid", "isValid");
 var isAsync = /* @__PURE__ */ __name((x) => typeof Promise !== "undefined" && x instanceof Promise, "isAsync");
 
-// node_modules/zod/v3/types.js
+// ../braintrust/node_modules/.pnpm/zod@3.25.34/node_modules/zod/dist/esm/v3/helpers/typeAliases.js
 init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_process();
 init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_console();
 init_performance2();
 
-// node_modules/zod/v3/helpers/errorUtil.js
+// ../braintrust/node_modules/.pnpm/zod@3.25.34/node_modules/zod/dist/esm/v3/types.js
+init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_process();
+init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_console();
+init_performance2();
+
+// ../braintrust/node_modules/.pnpm/zod@3.25.34/node_modules/zod/dist/esm/v3/helpers/errorUtil.js
 init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_process();
 init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_console();
 init_performance2();
@@ -6745,7 +5439,7 @@ var errorUtil;
   errorUtil2.toString = (message) => typeof message === "string" ? message : message?.message;
 })(errorUtil || (errorUtil = {}));
 
-// node_modules/zod/v3/types.js
+// ../braintrust/node_modules/.pnpm/zod@3.25.34/node_modules/zod/dist/esm/v3/types.js
 var ParseInputLazyPath = class {
   static {
     __name(this, "ParseInputLazyPath");
@@ -7155,8 +5849,6 @@ function isValidJWT(jwt, alg) {
     return false;
   try {
     const [header] = jwt.split(".");
-    if (!header)
-      return false;
     const base64 = header.replace(/-/g, "+").replace(/_/g, "/").padEnd(header.length + (4 - header.length % 4) % 4, "=");
     const decoded = JSON.parse(atob(base64));
     if (typeof decoded !== "object" || decoded === null)
@@ -10324,7 +9016,7 @@ var coerce = {
 };
 var NEVER = INVALID;
 
-// node_modules/eventsource-parser/dist/index.js
+// ../braintrust/node_modules/.pnpm/eventsource-parser@1.1.2/node_modules/eventsource-parser/dist/index.js
 init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_process();
 init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_console();
 init_performance2();
@@ -10453,7 +9145,7 @@ function hasBom(buffer) {
 }
 __name(hasBom, "hasBom");
 
-// node_modules/mustache/mustache.mjs
+// ../braintrust/node_modules/.pnpm/mustache@4.2.0/node_modules/mustache/mustache.mjs
 init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_process();
 init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_console();
 init_performance2();
@@ -10927,9 +9619,61 @@ mustache.Context = Context;
 mustache.Writer = Writer;
 var mustache_default = mustache;
 
-// node_modules/braintrust/dist/index.mjs
+// ../braintrust/sdk/js/dist/index.mjs
 var import_functions = __toESM(require_functions(), 1);
+init_perf_hooks();
+import { inspect } from "util";
+
+// node_modules/unenv/dist/runtime/node/http.mjs
+init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_process();
+init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_console();
+init_performance2();
+init_utils();
+
+// node_modules/unenv/dist/runtime/node/internal/http/agent.mjs
+init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_process();
+init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_console();
+init_performance2();
+import { EventEmitter as EventEmitter2 } from "node:events";
+var Agent = class extends EventEmitter2 {
+  static {
+    __name(this, "Agent");
+  }
+  __unenv__ = {};
+  maxFreeSockets = 256;
+  maxSockets = Infinity;
+  maxTotalSockets = Infinity;
+  freeSockets = {};
+  sockets = {};
+  requests = {};
+  options;
+  constructor(opts = {}) {
+    super();
+    this.options = opts;
+  }
+  destroy() {
+  }
+};
+
+// node_modules/unenv/dist/runtime/node/http.mjs
+var request = /* @__PURE__ */ notImplemented("http.request");
+var globalAgent = new Agent();
+var WebSocket = globalThis.WebSocket || /* @__PURE__ */ notImplementedClass("WebSocket");
+var CloseEvent = globalThis.CloseEvent || /* @__PURE__ */ notImplementedClass("CloseEvent");
+var MessageEvent = globalThis.MessageEvent || /* @__PURE__ */ notImplementedClass("MessageEvent");
+
+// node_modules/unenv/dist/runtime/node/https.mjs
+init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_process();
+init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_console();
+init_performance2();
+init_utils();
+var Agent2 = Agent;
+var request2 = /* @__PURE__ */ notImplemented("https.request");
+
+// ../braintrust/sdk/js/dist/index.mjs
 init_promises2();
+import * as zlib2 from "zlib";
+import { Readable } from "stream";
 import { AsyncLocalStorage } from "node:async_hooks";
 import * as path from "node:path";
 
@@ -10939,17 +9683,16 @@ init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_console();
 init_performance2();
 var homedir = /* @__PURE__ */ __name(() => "/", "homedir");
 
-// node_modules/braintrust/dist/index.mjs
+// ../braintrust/sdk/js/dist/index.mjs
 init_fs2();
 import * as crypto2 from "node:crypto";
 
-// node_modules/simple-git/dist/esm/index.js
+// ../braintrust/node_modules/.pnpm/simple-git@3.21.0/node_modules/simple-git/dist/esm/index.js
 init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_process();
 init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_console();
 init_performance2();
 var import_file_exists = __toESM(require_dist(), 1);
 var import_debug = __toESM(require_src(), 1);
-import { Buffer as Buffer2 } from "node:buffer";
 
 // node_modules/unenv/dist/runtime/node/child_process.mjs
 init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_process();
@@ -10958,33 +9701,74 @@ init_performance2();
 init_utils();
 var spawn = /* @__PURE__ */ notImplemented("child_process.spawn");
 
-// node_modules/simple-git/dist/esm/index.js
+// ../braintrust/node_modules/.pnpm/simple-git@3.21.0/node_modules/simple-git/dist/esm/index.js
 var import_promise_deferred = __toESM(require_dist2(), 1);
 var import_promise_deferred2 = __toESM(require_dist2(), 1);
-import { EventEmitter as EventEmitter2 } from "node:events";
-var __defProp2 = Object.defineProperty;
-var __getOwnPropDesc2 = Object.getOwnPropertyDescriptor;
-var __getOwnPropNames2 = Object.getOwnPropertyNames;
-var __hasOwnProp2 = Object.prototype.hasOwnProperty;
-var __esm2 = /* @__PURE__ */ __name((fn, res) => /* @__PURE__ */ __name(function __init() {
-  return fn && (res = (0, fn[__getOwnPropNames2(fn)[0]])(fn = 0)), res;
+var __defProp3 = Object.defineProperty;
+var __defProps = Object.defineProperties;
+var __getOwnPropDesc3 = Object.getOwnPropertyDescriptor;
+var __getOwnPropDescs = Object.getOwnPropertyDescriptors;
+var __getOwnPropNames3 = Object.getOwnPropertyNames;
+var __getOwnPropSymbols = Object.getOwnPropertySymbols;
+var __hasOwnProp3 = Object.prototype.hasOwnProperty;
+var __propIsEnum = Object.prototype.propertyIsEnumerable;
+var __defNormalProp = /* @__PURE__ */ __name((obj, key, value) => key in obj ? __defProp3(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value, "__defNormalProp");
+var __spreadValues = /* @__PURE__ */ __name((a, b) => {
+  for (var prop in b || (b = {}))
+    if (__hasOwnProp3.call(b, prop))
+      __defNormalProp(a, prop, b[prop]);
+  if (__getOwnPropSymbols)
+    for (var prop of __getOwnPropSymbols(b)) {
+      if (__propIsEnum.call(b, prop))
+        __defNormalProp(a, prop, b[prop]);
+    }
+  return a;
+}, "__spreadValues");
+var __spreadProps = /* @__PURE__ */ __name((a, b) => __defProps(a, __getOwnPropDescs(b)), "__spreadProps");
+var __markAsModule = /* @__PURE__ */ __name((target) => __defProp3(target, "__esModule", { value: true }), "__markAsModule");
+var __esm3 = /* @__PURE__ */ __name((fn, res) => /* @__PURE__ */ __name(function __init() {
+  return fn && (res = (0, fn[__getOwnPropNames3(fn)[0]])(fn = 0)), res;
 }, "__init"), "__esm");
 var __commonJS2 = /* @__PURE__ */ __name((cb, mod) => /* @__PURE__ */ __name(function __require3() {
-  return mod || (0, cb[__getOwnPropNames2(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
+  return mod || (0, cb[__getOwnPropNames3(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
 }, "__require"), "__commonJS");
-var __export2 = /* @__PURE__ */ __name((target, all) => {
+var __export3 = /* @__PURE__ */ __name((target, all) => {
   for (var name in all)
-    __defProp2(target, name, { get: all[name], enumerable: true });
+    __defProp3(target, name, { get: all[name], enumerable: true });
 }, "__export");
-var __copyProps2 = /* @__PURE__ */ __name((to, from, except, desc) => {
-  if (from && typeof from === "object" || typeof from === "function") {
-    for (let key of __getOwnPropNames2(from))
-      if (!__hasOwnProp2.call(to, key) && key !== except)
-        __defProp2(to, key, { get: /* @__PURE__ */ __name(() => from[key], "get"), enumerable: !(desc = __getOwnPropDesc2(from, key)) || desc.enumerable });
+var __reExport = /* @__PURE__ */ __name((target, module, copyDefault, desc) => {
+  if (module && typeof module === "object" || typeof module === "function") {
+    for (let key of __getOwnPropNames3(module))
+      if (!__hasOwnProp3.call(target, key) && (copyDefault || key !== "default"))
+        __defProp3(target, key, { get: /* @__PURE__ */ __name(() => module[key], "get"), enumerable: !(desc = __getOwnPropDesc3(module, key)) || desc.enumerable });
   }
-  return to;
-}, "__copyProps");
-var __toCommonJS = /* @__PURE__ */ __name((mod) => __copyProps2(__defProp2({}, "__esModule", { value: true }), mod), "__toCommonJS");
+  return target;
+}, "__reExport");
+var __toCommonJS2 = /* @__PURE__ */ ((cache2) => {
+  return (module, temp) => {
+    return cache2 && cache2.get(module) || (temp = __reExport(__markAsModule({}), module, 1), cache2 && cache2.set(module, temp), temp);
+  };
+})(typeof WeakMap !== "undefined" ? /* @__PURE__ */ new WeakMap() : 0);
+var __async = /* @__PURE__ */ __name((__this, __arguments, generator) => {
+  return new Promise((resolve, reject2) => {
+    var fulfilled = /* @__PURE__ */ __name((value) => {
+      try {
+        step(generator.next(value));
+      } catch (e) {
+        reject2(e);
+      }
+    }, "fulfilled");
+    var rejected = /* @__PURE__ */ __name((value) => {
+      try {
+        step(generator.throw(value));
+      } catch (e) {
+        reject2(e);
+      }
+    }, "rejected");
+    var step = /* @__PURE__ */ __name((x) => x.done ? resolve(x.value) : Promise.resolve(x.value).then(fulfilled, rejected), "step");
+    step((generator = generator.apply(__this, __arguments)).next());
+  });
+}, "__async");
 function pathspec(...paths) {
   const key = new String(paths);
   cache.set(key, paths);
@@ -11000,16 +9784,14 @@ function toPaths(pathSpec) {
 }
 __name(toPaths, "toPaths");
 var cache;
-var init_pathspec = __esm2({
+var init_pathspec = __esm3({
   "src/lib/args/pathspec.ts"() {
-    "use strict";
     cache = /* @__PURE__ */ new WeakMap();
   }
 });
 var GitError;
-var init_git_error = __esm2({
+var init_git_error = __esm3({
   "src/lib/errors/git-error.ts"() {
-    "use strict";
     GitError = class extends Error {
       static {
         __name(this, "GitError");
@@ -11023,9 +9805,8 @@ var init_git_error = __esm2({
   }
 });
 var GitResponseError;
-var init_git_response_error = __esm2({
+var init_git_response_error = __esm3({
   "src/lib/errors/git-response-error.ts"() {
-    "use strict";
     init_git_error();
     GitResponseError = class extends GitError {
       static {
@@ -11039,9 +9820,8 @@ var init_git_response_error = __esm2({
   }
 });
 var TaskConfigurationError;
-var init_task_configuration_error = __esm2({
+var init_task_configuration_error = __esm3({
   "src/lib/errors/task-configuration-error.ts"() {
-    "use strict";
     init_git_error();
     TaskConfigurationError = class extends GitError {
       static {
@@ -11054,10 +9834,7 @@ var init_task_configuration_error = __esm2({
   }
 });
 function asFunction(source) {
-  if (typeof source !== "function") {
-    return NOOP;
-  }
-  return source;
+  return typeof source === "function" ? source : NOOP;
 }
 __name(asFunction, "asFunction");
 function isUserFunction(source) {
@@ -11138,12 +9915,6 @@ function asArray(source) {
   return Array.isArray(source) ? source : [source];
 }
 __name(asArray, "asArray");
-function asCamelCase(str2) {
-  return str2.replace(/[\s-]+(.)/g, (_all, chr) => {
-    return chr.toUpperCase();
-  });
-}
-__name(asCamelCase, "asCamelCase");
 function asStringArray(source) {
   return asArray(source).map(String);
 }
@@ -11165,33 +9936,22 @@ function prefixedArray(input, prefix) {
 }
 __name(prefixedArray, "prefixedArray");
 function bufferToString(input) {
-  return (Array.isArray(input) ? Buffer2.concat(input) : input).toString("utf-8");
+  return (Array.isArray(input) ? Buffer.concat(input) : input).toString("utf-8");
 }
 __name(bufferToString, "bufferToString");
 function pick(source, properties) {
-  return Object.assign(
-    {},
-    ...properties.map((property) => property in source ? { [property]: source[property] } : {})
-  );
+  return Object.assign({}, ...properties.map((property) => property in source ? { [property]: source[property] } : {}));
 }
 __name(pick, "pick");
 function delay(duration = 0) {
   return new Promise((done) => setTimeout(done, duration));
 }
 __name(delay, "delay");
-function orVoid(input) {
-  if (input === false) {
-    return void 0;
-  }
-  return input;
-}
-__name(orVoid, "orVoid");
 var NULL;
 var NOOP;
 var objectToString2;
-var init_util = __esm2({
+var init_util = __esm3({
   "src/lib/utils/util.ts"() {
-    "use strict";
     NULL = "\0";
     NOOP = /* @__PURE__ */ __name(() => {
     }, "NOOP");
@@ -11223,9 +9983,8 @@ var filterString;
 var filterStringArray;
 var filterStringOrStringArray;
 var filterHasLength;
-var init_argument_filters = __esm2({
+var init_argument_filters = __esm3({
   "src/lib/utils/argument-filters.ts"() {
-    "use strict";
     init_util();
     init_pathspec();
     filterArray = /* @__PURE__ */ __name((input) => {
@@ -11249,9 +10008,8 @@ var init_argument_filters = __esm2({
   }
 });
 var ExitCodes;
-var init_exit_codes = __esm2({
+var init_exit_codes = __esm3({
   "src/lib/utils/exit-codes.ts"() {
-    "use strict";
     ExitCodes = /* @__PURE__ */ ((ExitCodes2) => {
       ExitCodes2[ExitCodes2["SUCCESS"] = 0] = "SUCCESS";
       ExitCodes2[ExitCodes2["ERROR"] = 1] = "ERROR";
@@ -11262,28 +10020,26 @@ var init_exit_codes = __esm2({
   }
 });
 var GitOutputStreams;
-var init_git_output_streams = __esm2({
+var init_git_output_streams = __esm3({
   "src/lib/utils/git-output-streams.ts"() {
-    "use strict";
-    GitOutputStreams = class _GitOutputStreams {
+    GitOutputStreams = class {
       static {
-        __name(this, "_GitOutputStreams");
+        __name(this, "GitOutputStreams");
       }
       constructor(stdOut, stdErr) {
         this.stdOut = stdOut;
         this.stdErr = stdErr;
       }
       asStrings() {
-        return new _GitOutputStreams(this.stdOut.toString("utf8"), this.stdErr.toString("utf8"));
+        return new GitOutputStreams(this.stdOut.toString("utf8"), this.stdErr.toString("utf8"));
       }
     };
   }
 });
 var LineParser;
 var RemoteLineParser;
-var init_line_parser = __esm2({
+var init_line_parser = __esm3({
   "src/lib/utils/line-parser.ts"() {
-    "use strict";
     LineParser = class {
       static {
         __name(this, "LineParser");
@@ -11302,7 +10058,6 @@ var init_line_parser = __esm2({
           this.useMatches = useMatches;
         }
       }
-      // @ts-ignore
       useMatches(target, match) {
         throw new Error(`LineParser:useMatches not implemented`);
       }
@@ -11340,19 +10095,15 @@ var init_line_parser = __esm2({
 });
 function createInstanceConfig(...options) {
   const baseDir = process.cwd();
-  const config2 = Object.assign(
-    { baseDir, ...defaultOptions },
-    ...options.filter((o) => typeof o === "object" && o)
-  );
+  const config2 = Object.assign(__spreadValues({ baseDir }, defaultOptions), ...options.filter((o) => typeof o === "object" && o));
   config2.baseDir = config2.baseDir || baseDir;
   config2.trimmed = config2.trimmed === true;
   return config2;
 }
 __name(createInstanceConfig, "createInstanceConfig");
 var defaultOptions;
-var init_simple_git_options = __esm2({
+var init_simple_git_options = __esm3({
   "src/lib/utils/simple-git-options.ts"() {
-    "use strict";
     defaultOptions = {
       binary: "git",
       maxConcurrentProcesses: 5,
@@ -11371,12 +10122,6 @@ function appendTaskOptions(options, commands = []) {
       commands2.push(value);
     } else if (filterPrimitives(value, ["boolean"])) {
       commands2.push(key + "=" + value);
-    } else if (Array.isArray(value)) {
-      for (const v of value) {
-        if (!filterPrimitives(v, ["string", "number"])) {
-          commands2.push(key + "=" + v);
-        }
-      }
     } else {
       commands2.push(key);
     }
@@ -11413,16 +10158,15 @@ function trailingFunctionArgument(args, includeNoop = true) {
   return includeNoop || isUserFunction(callback) ? callback : void 0;
 }
 __name(trailingFunctionArgument, "trailingFunctionArgument");
-var init_task_options = __esm2({
+var init_task_options = __esm3({
   "src/lib/utils/task-options.ts"() {
-    "use strict";
     init_argument_filters();
     init_util();
     init_pathspec();
   }
 });
-function callTaskParser(parser4, streams) {
-  return parser4(streams.stdOut, streams.stdErr);
+function callTaskParser(parser3, streams) {
+  return parser3(streams.stdOut, streams.stdErr);
 }
 __name(callTaskParser, "callTaskParser");
 function parseStringResponse(result, parsers12, texts, trim = true) {
@@ -11440,14 +10184,13 @@ function parseStringResponse(result, parsers12, texts, trim = true) {
   return result;
 }
 __name(parseStringResponse, "parseStringResponse");
-var init_task_parser = __esm2({
+var init_task_parser = __esm3({
   "src/lib/utils/task-parser.ts"() {
-    "use strict";
     init_util();
   }
 });
 var utils_exports = {};
-__export2(utils_exports, {
+__export3(utils_exports, {
   ExitCodes: /* @__PURE__ */ __name(() => ExitCodes, "ExitCodes"),
   GitOutputStreams: /* @__PURE__ */ __name(() => GitOutputStreams, "GitOutputStreams"),
   LineParser: /* @__PURE__ */ __name(() => LineParser, "LineParser"),
@@ -11457,7 +10200,6 @@ __export2(utils_exports, {
   append: /* @__PURE__ */ __name(() => append, "append"),
   appendTaskOptions: /* @__PURE__ */ __name(() => appendTaskOptions, "appendTaskOptions"),
   asArray: /* @__PURE__ */ __name(() => asArray, "asArray"),
-  asCamelCase: /* @__PURE__ */ __name(() => asCamelCase, "asCamelCase"),
   asFunction: /* @__PURE__ */ __name(() => asFunction, "asFunction"),
   asNumber: /* @__PURE__ */ __name(() => asNumber, "asNumber"),
   asStringArray: /* @__PURE__ */ __name(() => asStringArray, "asStringArray"),
@@ -11482,7 +10224,6 @@ __export2(utils_exports, {
   isUserFunction: /* @__PURE__ */ __name(() => isUserFunction, "isUserFunction"),
   last: /* @__PURE__ */ __name(() => last, "last"),
   objectToString: /* @__PURE__ */ __name(() => objectToString2, "objectToString"),
-  orVoid: /* @__PURE__ */ __name(() => orVoid, "orVoid"),
   parseStringResponse: /* @__PURE__ */ __name(() => parseStringResponse, "parseStringResponse"),
   pick: /* @__PURE__ */ __name(() => pick, "pick"),
   prefixedArray: /* @__PURE__ */ __name(() => prefixedArray, "prefixedArray"),
@@ -11492,9 +10233,8 @@ __export2(utils_exports, {
   trailingFunctionArgument: /* @__PURE__ */ __name(() => trailingFunctionArgument, "trailingFunctionArgument"),
   trailingOptionsArgument: /* @__PURE__ */ __name(() => trailingOptionsArgument, "trailingOptionsArgument")
 });
-var init_utils2 = __esm2({
+var init_utils3 = __esm3({
   "src/lib/utils/index.ts"() {
-    "use strict";
     init_argument_filters();
     init_exit_codes();
     init_git_output_streams();
@@ -11506,7 +10246,7 @@ var init_utils2 = __esm2({
   }
 });
 var check_is_repo_exports = {};
-__export2(check_is_repo_exports, {
+__export3(check_is_repo_exports, {
   CheckRepoActions: /* @__PURE__ */ __name(() => CheckRepoActions, "CheckRepoActions"),
   checkIsBareRepoTask: /* @__PURE__ */ __name(() => checkIsBareRepoTask, "checkIsBareRepoTask"),
   checkIsRepoRootTask: /* @__PURE__ */ __name(() => checkIsRepoRootTask, "checkIsRepoRootTask"),
@@ -11557,10 +10297,9 @@ __name(isNotRepoMessage, "isNotRepoMessage");
 var CheckRepoActions;
 var onError;
 var parser;
-var init_check_is_repo = __esm2({
+var init_check_is_repo = __esm3({
   "src/lib/tasks/check-is-repo.ts"() {
-    "use strict";
-    init_utils2();
+    init_utils3();
     CheckRepoActions = /* @__PURE__ */ ((CheckRepoActions2) => {
       CheckRepoActions2["BARE"] = "bare";
       CheckRepoActions2["IN_TREE"] = "tree";
@@ -11593,10 +10332,9 @@ var CleanResponse;
 var removalRegexp;
 var dryRunRemovalRegexp;
 var isFolderRegexp;
-var init_CleanSummary = __esm2({
+var init_CleanSummary = __esm3({
   "src/lib/responses/CleanSummary.ts"() {
-    "use strict";
-    init_utils2();
+    init_utils3();
     CleanResponse = class {
       static {
         __name(this, "CleanResponse");
@@ -11614,7 +10352,7 @@ var init_CleanSummary = __esm2({
   }
 });
 var task_exports = {};
-__export2(task_exports, {
+__export3(task_exports, {
   EMPTY_COMMANDS: /* @__PURE__ */ __name(() => EMPTY_COMMANDS, "EMPTY_COMMANDS"),
   adhocExecTask: /* @__PURE__ */ __name(() => adhocExecTask, "adhocExecTask"),
   configurationErrorTask: /* @__PURE__ */ __name(() => configurationErrorTask, "configurationErrorTask"),
@@ -11623,11 +10361,11 @@ __export2(task_exports, {
   straightThroughBufferTask: /* @__PURE__ */ __name(() => straightThroughBufferTask, "straightThroughBufferTask"),
   straightThroughStringTask: /* @__PURE__ */ __name(() => straightThroughStringTask, "straightThroughStringTask")
 });
-function adhocExecTask(parser4) {
+function adhocExecTask(parser3) {
   return {
     commands: EMPTY_COMMANDS,
     format: "empty",
-    parser: parser4
+    parser: parser3
   };
 }
 __name(adhocExecTask, "adhocExecTask");
@@ -11670,15 +10408,14 @@ function isEmptyTask(task) {
 }
 __name(isEmptyTask, "isEmptyTask");
 var EMPTY_COMMANDS;
-var init_task = __esm2({
+var init_task = __esm3({
   "src/lib/tasks/task.ts"() {
-    "use strict";
     init_task_configuration_error();
     EMPTY_COMMANDS = [];
   }
 });
 var clean_exports = {};
-__export2(clean_exports, {
+__export3(clean_exports, {
   CONFIG_ERROR_INTERACTIVE_MODE: /* @__PURE__ */ __name(() => CONFIG_ERROR_INTERACTIVE_MODE, "CONFIG_ERROR_INTERACTIVE_MODE"),
   CONFIG_ERROR_MODE_REQUIRED: /* @__PURE__ */ __name(() => CONFIG_ERROR_MODE_REQUIRED, "CONFIG_ERROR_MODE_REQUIRED"),
   CONFIG_ERROR_UNKNOWN_OPTION: /* @__PURE__ */ __name(() => CONFIG_ERROR_UNKNOWN_OPTION, "CONFIG_ERROR_UNKNOWN_OPTION"),
@@ -11756,11 +10493,10 @@ var CONFIG_ERROR_MODE_REQUIRED;
 var CONFIG_ERROR_UNKNOWN_OPTION;
 var CleanOptions;
 var CleanOptionValues;
-var init_clean = __esm2({
+var init_clean = __esm3({
   "src/lib/tasks/clean.ts"() {
-    "use strict";
     init_CleanSummary();
-    init_utils2();
+    init_utils3();
     init_task();
     CONFIG_ERROR_INTERACTIVE_MODE = "Git clean interactive mode is not supported";
     CONFIG_ERROR_MODE_REQUIRED = 'Git clean mode parameter ("n" or "f") is required';
@@ -11832,10 +10568,9 @@ function* configParser(text, requestedKey = null) {
 }
 __name(configParser, "configParser");
 var ConfigList;
-var init_ConfigList = __esm2({
+var init_ConfigList = __esm3({
   "src/lib/responses/ConfigList.ts"() {
-    "use strict";
-    init_utils2();
+    init_utils3();
     ConfigList = class {
       static {
         __name(this, "ConfigList");
@@ -11927,41 +10662,26 @@ __name(listConfigTask, "listConfigTask");
 function config_default() {
   return {
     addConfig(key, value, ...rest) {
-      return this._runTask(
-        addConfigTask(
-          key,
-          value,
-          rest[0] === true,
-          asConfigScope(
-            rest[1],
-            "local"
-            /* local */
-          )
-        ),
-        trailingFunctionArgument(arguments)
-      );
+      return this._runTask(addConfigTask(key, value, rest[0] === true, asConfigScope(
+        rest[1],
+        "local"
+        /* local */
+      )), trailingFunctionArgument(arguments));
     },
     getConfig(key, scope) {
-      return this._runTask(
-        getConfigTask(key, asConfigScope(scope, void 0)),
-        trailingFunctionArgument(arguments)
-      );
+      return this._runTask(getConfigTask(key, asConfigScope(scope, void 0)), trailingFunctionArgument(arguments));
     },
     listConfig(...rest) {
-      return this._runTask(
-        listConfigTask(asConfigScope(rest[0], void 0)),
-        trailingFunctionArgument(arguments)
-      );
+      return this._runTask(listConfigTask(asConfigScope(rest[0], void 0)), trailingFunctionArgument(arguments));
     }
   };
 }
 __name(config_default, "config_default");
 var GitConfigScope;
-var init_config = __esm2({
+var init_config = __esm3({
   "src/lib/tasks/config.ts"() {
-    "use strict";
     init_ConfigList();
-    init_utils2();
+    init_utils3();
     GitConfigScope = /* @__PURE__ */ ((GitConfigScope2) => {
       GitConfigScope2["system"] = "system";
       GitConfigScope2["global"] = "global";
@@ -11969,30 +10689,6 @@ var init_config = __esm2({
       GitConfigScope2["worktree"] = "worktree";
       return GitConfigScope2;
     })(GitConfigScope || {});
-  }
-});
-function isDiffNameStatus(input) {
-  return diffNameStatus.has(input);
-}
-__name(isDiffNameStatus, "isDiffNameStatus");
-var DiffNameStatus;
-var diffNameStatus;
-var init_diff_name_status = __esm2({
-  "src/lib/tasks/diff-name-status.ts"() {
-    "use strict";
-    DiffNameStatus = /* @__PURE__ */ ((DiffNameStatus2) => {
-      DiffNameStatus2["ADDED"] = "A";
-      DiffNameStatus2["COPIED"] = "C";
-      DiffNameStatus2["DELETED"] = "D";
-      DiffNameStatus2["MODIFIED"] = "M";
-      DiffNameStatus2["RENAMED"] = "R";
-      DiffNameStatus2["CHANGED"] = "T";
-      DiffNameStatus2["UNMERGED"] = "U";
-      DiffNameStatus2["UNKNOWN"] = "X";
-      DiffNameStatus2["BROKEN"] = "B";
-      return DiffNameStatus2;
-    })(DiffNameStatus || {});
-    diffNameStatus = new Set(Object.values(DiffNameStatus));
   }
 });
 function grepQueryBuilder(...params) {
@@ -12024,26 +10720,20 @@ function grep_default() {
       const options = getTrailingOptions(arguments);
       for (const option of disallowedOptions) {
         if (options.includes(option)) {
-          return this._runTask(
-            configurationErrorTask(`git.grep: use of "${option}" is not supported.`),
-            then
-          );
+          return this._runTask(configurationErrorTask(`git.grep: use of "${option}" is not supported.`), then);
         }
       }
       if (typeof searchTerm === "string") {
         searchTerm = grepQueryBuilder().param(searchTerm);
       }
       const commands = ["grep", "--null", "-n", "--full-name", ...options, ...searchTerm];
-      return this._runTask(
-        {
-          commands,
-          format: "utf-8",
-          parser(stdOut) {
-            return parseGrep(stdOut);
-          }
-        },
-        then
-      );
+      return this._runTask({
+        commands,
+        format: "utf-8",
+        parser(stdOut) {
+          return parseGrep(stdOut);
+        }
+      }, then);
     }
   };
 }
@@ -12052,10 +10742,9 @@ var disallowedOptions;
 var Query;
 var _a;
 var GrepQuery;
-var init_grep = __esm2({
+var init_grep = __esm3({
   "src/lib/tasks/grep.ts"() {
-    "use strict";
-    init_utils2();
+    init_utils3();
     init_task();
     disallowedOptions = ["-h"];
     Query = Symbol("grepQuery");
@@ -12083,7 +10772,7 @@ var init_grep = __esm2({
   }
 });
 var reset_exports = {};
-__export2(reset_exports, {
+__export3(reset_exports, {
   ResetMode: /* @__PURE__ */ __name(() => ResetMode, "ResetMode"),
   getResetMode: /* @__PURE__ */ __name(() => getResetMode, "getResetMode"),
   resetTask: /* @__PURE__ */ __name(() => resetTask, "resetTask")
@@ -12115,9 +10804,8 @@ function isValidResetMode(mode) {
 __name(isValidResetMode, "isValidResetMode");
 var ResetMode;
 var ResetModes;
-var init_reset = __esm2({
+var init_reset = __esm3({
   "src/lib/tasks/reset.ts"() {
-    "use strict";
     init_task();
     ResetMode = /* @__PURE__ */ ((ResetMode2) => {
       ResetMode2["MIXED"] = "mixed";
@@ -12167,10 +10855,7 @@ function createLogger(label, verbose, initialStep, infoDebugger = createLog()) {
   const key = childLoggerName(filterType(verbose, filterString), debugDebugger, infoDebugger);
   return step(initialStep);
   function sibling(name, initial) {
-    return append(
-      spawned,
-      createLogger(label, key.replace(/^[^:]+/, name), initial, infoDebugger)
-    );
+    return append(spawned, createLogger(label, key.replace(/^[^:]+/, name), initial, infoDebugger));
   }
   __name(sibling, "sibling");
   function step(phase) {
@@ -12187,10 +10872,9 @@ function createLogger(label, verbose, initialStep, infoDebugger = createLog()) {
   __name(step, "step");
 }
 __name(createLogger, "createLogger");
-var init_git_logger = __esm2({
+var init_git_logger = __esm3({
   "src/lib/git-logger.ts"() {
-    "use strict";
-    init_utils2();
+    init_utils3();
     import_debug.default.formatters.L = (value) => String(filterHasLength(value) ? value.length : "-");
     import_debug.default.formatters.B = (value) => {
       if (Buffer.isBuffer(value)) {
@@ -12200,13 +10884,13 @@ var init_git_logger = __esm2({
     };
   }
 });
+var _TasksPendingQueue;
 var TasksPendingQueue;
-var init_tasks_pending_queue = __esm2({
+var init_tasks_pending_queue = __esm3({
   "src/lib/runners/tasks-pending-queue.ts"() {
-    "use strict";
     init_git_error();
     init_git_logger();
-    TasksPendingQueue = class _TasksPendingQueue {
+    _TasksPendingQueue = class {
       static {
         __name(this, "_TasksPendingQueue");
       }
@@ -12236,14 +10920,9 @@ var init_tasks_pending_queue = __esm2({
         for (const [task, { logger }] of Array.from(this._queue.entries())) {
           if (task === err.task) {
             logger.info(`Failed %o`, err);
-            logger(
-              `Fatal exception, any as-yet un-started tasks run through this executor will not be attempted`
-            );
+            logger(`Fatal exception, any as-yet un-started tasks run through this executor will not be attempted`);
           } else {
-            logger.info(
-              `A fatal exception occurred in a previous task, the queue has been purged: %o`,
-              err.message
-            );
+            logger.info(`A fatal exception occurred in a previous task, the queue has been purged: %o`, err.message);
           }
           this.complete(task);
         }
@@ -12268,10 +10947,9 @@ var init_tasks_pending_queue = __esm2({
       static getName(name = "empty") {
         return `task:${name}:${++_TasksPendingQueue.counter}`;
       }
-      static {
-        this.counter = 0;
-      }
     };
+    TasksPendingQueue = _TasksPendingQueue;
+    TasksPendingQueue.counter = 0;
   }
 });
 function pluginContext(task, commands) {
@@ -12297,12 +10975,11 @@ function onDataReceived(target, name, logger, output) {
 }
 __name(onDataReceived, "onDataReceived");
 var GitExecutorChain;
-var init_git_executor_chain = __esm2({
+var init_git_executor_chain = __esm3({
   "src/lib/runners/git-executor-chain.ts"() {
-    "use strict";
     init_git_error();
     init_task();
-    init_utils2();
+    init_utils3();
     init_tasks_pending_queue();
     GitExecutorChain = class {
       static {
@@ -12314,6 +10991,9 @@ var init_git_executor_chain = __esm2({
         this._plugins = _plugins;
         this._chain = Promise.resolve();
         this._queue = new TasksPendingQueue();
+      }
+      get binary() {
+        return this._executor.binary;
       }
       get cwd() {
         return this._cwd || this._executor.cwd;
@@ -12334,18 +11014,20 @@ var init_git_executor_chain = __esm2({
         this._queue.push(task);
         return this._chain = this._chain.then(() => this.attemptTask(task));
       }
-      async attemptTask(task) {
-        const onScheduleComplete = await this._scheduler.next();
-        const onQueueComplete = /* @__PURE__ */ __name(() => this._queue.complete(task), "onQueueComplete");
-        try {
-          const { logger } = this._queue.attempt(task);
-          return await (isEmptyTask(task) ? this.attemptEmptyTask(task, logger) : this.attemptRemoteTask(task, logger));
-        } catch (e) {
-          throw this.onFatalException(task, e);
-        } finally {
-          onQueueComplete();
-          onScheduleComplete();
-        }
+      attemptTask(task) {
+        return __async(this, null, function* () {
+          const onScheduleComplete = yield this._scheduler.next();
+          const onQueueComplete = /* @__PURE__ */ __name(() => this._queue.complete(task), "onQueueComplete");
+          try {
+            const { logger } = this._queue.attempt(task);
+            return yield isEmptyTask(task) ? this.attemptEmptyTask(task, logger) : this.attemptRemoteTask(task, logger);
+          } catch (e) {
+            throw this.onFatalException(task, e);
+          } finally {
+            onQueueComplete();
+            onScheduleComplete();
+          }
+        });
       }
       onFatalException(task, e) {
         const gitError = e instanceof GitError ? Object.assign(e, { task }) : new GitError(task, e && String(e));
@@ -12353,167 +11035,127 @@ var init_git_executor_chain = __esm2({
         this._queue.fatal(gitError);
         return gitError;
       }
-      async attemptRemoteTask(task, logger) {
-        const binary = this._plugins.exec("spawn.binary", "", pluginContext(task, task.commands));
-        const args = this._plugins.exec(
-          "spawn.args",
-          [...task.commands],
-          pluginContext(task, task.commands)
-        );
-        const raw = await this.gitResponse(
-          task,
-          binary,
-          args,
-          this.outputHandler,
-          logger.step("SPAWN")
-        );
-        const outputStreams = await this.handleTaskData(task, args, raw, logger.step("HANDLE"));
-        logger(`passing response to task's parser as a %s`, task.format);
-        if (isBufferTask(task)) {
-          return callTaskParser(task.parser, outputStreams);
-        }
-        return callTaskParser(task.parser, outputStreams.asStrings());
+      attemptRemoteTask(task, logger) {
+        return __async(this, null, function* () {
+          const args = this._plugins.exec("spawn.args", [...task.commands], pluginContext(task, task.commands));
+          const raw = yield this.gitResponse(task, this.binary, args, this.outputHandler, logger.step("SPAWN"));
+          const outputStreams = yield this.handleTaskData(task, args, raw, logger.step("HANDLE"));
+          logger(`passing response to task's parser as a %s`, task.format);
+          if (isBufferTask(task)) {
+            return callTaskParser(task.parser, outputStreams);
+          }
+          return callTaskParser(task.parser, outputStreams.asStrings());
+        });
       }
-      async attemptEmptyTask(task, logger) {
-        logger(`empty task bypassing child process to call to task's parser`);
-        return task.parser(this);
+      attemptEmptyTask(task, logger) {
+        return __async(this, null, function* () {
+          logger(`empty task bypassing child process to call to task's parser`);
+          return task.parser(this);
+        });
       }
       handleTaskData(task, args, result, logger) {
         const { exitCode: exitCode2, rejection, stdOut, stdErr } = result;
         return new Promise((done, fail) => {
           logger(`Preparing to handle process response exitCode=%d stdOut=`, exitCode2);
-          const { error: error4 } = this._plugins.exec(
-            "task.error",
-            { error: rejection },
-            {
-              ...pluginContext(task, args),
-              ...result
-            }
-          );
+          const { error: error4 } = this._plugins.exec("task.error", { error: rejection }, __spreadValues(__spreadValues({}, pluginContext(task, args)), result));
           if (error4 && task.onError) {
             logger.info(`exitCode=%s handling with custom error handler`);
-            return task.onError(
-              result,
-              error4,
-              (newStdOut) => {
-                logger.info(`custom error handler treated as success`);
-                logger(`custom error returned a %s`, objectToString2(newStdOut));
-                done(
-                  new GitOutputStreams(
-                    Array.isArray(newStdOut) ? Buffer.concat(newStdOut) : newStdOut,
-                    Buffer.concat(stdErr)
-                  )
-                );
-              },
-              fail
-            );
+            return task.onError(result, error4, (newStdOut) => {
+              logger.info(`custom error handler treated as success`);
+              logger(`custom error returned a %s`, objectToString2(newStdOut));
+              done(new GitOutputStreams(Array.isArray(newStdOut) ? Buffer.concat(newStdOut) : newStdOut, Buffer.concat(stdErr)));
+            }, fail);
           }
           if (error4) {
-            logger.info(
-              `handling as error: exitCode=%s stdErr=%s rejection=%o`,
-              exitCode2,
-              stdErr.length,
-              rejection
-            );
+            logger.info(`handling as error: exitCode=%s stdErr=%s rejection=%o`, exitCode2, stdErr.length, rejection);
             return fail(error4);
           }
           logger.info(`retrieving task output complete`);
           done(new GitOutputStreams(Buffer.concat(stdOut), Buffer.concat(stdErr)));
         });
       }
-      async gitResponse(task, command, args, outputHandler, logger) {
-        const outputLogger = logger.sibling("output");
-        const spawnOptions = this._plugins.exec(
-          "spawn.options",
-          {
+      gitResponse(task, command, args, outputHandler, logger) {
+        return __async(this, null, function* () {
+          const outputLogger = logger.sibling("output");
+          const spawnOptions = this._plugins.exec("spawn.options", {
             cwd: this.cwd,
             env: this.env,
             windowsHide: true
-          },
-          pluginContext(task, task.commands)
-        );
-        return new Promise((done) => {
-          const stdOut = [];
-          const stdErr = [];
-          logger.info(`%s %o`, command, args);
-          logger("%O", spawnOptions);
-          let rejection = this._beforeSpawn(task, args);
-          if (rejection) {
-            return done({
-              stdOut,
-              stdErr,
-              exitCode: 9901,
-              rejection
-            });
-          }
-          this._plugins.exec("spawn.before", void 0, {
-            ...pluginContext(task, args),
-            kill(reason) {
-              rejection = reason || rejection;
-            }
-          });
-          const spawned = spawn(command, args, spawnOptions);
-          spawned.stdout.on(
-            "data",
-            onDataReceived(stdOut, "stdOut", logger, outputLogger.step("stdOut"))
-          );
-          spawned.stderr.on(
-            "data",
-            onDataReceived(stdErr, "stdErr", logger, outputLogger.step("stdErr"))
-          );
-          spawned.on("error", onErrorReceived(stdErr, logger));
-          if (outputHandler) {
-            logger(`Passing child process stdOut/stdErr to custom outputHandler`);
-            outputHandler(command, spawned.stdout, spawned.stderr, [...args]);
-          }
-          this._plugins.exec("spawn.after", void 0, {
-            ...pluginContext(task, args),
-            spawned,
-            close(exitCode2, reason) {
-              done({
+          }, pluginContext(task, task.commands));
+          return new Promise((done) => {
+            const stdOut = [];
+            const stdErr = [];
+            logger.info(`%s %o`, command, args);
+            logger("%O", spawnOptions);
+            let rejection = this._beforeSpawn(task, args);
+            if (rejection) {
+              return done({
                 stdOut,
                 stdErr,
-                exitCode: exitCode2,
-                rejection: rejection || reason
+                exitCode: 9901,
+                rejection
               });
-            },
-            kill(reason) {
-              if (spawned.killed) {
-                return;
-              }
-              rejection = reason;
-              spawned.kill("SIGINT");
             }
+            this._plugins.exec("spawn.before", void 0, __spreadProps(__spreadValues({}, pluginContext(task, args)), {
+              kill(reason) {
+                rejection = reason || rejection;
+              }
+            }));
+            const spawned = spawn(command, args, spawnOptions);
+            spawned.stdout.on("data", onDataReceived(stdOut, "stdOut", logger, outputLogger.step("stdOut")));
+            spawned.stderr.on("data", onDataReceived(stdErr, "stdErr", logger, outputLogger.step("stdErr")));
+            spawned.on("error", onErrorReceived(stdErr, logger));
+            if (outputHandler) {
+              logger(`Passing child process stdOut/stdErr to custom outputHandler`);
+              outputHandler(command, spawned.stdout, spawned.stderr, [...args]);
+            }
+            this._plugins.exec("spawn.after", void 0, __spreadProps(__spreadValues({}, pluginContext(task, args)), {
+              spawned,
+              close(exitCode2, reason) {
+                done({
+                  stdOut,
+                  stdErr,
+                  exitCode: exitCode2,
+                  rejection: rejection || reason
+                });
+              },
+              kill(reason) {
+                if (spawned.killed) {
+                  return;
+                }
+                rejection = reason;
+                spawned.kill("SIGINT");
+              }
+            }));
           });
         });
       }
       _beforeSpawn(task, args) {
         let rejection;
-        this._plugins.exec("spawn.before", void 0, {
-          ...pluginContext(task, args),
+        this._plugins.exec("spawn.before", void 0, __spreadProps(__spreadValues({}, pluginContext(task, args)), {
           kill(reason) {
             rejection = reason || rejection;
           }
-        });
+        }));
         return rejection;
       }
     };
   }
 });
 var git_executor_exports = {};
-__export2(git_executor_exports, {
+__export3(git_executor_exports, {
   GitExecutor: /* @__PURE__ */ __name(() => GitExecutor, "GitExecutor")
 });
 var GitExecutor;
-var init_git_executor = __esm2({
+var init_git_executor = __esm3({
   "src/lib/runners/git-executor.ts"() {
-    "use strict";
     init_git_executor_chain();
     GitExecutor = class {
       static {
         __name(this, "GitExecutor");
       }
-      constructor(cwd2, _scheduler, _plugins) {
+      constructor(binary = "git", cwd2, _scheduler, _plugins) {
+        this.binary = binary;
         this.cwd = cwd2;
         this._scheduler = _scheduler;
         this._plugins = _plugins;
@@ -12533,11 +11175,8 @@ function taskCallback(task, response, callback = NOOP) {
     callback(null, data);
   }, "onSuccess");
   const onError2 = /* @__PURE__ */ __name((err) => {
-    if (err?.task === task) {
-      callback(
-        err instanceof GitResponseError ? addDeprecationNoticeToError(err) : err,
-        void 0
-      );
+    if ((err == null ? void 0 : err.task) === task) {
+      callback(err instanceof GitResponseError ? addDeprecationNoticeToError(err) : err, void 0);
     }
   }, "onError2");
   response.then(onSuccess, onError2);
@@ -12545,9 +11184,7 @@ function taskCallback(task, response, callback = NOOP) {
 __name(taskCallback, "taskCallback");
 function addDeprecationNoticeToError(err) {
   let log4 = /* @__PURE__ */ __name((name) => {
-    console.warn(
-      `simple-git deprecation notice: accessing GitResponseError.${name} should be GitResponseError.git.${name}, this will no longer be available in version 3`
-    );
+    console.warn(`simple-git deprecation notice: accessing GitResponseError.${name} should be GitResponseError.git.${name}, this will no longer be available in version 3`);
     log4 = NOOP;
   }, "log");
   return Object.create(err, Object.getOwnPropertyNames(err.git).reduce(descriptorReducer, {}));
@@ -12568,11 +11205,10 @@ function addDeprecationNoticeToError(err) {
   __name(descriptorReducer, "descriptorReducer");
 }
 __name(addDeprecationNoticeToError, "addDeprecationNoticeToError");
-var init_task_callback = __esm2({
+var init_task_callback = __esm3({
   "src/lib/task-callback.ts"() {
-    "use strict";
     init_git_response_error();
-    init_utils2();
+    init_utils3();
   }
 });
 function changeWorkingDirectoryTask(directory, root) {
@@ -12584,10 +11220,9 @@ function changeWorkingDirectoryTask(directory, root) {
   });
 }
 __name(changeWorkingDirectoryTask, "changeWorkingDirectoryTask");
-var init_change_working_directory = __esm2({
+var init_change_working_directory = __esm3({
   "src/lib/tasks/change-working-directory.ts"() {
-    "use strict";
-    init_utils2();
+    init_utils3();
     init_task();
   }
 });
@@ -12602,74 +11237,21 @@ __name(checkoutTask, "checkoutTask");
 function checkout_default() {
   return {
     checkout() {
-      return this._runTask(
-        checkoutTask(getTrailingOptions(arguments, 1)),
-        trailingFunctionArgument(arguments)
-      );
+      return this._runTask(checkoutTask(getTrailingOptions(arguments, 1)), trailingFunctionArgument(arguments));
     },
     checkoutBranch(branchName, startPoint) {
-      return this._runTask(
-        checkoutTask(["-b", branchName, startPoint, ...getTrailingOptions(arguments)]),
-        trailingFunctionArgument(arguments)
-      );
+      return this._runTask(checkoutTask(["-b", branchName, startPoint, ...getTrailingOptions(arguments)]), trailingFunctionArgument(arguments));
     },
     checkoutLocalBranch(branchName) {
-      return this._runTask(
-        checkoutTask(["-b", branchName, ...getTrailingOptions(arguments)]),
-        trailingFunctionArgument(arguments)
-      );
+      return this._runTask(checkoutTask(["-b", branchName, ...getTrailingOptions(arguments)]), trailingFunctionArgument(arguments));
     }
   };
 }
 __name(checkout_default, "checkout_default");
-var init_checkout = __esm2({
+var init_checkout = __esm3({
   "src/lib/tasks/checkout.ts"() {
-    "use strict";
-    init_utils2();
+    init_utils3();
     init_task();
-  }
-});
-function countObjectsResponse() {
-  return {
-    count: 0,
-    garbage: 0,
-    inPack: 0,
-    packs: 0,
-    prunePackable: 0,
-    size: 0,
-    sizeGarbage: 0,
-    sizePack: 0
-  };
-}
-__name(countObjectsResponse, "countObjectsResponse");
-function count_objects_default() {
-  return {
-    countObjects() {
-      return this._runTask({
-        commands: ["count-objects", "--verbose"],
-        format: "utf-8",
-        parser(stdOut) {
-          return parseStringResponse(countObjectsResponse(), [parser2], stdOut);
-        }
-      });
-    }
-  };
-}
-__name(count_objects_default, "count_objects_default");
-var parser2;
-var init_count_objects = __esm2({
-  "src/lib/tasks/count-objects.ts"() {
-    "use strict";
-    init_utils2();
-    parser2 = new LineParser(
-      /([a-z-]+): (\d+)$/,
-      (result, [key, value]) => {
-        const property = asCamelCase(key);
-        if (result.hasOwnProperty(property)) {
-          result[property] = asNumber(value);
-        }
-      }
-    );
   }
 });
 function parseCommitResult(stdOut) {
@@ -12688,10 +11270,9 @@ function parseCommitResult(stdOut) {
 }
 __name(parseCommitResult, "parseCommitResult");
 var parsers;
-var init_parse_commit = __esm2({
+var init_parse_commit = __esm3({
   "src/lib/parsers/parse-commit.ts"() {
-    "use strict";
-    init_utils2();
+    init_utils3();
     parsers = [
       new LineParser(/^\[([^\s]+)( \([^)]+\))? ([^\]]+)/, (result, [branch, root, commit]) => {
         result.branch = branch;
@@ -12709,26 +11290,20 @@ var init_parse_commit = __esm2({
           name: parts.join("<").trim()
         };
       }),
-      new LineParser(
-        /(\d+)[^,]*(?:,\s*(\d+)[^,]*)(?:,\s*(\d+))/g,
-        (result, [changes, insertions, deletions]) => {
-          result.summary.changes = parseInt(changes, 10) || 0;
-          result.summary.insertions = parseInt(insertions, 10) || 0;
-          result.summary.deletions = parseInt(deletions, 10) || 0;
+      new LineParser(/(\d+)[^,]*(?:,\s*(\d+)[^,]*)(?:,\s*(\d+))/g, (result, [changes, insertions, deletions]) => {
+        result.summary.changes = parseInt(changes, 10) || 0;
+        result.summary.insertions = parseInt(insertions, 10) || 0;
+        result.summary.deletions = parseInt(deletions, 10) || 0;
+      }),
+      new LineParser(/^(\d+)[^,]*(?:,\s*(\d+)[^(]+\(([+-]))?/, (result, [changes, lines, direction]) => {
+        result.summary.changes = parseInt(changes, 10) || 0;
+        const count3 = parseInt(lines, 10) || 0;
+        if (direction === "-") {
+          result.summary.deletions = count3;
+        } else if (direction === "+") {
+          result.summary.insertions = count3;
         }
-      ),
-      new LineParser(
-        /^(\d+)[^,]*(?:,\s*(\d+)[^(]+\(([+-]))?/,
-        (result, [changes, lines, direction]) => {
-          result.summary.changes = parseInt(changes, 10) || 0;
-          const count3 = parseInt(lines, 10) || 0;
-          if (direction === "-") {
-            result.summary.deletions = count3;
-          } else if (direction === "+") {
-            result.summary.insertions = count3;
-          }
-        }
-      )
+      })
     ];
   }
 });
@@ -12751,46 +11326,35 @@ __name(commitTask, "commitTask");
 function commit_default() {
   return {
     commit(message, ...rest) {
-      const next2 = trailingFunctionArgument(arguments);
-      const task = rejectDeprecatedSignatures(message) || commitTask(
-        asArray(message),
-        asArray(filterType(rest[0], filterStringOrStringArray, [])),
-        [...filterType(rest[1], filterArray, []), ...getTrailingOptions(arguments, 0, true)]
-      );
-      return this._runTask(task, next2);
+      const next = trailingFunctionArgument(arguments);
+      const task = rejectDeprecatedSignatures(message) || commitTask(asArray(message), asArray(filterType(rest[0], filterStringOrStringArray, [])), [...filterType(rest[1], filterArray, []), ...getTrailingOptions(arguments, 0, true)]);
+      return this._runTask(task, next);
     }
   };
   function rejectDeprecatedSignatures(message) {
-    return !filterStringOrStringArray(message) && configurationErrorTask(
-      `git.commit: requires the commit message to be supplied as a string/string[]`
-    );
+    return !filterStringOrStringArray(message) && configurationErrorTask(`git.commit: requires the commit message to be supplied as a string/string[]`);
   }
   __name(rejectDeprecatedSignatures, "rejectDeprecatedSignatures");
 }
 __name(commit_default, "commit_default");
-var init_commit = __esm2({
+var init_commit = __esm3({
   "src/lib/tasks/commit.ts"() {
-    "use strict";
     init_parse_commit();
-    init_utils2();
+    init_utils3();
     init_task();
   }
 });
 function first_commit_default() {
   return {
     firstCommit() {
-      return this._runTask(
-        straightThroughStringTask(["rev-list", "--max-parents=0", "HEAD"], true),
-        trailingFunctionArgument(arguments)
-      );
+      return this._runTask(straightThroughStringTask(["rev-list", "--max-parents=0", "HEAD"], true), trailingFunctionArgument(arguments));
     }
   };
 }
 __name(first_commit_default, "first_commit_default");
-var init_first_commit = __esm2({
+var init_first_commit = __esm3({
   "src/lib/tasks/first-commit.ts"() {
-    "use strict";
-    init_utils2();
+    init_utils3();
     init_task();
   }
 });
@@ -12802,9 +11366,8 @@ function hashObjectTask(filePath, write2) {
   return straightThroughStringTask(commands, true);
 }
 __name(hashObjectTask, "hashObjectTask");
-var init_hash_object = __esm2({
+var init_hash_object = __esm3({
   "src/lib/tasks/hash-object.ts"() {
-    "use strict";
     init_task();
   }
 });
@@ -12832,9 +11395,8 @@ __name(parseInit, "parseInit");
 var InitSummary;
 var initResponseRegex;
 var reInitResponseRegex;
-var init_InitSummary = __esm2({
+var init_InitSummary = __esm3({
   "src/lib/responses/InitSummary.ts"() {
-    "use strict";
     InitSummary = class {
       static {
         __name(this, "InitSummary");
@@ -12869,9 +11431,8 @@ function initTask(bare = false, path4, customArgs) {
 }
 __name(initTask, "initTask");
 var bareCommand;
-var init_init = __esm2({
+var init_init = __esm3({
   "src/lib/tasks/init.ts"() {
-    "use strict";
     init_InitSummary();
     bareCommand = "--bare";
   }
@@ -12891,16 +11452,14 @@ function isLogFormat(customArg) {
 }
 __name(isLogFormat, "isLogFormat");
 var logFormatRegex;
-var init_log_format = __esm2({
+var init_log_format = __esm3({
   "src/lib/args/log-format.ts"() {
-    "use strict";
     logFormatRegex = /^--(stat|numstat|name-only|name-status)(=|$)/;
   }
 });
 var DiffSummary;
-var init_DiffSummary = __esm2({
+var init_DiffSummary = __esm3({
   "src/lib/responses/DiffSummary.ts"() {
-    "use strict";
     DiffSummary = class {
       static {
         __name(this, "DiffSummary");
@@ -12915,8 +11474,8 @@ var init_DiffSummary = __esm2({
   }
 });
 function getDiffParser(format = "") {
-  const parser4 = diffSummaryParsers[format];
-  return (stdOut) => parseStringResponse(new DiffSummary(), parser4, stdOut, false);
+  const parser3 = diffSummaryParsers[format];
+  return (stdOut) => parseStringResponse(new DiffSummary(), parser3, stdOut, false);
 }
 __name(getDiffParser, "getDiffParser");
 var statParser;
@@ -12924,66 +11483,52 @@ var numStatParser;
 var nameOnlyParser;
 var nameStatusParser;
 var diffSummaryParsers;
-var init_parse_diff_summary = __esm2({
+var init_parse_diff_summary = __esm3({
   "src/lib/parsers/parse-diff-summary.ts"() {
-    "use strict";
     init_log_format();
     init_DiffSummary();
-    init_diff_name_status();
-    init_utils2();
+    init_utils3();
     statParser = [
-      new LineParser(
-        /^(.+)\s+\|\s+(\d+)(\s+[+\-]+)?$/,
-        (result, [file, changes, alterations = ""]) => {
-          result.files.push({
-            file: file.trim(),
-            changes: asNumber(changes),
-            insertions: alterations.replace(/[^+]/g, "").length,
-            deletions: alterations.replace(/[^-]/g, "").length,
-            binary: false
-          });
-        }
-      ),
-      new LineParser(
-        /^(.+) \|\s+Bin ([0-9.]+) -> ([0-9.]+) ([a-z]+)/,
-        (result, [file, before, after]) => {
-          result.files.push({
-            file: file.trim(),
-            before: asNumber(before),
-            after: asNumber(after),
-            binary: true
-          });
-        }
-      ),
-      new LineParser(
-        /(\d+) files? changed\s*((?:, \d+ [^,]+){0,2})/,
-        (result, [changed, summary]) => {
-          const inserted = /(\d+) i/.exec(summary);
-          const deleted = /(\d+) d/.exec(summary);
-          result.changed = asNumber(changed);
-          result.insertions = asNumber(inserted?.[1]);
-          result.deletions = asNumber(deleted?.[1]);
-        }
-      )
+      new LineParser(/(.+)\s+\|\s+(\d+)(\s+[+\-]+)?$/, (result, [file, changes, alterations = ""]) => {
+        result.files.push({
+          file: file.trim(),
+          changes: asNumber(changes),
+          insertions: alterations.replace(/[^+]/g, "").length,
+          deletions: alterations.replace(/[^-]/g, "").length,
+          binary: false
+        });
+      }),
+      new LineParser(/(.+) \|\s+Bin ([0-9.]+) -> ([0-9.]+) ([a-z]+)/, (result, [file, before, after]) => {
+        result.files.push({
+          file: file.trim(),
+          before: asNumber(before),
+          after: asNumber(after),
+          binary: true
+        });
+      }),
+      new LineParser(/(\d+) files? changed\s*((?:, \d+ [^,]+){0,2})/, (result, [changed, summary]) => {
+        const inserted = /(\d+) i/.exec(summary);
+        const deleted = /(\d+) d/.exec(summary);
+        result.changed = asNumber(changed);
+        result.insertions = asNumber(inserted == null ? void 0 : inserted[1]);
+        result.deletions = asNumber(deleted == null ? void 0 : deleted[1]);
+      })
     ];
     numStatParser = [
-      new LineParser(
-        /(\d+)\t(\d+)\t(.+)$/,
-        (result, [changesInsert, changesDelete, file]) => {
-          const insertions = asNumber(changesInsert);
-          const deletions = asNumber(changesDelete);
-          result.changed++;
-          result.insertions += insertions;
-          result.deletions += deletions;
-          result.files.push({
-            file,
-            changes: insertions + deletions,
-            insertions,
-            deletions,
-            binary: false
-          });
-        }
-      ),
+      new LineParser(/(\d+)\t(\d+)\t(.+)$/, (result, [changesInsert, changesDelete, file]) => {
+        const insertions = asNumber(changesInsert);
+        const deletions = asNumber(changesDelete);
+        result.changed++;
+        result.insertions += insertions;
+        result.deletions += deletions;
+        result.files.push({
+          file,
+          changes: insertions + deletions,
+          insertions,
+          deletions,
+          binary: false
+        });
+      }),
       new LineParser(/-\t-\t(.+)$/, (result, [file]) => {
         result.changed++;
         result.files.push({
@@ -13007,22 +11552,16 @@ var init_parse_diff_summary = __esm2({
       })
     ];
     nameStatusParser = [
-      new LineParser(
-        /([ACDMRTUXB])([0-9]{0,3})\t(.[^\t]*)(\t(.[^\t]*))?$/,
-        (result, [status, similarity, from, _to, to]) => {
-          result.changed++;
-          result.files.push({
-            file: to ?? from,
-            changes: 0,
-            insertions: 0,
-            deletions: 0,
-            binary: false,
-            status: orVoid(isDiffNameStatus(status) && status),
-            from: orVoid(!!to && from !== to && from),
-            similarity: asNumber(similarity)
-          });
-        }
-      )
+      new LineParser(/([ACDMRTUXB])\s*(.+)$/, (result, [_status, file]) => {
+        result.changed++;
+        result.files.push({
+          file,
+          changes: 0,
+          insertions: 0,
+          deletions: 0,
+          binary: false
+        });
+      })
     ];
     diffSummaryParsers = {
       [
@@ -13049,25 +11588,18 @@ var init_parse_diff_summary = __esm2({
   }
 });
 function lineBuilder(tokens, fields) {
-  return fields.reduce(
-    (line, field, index) => {
-      line[field] = tokens[index] || "";
-      return line;
-    },
-    /* @__PURE__ */ Object.create({ diff: null })
-  );
+  return fields.reduce((line, field, index) => {
+    line[field] = tokens[index] || "";
+    return line;
+  }, /* @__PURE__ */ Object.create({ diff: null }));
 }
 __name(lineBuilder, "lineBuilder");
 function createListLogSummaryParser(splitter = SPLITTER, fields = defaultFieldNames, logFormat = "") {
   const parseDiffResult = getDiffParser(logFormat);
   return function(stdOut) {
-    const all = toLinesWithContent(
-      stdOut.trim(),
-      false,
-      START_BOUNDARY
-    ).map(function(item) {
-      const lineDetail = item.split(COMMIT_BOUNDARY);
-      const listLogLine = lineBuilder(lineDetail[0].split(splitter), fields);
+    const all = toLinesWithContent(stdOut, true, START_BOUNDARY).map(function(item) {
+      const lineDetail = item.trim().split(COMMIT_BOUNDARY);
+      const listLogLine = lineBuilder(lineDetail[0].trim().split(splitter), fields);
       if (lineDetail.length > 1 && !!lineDetail[1].trim()) {
         listLogLine.diff = parseDiffResult(lineDetail[1]);
       }
@@ -13085,10 +11617,9 @@ var START_BOUNDARY;
 var COMMIT_BOUNDARY;
 var SPLITTER;
 var defaultFieldNames;
-var init_parse_list_log_summary = __esm2({
+var init_parse_list_log_summary = __esm3({
   "src/lib/parsers/parse-list-log-summary.ts"() {
-    "use strict";
-    init_utils2();
+    init_utils3();
     init_parse_diff_summary();
     init_log_format();
     START_BOUNDARY = "\xF2\xF2\xF2\xF2\xF2\xF2 ";
@@ -13098,7 +11629,7 @@ var init_parse_list_log_summary = __esm2({
   }
 });
 var diff_exports = {};
-__export2(diff_exports, {
+__export3(diff_exports, {
   diffSummaryTask: /* @__PURE__ */ __name(() => diffSummaryTask, "diffSummaryTask"),
   validateLogFormatConfig: /* @__PURE__ */ __name(() => validateLogFormatConfig, "validateLogFormatConfig")
 });
@@ -13120,20 +11651,15 @@ __name(diffSummaryTask, "diffSummaryTask");
 function validateLogFormatConfig(customArgs) {
   const flags = customArgs.filter(isLogFormat);
   if (flags.length > 1) {
-    return configurationErrorTask(
-      `Summary flags are mutually exclusive - pick one of ${flags.join(",")}`
-    );
+    return configurationErrorTask(`Summary flags are mutually exclusive - pick one of ${flags.join(",")}`);
   }
   if (flags.length && customArgs.includes("-z")) {
-    return configurationErrorTask(
-      `Summary flag ${flags} parsing is not compatible with null termination option '-z'`
-    );
+    return configurationErrorTask(`Summary flag ${flags} parsing is not compatible with null termination option '-z'`);
   }
 }
 __name(validateLogFormatConfig, "validateLogFormatConfig");
-var init_diff = __esm2({
+var init_diff = __esm3({
   "src/lib/tasks/diff.ts"() {
-    "use strict";
     init_log_format();
     init_parse_diff_summary();
     init_task();
@@ -13160,7 +11686,7 @@ function userOptions(input) {
 __name(userOptions, "userOptions");
 function parseLogOptions(opt = {}, customArgs = []) {
   const splitter = filterType(opt.splitter, filterString, SPLITTER);
-  const format = filterPlainObject(opt.format) ? opt.format : {
+  const format = !filterPrimitives(opt.format) && opt.format ? opt.format : {
     hash: "%H",
     date: opt.strictDate === false ? "%ai" : "%aI",
     message: "%s",
@@ -13195,24 +11721,21 @@ function parseLogOptions(opt = {}, customArgs = []) {
 }
 __name(parseLogOptions, "parseLogOptions");
 function logTask(splitter, fields, customArgs) {
-  const parser4 = createListLogSummaryParser(splitter, fields, logFormatFromCommand(customArgs));
+  const parser3 = createListLogSummaryParser(splitter, fields, logFormatFromCommand(customArgs));
   return {
     commands: ["log", ...customArgs],
     format: "utf-8",
-    parser: parser4
+    parser: parser3
   };
 }
 __name(logTask, "logTask");
 function log_default() {
   return {
     log(...rest) {
-      const next2 = trailingFunctionArgument(arguments);
-      const options = parseLogOptions(
-        trailingOptionsArgument(arguments),
-        filterType(arguments[0], filterArray)
-      );
+      const next = trailingFunctionArgument(arguments);
+      const options = parseLogOptions(trailingOptionsArgument(arguments), filterType(arguments[0], filterArray));
       const task = rejectDeprecatedSignatures(...rest) || validateLogFormatConfig(options.commands) || createLogTask(options);
-      return this._runTask(task, next2);
+      return this._runTask(task, next);
     }
   };
   function createLogTask(options) {
@@ -13220,21 +11743,18 @@ function log_default() {
   }
   __name(createLogTask, "createLogTask");
   function rejectDeprecatedSignatures(from, to) {
-    return filterString(from) && filterString(to) && configurationErrorTask(
-      `git.log(string, string) should be replaced with git.log({ from: string, to: string })`
-    );
+    return filterString(from) && filterString(to) && configurationErrorTask(`git.log(string, string) should be replaced with git.log({ from: string, to: string })`);
   }
   __name(rejectDeprecatedSignatures, "rejectDeprecatedSignatures");
 }
 __name(log_default, "log_default");
 var excludeOptions;
-var init_log = __esm2({
+var init_log = __esm3({
   "src/lib/tasks/log.ts"() {
-    "use strict";
     init_log_format();
     init_pathspec();
     init_parse_list_log_summary();
-    init_utils2();
+    init_utils3();
     init_task();
     init_diff();
     excludeOptions = /* @__PURE__ */ ((excludeOptions2) => {
@@ -13257,9 +11777,8 @@ var init_log = __esm2({
 });
 var MergeSummaryConflict;
 var MergeSummaryDetail;
-var init_MergeSummary = __esm2({
+var init_MergeSummary = __esm3({
   "src/lib/responses/MergeSummary.ts"() {
-    "use strict";
     MergeSummaryConflict = class {
       static {
         __name(this, "MergeSummaryConflict");
@@ -13299,9 +11818,8 @@ var init_MergeSummary = __esm2({
 });
 var PullSummary;
 var PullFailedSummary;
-var init_PullSummary = __esm2({
+var init_PullSummary = __esm3({
   "src/lib/responses/PullSummary.ts"() {
-    "use strict";
     PullSummary = class {
       static {
         __name(this, "PullSummary");
@@ -13365,36 +11883,26 @@ function asObjectCount(source) {
 }
 __name(asObjectCount, "asObjectCount");
 var remoteMessagesObjectParsers;
-var init_parse_remote_objects = __esm2({
+var init_parse_remote_objects = __esm3({
   "src/lib/parsers/parse-remote-objects.ts"() {
-    "use strict";
-    init_utils2();
+    init_utils3();
     remoteMessagesObjectParsers = [
-      new RemoteLineParser(
-        /^remote:\s*(enumerating|counting|compressing) objects: (\d+),/i,
-        (result, [action, count3]) => {
-          const key = action.toLowerCase();
-          const enumeration = objectEnumerationResult(result.remoteMessages);
-          Object.assign(enumeration, { [key]: asNumber(count3) });
-        }
-      ),
-      new RemoteLineParser(
-        /^remote:\s*(enumerating|counting|compressing) objects: \d+% \(\d+\/(\d+)\),/i,
-        (result, [action, count3]) => {
-          const key = action.toLowerCase();
-          const enumeration = objectEnumerationResult(result.remoteMessages);
-          Object.assign(enumeration, { [key]: asNumber(count3) });
-        }
-      ),
-      new RemoteLineParser(
-        /total ([^,]+), reused ([^,]+), pack-reused (\d+)/i,
-        (result, [total, reused, packReused]) => {
-          const objects = objectEnumerationResult(result.remoteMessages);
-          objects.total = asObjectCount(total);
-          objects.reused = asObjectCount(reused);
-          objects.packReused = asNumber(packReused);
-        }
-      )
+      new RemoteLineParser(/^remote:\s*(enumerating|counting|compressing) objects: (\d+),/i, (result, [action, count3]) => {
+        const key = action.toLowerCase();
+        const enumeration = objectEnumerationResult(result.remoteMessages);
+        Object.assign(enumeration, { [key]: asNumber(count3) });
+      }),
+      new RemoteLineParser(/^remote:\s*(enumerating|counting|compressing) objects: \d+% \(\d+\/(\d+)\),/i, (result, [action, count3]) => {
+        const key = action.toLowerCase();
+        const enumeration = objectEnumerationResult(result.remoteMessages);
+        Object.assign(enumeration, { [key]: asNumber(count3) });
+      }),
+      new RemoteLineParser(/total ([^,]+), reused ([^,]+), pack-reused (\d+)/i, (result, [total, reused, packReused]) => {
+        const objects = objectEnumerationResult(result.remoteMessages);
+        objects.total = asObjectCount(total);
+        objects.reused = asObjectCount(reused);
+        objects.packReused = asNumber(packReused);
+      })
     ];
   }
 });
@@ -13404,10 +11912,9 @@ function parseRemoteMessages(_stdOut, stdErr) {
 __name(parseRemoteMessages, "parseRemoteMessages");
 var parsers2;
 var RemoteMessageSummary;
-var init_parse_remote_messages = __esm2({
+var init_parse_remote_messages = __esm3({
   "src/lib/parsers/parse-remote-messages.ts"() {
-    "use strict";
-    init_utils2();
+    init_utils3();
     init_parse_remote_objects();
     parsers2 = [
       new RemoteLineParser(/^remote:\s*(.+)$/, (result, [text]) => {
@@ -13415,22 +11922,16 @@ var init_parse_remote_messages = __esm2({
         return false;
       }),
       ...remoteMessagesObjectParsers,
-      new RemoteLineParser(
-        [/create a (?:pull|merge) request/i, /\s(https?:\/\/\S+)$/],
-        (result, [pullRequestUrl]) => {
-          result.remoteMessages.pullRequestUrl = pullRequestUrl;
-        }
-      ),
-      new RemoteLineParser(
-        [/found (\d+) vulnerabilities.+\(([^)]+)\)/i, /\s(https?:\/\/\S+)$/],
-        (result, [count3, summary, url]) => {
-          result.remoteMessages.vulnerabilities = {
-            count: asNumber(count3),
-            summary,
-            url
-          };
-        }
-      )
+      new RemoteLineParser([/create a (?:pull|merge) request/i, /\s(https?:\/\/\S+)$/], (result, [pullRequestUrl]) => {
+        result.remoteMessages.pullRequestUrl = pullRequestUrl;
+      }),
+      new RemoteLineParser([/found (\d+) vulnerabilities.+\(([^)]+)\)/i, /\s(https?:\/\/\S+)$/], (result, [count3, summary, url]) => {
+        result.remoteMessages.vulnerabilities = {
+          count: asNumber(count3),
+          summary,
+          url
+        };
+      })
     ];
     RemoteMessageSummary = class {
       static {
@@ -13454,11 +11955,10 @@ var parsers3;
 var errorParsers;
 var parsePullDetail;
 var parsePullResult;
-var init_parse_pull = __esm2({
+var init_parse_pull = __esm3({
   "src/lib/parsers/parse-pull.ts"() {
-    "use strict";
     init_PullSummary();
-    init_utils2();
+    init_utils3();
     init_parse_remote_messages();
     FILE_UPDATE_REGEX = /^\s*(.+?)\s+\|\s+\d+\s*(\+*)(-*)/;
     SUMMARY_REGEX = /(\d+)\D+((\d+)\D+\(\+\))?(\D+(\d+)\D+\(-\))?/;
@@ -13490,36 +11990,28 @@ var init_parse_pull = __esm2({
     errorParsers = [
       new LineParser(/^from\s(.+)$/i, (result, [remote]) => void (result.remote = remote)),
       new LineParser(/^fatal:\s(.+)$/, (result, [message]) => void (result.message = message)),
-      new LineParser(
-        /([a-z0-9]+)\.\.([a-z0-9]+)\s+(\S+)\s+->\s+(\S+)$/,
-        (result, [hashLocal, hashRemote, branchLocal, branchRemote]) => {
-          result.branch.local = branchLocal;
-          result.hash.local = hashLocal;
-          result.branch.remote = branchRemote;
-          result.hash.remote = hashRemote;
-        }
-      )
+      new LineParser(/([a-z0-9]+)\.\.([a-z0-9]+)\s+(\S+)\s+->\s+(\S+)$/, (result, [hashLocal, hashRemote, branchLocal, branchRemote]) => {
+        result.branch.local = branchLocal;
+        result.hash.local = hashLocal;
+        result.branch.remote = branchRemote;
+        result.hash.remote = hashRemote;
+      })
     ];
     parsePullDetail = /* @__PURE__ */ __name((stdOut, stdErr) => {
       return parseStringResponse(new PullSummary(), parsers3, [stdOut, stdErr]);
     }, "parsePullDetail");
     parsePullResult = /* @__PURE__ */ __name((stdOut, stdErr) => {
-      return Object.assign(
-        new PullSummary(),
-        parsePullDetail(stdOut, stdErr),
-        parseRemoteMessages(stdOut, stdErr)
-      );
+      return Object.assign(new PullSummary(), parsePullDetail(stdOut, stdErr), parseRemoteMessages(stdOut, stdErr));
     }, "parsePullResult");
   }
 });
 var parsers4;
 var parseMergeResult;
 var parseMergeDetail;
-var init_parse_merge = __esm2({
+var init_parse_merge = __esm3({
   "src/lib/parsers/parse-merge.ts"() {
-    "use strict";
     init_MergeSummary();
-    init_utils2();
+    init_utils3();
     init_parse_pull();
     parsers4 = [
       new LineParser(/^Auto-merging\s+(.+)$/, (summary, [autoMerge]) => {
@@ -13528,12 +12020,9 @@ var init_parse_merge = __esm2({
       new LineParser(/^CONFLICT\s+\((.+)\): Merge conflict in (.+)$/, (summary, [reason, file]) => {
         summary.conflicts.push(new MergeSummaryConflict(reason, file));
       }),
-      new LineParser(
-        /^CONFLICT\s+\((.+\/delete)\): (.+) deleted in (.+) and/,
-        (summary, [reason, file, deleteRef]) => {
-          summary.conflicts.push(new MergeSummaryConflict(reason, file, { deleteRef }));
-        }
-      ),
+      new LineParser(/^CONFLICT\s+\((.+\/delete)\): (.+) deleted in (.+) and/, (summary, [reason, file, deleteRef]) => {
+        summary.conflicts.push(new MergeSummaryConflict(reason, file, { deleteRef }));
+      }),
       new LineParser(/^CONFLICT\s+\((.+)\):/, (summary, [reason]) => {
         summary.conflicts.push(new MergeSummaryConflict(reason, null));
       }),
@@ -13557,18 +12046,17 @@ function mergeTask(customArgs) {
     commands: ["merge", ...customArgs],
     format: "utf-8",
     parser(stdOut, stdErr) {
-      const merge = parseMergeResult(stdOut, stdErr);
-      if (merge.failed) {
-        throw new GitResponseError(merge);
+      const merge2 = parseMergeResult(stdOut, stdErr);
+      if (merge2.failed) {
+        throw new GitResponseError(merge2);
       }
-      return merge;
+      return merge2;
     }
   };
 }
 __name(mergeTask, "mergeTask");
-var init_merge = __esm2({
+var init_merge = __esm3({
   "src/lib/tasks/merge.ts"() {
-    "use strict";
     init_git_response_error();
     init_parse_merge();
     init_task();
@@ -13592,58 +12080,46 @@ __name(pushResultPushedItem, "pushResultPushedItem");
 var parsers5;
 var parsePushResult;
 var parsePushDetail;
-var init_parse_push = __esm2({
+var init_parse_push = __esm3({
   "src/lib/parsers/parse-push.ts"() {
-    "use strict";
-    init_utils2();
+    init_utils3();
     init_parse_remote_messages();
     parsers5 = [
       new LineParser(/^Pushing to (.+)$/, (result, [repo]) => {
         result.repo = repo;
       }),
       new LineParser(/^updating local tracking ref '(.+)'/, (result, [local]) => {
-        result.ref = {
-          ...result.ref || {},
+        result.ref = __spreadProps(__spreadValues({}, result.ref || {}), {
           local
-        };
+        });
       }),
       new LineParser(/^[=*-]\s+([^:]+):(\S+)\s+\[(.+)]$/, (result, [local, remote, type]) => {
         result.pushed.push(pushResultPushedItem(local, remote, type));
       }),
-      new LineParser(
-        /^Branch '([^']+)' set up to track remote branch '([^']+)' from '([^']+)'/,
-        (result, [local, remote, remoteName]) => {
-          result.branch = {
-            ...result.branch || {},
+      new LineParser(/^Branch '([^']+)' set up to track remote branch '([^']+)' from '([^']+)'/, (result, [local, remote, remoteName]) => {
+        result.branch = __spreadProps(__spreadValues({}, result.branch || {}), {
+          local,
+          remote,
+          remoteName
+        });
+      }),
+      new LineParser(/^([^:]+):(\S+)\s+([a-z0-9]+)\.\.([a-z0-9]+)$/, (result, [local, remote, from, to]) => {
+        result.update = {
+          head: {
             local,
-            remote,
-            remoteName
-          };
-        }
-      ),
-      new LineParser(
-        /^([^:]+):(\S+)\s+([a-z0-9]+)\.\.([a-z0-9]+)$/,
-        (result, [local, remote, from, to]) => {
-          result.update = {
-            head: {
-              local,
-              remote
-            },
-            hash: {
-              from,
-              to
-            }
-          };
-        }
-      )
+            remote
+          },
+          hash: {
+            from,
+            to
+          }
+        };
+      })
     ];
     parsePushResult = /* @__PURE__ */ __name((stdOut, stdErr) => {
       const pushDetail = parsePushDetail(stdOut, stdErr);
       const responseDetail = parseRemoteMessages(stdOut, stdErr);
-      return {
-        ...pushDetail,
-        ...responseDetail
-      };
+      return __spreadValues(__spreadValues({}, pushDetail), responseDetail);
     }, "parsePushResult");
     parsePushDetail = /* @__PURE__ */ __name((stdOut, stdErr) => {
       return parseStringResponse({ pushed: [] }, parsers5, [stdOut, stdErr]);
@@ -13651,7 +12127,7 @@ var init_parse_push = __esm2({
   }
 });
 var push_exports = {};
-__export2(push_exports, {
+__export3(push_exports, {
   pushTagsTask: /* @__PURE__ */ __name(() => pushTagsTask, "pushTagsTask"),
   pushTask: /* @__PURE__ */ __name(() => pushTask, "pushTask")
 });
@@ -13678,11 +12154,10 @@ function pushTask(ref2 = {}, customArgs) {
   };
 }
 __name(pushTask, "pushTask");
-var init_push = __esm2({
+var init_push = __esm3({
   "src/lib/tasks/push.ts"() {
-    "use strict";
     init_parse_push();
-    init_utils2();
+    init_utils3();
   }
 });
 function show_default() {
@@ -13692,34 +12167,26 @@ function show_default() {
       if (!commands.includes("--binary")) {
         commands.splice(1, 0, "--binary");
       }
-      return this._runTask(
-        straightThroughBufferTask(commands),
-        trailingFunctionArgument(arguments)
-      );
+      return this._runTask(straightThroughBufferTask(commands), trailingFunctionArgument(arguments));
     },
     show() {
       const commands = ["show", ...getTrailingOptions(arguments, 1)];
-      return this._runTask(
-        straightThroughStringTask(commands),
-        trailingFunctionArgument(arguments)
-      );
+      return this._runTask(straightThroughStringTask(commands), trailingFunctionArgument(arguments));
     }
   };
 }
 __name(show_default, "show_default");
-var init_show = __esm2({
+var init_show = __esm3({
   "src/lib/tasks/show.ts"() {
-    "use strict";
-    init_utils2();
+    init_utils3();
     init_task();
   }
 });
 var fromPathRegex;
 var FileStatusSummary;
-var init_FileStatusSummary = __esm2({
+var init_FileStatusSummary = __esm3({
   "src/lib/responses/FileStatusSummary.ts"() {
-    "use strict";
-    fromPathRegex = /^(.+)\0(.+)$/;
+    fromPathRegex = /^(.+) -> (.+)$/;
     FileStatusSummary = class {
       static {
         __name(this, "FileStatusSummary");
@@ -13728,10 +12195,10 @@ var init_FileStatusSummary = __esm2({
         this.path = path4;
         this.index = index;
         this.working_dir = working_dir;
-        if (index === "R" || working_dir === "R") {
+        if (index + working_dir === "R") {
           const detail = fromPathRegex.exec(path4) || [null, path4, path4];
-          this.from = detail[2] || "";
-          this.path = detail[1] || "";
+          this.from = detail[1] || "";
+          this.path = detail[2] || "";
         }
       }
     };
@@ -13745,12 +12212,12 @@ function renamedFile(line) {
   };
 }
 __name(renamedFile, "renamedFile");
-function parser3(indexX, indexY, handler) {
+function parser2(indexX, indexY, handler) {
   return [`${indexX}${indexY}`, handler];
 }
-__name(parser3, "parser3");
+__name(parser2, "parser2");
 function conflicts(indexX, ...indexY) {
-  return indexY.map((y) => parser3(indexX, y, (result, file) => append(result.conflicted, file)));
+  return indexY.map((y) => parser2(indexX, y, (result, file) => append(result.conflicted, file)));
 }
 __name(conflicts, "conflicts");
 function splitLine(result, lineStr) {
@@ -13770,7 +12237,7 @@ function splitLine(result, lineStr) {
       handler(result, path4);
     }
     if (raw !== "##" && raw !== "!!") {
-      result.files.push(new FileStatusSummary(path4, index, workingDir));
+      result.files.push(new FileStatusSummary(path4.replace(/\0.+$/, ""), index, workingDir));
     }
   }
   __name(data, "data");
@@ -13779,10 +12246,9 @@ __name(splitLine, "splitLine");
 var StatusSummary;
 var parsers6;
 var parseStatusSummary;
-var init_StatusSummary = __esm2({
+var init_StatusSummary = __esm3({
   "src/lib/responses/StatusSummary.ts"() {
-    "use strict";
-    init_utils2();
+    init_utils3();
     init_FileStatusSummary();
     StatusSummary = class {
       static {
@@ -13809,62 +12275,26 @@ var init_StatusSummary = __esm2({
       }
     };
     parsers6 = new Map([
-      parser3(
-        " ",
-        "A",
-        (result, file) => append(result.created, file)
-      ),
-      parser3(
-        " ",
-        "D",
-        (result, file) => append(result.deleted, file)
-      ),
-      parser3(
-        " ",
-        "M",
-        (result, file) => append(result.modified, file)
-      ),
-      parser3(
-        "A",
-        " ",
-        (result, file) => append(result.created, file) && append(result.staged, file)
-      ),
-      parser3(
-        "A",
-        "M",
-        (result, file) => append(result.created, file) && append(result.staged, file) && append(result.modified, file)
-      ),
-      parser3(
-        "D",
-        " ",
-        (result, file) => append(result.deleted, file) && append(result.staged, file)
-      ),
-      parser3(
-        "M",
-        " ",
-        (result, file) => append(result.modified, file) && append(result.staged, file)
-      ),
-      parser3(
-        "M",
-        "M",
-        (result, file) => append(result.modified, file) && append(result.staged, file)
-      ),
-      parser3("R", " ", (result, file) => {
+      parser2(" ", "A", (result, file) => append(result.created, file)),
+      parser2(" ", "D", (result, file) => append(result.deleted, file)),
+      parser2(" ", "M", (result, file) => append(result.modified, file)),
+      parser2("A", " ", (result, file) => append(result.created, file) && append(result.staged, file)),
+      parser2("A", "M", (result, file) => append(result.created, file) && append(result.staged, file) && append(result.modified, file)),
+      parser2("D", " ", (result, file) => append(result.deleted, file) && append(result.staged, file)),
+      parser2("M", " ", (result, file) => append(result.modified, file) && append(result.staged, file)),
+      parser2("M", "M", (result, file) => append(result.modified, file) && append(result.staged, file)),
+      parser2("R", " ", (result, file) => {
         append(result.renamed, renamedFile(file));
       }),
-      parser3("R", "M", (result, file) => {
+      parser2("R", "M", (result, file) => {
         const renamed = renamedFile(file);
         append(result.renamed, renamed);
         append(result.modified, renamed.to);
       }),
-      parser3("!", "!", (_result, _file) => {
+      parser2("!", "!", (_result, _file) => {
         append(_result.ignored = _result.ignored || [], _file);
       }),
-      parser3(
-        "?",
-        "?",
-        (result, file) => append(result.not_added, file)
-      ),
+      parser2("?", "?", (result, file) => append(result.not_added, file)),
       ...conflicts(
         "A",
         "A",
@@ -13943,31 +12373,26 @@ function statusTask(customArgs) {
 }
 __name(statusTask, "statusTask");
 var ignoredOptions;
-var init_status = __esm2({
+var init_status2 = __esm3({
   "src/lib/tasks/status.ts"() {
-    "use strict";
     init_StatusSummary();
     ignoredOptions = ["--null", "-z"];
   }
 });
 function versionResponse(major2 = 0, minor = 0, patch = 0, agent = "", installed = true) {
-  return Object.defineProperty(
-    {
-      major: major2,
-      minor,
-      patch,
-      agent,
-      installed
+  return Object.defineProperty({
+    major: major2,
+    minor,
+    patch,
+    agent,
+    installed
+  }, "toString", {
+    value() {
+      return `${this.major}.${this.minor}.${this.patch}`;
     },
-    "toString",
-    {
-      value() {
-        return `${this.major}.${this.minor}.${this.patch}`;
-      },
-      configurable: false,
-      enumerable: false
-    }
-  );
+    configurable: false,
+    enumerable: false
+  });
 }
 __name(versionResponse, "versionResponse");
 function notInstalledResponse() {
@@ -14001,42 +12426,30 @@ function versionParser(stdOut) {
 __name(versionParser, "versionParser");
 var NOT_INSTALLED;
 var parsers7;
-var init_version = __esm2({
+var init_version2 = __esm3({
   "src/lib/tasks/version.ts"() {
-    "use strict";
-    init_utils2();
+    init_utils3();
     NOT_INSTALLED = "installed=false";
     parsers7 = [
-      new LineParser(
-        /version (\d+)\.(\d+)\.(\d+)(?:\s*\((.+)\))?/,
-        (result, [major2, minor, patch, agent = ""]) => {
-          Object.assign(
-            result,
-            versionResponse(asNumber(major2), asNumber(minor), asNumber(patch), agent)
-          );
-        }
-      ),
-      new LineParser(
-        /version (\d+)\.(\d+)\.(\D+)(.+)?$/,
-        (result, [major2, minor, patch, agent = ""]) => {
-          Object.assign(result, versionResponse(asNumber(major2), asNumber(minor), patch, agent));
-        }
-      )
+      new LineParser(/version (\d+)\.(\d+)\.(\d+)(?:\s*\((.+)\))?/, (result, [major2, minor, patch, agent = ""]) => {
+        Object.assign(result, versionResponse(asNumber(major2), asNumber(minor), asNumber(patch), agent));
+      }),
+      new LineParser(/version (\d+)\.(\d+)\.(\D+)(.+)?$/, (result, [major2, minor, patch, agent = ""]) => {
+        Object.assign(result, versionResponse(asNumber(major2), asNumber(minor), patch, agent));
+      })
     ];
   }
 });
 var simple_git_api_exports = {};
-__export2(simple_git_api_exports, {
+__export3(simple_git_api_exports, {
   SimpleGitApi: /* @__PURE__ */ __name(() => SimpleGitApi, "SimpleGitApi")
 });
 var SimpleGitApi;
-var init_simple_git_api = __esm2({
+var init_simple_git_api = __esm3({
   "src/lib/simple-git-api.ts"() {
-    "use strict";
     init_task_callback();
     init_change_working_directory();
     init_checkout();
-    init_count_objects();
     init_commit();
     init_config();
     init_first_commit();
@@ -14047,10 +12460,10 @@ var init_simple_git_api = __esm2({
     init_merge();
     init_push();
     init_show();
-    init_status();
+    init_status2();
     init_task();
-    init_version();
-    init_utils2();
+    init_version2();
+    init_utils3();
     SimpleGitApi = class {
       static {
         __name(this, "SimpleGitApi");
@@ -14071,112 +12484,63 @@ var init_simple_git_api = __esm2({
         });
       }
       add(files) {
-        return this._runTask(
-          straightThroughStringTask(["add", ...asArray(files)]),
-          trailingFunctionArgument(arguments)
-        );
+        return this._runTask(straightThroughStringTask(["add", ...asArray(files)]), trailingFunctionArgument(arguments));
       }
       cwd(directory) {
-        const next2 = trailingFunctionArgument(arguments);
+        const next = trailingFunctionArgument(arguments);
         if (typeof directory === "string") {
-          return this._runTask(changeWorkingDirectoryTask(directory, this._executor), next2);
+          return this._runTask(changeWorkingDirectoryTask(directory, this._executor), next);
         }
-        if (typeof directory?.path === "string") {
-          return this._runTask(
-            changeWorkingDirectoryTask(
-              directory.path,
-              directory.root && this._executor || void 0
-            ),
-            next2
-          );
+        if (typeof (directory == null ? void 0 : directory.path) === "string") {
+          return this._runTask(changeWorkingDirectoryTask(directory.path, directory.root && this._executor || void 0), next);
         }
-        return this._runTask(
-          configurationErrorTask("Git.cwd: workingDirectory must be supplied as a string"),
-          next2
-        );
+        return this._runTask(configurationErrorTask("Git.cwd: workingDirectory must be supplied as a string"), next);
       }
       hashObject(path4, write2) {
-        return this._runTask(
-          hashObjectTask(path4, write2 === true),
-          trailingFunctionArgument(arguments)
-        );
+        return this._runTask(hashObjectTask(path4, write2 === true), trailingFunctionArgument(arguments));
       }
       init(bare) {
-        return this._runTask(
-          initTask(bare === true, this._executor.cwd, getTrailingOptions(arguments)),
-          trailingFunctionArgument(arguments)
-        );
+        return this._runTask(initTask(bare === true, this._executor.cwd, getTrailingOptions(arguments)), trailingFunctionArgument(arguments));
       }
       merge() {
-        return this._runTask(
-          mergeTask(getTrailingOptions(arguments)),
-          trailingFunctionArgument(arguments)
-        );
+        return this._runTask(mergeTask(getTrailingOptions(arguments)), trailingFunctionArgument(arguments));
       }
       mergeFromTo(remote, branch) {
         if (!(filterString(remote) && filterString(branch))) {
-          return this._runTask(
-            configurationErrorTask(
-              `Git.mergeFromTo requires that the 'remote' and 'branch' arguments are supplied as strings`
-            )
-          );
+          return this._runTask(configurationErrorTask(`Git.mergeFromTo requires that the 'remote' and 'branch' arguments are supplied as strings`));
         }
-        return this._runTask(
-          mergeTask([remote, branch, ...getTrailingOptions(arguments)]),
-          trailingFunctionArgument(arguments, false)
-        );
+        return this._runTask(mergeTask([remote, branch, ...getTrailingOptions(arguments)]), trailingFunctionArgument(arguments, false));
       }
       outputHandler(handler) {
         this._executor.outputHandler = handler;
         return this;
       }
       push() {
-        const task = pushTask(
-          {
-            remote: filterType(arguments[0], filterString),
-            branch: filterType(arguments[1], filterString)
-          },
-          getTrailingOptions(arguments)
-        );
+        const task = pushTask({
+          remote: filterType(arguments[0], filterString),
+          branch: filterType(arguments[1], filterString)
+        }, getTrailingOptions(arguments));
         return this._runTask(task, trailingFunctionArgument(arguments));
       }
       stash() {
-        return this._runTask(
-          straightThroughStringTask(["stash", ...getTrailingOptions(arguments)]),
-          trailingFunctionArgument(arguments)
-        );
+        return this._runTask(straightThroughStringTask(["stash", ...getTrailingOptions(arguments)]), trailingFunctionArgument(arguments));
       }
       status() {
-        return this._runTask(
-          statusTask(getTrailingOptions(arguments)),
-          trailingFunctionArgument(arguments)
-        );
+        return this._runTask(statusTask(getTrailingOptions(arguments)), trailingFunctionArgument(arguments));
       }
     };
-    Object.assign(
-      SimpleGitApi.prototype,
-      checkout_default(),
-      commit_default(),
-      config_default(),
-      count_objects_default(),
-      first_commit_default(),
-      grep_default(),
-      log_default(),
-      show_default(),
-      version_default()
-    );
+    Object.assign(SimpleGitApi.prototype, checkout_default(), commit_default(), config_default(), first_commit_default(), grep_default(), log_default(), show_default(), version_default());
   }
 });
 var scheduler_exports = {};
-__export2(scheduler_exports, {
+__export3(scheduler_exports, {
   Scheduler: /* @__PURE__ */ __name(() => Scheduler, "Scheduler")
 });
 var createScheduledTask;
 var Scheduler;
-var init_scheduler = __esm2({
+var init_scheduler = __esm3({
   "src/lib/runners/scheduler.ts"() {
-    "use strict";
-    init_utils2();
+    init_utils3();
     init_git_logger();
     createScheduledTask = /* @__PURE__ */ (() => {
       let id = 0;
@@ -14203,12 +12567,7 @@ var init_scheduler = __esm2({
       }
       schedule() {
         if (!this.pending.length || this.running.length >= this.concurrency) {
-          this.logger(
-            `Schedule attempt ignored, pending=%s running=%s concurrency=%s`,
-            this.pending.length,
-            this.running.length,
-            this.concurrency
-          );
+          this.logger(`Schedule attempt ignored, pending=%s running=%s concurrency=%s`, this.pending.length, this.running.length, this.concurrency);
           return;
         }
         const task = append(this.running, this.pending.shift());
@@ -14229,16 +12588,15 @@ var init_scheduler = __esm2({
   }
 });
 var apply_patch_exports = {};
-__export2(apply_patch_exports, {
+__export3(apply_patch_exports, {
   applyPatchTask: /* @__PURE__ */ __name(() => applyPatchTask, "applyPatchTask")
 });
 function applyPatchTask(patches, customArgs) {
   return straightThroughStringTask(["apply", ...customArgs, ...patches]);
 }
 __name(applyPatchTask, "applyPatchTask");
-var init_apply_patch = __esm2({
+var init_apply_patch = __esm3({
   "src/lib/tasks/apply-patch.ts"() {
-    "use strict";
     init_task();
   }
 });
@@ -14259,9 +12617,8 @@ function branchDeletionFailure(branch) {
 }
 __name(branchDeletionFailure, "branchDeletionFailure");
 var BranchDeletionBatch;
-var init_BranchDeleteSummary = __esm2({
+var init_BranchDeleteSummary = __esm3({
   "src/lib/responses/BranchDeleteSummary.ts"() {
-    "use strict";
     BranchDeletionBatch = class {
       static {
         __name(this, "BranchDeletionBatch");
@@ -14285,11 +12642,10 @@ var deleteSuccessRegex;
 var deleteErrorRegex;
 var parsers8;
 var parseBranchDeletions;
-var init_parse_branch_delete = __esm2({
+var init_parse_branch_delete = __esm3({
   "src/lib/parsers/parse-branch-delete.ts"() {
-    "use strict";
     init_BranchDeleteSummary();
-    init_utils2();
+    init_utils3();
     deleteSuccessRegex = /(\S+)\s+\(\S+\s([^)]+)\)/;
     deleteErrorRegex = /^error[^']+'([^']+)'/m;
     parsers8 = [
@@ -14311,9 +12667,8 @@ var init_parse_branch_delete = __esm2({
   }
 });
 var BranchSummaryResult;
-var init_BranchSummary = __esm2({
+var init_BranchSummary = __esm3({
   "src/lib/responses/BranchSummary.ts"() {
-    "use strict";
     BranchSummaryResult = class {
       static {
         __name(this, "BranchSummaryResult");
@@ -14350,29 +12705,22 @@ function parseBranchSummary(stdOut) {
 }
 __name(parseBranchSummary, "parseBranchSummary");
 var parsers9;
-var init_parse_branch = __esm2({
+var init_parse_branch = __esm3({
   "src/lib/parsers/parse-branch.ts"() {
-    "use strict";
     init_BranchSummary();
-    init_utils2();
+    init_utils3();
     parsers9 = [
-      new LineParser(
-        /^([*+]\s)?\((?:HEAD )?detached (?:from|at) (\S+)\)\s+([a-z0-9]+)\s(.*)$/,
-        (result, [current, name, commit, label]) => {
-          result.push(branchStatus(current), true, name, commit, label);
-        }
-      ),
-      new LineParser(
-        /^([*+]\s)?(\S+)\s+([a-z0-9]+)\s?(.*)$/s,
-        (result, [current, name, commit, label]) => {
-          result.push(branchStatus(current), false, name, commit, label);
-        }
-      )
+      new LineParser(/^([*+]\s)?\((?:HEAD )?detached (?:from|at) (\S+)\)\s+([a-z0-9]+)\s(.*)$/, (result, [current, name, commit, label]) => {
+        result.push(branchStatus(current), true, name, commit, label);
+      }),
+      new LineParser(/^([*+]\s)?(\S+)\s+([a-z0-9]+)\s?(.*)$/s, (result, [current, name, commit, label]) => {
+        result.push(branchStatus(current), false, name, commit, label);
+      })
     ];
   }
 });
 var branch_exports = {};
-__export2(branch_exports, {
+__export3(branch_exports, {
   branchLocalTask: /* @__PURE__ */ __name(() => branchLocalTask, "branchLocalTask"),
   branchTask: /* @__PURE__ */ __name(() => branchTask, "branchTask"),
   containsDeleteBranchCommand: /* @__PURE__ */ __name(() => containsDeleteBranchCommand, "containsDeleteBranchCommand"),
@@ -14406,11 +12754,11 @@ function branchTask(customArgs) {
 }
 __name(branchTask, "branchTask");
 function branchLocalTask() {
-  const parser4 = parseBranchSummary;
+  const parser3 = parseBranchSummary;
   return {
     format: "utf-8",
     commands: ["branch", "-v"],
-    parser: parser4
+    parser: parser3
   };
 }
 __name(branchLocalTask, "branchLocalTask");
@@ -14441,35 +12789,30 @@ function deleteBranchTask(branch, forceDelete = false) {
       if (!hasBranchDeletionError(String(error4), exitCode2)) {
         return fail(error4);
       }
-      throw new GitResponseError(
-        task.parser(bufferToString(stdOut), bufferToString(stdErr)),
-        String(error4)
-      );
+      throw new GitResponseError(task.parser(bufferToString(stdOut), bufferToString(stdErr)), String(error4));
     }
   };
   return task;
 }
 __name(deleteBranchTask, "deleteBranchTask");
-var init_branch = __esm2({
+var init_branch = __esm3({
   "src/lib/tasks/branch.ts"() {
-    "use strict";
     init_git_response_error();
     init_parse_branch_delete();
     init_parse_branch();
-    init_utils2();
+    init_utils3();
   }
 });
 var parseCheckIgnore;
-var init_CheckIgnore = __esm2({
+var init_CheckIgnore = __esm3({
   "src/lib/responses/CheckIgnore.ts"() {
-    "use strict";
     parseCheckIgnore = /* @__PURE__ */ __name((text) => {
       return text.split(/\n/g).map((line) => line.trim()).filter((file) => !!file);
     }, "parseCheckIgnore");
   }
 });
 var check_ignore_exports = {};
-__export2(check_ignore_exports, {
+__export3(check_ignore_exports, {
   checkIgnoreTask: /* @__PURE__ */ __name(() => checkIgnoreTask, "checkIgnoreTask")
 });
 function checkIgnoreTask(paths) {
@@ -14480,14 +12823,13 @@ function checkIgnoreTask(paths) {
   };
 }
 __name(checkIgnoreTask, "checkIgnoreTask");
-var init_check_ignore = __esm2({
+var init_check_ignore = __esm3({
   "src/lib/tasks/check-ignore.ts"() {
-    "use strict";
     init_CheckIgnore();
   }
 });
 var clone_exports = {};
-__export2(clone_exports, {
+__export3(clone_exports, {
   cloneMirrorTask: /* @__PURE__ */ __name(() => cloneMirrorTask, "cloneMirrorTask"),
   cloneTask: /* @__PURE__ */ __name(() => cloneTask, "cloneTask")
 });
@@ -14511,11 +12853,10 @@ function cloneMirrorTask(repo, directory, customArgs) {
   return cloneTask(repo, directory, customArgs);
 }
 __name(cloneMirrorTask, "cloneMirrorTask");
-var init_clone = __esm2({
+var init_clone = __esm3({
   "src/lib/tasks/clone.ts"() {
-    "use strict";
     init_task();
-    init_utils2();
+    init_utils3();
   }
 });
 function parseFetchResult(stdOut, stdErr) {
@@ -14531,10 +12872,9 @@ function parseFetchResult(stdOut, stdErr) {
 }
 __name(parseFetchResult, "parseFetchResult");
 var parsers10;
-var init_parse_fetch = __esm2({
+var init_parse_fetch = __esm3({
   "src/lib/parsers/parse-fetch.ts"() {
-    "use strict";
-    init_utils2();
+    init_utils3();
     parsers10 = [
       new LineParser(/From (.+)$/, (result, [remote]) => {
         result.remote = remote;
@@ -14556,22 +12896,19 @@ var init_parse_fetch = __esm2({
           tracking
         });
       }),
-      new LineParser(
-        /\s*([^.]+)\.\.(\S+)\s+(\S+)\s*-> (.+)$/,
-        (result, [from, to, name, tracking]) => {
-          result.updated.push({
-            name,
-            tracking,
-            to,
-            from
-          });
-        }
-      )
+      new LineParser(/\s*([^.]+)\.\.(\S+)\s+(\S+)\s*-> (.+)$/, (result, [from, to, name, tracking]) => {
+        result.updated.push({
+          name,
+          tracking,
+          to,
+          from
+        });
+      })
     ];
   }
 });
 var fetch_exports = {};
-__export2(fetch_exports, {
+__export3(fetch_exports, {
   fetchTask: /* @__PURE__ */ __name(() => fetchTask, "fetchTask")
 });
 function disallowedCommand2(command) {
@@ -14594,9 +12931,8 @@ function fetchTask(remote, branch, customArgs) {
   };
 }
 __name(fetchTask, "fetchTask");
-var init_fetch = __esm2({
+var init_fetch = __esm3({
   "src/lib/tasks/fetch.ts"() {
-    "use strict";
     init_parse_fetch();
     init_task();
   }
@@ -14606,10 +12942,9 @@ function parseMoveResult(stdOut) {
 }
 __name(parseMoveResult, "parseMoveResult");
 var parsers11;
-var init_parse_move = __esm2({
+var init_parse_move = __esm3({
   "src/lib/parsers/parse-move.ts"() {
-    "use strict";
-    init_utils2();
+    init_utils3();
     parsers11 = [
       new LineParser(/^Renaming (.+) to (.+)$/, (result, [from, to]) => {
         result.moves.push({ from, to });
@@ -14618,7 +12953,7 @@ var init_parse_move = __esm2({
   }
 });
 var move_exports = {};
-__export2(move_exports, {
+__export3(move_exports, {
   moveTask: /* @__PURE__ */ __name(() => moveTask, "moveTask")
 });
 function moveTask(from, to) {
@@ -14629,15 +12964,14 @@ function moveTask(from, to) {
   };
 }
 __name(moveTask, "moveTask");
-var init_move = __esm2({
+var init_move = __esm3({
   "src/lib/tasks/move.ts"() {
-    "use strict";
     init_parse_move();
-    init_utils2();
+    init_utils3();
   }
 });
 var pull_exports = {};
-__export2(pull_exports, {
+__export3(pull_exports, {
   pullTask: /* @__PURE__ */ __name(() => pullTask, "pullTask")
 });
 function pullTask(remote, branch, customArgs) {
@@ -14652,10 +12986,7 @@ function pullTask(remote, branch, customArgs) {
       return parsePullResult(stdOut, stdErr);
     },
     onError(result, _error, _done, fail) {
-      const pullError = parsePullErrorResult(
-        bufferToString(result.stdOut),
-        bufferToString(result.stdErr)
-      );
+      const pullError = parsePullErrorResult(bufferToString(result.stdOut), bufferToString(result.stdErr));
       if (pullError) {
         return fail(new GitResponseError(pullError));
       }
@@ -14664,12 +12995,11 @@ function pullTask(remote, branch, customArgs) {
   };
 }
 __name(pullTask, "pullTask");
-var init_pull = __esm2({
+var init_pull = __esm3({
   "src/lib/tasks/pull.ts"() {
-    "use strict";
     init_git_response_error();
     init_parse_pull();
-    init_utils2();
+    init_utils3();
   }
 });
 function parseGetRemotes(text) {
@@ -14698,21 +13028,20 @@ function forEach(text, handler) {
   forEachLineWithContent(text, (line) => handler(line.split(/\s+/)));
 }
 __name(forEach, "forEach");
-var init_GetRemoteSummary = __esm2({
+var init_GetRemoteSummary = __esm3({
   "src/lib/responses/GetRemoteSummary.ts"() {
-    "use strict";
-    init_utils2();
+    init_utils3();
   }
 });
 var remote_exports = {};
-__export2(remote_exports, {
+__export3(remote_exports, {
   addRemoteTask: /* @__PURE__ */ __name(() => addRemoteTask, "addRemoteTask"),
   getRemotesTask: /* @__PURE__ */ __name(() => getRemotesTask, "getRemotesTask"),
   listRemotesTask: /* @__PURE__ */ __name(() => listRemotesTask, "listRemotesTask"),
   remoteTask: /* @__PURE__ */ __name(() => remoteTask, "remoteTask"),
   removeRemoteTask: /* @__PURE__ */ __name(() => removeRemoteTask, "removeRemoteTask")
 });
-function addRemoteTask(remoteName, remoteRepo, customArgs) {
+function addRemoteTask(remoteName, remoteRepo, customArgs = []) {
   return straightThroughStringTask(["remote", "add", ...customArgs, remoteName, remoteRepo]);
 }
 __name(addRemoteTask, "addRemoteTask");
@@ -14728,7 +13057,7 @@ function getRemotesTask(verbose) {
   };
 }
 __name(getRemotesTask, "getRemotesTask");
-function listRemotesTask(customArgs) {
+function listRemotesTask(customArgs = []) {
   const commands = [...customArgs];
   if (commands[0] !== "ls-remote") {
     commands.unshift("ls-remote");
@@ -14736,7 +13065,7 @@ function listRemotesTask(customArgs) {
   return straightThroughStringTask(commands);
 }
 __name(listRemotesTask, "listRemotesTask");
-function remoteTask(customArgs) {
+function remoteTask(customArgs = []) {
   const commands = [...customArgs];
   if (commands[0] !== "remote") {
     commands.unshift("remote");
@@ -14748,35 +13077,29 @@ function removeRemoteTask(remoteName) {
   return straightThroughStringTask(["remote", "remove", remoteName]);
 }
 __name(removeRemoteTask, "removeRemoteTask");
-var init_remote = __esm2({
+var init_remote = __esm3({
   "src/lib/tasks/remote.ts"() {
-    "use strict";
     init_GetRemoteSummary();
     init_task();
   }
 });
 var stash_list_exports = {};
-__export2(stash_list_exports, {
+__export3(stash_list_exports, {
   stashListTask: /* @__PURE__ */ __name(() => stashListTask, "stashListTask")
 });
 function stashListTask(opt = {}, customArgs) {
   const options = parseLogOptions(opt);
   const commands = ["stash", "list", ...options.commands, ...customArgs];
-  const parser4 = createListLogSummaryParser(
-    options.splitter,
-    options.fields,
-    logFormatFromCommand(commands)
-  );
+  const parser3 = createListLogSummaryParser(options.splitter, options.fields, logFormatFromCommand(commands));
   return validateLogFormatConfig(commands) || {
     commands,
     format: "utf-8",
-    parser: parser4
+    parser: parser3
   };
 }
 __name(stashListTask, "stashListTask");
-var init_stash_list = __esm2({
+var init_stash_list = __esm3({
   "src/lib/tasks/stash-list.ts"() {
-    "use strict";
     init_log_format();
     init_parse_list_log_summary();
     init_diff();
@@ -14784,7 +13107,7 @@ var init_stash_list = __esm2({
   }
 });
 var sub_module_exports = {};
-__export2(sub_module_exports, {
+__export3(sub_module_exports, {
   addSubModuleTask: /* @__PURE__ */ __name(() => addSubModuleTask, "addSubModuleTask"),
   initSubModuleTask: /* @__PURE__ */ __name(() => initSubModuleTask, "initSubModuleTask"),
   subModuleTask: /* @__PURE__ */ __name(() => subModuleTask, "subModuleTask"),
@@ -14810,9 +13133,8 @@ function updateSubModuleTask(customArgs) {
   return subModuleTask(["update", ...customArgs]);
 }
 __name(updateSubModuleTask, "updateSubModuleTask");
-var init_sub_module = __esm2({
+var init_sub_module = __esm3({
   "src/lib/tasks/sub-module.ts"() {
-    "use strict";
     init_task();
   }
 });
@@ -14842,9 +13164,8 @@ function toNumber(input) {
 __name(toNumber, "toNumber");
 var TagList;
 var parseTagList;
-var init_TagList = __esm2({
+var init_TagList = __esm3({
   "src/lib/responses/TagList.ts"() {
-    "use strict";
     TagList = class {
       static {
         __name(this, "TagList");
@@ -14878,7 +13199,7 @@ var init_TagList = __esm2({
   }
 });
 var tag_exports = {};
-__export2(tag_exports, {
+__export3(tag_exports, {
   addAnnotatedTagTask: /* @__PURE__ */ __name(() => addAnnotatedTagTask, "addAnnotatedTagTask"),
   addTagTask: /* @__PURE__ */ __name(() => addTagTask, "addTagTask"),
   tagListTask: /* @__PURE__ */ __name(() => tagListTask, "tagListTask")
@@ -14914,19 +13235,17 @@ function addAnnotatedTagTask(name, tagMessage) {
   };
 }
 __name(addAnnotatedTagTask, "addAnnotatedTagTask");
-var init_tag = __esm2({
+var init_tag = __esm3({
   "src/lib/tasks/tag.ts"() {
-    "use strict";
     init_TagList();
   }
 });
 var require_git = __commonJS2({
   "src/git.js"(exports, module) {
-    "use strict";
-    var { GitExecutor: GitExecutor2 } = (init_git_executor(), __toCommonJS(git_executor_exports));
-    var { SimpleGitApi: SimpleGitApi2 } = (init_simple_git_api(), __toCommonJS(simple_git_api_exports));
-    var { Scheduler: Scheduler2 } = (init_scheduler(), __toCommonJS(scheduler_exports));
-    var { configurationErrorTask: configurationErrorTask2 } = (init_task(), __toCommonJS(task_exports));
+    var { GitExecutor: GitExecutor2 } = (init_git_executor(), __toCommonJS2(git_executor_exports));
+    var { SimpleGitApi: SimpleGitApi2 } = (init_simple_git_api(), __toCommonJS2(simple_git_api_exports));
+    var { Scheduler: Scheduler2 } = (init_scheduler(), __toCommonJS2(scheduler_exports));
+    var { configurationErrorTask: configurationErrorTask2 } = (init_task(), __toCommonJS2(task_exports));
     var {
       asArray: asArray2,
       filterArray: filterArray22,
@@ -14937,53 +13256,48 @@ var require_git = __commonJS2({
       getTrailingOptions: getTrailingOptions2,
       trailingFunctionArgument: trailingFunctionArgument2,
       trailingOptionsArgument: trailingOptionsArgument2
-    } = (init_utils2(), __toCommonJS(utils_exports));
-    var { applyPatchTask: applyPatchTask2 } = (init_apply_patch(), __toCommonJS(apply_patch_exports));
+    } = (init_utils3(), __toCommonJS2(utils_exports));
+    var { applyPatchTask: applyPatchTask2 } = (init_apply_patch(), __toCommonJS2(apply_patch_exports));
     var {
       branchTask: branchTask2,
       branchLocalTask: branchLocalTask2,
       deleteBranchesTask: deleteBranchesTask2,
       deleteBranchTask: deleteBranchTask2
-    } = (init_branch(), __toCommonJS(branch_exports));
-    var { checkIgnoreTask: checkIgnoreTask2 } = (init_check_ignore(), __toCommonJS(check_ignore_exports));
-    var { checkIsRepoTask: checkIsRepoTask2 } = (init_check_is_repo(), __toCommonJS(check_is_repo_exports));
-    var { cloneTask: cloneTask2, cloneMirrorTask: cloneMirrorTask2 } = (init_clone(), __toCommonJS(clone_exports));
-    var { cleanWithOptionsTask: cleanWithOptionsTask2, isCleanOptionsArray: isCleanOptionsArray2 } = (init_clean(), __toCommonJS(clean_exports));
-    var { diffSummaryTask: diffSummaryTask2 } = (init_diff(), __toCommonJS(diff_exports));
-    var { fetchTask: fetchTask2 } = (init_fetch(), __toCommonJS(fetch_exports));
-    var { moveTask: moveTask2 } = (init_move(), __toCommonJS(move_exports));
-    var { pullTask: pullTask2 } = (init_pull(), __toCommonJS(pull_exports));
-    var { pushTagsTask: pushTagsTask2 } = (init_push(), __toCommonJS(push_exports));
+    } = (init_branch(), __toCommonJS2(branch_exports));
+    var { checkIgnoreTask: checkIgnoreTask2 } = (init_check_ignore(), __toCommonJS2(check_ignore_exports));
+    var { checkIsRepoTask: checkIsRepoTask2 } = (init_check_is_repo(), __toCommonJS2(check_is_repo_exports));
+    var { cloneTask: cloneTask2, cloneMirrorTask: cloneMirrorTask2 } = (init_clone(), __toCommonJS2(clone_exports));
+    var { cleanWithOptionsTask: cleanWithOptionsTask2, isCleanOptionsArray: isCleanOptionsArray2 } = (init_clean(), __toCommonJS2(clean_exports));
+    var { diffSummaryTask: diffSummaryTask2 } = (init_diff(), __toCommonJS2(diff_exports));
+    var { fetchTask: fetchTask2 } = (init_fetch(), __toCommonJS2(fetch_exports));
+    var { moveTask: moveTask2 } = (init_move(), __toCommonJS2(move_exports));
+    var { pullTask: pullTask2 } = (init_pull(), __toCommonJS2(pull_exports));
+    var { pushTagsTask: pushTagsTask2 } = (init_push(), __toCommonJS2(push_exports));
     var {
       addRemoteTask: addRemoteTask2,
       getRemotesTask: getRemotesTask2,
       listRemotesTask: listRemotesTask2,
       remoteTask: remoteTask2,
       removeRemoteTask: removeRemoteTask2
-    } = (init_remote(), __toCommonJS(remote_exports));
-    var { getResetMode: getResetMode2, resetTask: resetTask2 } = (init_reset(), __toCommonJS(reset_exports));
-    var { stashListTask: stashListTask2 } = (init_stash_list(), __toCommonJS(stash_list_exports));
+    } = (init_remote(), __toCommonJS2(remote_exports));
+    var { getResetMode: getResetMode2, resetTask: resetTask2 } = (init_reset(), __toCommonJS2(reset_exports));
+    var { stashListTask: stashListTask2 } = (init_stash_list(), __toCommonJS2(stash_list_exports));
     var {
       addSubModuleTask: addSubModuleTask2,
       initSubModuleTask: initSubModuleTask2,
       subModuleTask: subModuleTask2,
       updateSubModuleTask: updateSubModuleTask2
-    } = (init_sub_module(), __toCommonJS(sub_module_exports));
-    var { addAnnotatedTagTask: addAnnotatedTagTask2, addTagTask: addTagTask2, tagListTask: tagListTask2 } = (init_tag(), __toCommonJS(tag_exports));
-    var { straightThroughBufferTask: straightThroughBufferTask2, straightThroughStringTask: straightThroughStringTask2 } = (init_task(), __toCommonJS(task_exports));
+    } = (init_sub_module(), __toCommonJS2(sub_module_exports));
+    var { addAnnotatedTagTask: addAnnotatedTagTask2, addTagTask: addTagTask2, tagListTask: tagListTask2 } = (init_tag(), __toCommonJS2(tag_exports));
+    var { straightThroughBufferTask: straightThroughBufferTask2, straightThroughStringTask: straightThroughStringTask2 } = (init_task(), __toCommonJS2(task_exports));
     function Git2(options, plugins) {
-      this._plugins = plugins;
-      this._executor = new GitExecutor2(
-        options.baseDir,
-        new Scheduler2(options.maxConcurrentProcesses),
-        plugins
-      );
+      this._executor = new GitExecutor2(options.binary, options.baseDir, new Scheduler2(options.maxConcurrentProcesses), plugins);
       this._trimmed = options.trimmed;
     }
     __name(Git2, "Git2");
     (Git2.prototype = Object.create(SimpleGitApi2.prototype)).constructor = Git2;
     Git2.prototype.customBinary = function(command) {
-      this._plugins.reconfigure("binary", command);
+      this._executor.binary = command;
       return this;
     };
     Git2.prototype.env = function(name, value) {
@@ -14995,13 +13309,7 @@ var require_git = __commonJS2({
       return this;
     };
     Git2.prototype.stashList = function(options) {
-      return this._runTask(
-        stashListTask2(
-          trailingOptionsArgument2(arguments) || {},
-          filterArray22(options) && options || []
-        ),
-        trailingFunctionArgument2(arguments)
-      );
+      return this._runTask(stashListTask2(trailingOptionsArgument2(arguments) || {}, filterArray22(options) && options || []), trailingFunctionArgument2(arguments));
     };
     function createCloneTask(api, task, repoPath, localPath) {
       if (typeof repoPath !== "string") {
@@ -15011,16 +13319,10 @@ var require_git = __commonJS2({
     }
     __name(createCloneTask, "createCloneTask");
     Git2.prototype.clone = function() {
-      return this._runTask(
-        createCloneTask("clone", cloneTask2, ...arguments),
-        trailingFunctionArgument2(arguments)
-      );
+      return this._runTask(createCloneTask("clone", cloneTask2, ...arguments), trailingFunctionArgument2(arguments));
     };
     Git2.prototype.mirror = function() {
-      return this._runTask(
-        createCloneTask("mirror", cloneMirrorTask2, ...arguments),
-        trailingFunctionArgument2(arguments)
-      );
+      return this._runTask(createCloneTask("mirror", cloneMirrorTask2, ...arguments), trailingFunctionArgument2(arguments));
     };
     Git2.prototype.mv = function(from, to) {
       return this._runTask(moveTask2(from, to), trailingFunctionArgument2(arguments));
@@ -15034,86 +13336,46 @@ var require_git = __commonJS2({
       });
     };
     Git2.prototype.pull = function(remote, branch, options, then) {
-      return this._runTask(
-        pullTask2(
-          filterType2(remote, filterString2),
-          filterType2(branch, filterString2),
-          getTrailingOptions2(arguments)
-        ),
-        trailingFunctionArgument2(arguments)
-      );
+      return this._runTask(pullTask2(filterType2(remote, filterString2), filterType2(branch, filterString2), getTrailingOptions2(arguments)), trailingFunctionArgument2(arguments));
     };
     Git2.prototype.fetch = function(remote, branch) {
-      return this._runTask(
-        fetchTask2(
-          filterType2(remote, filterString2),
-          filterType2(branch, filterString2),
-          getTrailingOptions2(arguments)
-        ),
-        trailingFunctionArgument2(arguments)
-      );
+      return this._runTask(fetchTask2(filterType2(remote, filterString2), filterType2(branch, filterString2), getTrailingOptions2(arguments)), trailingFunctionArgument2(arguments));
     };
     Git2.prototype.silent = function(silence) {
-      console.warn(
-        "simple-git deprecation notice: git.silent: logging should be configured using the `debug` library / `DEBUG` environment variable, this will be an error in version 3"
-      );
+      console.warn("simple-git deprecation notice: git.silent: logging should be configured using the `debug` library / `DEBUG` environment variable, this will be an error in version 3");
       return this;
     };
     Git2.prototype.tags = function(options, then) {
-      return this._runTask(
-        tagListTask2(getTrailingOptions2(arguments)),
-        trailingFunctionArgument2(arguments)
-      );
+      return this._runTask(tagListTask2(getTrailingOptions2(arguments)), trailingFunctionArgument2(arguments));
     };
     Git2.prototype.rebase = function() {
-      return this._runTask(
-        straightThroughStringTask2(["rebase", ...getTrailingOptions2(arguments)]),
-        trailingFunctionArgument2(arguments)
-      );
+      return this._runTask(straightThroughStringTask2(["rebase", ...getTrailingOptions2(arguments)]), trailingFunctionArgument2(arguments));
     };
     Git2.prototype.reset = function(mode) {
-      return this._runTask(
-        resetTask2(getResetMode2(mode), getTrailingOptions2(arguments)),
-        trailingFunctionArgument2(arguments)
-      );
+      return this._runTask(resetTask2(getResetMode2(mode), getTrailingOptions2(arguments)), trailingFunctionArgument2(arguments));
     };
     Git2.prototype.revert = function(commit) {
-      const next2 = trailingFunctionArgument2(arguments);
+      const next = trailingFunctionArgument2(arguments);
       if (typeof commit !== "string") {
-        return this._runTask(configurationErrorTask2("Commit must be a string"), next2);
+        return this._runTask(configurationErrorTask2("Commit must be a string"), next);
       }
-      return this._runTask(
-        straightThroughStringTask2(["revert", ...getTrailingOptions2(arguments, 0, true), commit]),
-        next2
-      );
+      return this._runTask(straightThroughStringTask2(["revert", ...getTrailingOptions2(arguments, 0, true), commit]), next);
     };
     Git2.prototype.addTag = function(name) {
       const task = typeof name === "string" ? addTagTask2(name) : configurationErrorTask2("Git.addTag requires a tag name");
       return this._runTask(task, trailingFunctionArgument2(arguments));
     };
     Git2.prototype.addAnnotatedTag = function(tagName, tagMessage) {
-      return this._runTask(
-        addAnnotatedTagTask2(tagName, tagMessage),
-        trailingFunctionArgument2(arguments)
-      );
+      return this._runTask(addAnnotatedTagTask2(tagName, tagMessage), trailingFunctionArgument2(arguments));
     };
     Git2.prototype.deleteLocalBranch = function(branchName, forceDelete, then) {
-      return this._runTask(
-        deleteBranchTask2(branchName, typeof forceDelete === "boolean" ? forceDelete : false),
-        trailingFunctionArgument2(arguments)
-      );
+      return this._runTask(deleteBranchTask2(branchName, typeof forceDelete === "boolean" ? forceDelete : false), trailingFunctionArgument2(arguments));
     };
     Git2.prototype.deleteLocalBranches = function(branchNames, forceDelete, then) {
-      return this._runTask(
-        deleteBranchesTask2(branchNames, typeof forceDelete === "boolean" ? forceDelete : false),
-        trailingFunctionArgument2(arguments)
-      );
+      return this._runTask(deleteBranchesTask2(branchNames, typeof forceDelete === "boolean" ? forceDelete : false), trailingFunctionArgument2(arguments));
     };
     Git2.prototype.branch = function(options, then) {
-      return this._runTask(
-        branchTask2(getTrailingOptions2(arguments)),
-        trailingFunctionArgument2(arguments)
-      );
+      return this._runTask(branchTask2(getTrailingOptions2(arguments)), trailingFunctionArgument2(arguments));
     };
     Git2.prototype.branchLocal = function(then) {
       return this._runTask(branchLocalTask2(), trailingFunctionArgument2(arguments));
@@ -15128,47 +13390,29 @@ var require_git = __commonJS2({
         }
       }
       command.push(...getTrailingOptions2(arguments, 0, true));
-      var next2 = trailingFunctionArgument2(arguments);
+      var next = trailingFunctionArgument2(arguments);
       if (!command.length) {
-        return this._runTask(
-          configurationErrorTask2("Raw: must supply one or more command to execute"),
-          next2
-        );
+        return this._runTask(configurationErrorTask2("Raw: must supply one or more command to execute"), next);
       }
-      return this._runTask(straightThroughStringTask2(command, this._trimmed), next2);
+      return this._runTask(straightThroughStringTask2(command, this._trimmed), next);
     };
     Git2.prototype.submoduleAdd = function(repo, path4, then) {
       return this._runTask(addSubModuleTask2(repo, path4), trailingFunctionArgument2(arguments));
     };
     Git2.prototype.submoduleUpdate = function(args, then) {
-      return this._runTask(
-        updateSubModuleTask2(getTrailingOptions2(arguments, true)),
-        trailingFunctionArgument2(arguments)
-      );
+      return this._runTask(updateSubModuleTask2(getTrailingOptions2(arguments, true)), trailingFunctionArgument2(arguments));
     };
     Git2.prototype.submoduleInit = function(args, then) {
-      return this._runTask(
-        initSubModuleTask2(getTrailingOptions2(arguments, true)),
-        trailingFunctionArgument2(arguments)
-      );
+      return this._runTask(initSubModuleTask2(getTrailingOptions2(arguments, true)), trailingFunctionArgument2(arguments));
     };
     Git2.prototype.subModule = function(options, then) {
-      return this._runTask(
-        subModuleTask2(getTrailingOptions2(arguments)),
-        trailingFunctionArgument2(arguments)
-      );
+      return this._runTask(subModuleTask2(getTrailingOptions2(arguments)), trailingFunctionArgument2(arguments));
     };
     Git2.prototype.listRemote = function() {
-      return this._runTask(
-        listRemotesTask2(getTrailingOptions2(arguments)),
-        trailingFunctionArgument2(arguments)
-      );
+      return this._runTask(listRemotesTask2(getTrailingOptions2(arguments)), trailingFunctionArgument2(arguments));
     };
     Git2.prototype.addRemote = function(remoteName, remoteRepo, then) {
-      return this._runTask(
-        addRemoteTask2(remoteName, remoteRepo, getTrailingOptions2(arguments)),
-        trailingFunctionArgument2(arguments)
-      );
+      return this._runTask(addRemoteTask2(remoteName, remoteRepo, getTrailingOptions2(arguments)), trailingFunctionArgument2(arguments));
     };
     Git2.prototype.removeRemote = function(remoteName, then) {
       return this._runTask(removeRemoteTask2(remoteName), trailingFunctionArgument2(arguments));
@@ -15177,10 +13421,7 @@ var require_git = __commonJS2({
       return this._runTask(getRemotesTask2(verbose === true), trailingFunctionArgument2(arguments));
     };
     Git2.prototype.remote = function(options, then) {
-      return this._runTask(
-        remoteTask2(getTrailingOptions2(arguments)),
-        trailingFunctionArgument2(arguments)
-      );
+      return this._runTask(remoteTask2(getTrailingOptions2(arguments)), trailingFunctionArgument2(arguments));
     };
     Git2.prototype.tag = function(options, then) {
       const command = getTrailingOptions2(arguments);
@@ -15190,29 +13431,17 @@ var require_git = __commonJS2({
       return this._runTask(straightThroughStringTask2(command), trailingFunctionArgument2(arguments));
     };
     Git2.prototype.updateServerInfo = function(then) {
-      return this._runTask(
-        straightThroughStringTask2(["update-server-info"]),
-        trailingFunctionArgument2(arguments)
-      );
+      return this._runTask(straightThroughStringTask2(["update-server-info"]), trailingFunctionArgument2(arguments));
     };
     Git2.prototype.pushTags = function(remote, then) {
-      const task = pushTagsTask2(
-        { remote: filterType2(remote, filterString2) },
-        getTrailingOptions2(arguments)
-      );
+      const task = pushTagsTask2({ remote: filterType2(remote, filterString2) }, getTrailingOptions2(arguments));
       return this._runTask(task, trailingFunctionArgument2(arguments));
     };
     Git2.prototype.rm = function(files) {
-      return this._runTask(
-        straightThroughStringTask2(["rm", "-f", ...asArray2(files)]),
-        trailingFunctionArgument2(arguments)
-      );
+      return this._runTask(straightThroughStringTask2(["rm", "-f", ...asArray2(files)]), trailingFunctionArgument2(arguments));
     };
     Git2.prototype.rmKeepLocal = function(files) {
-      return this._runTask(
-        straightThroughStringTask2(["rm", "--cached", ...asArray2(files)]),
-        trailingFunctionArgument2(arguments)
-      );
+      return this._runTask(straightThroughStringTask2(["rm", "--cached", ...asArray2(files)]), trailingFunctionArgument2(arguments));
     };
     Git2.prototype.catFile = function(options, then) {
       return this._catFile("utf-8", arguments);
@@ -15225,10 +13454,7 @@ var require_git = __commonJS2({
       var command = ["cat-file"];
       var options = args[0];
       if (typeof options === "string") {
-        return this._runTask(
-          configurationErrorTask2("Git.catFile: options must be supplied as an array of strings"),
-          handler
-        );
+        return this._runTask(configurationErrorTask2("Git.catFile: options must be supplied as an array of strings"), handler);
       }
       if (Array.isArray(options)) {
         command.push.apply(command, options);
@@ -15237,38 +13463,25 @@ var require_git = __commonJS2({
       return this._runTask(task, handler);
     };
     Git2.prototype.diff = function(options, then) {
-      const task = filterString2(options) ? configurationErrorTask2(
-        "git.diff: supplying options as a single string is no longer supported, switch to an array of strings"
-      ) : straightThroughStringTask2(["diff", ...getTrailingOptions2(arguments)]);
+      const task = filterString2(options) ? configurationErrorTask2("git.diff: supplying options as a single string is no longer supported, switch to an array of strings") : straightThroughStringTask2(["diff", ...getTrailingOptions2(arguments)]);
       return this._runTask(task, trailingFunctionArgument2(arguments));
     };
     Git2.prototype.diffSummary = function() {
-      return this._runTask(
-        diffSummaryTask2(getTrailingOptions2(arguments, 1)),
-        trailingFunctionArgument2(arguments)
-      );
+      return this._runTask(diffSummaryTask2(getTrailingOptions2(arguments, 1)), trailingFunctionArgument2(arguments));
     };
     Git2.prototype.applyPatch = function(patches) {
-      const task = !filterStringOrStringArray2(patches) ? configurationErrorTask2(
-        `git.applyPatch requires one or more string patches as the first argument`
-      ) : applyPatchTask2(asArray2(patches), getTrailingOptions2([].slice.call(arguments, 1)));
+      const task = !filterStringOrStringArray2(patches) ? configurationErrorTask2(`git.applyPatch requires one or more string patches as the first argument`) : applyPatchTask2(asArray2(patches), getTrailingOptions2([].slice.call(arguments, 1)));
       return this._runTask(task, trailingFunctionArgument2(arguments));
     };
     Git2.prototype.revparse = function() {
       const commands = ["rev-parse", ...getTrailingOptions2(arguments, true)];
-      return this._runTask(
-        straightThroughStringTask2(commands, true),
-        trailingFunctionArgument2(arguments)
-      );
+      return this._runTask(straightThroughStringTask2(commands, true), trailingFunctionArgument2(arguments));
     };
     Git2.prototype.clean = function(mode, options, then) {
       const usingCleanOptionsArray = isCleanOptionsArray2(mode);
       const cleanMode = usingCleanOptionsArray && mode.join("") || filterType2(mode, filterString2) || "";
       const customArgs = getTrailingOptions2([].slice.call(arguments, usingCleanOptionsArray ? 1 : 0));
-      return this._runTask(
-        cleanWithOptionsTask2(cleanMode, customArgs),
-        trailingFunctionArgument2(arguments)
-      );
+      return this._runTask(cleanWithOptionsTask2(cleanMode, customArgs), trailingFunctionArgument2(arguments));
     };
     Git2.prototype.exec = function(then) {
       const task = {
@@ -15286,16 +13499,10 @@ var require_git = __commonJS2({
       return this;
     };
     Git2.prototype.checkIgnore = function(pathnames, then) {
-      return this._runTask(
-        checkIgnoreTask2(asArray2(filterType2(pathnames, filterStringOrStringArray2, []))),
-        trailingFunctionArgument2(arguments)
-      );
+      return this._runTask(checkIgnoreTask2(asArray2(filterType2(pathnames, filterStringOrStringArray2, []))), trailingFunctionArgument2(arguments));
     };
     Git2.prototype.checkIsRepo = function(checkType, then) {
-      return this._runTask(
-        checkIsRepoTask2(filterType2(checkType, filterString2)),
-        trailingFunctionArgument2(arguments)
-      );
+      return this._runTask(checkIsRepoTask2(filterType2(checkType, filterString2)), trailingFunctionArgument2(arguments));
     };
     module.exports = Git2;
   }
@@ -15329,7 +13536,6 @@ init_task_configuration_error();
 init_check_is_repo();
 init_clean();
 init_config();
-init_diff_name_status();
 init_grep();
 init_reset();
 function abortPlugin(signal) {
@@ -15362,41 +13568,25 @@ function isConfigSwitch(arg) {
   return typeof arg === "string" && arg.trim().toLowerCase() === "-c";
 }
 __name(isConfigSwitch, "isConfigSwitch");
-function preventProtocolOverride(arg, next2) {
+function preventProtocolOverride(arg, next) {
   if (!isConfigSwitch(arg)) {
     return;
   }
-  if (!/^\s*protocol(.[a-z]+)?.allow/.test(next2)) {
+  if (!/^\s*protocol(.[a-z]+)?.allow/.test(next)) {
     return;
   }
-  throw new GitPluginError(
-    void 0,
-    "unsafe",
-    "Configuring protocol.allow is not permitted without enabling allowUnsafeExtProtocol"
-  );
+  throw new GitPluginError(void 0, "unsafe", "Configuring protocol.allow is not permitted without enabling allowUnsafeExtProtocol");
 }
 __name(preventProtocolOverride, "preventProtocolOverride");
 function preventUploadPack(arg, method) {
   if (/^\s*--(upload|receive)-pack/.test(arg)) {
-    throw new GitPluginError(
-      void 0,
-      "unsafe",
-      `Use of --upload-pack or --receive-pack is not permitted without enabling allowUnsafePack`
-    );
+    throw new GitPluginError(void 0, "unsafe", `Use of --upload-pack or --receive-pack is not permitted without enabling allowUnsafePack`);
   }
   if (method === "clone" && /^\s*-u\b/.test(arg)) {
-    throw new GitPluginError(
-      void 0,
-      "unsafe",
-      `Use of clone with option -u is not permitted without enabling allowUnsafePack`
-    );
+    throw new GitPluginError(void 0, "unsafe", `Use of clone with option -u is not permitted without enabling allowUnsafePack`);
   }
   if (method === "push" && /^\s*--exec\b/.test(arg)) {
-    throw new GitPluginError(
-      void 0,
-      "unsafe",
-      `Use of push with option --exec is not permitted without enabling allowUnsafePack`
-    );
+    throw new GitPluginError(void 0, "unsafe", `Use of push with option --exec is not permitted without enabling allowUnsafePack`);
   }
 }
 __name(preventUploadPack, "preventUploadPack");
@@ -15408,8 +13598,8 @@ function blockUnsafeOperationsPlugin({
     type: "spawn.args",
     action(args, context3) {
       args.forEach((current, index) => {
-        const next2 = index < args.length ? args[index + 1] : "";
-        allowUnsafeProtocolOverride || preventProtocolOverride(current, next2);
+        const next = index < args.length ? args[index + 1] : "";
+        allowUnsafeProtocolOverride || preventProtocolOverride(current, next);
         allowUnsafePack || preventUploadPack(current, context3.method);
       });
       return args;
@@ -15417,7 +13607,7 @@ function blockUnsafeOperationsPlugin({
   };
 }
 __name(blockUnsafeOperationsPlugin, "blockUnsafeOperationsPlugin");
-init_utils2();
+init_utils3();
 function commandConfigPrefixingPlugin(configuration) {
   const prefix = prefixedArray(configuration, "-c");
   return {
@@ -15428,7 +13618,7 @@ function commandConfigPrefixingPlugin(configuration) {
   };
 }
 __name(commandConfigPrefixingPlugin, "commandConfigPrefixingPlugin");
-init_utils2();
+init_utils3();
 var never = (0, import_promise_deferred2.deferred)().promise;
 function completionDetectionPlugin({
   onClose = true,
@@ -15473,67 +13663,31 @@ function completionDetectionPlugin({
   __name(configureTimeout, "configureTimeout");
   return {
     type: "spawn.after",
-    async action(_data, { spawned, close: close2 }) {
-      const events = createEvents();
-      let deferClose = true;
-      let quickClose = /* @__PURE__ */ __name(() => void (deferClose = false), "quickClose");
-      spawned.stdout?.on("data", quickClose);
-      spawned.stderr?.on("data", quickClose);
-      spawned.on("error", quickClose);
-      spawned.on("close", (code) => events.close(code));
-      spawned.on("exit", (code) => events.exit(code));
-      try {
-        await events.result;
-        if (deferClose) {
-          await delay(50);
+    action(_0, _1) {
+      return __async(this, arguments, function* (_data, { spawned, close: close2 }) {
+        var _a22, _b;
+        const events = createEvents();
+        let deferClose = true;
+        let quickClose = /* @__PURE__ */ __name(() => void (deferClose = false), "quickClose");
+        (_a22 = spawned.stdout) == null ? void 0 : _a22.on("data", quickClose);
+        (_b = spawned.stderr) == null ? void 0 : _b.on("data", quickClose);
+        spawned.on("error", quickClose);
+        spawned.on("close", (code) => events.close(code));
+        spawned.on("exit", (code) => events.exit(code));
+        try {
+          yield events.result;
+          if (deferClose) {
+            yield delay(50);
+          }
+          close2(events.exitCode);
+        } catch (err) {
+          close2(events.exitCode, err);
         }
-        close2(events.exitCode);
-      } catch (err) {
-        close2(events.exitCode, err);
-      }
+      });
     }
   };
 }
 __name(completionDetectionPlugin, "completionDetectionPlugin");
-init_utils2();
-var WRONG_NUMBER_ERR = `Invalid value supplied for custom binary, requires a single string or an array containing either one or two strings`;
-var WRONG_CHARS_ERR = `Invalid value supplied for custom binary, restricted characters must be removed or supply the unsafe.allowUnsafeCustomBinary option`;
-function isBadArgument(arg) {
-  return !arg || !/^([a-z]:)?([a-z0-9/.\\_-]+)$/i.test(arg);
-}
-__name(isBadArgument, "isBadArgument");
-function toBinaryConfig(input, allowUnsafe) {
-  if (input.length < 1 || input.length > 2) {
-    throw new GitPluginError(void 0, "binary", WRONG_NUMBER_ERR);
-  }
-  const isBad = input.some(isBadArgument);
-  if (isBad) {
-    if (allowUnsafe) {
-      console.warn(WRONG_CHARS_ERR);
-    } else {
-      throw new GitPluginError(void 0, "binary", WRONG_CHARS_ERR);
-    }
-  }
-  const [binary, prefix] = input;
-  return {
-    binary,
-    prefix
-  };
-}
-__name(toBinaryConfig, "toBinaryConfig");
-function customBinaryPlugin(plugins, input = ["git"], allowUnsafe = false) {
-  let config2 = toBinaryConfig(asArray(input), allowUnsafe);
-  plugins.on("binary", (input2) => {
-    config2 = toBinaryConfig(asArray(input2), allowUnsafe);
-  });
-  plugins.append("spawn.binary", () => {
-    return config2.binary;
-  });
-  plugins.append("spawn.args", (data) => {
-    return config2.prefix ? [config2.prefix, ...data] : data;
-  });
-}
-__name(customBinaryPlugin, "customBinaryPlugin");
 init_git_error();
 function isTaskError(result) {
   return !!(result.exitCode && result.stdErr.length);
@@ -15571,24 +13725,13 @@ function errorDetectionPlugin(config2) {
   };
 }
 __name(errorDetectionPlugin, "errorDetectionPlugin");
-init_utils2();
+init_utils3();
 var PluginStore = class {
   static {
     __name(this, "PluginStore");
   }
   constructor() {
     this.plugins = /* @__PURE__ */ new Set();
-    this.events = new EventEmitter2();
-  }
-  on(type, listener) {
-    this.events.on(type, listener);
-  }
-  reconfigure(type, data) {
-    this.events.emit(type, data);
-  }
-  append(type, action) {
-    const plugin = append(this.plugins, { type, action });
-    return () => this.plugins.delete(plugin);
   }
   add(plugin) {
     const plugins = [];
@@ -15608,17 +13751,18 @@ var PluginStore = class {
     return output;
   }
 };
-init_utils2();
+init_utils3();
 function progressMonitorPlugin(progress) {
   const progressCommand = "--progress";
   const progressMethods = ["checkout", "clone", "fetch", "pull", "push"];
   const onProgress = {
     type: "spawn.after",
     action(_data, context3) {
+      var _a22;
       if (!context3.commands.includes(progressCommand)) {
         return;
       }
-      context3.spawned.stderr?.on("data", (chunk) => {
+      (_a22 = context3.spawned.stderr) == null ? void 0 : _a22.on("data", (chunk) => {
         const message = /^([\s\S]+?):\s*(\d+)% \((\d+)\/(\d+)\)/.exec(chunk.toString("utf8"));
         if (!message) {
           return;
@@ -15649,13 +13793,13 @@ function progressEventStage(input) {
   return String(input.toLowerCase().split(" ", 1)) || "unknown";
 }
 __name(progressEventStage, "progressEventStage");
-init_utils2();
+init_utils3();
 function spawnOptionsPlugin(spawnOptions) {
   const options = pick(spawnOptions, ["uid", "gid"]);
   return {
     type: "spawn.options",
     action(data) {
-      return { ...options, ...data };
+      return __spreadValues(__spreadValues({}, options), data);
     }
   };
 }
@@ -15669,6 +13813,7 @@ function timeoutPlugin({
     return {
       type: "spawn.after",
       action(_data, context3) {
+        var _a22, _b;
         let timeout;
         function wait() {
           timeout && clearTimeout(timeout);
@@ -15676,8 +13821,9 @@ function timeoutPlugin({
         }
         __name(wait, "wait");
         function stop() {
-          context3.spawned.stdout?.off("data", wait);
-          context3.spawned.stderr?.off("data", wait);
+          var _a32, _b2;
+          (_a32 = context3.spawned.stdout) == null ? void 0 : _a32.off("data", wait);
+          (_b2 = context3.spawned.stderr) == null ? void 0 : _b2.off("data", wait);
           context3.spawned.off("exit", stop);
           context3.spawned.off("close", stop);
           timeout && clearTimeout(timeout);
@@ -15688,8 +13834,8 @@ function timeoutPlugin({
           context3.kill(new GitPluginError(void 0, "timeout", `block timeout reached`));
         }
         __name(kill2, "kill");
-        stdOut && context3.spawned.stdout?.on("data", wait);
-        stdErr && context3.spawned.stderr?.on("data", wait);
+        stdOut && ((_a22 = context3.spawned.stdout) == null ? void 0 : _a22.on("data", wait));
+        stdErr && ((_b = context3.spawned.stderr) == null ? void 0 : _b.on("data", wait));
         context3.spawned.on("exit", stop);
         context3.spawned.on("close", stop);
         wait();
@@ -15716,9 +13862,7 @@ function suffixPathsPlugin() {
           continue;
         }
         if (param === "--") {
-          append2(
-            data.slice(i + 1).flatMap((item) => isPathSpec(item) && toPaths(item) || item)
-          );
+          append2(data.slice(i + 1).flatMap((item) => isPathSpec(item) && toPaths(item) || item));
           break;
         }
         prefix.push(param);
@@ -15728,19 +13872,13 @@ function suffixPathsPlugin() {
   };
 }
 __name(suffixPathsPlugin, "suffixPathsPlugin");
-init_utils2();
+init_utils3();
 var Git = require_git();
 function gitInstanceFactory(baseDir, options) {
   const plugins = new PluginStore();
-  const config2 = createInstanceConfig(
-    baseDir && (typeof baseDir === "string" ? { baseDir } : baseDir) || {},
-    options
-  );
+  const config2 = createInstanceConfig(baseDir && (typeof baseDir === "string" ? { baseDir } : baseDir) || {}, options);
   if (!folderExists(config2.baseDir)) {
-    throw new GitConstructError(
-      config2,
-      `Cannot use simple-git on a directory that does not exist`
-    );
+    throw new GitConstructError(config2, `Cannot use simple-git on a directory that does not exist`);
   }
   if (Array.isArray(config2.config)) {
     plugins.add(commandConfigPrefixingPlugin(config2.config));
@@ -15754,51 +13892,22 @@ function gitInstanceFactory(baseDir, options) {
   config2.spawnOptions && plugins.add(spawnOptionsPlugin(config2.spawnOptions));
   plugins.add(errorDetectionPlugin(errorDetectionHandler(true)));
   config2.errors && plugins.add(errorDetectionPlugin(config2.errors));
-  customBinaryPlugin(plugins, config2.binary, config2.unsafe?.allowUnsafeCustomBinary);
   return new Git(config2, plugins);
 }
 __name(gitInstanceFactory, "gitInstanceFactory");
 init_git_response_error();
 var simpleGit = gitInstanceFactory;
 
-// node_modules/braintrust/dist/index.mjs
-var import_chalk = __toESM(require_source(), 1);
+// ../braintrust/sdk/js/dist/index.mjs
 var import_pluralize = __toESM(require_pluralize(), 1);
-var cliProgress = __toESM(require_cli_progress(), 1);
 import { promisify } from "util";
 import * as zlib from "zlib";
 var import_slugify = __toESM(require_slugify(), 1);
 import path2 from "path";
-var __defProp3 = Object.defineProperty;
-var __getOwnPropDesc3 = Object.getOwnPropertyDescriptor;
-var __getOwnPropNames3 = Object.getOwnPropertyNames;
-var __hasOwnProp3 = Object.prototype.hasOwnProperty;
-var __require2 = /* @__PURE__ */ ((x) => typeof __require !== "undefined" ? __require : typeof Proxy !== "undefined" ? new Proxy(x, {
-  get: /* @__PURE__ */ __name((a, b) => (typeof __require !== "undefined" ? __require : a)[b], "get")
-}) : x)(function(x) {
-  if (typeof __require !== "undefined") return __require.apply(this, arguments);
-  throw Error('Dynamic require of "' + x + '" is not supported');
-});
-var __esm3 = /* @__PURE__ */ __name((fn, res) => /* @__PURE__ */ __name(function __init() {
-  return fn && (res = (0, fn[__getOwnPropNames3(fn)[0]])(fn = 0)), res;
-}, "__init"), "__esm");
-var __export3 = /* @__PURE__ */ __name((target, all) => {
-  for (var name in all)
-    __defProp3(target, name, { get: all[name], enumerable: true });
-}, "__export");
-var __copyProps3 = /* @__PURE__ */ __name((to, from, except, desc) => {
-  if (from && typeof from === "object" || typeof from === "function") {
-    for (let key of __getOwnPropNames3(from))
-      if (!__hasOwnProp3.call(to, key) && key !== except)
-        __defProp3(to, key, { get: /* @__PURE__ */ __name(() => from[key], "get"), enumerable: !(desc = __getOwnPropDesc3(from, key)) || desc.enumerable });
-  }
-  return to;
-}, "__copyProps");
-var __toCommonJS2 = /* @__PURE__ */ __name((mod) => __copyProps3(__defProp3({}, "__esModule", { value: true }), mod), "__toCommonJS");
 var DefaultAsyncLocalStorage;
 var iso;
 var isomorph_default;
-var init_isomorph = __esm3({
+var init_isomorph = __esm2({
   "src/isomorph.ts"() {
     "use strict";
     DefaultAsyncLocalStorage = class {
@@ -15830,7 +13939,7 @@ var init_isomorph = __esm3({
 });
 var DEFAULT_QUEUE_SIZE;
 var Queue;
-var init_queue = __esm3({
+var init_queue = __esm2({
   "src/queue.ts"() {
     "use strict";
     DEFAULT_QUEUE_SIZE = 15e3;
@@ -15908,7 +14017,7 @@ __name(getIdGenerator, "getIdGenerator");
 var IDGenerator;
 var UUIDGenerator;
 var OTELIDGenerator;
-var init_id_gen = __esm3({
+var init_id_gen = __esm2({
   "src/id-gen.ts"() {
     "use strict";
     IDGenerator = class {
@@ -15952,7 +14061,7 @@ var AUDIT_SOURCE_FIELD;
 var AUDIT_METADATA_FIELD;
 var VALID_SOURCES;
 var PARENT_ID_FIELD;
-var init_db_fields = __esm3({
+var init_db_fields = __esm2({
   "util/db_fields.ts"() {
     "use strict";
     TRANSACTION_ID_FIELD = "_xact_id";
@@ -15981,7 +14090,7 @@ var SpanObjectTypeV1;
 var SpanObjectTypeV1EnumSchema;
 var SpanRowIdsV1;
 var SpanComponentsV1;
-var init_span_identifier_v1 = __esm3({
+var init_span_identifier_v1 = __esm2({
   "util/span_identifier_v1.ts"() {
     "use strict";
     ENCODING_VERSION_NUMBER = 1;
@@ -16137,7 +14246,7 @@ var SpanObjectTypeV2;
 var SpanObjectTypeV2EnumSchema;
 var SpanRowIdsV2;
 var SpanComponentsV2;
-var init_span_identifier_v2 = __esm3({
+var init_span_identifier_v2 = __esm2({
   "util/span_identifier_v2.ts"() {
     "use strict";
     init_span_identifier_v1();
@@ -16387,7 +14496,7 @@ function stringToUint8Array(str2) {
   return encoder.encode(str2);
 }
 __name(stringToUint8Array, "stringToUint8Array");
-var init_bytes = __esm3({
+var init_bytes = __esm2({
   "util/bytes.ts"() {
     "use strict";
   }
@@ -16427,7 +14536,7 @@ var internalSpanComponentUUIDFieldsEnumSchema;
 var _INTERNAL_SPAN_COMPONENT_UUID_FIELDS_ID_TO_NAME;
 var spanComponentsV3Schema;
 var SpanComponentsV3;
-var init_span_identifier_v3 = __esm3({
+var init_span_identifier_v3 = __esm2({
   "util/span_identifier_v3.ts"() {
     "use strict";
     init_span_identifier_v2();
@@ -16633,7 +14742,7 @@ var init_span_identifier_v3 = __esm3({
     };
   }
 });
-var init_http_headers = __esm3({
+var init_http_headers = __esm2({
   "util/http_headers.ts"() {
     "use strict";
     init_span_identifier_v3();
@@ -16651,7 +14760,7 @@ function isObjectOrArray(value) {
   return value instanceof Object;
 }
 __name(isObjectOrArray, "isObjectOrArray");
-var init_type_util = __esm3({
+var init_type_util = __esm2({
   "util/type_util.ts"() {
     "use strict";
   }
@@ -16723,7 +14832,7 @@ function getObjValueByPath(row, path32) {
   return curr;
 }
 __name(getObjValueByPath, "getObjValueByPath");
-var init_object_util = __esm3({
+var init_object_util = __esm2({
   "util/object_util.ts"() {
     "use strict";
     init_type_util();
@@ -16794,7 +14903,7 @@ function topologicalSort(graph, visitationOrder) {
   return reverseOrdering.reverse();
 }
 __name(topologicalSort, "topologicalSort");
-var init_graph_util = __esm3({
+var init_graph_util = __esm2({
   "util/graph_util.ts"() {
     "use strict";
     init_object_util();
@@ -16956,7 +15065,7 @@ function batchItems(args) {
 }
 __name(batchItems, "batchItems");
 var MERGE_ROW_SKIP_FIELDS;
-var init_merge_row_batch = __esm3({
+var init_merge_row_batch = __esm2({
   "util/merge_row_batch.ts"() {
     "use strict";
     init_db_fields();
@@ -17006,13 +15115,13 @@ function ensureNewDatasetRecord(r) {
 }
 __name(ensureNewDatasetRecord, "ensureNewDatasetRecord");
 var DEFAULT_IS_LEGACY_DATASET;
-var init_object = __esm3({
+var init_object = __esm2({
   "util/object.ts"() {
     "use strict";
     DEFAULT_IS_LEGACY_DATASET = false;
   }
 });
-var init_score = __esm3({
+var init_score = __esm2({
   "util/score.ts"() {
     "use strict";
   }
@@ -17021,7 +15130,7 @@ function constructJsonArray(items) {
   return `[${items.join(",")}]`;
 }
 __name(constructJsonArray, "constructJsonArray");
-var init_json_util = __esm3({
+var init_json_util = __esm2({
   "util/json_util.ts"() {
     "use strict";
   }
@@ -17032,7 +15141,7 @@ function _urljoin(...parts) {
   ).filter((x) => x.trim() !== "").join("/");
 }
 __name(_urljoin, "_urljoin");
-var init_string_util = __esm3({
+var init_string_util = __esm2({
   "util/string_util.ts"() {
     "use strict";
   }
@@ -17076,7 +15185,7 @@ var INVALID_ENCODING_ERRMSG_V4;
 var FIELDS_ID_TO_NAME;
 var spanComponentsV4Schema;
 var SpanComponentsV4;
-var init_span_identifier_v4 = __esm3({
+var init_span_identifier_v4 = __esm2({
   "util/span_identifier_v4.ts"() {
     "use strict";
     init_span_identifier_v3();
@@ -17290,7 +15399,7 @@ var init_span_identifier_v4 = __esm3({
     };
   }
 });
-var init_span_types = __esm3({
+var init_span_types = __esm2({
   "util/span_types.ts"() {
     "use strict";
   }
@@ -17310,7 +15419,7 @@ function mergeGitMetadataSettings(s1, s2) {
   return { collect, fields };
 }
 __name(mergeGitMetadataSettings, "mergeGitMetadataSettings");
-var init_git_fields = __esm3({
+var init_git_fields = __esm2({
   "util/git_fields.ts"() {
     "use strict";
   }
@@ -17339,7 +15448,7 @@ var TOP_BITS;
 var MOD;
 var COPRIME;
 var COPRIME_INVERSE;
-var init_xact_ids = __esm3({
+var init_xact_ids = __esm2({
   "util/xact-ids.ts"() {
     "use strict";
     TOP_BITS = BigInt("0x0DE1") << BigInt(48);
@@ -17348,13 +15457,13 @@ var init_xact_ids = __esm3({
     COPRIME_INVERSE = BigInt("1522336535492693385");
   }
 });
-var init_zod_util = __esm3({
+var init_zod_util = __esm2({
   "util/zod_util.ts"() {
     "use strict";
     init_object_util();
   }
 });
-var init_util2 = __esm3({
+var init_util2 = __esm2({
   "util/index.ts"() {
     "use strict";
     init_db_fields();
@@ -17471,7 +15580,7 @@ var ViewDataSearch;
 var ViewData;
 var ViewOptions;
 var View;
-var init_generated_types = __esm3({
+var init_generated_types = __esm2({
   "src/generated_types.ts"() {
     "use strict";
     AclObjectType = external_exports.union([
@@ -18728,10 +16837,10 @@ var init_generated_types = __esm3({
 });
 function btStreamParser() {
   const decoder = new TextDecoder();
-  let parser4;
+  let parser3;
   return new TransformStream({
     async start(controller) {
-      parser4 = createParser((event) => {
+      parser3 = createParser((event) => {
         if (event.type === "reconnect-interval") {
           return;
         }
@@ -18744,9 +16853,9 @@ function btStreamParser() {
     },
     async transform(chunk, controller) {
       if (chunk instanceof Uint8Array) {
-        parser4.feed(decoder.decode(chunk));
+        parser3.feed(decoder.decode(chunk));
       } else if (typeof chunk === "string") {
-        parser4.feed(chunk);
+        parser3.feed(chunk);
       } else {
         controller.enqueue(chunk);
       }
@@ -18836,7 +16945,7 @@ function devNullWritableStream() {
 __name(devNullWritableStream, "devNullWritableStream");
 var braintrustStreamChunkSchema;
 var BraintrustStream;
-var init_stream = __esm3({
+var init_stream = __esm2({
   "src/functions/stream.ts"() {
     "use strict";
     init_generated_types();
@@ -19061,7 +17170,7 @@ function canUseDiskCache() {
 }
 __name(canUseDiskCache, "canUseDiskCache");
 var DiskCache;
-var init_disk_cache = __esm3({
+var init_disk_cache = __esm2({
   "src/prompt-cache/disk-cache.ts"() {
     "use strict";
     init_isomorph();
@@ -19162,7 +17271,7 @@ var init_disk_cache = __esm3({
   }
 });
 var LRUCache;
-var init_lru_cache = __esm3({
+var init_lru_cache = __esm2({
   "src/prompt-cache/lru-cache.ts"() {
     "use strict";
     LRUCache = class {
@@ -19232,7 +17341,7 @@ function createCacheKey(key) {
 }
 __name(createCacheKey, "createCacheKey");
 var PromptCache;
-var init_prompt_cache = __esm3({
+var init_prompt_cache = __esm2({
   "src/prompt-cache/prompt-cache.ts"() {
     "use strict";
     PromptCache = class {
@@ -19334,7 +17443,7 @@ var GLOBAL_PROJECT;
 var LazyValue;
 var SyncLazyValue;
 var InternalAbortError;
-var init_util22 = __esm3({
+var init_util22 = __esm2({
   "src/util.ts"() {
     "use strict";
     GLOBAL_PROJECT = "Global";
@@ -19433,1712 +17542,14 @@ function getMustacheVars(prompt) {
   }
 }
 __name(getMustacheVars, "getMustacheVars");
-var init_mustache_utils = __esm3({
+var init_mustache_utils = __esm2({
   "src/mustache-utils.ts"() {
     "use strict";
     init_util2();
   }
 });
-var _globalThis;
-var init_globalThis = __esm3({
-  "../node_modules/@opentelemetry/api/build/esm/platform/node/globalThis.js"() {
-    "use strict";
-    _globalThis = typeof globalThis === "object" ? globalThis : global;
-  }
-});
-var init_node = __esm3({
-  "../node_modules/@opentelemetry/api/build/esm/platform/node/index.js"() {
-    "use strict";
-    init_globalThis();
-  }
-});
-var init_platform = __esm3({
-  "../node_modules/@opentelemetry/api/build/esm/platform/index.js"() {
-    "use strict";
-    init_node();
-  }
-});
-var VERSION;
-var init_version2 = __esm3({
-  "../node_modules/@opentelemetry/api/build/esm/version.js"() {
-    "use strict";
-    VERSION = "1.9.0";
-  }
-});
-function _makeCompatibilityCheck(ownVersion) {
-  var acceptedVersions = /* @__PURE__ */ new Set([ownVersion]);
-  var rejectedVersions = /* @__PURE__ */ new Set();
-  var myVersionMatch = ownVersion.match(re);
-  if (!myVersionMatch) {
-    return function() {
-      return false;
-    };
-  }
-  var ownVersionParsed = {
-    major: +myVersionMatch[1],
-    minor: +myVersionMatch[2],
-    patch: +myVersionMatch[3],
-    prerelease: myVersionMatch[4]
-  };
-  if (ownVersionParsed.prerelease != null) {
-    return /* @__PURE__ */ __name(function isExactmatch(globalVersion) {
-      return globalVersion === ownVersion;
-    }, "isExactmatch");
-  }
-  function _reject(v) {
-    rejectedVersions.add(v);
-    return false;
-  }
-  __name(_reject, "_reject");
-  function _accept(v) {
-    acceptedVersions.add(v);
-    return true;
-  }
-  __name(_accept, "_accept");
-  return /* @__PURE__ */ __name(function isCompatible2(globalVersion) {
-    if (acceptedVersions.has(globalVersion)) {
-      return true;
-    }
-    if (rejectedVersions.has(globalVersion)) {
-      return false;
-    }
-    var globalVersionMatch = globalVersion.match(re);
-    if (!globalVersionMatch) {
-      return _reject(globalVersion);
-    }
-    var globalVersionParsed = {
-      major: +globalVersionMatch[1],
-      minor: +globalVersionMatch[2],
-      patch: +globalVersionMatch[3],
-      prerelease: globalVersionMatch[4]
-    };
-    if (globalVersionParsed.prerelease != null) {
-      return _reject(globalVersion);
-    }
-    if (ownVersionParsed.major !== globalVersionParsed.major) {
-      return _reject(globalVersion);
-    }
-    if (ownVersionParsed.major === 0) {
-      if (ownVersionParsed.minor === globalVersionParsed.minor && ownVersionParsed.patch <= globalVersionParsed.patch) {
-        return _accept(globalVersion);
-      }
-      return _reject(globalVersion);
-    }
-    if (ownVersionParsed.minor <= globalVersionParsed.minor) {
-      return _accept(globalVersion);
-    }
-    return _reject(globalVersion);
-  }, "isCompatible2");
-}
-__name(_makeCompatibilityCheck, "_makeCompatibilityCheck");
-var re;
-var isCompatible;
-var init_semver = __esm3({
-  "../node_modules/@opentelemetry/api/build/esm/internal/semver.js"() {
-    "use strict";
-    init_version2();
-    re = /^(\d+)\.(\d+)\.(\d+)(-(.+))?$/;
-    isCompatible = _makeCompatibilityCheck(VERSION);
-  }
-});
-function registerGlobal(type, instance, diag3, allowOverride) {
-  var _a4;
-  if (allowOverride === void 0) {
-    allowOverride = false;
-  }
-  var api = _global[GLOBAL_OPENTELEMETRY_API_KEY] = (_a4 = _global[GLOBAL_OPENTELEMETRY_API_KEY]) !== null && _a4 !== void 0 ? _a4 : {
-    version: VERSION
-  };
-  if (!allowOverride && api[type]) {
-    var err = new Error("@opentelemetry/api: Attempted duplicate registration of API: " + type);
-    diag3.error(err.stack || err.message);
-    return false;
-  }
-  if (api.version !== VERSION) {
-    var err = new Error("@opentelemetry/api: Registration of version v" + api.version + " for " + type + " does not match previously registered API v" + VERSION);
-    diag3.error(err.stack || err.message);
-    return false;
-  }
-  api[type] = instance;
-  diag3.debug("@opentelemetry/api: Registered a global for " + type + " v" + VERSION + ".");
-  return true;
-}
-__name(registerGlobal, "registerGlobal");
-function getGlobal(type) {
-  var _a4, _b;
-  var globalVersion = (_a4 = _global[GLOBAL_OPENTELEMETRY_API_KEY]) === null || _a4 === void 0 ? void 0 : _a4.version;
-  if (!globalVersion || !isCompatible(globalVersion)) {
-    return;
-  }
-  return (_b = _global[GLOBAL_OPENTELEMETRY_API_KEY]) === null || _b === void 0 ? void 0 : _b[type];
-}
-__name(getGlobal, "getGlobal");
-function unregisterGlobal(type, diag3) {
-  diag3.debug("@opentelemetry/api: Unregistering a global for " + type + " v" + VERSION + ".");
-  var api = _global[GLOBAL_OPENTELEMETRY_API_KEY];
-  if (api) {
-    delete api[type];
-  }
-}
-__name(unregisterGlobal, "unregisterGlobal");
-var major;
-var GLOBAL_OPENTELEMETRY_API_KEY;
-var _global;
-var init_global_utils = __esm3({
-  "../node_modules/@opentelemetry/api/build/esm/internal/global-utils.js"() {
-    "use strict";
-    init_platform();
-    init_version2();
-    init_semver();
-    major = VERSION.split(".")[0];
-    GLOBAL_OPENTELEMETRY_API_KEY = Symbol.for("opentelemetry.js.api." + major);
-    _global = _globalThis;
-  }
-});
-function logProxy(funcName, namespace, args) {
-  var logger = getGlobal("diag");
-  if (!logger) {
-    return;
-  }
-  args.unshift(namespace);
-  return logger[funcName].apply(logger, __spreadArray([], __read(args), false));
-}
-__name(logProxy, "logProxy");
-var __read;
-var __spreadArray;
-var DiagComponentLogger;
-var init_ComponentLogger = __esm3({
-  "../node_modules/@opentelemetry/api/build/esm/diag/ComponentLogger.js"() {
-    "use strict";
-    init_global_utils();
-    __read = /* @__PURE__ */ __name(function(o, n) {
-      var m = typeof Symbol === "function" && o[Symbol.iterator];
-      if (!m) return o;
-      var i = m.call(o), r, ar = [], e;
-      try {
-        while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
-      } catch (error22) {
-        e = { error: error22 };
-      } finally {
-        try {
-          if (r && !r.done && (m = i["return"])) m.call(i);
-        } finally {
-          if (e) throw e.error;
-        }
-      }
-      return ar;
-    }, "__read");
-    __spreadArray = /* @__PURE__ */ __name(function(to, from, pack) {
-      if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
-        if (ar || !(i in from)) {
-          if (!ar) ar = Array.prototype.slice.call(from, 0, i);
-          ar[i] = from[i];
-        }
-      }
-      return to.concat(ar || Array.prototype.slice.call(from));
-    }, "__spreadArray");
-    DiagComponentLogger = /** @class */
-    function() {
-      function DiagComponentLogger2(props) {
-        this._namespace = props.namespace || "DiagComponentLogger";
-      }
-      __name(DiagComponentLogger2, "DiagComponentLogger2");
-      DiagComponentLogger2.prototype.debug = function() {
-        var args = [];
-        for (var _i = 0; _i < arguments.length; _i++) {
-          args[_i] = arguments[_i];
-        }
-        return logProxy("debug", this._namespace, args);
-      };
-      DiagComponentLogger2.prototype.error = function() {
-        var args = [];
-        for (var _i = 0; _i < arguments.length; _i++) {
-          args[_i] = arguments[_i];
-        }
-        return logProxy("error", this._namespace, args);
-      };
-      DiagComponentLogger2.prototype.info = function() {
-        var args = [];
-        for (var _i = 0; _i < arguments.length; _i++) {
-          args[_i] = arguments[_i];
-        }
-        return logProxy("info", this._namespace, args);
-      };
-      DiagComponentLogger2.prototype.warn = function() {
-        var args = [];
-        for (var _i = 0; _i < arguments.length; _i++) {
-          args[_i] = arguments[_i];
-        }
-        return logProxy("warn", this._namespace, args);
-      };
-      DiagComponentLogger2.prototype.verbose = function() {
-        var args = [];
-        for (var _i = 0; _i < arguments.length; _i++) {
-          args[_i] = arguments[_i];
-        }
-        return logProxy("verbose", this._namespace, args);
-      };
-      return DiagComponentLogger2;
-    }();
-  }
-});
-var DiagLogLevel;
-var init_types = __esm3({
-  "../node_modules/@opentelemetry/api/build/esm/diag/types.js"() {
-    "use strict";
-    (function(DiagLogLevel2) {
-      DiagLogLevel2[DiagLogLevel2["NONE"] = 0] = "NONE";
-      DiagLogLevel2[DiagLogLevel2["ERROR"] = 30] = "ERROR";
-      DiagLogLevel2[DiagLogLevel2["WARN"] = 50] = "WARN";
-      DiagLogLevel2[DiagLogLevel2["INFO"] = 60] = "INFO";
-      DiagLogLevel2[DiagLogLevel2["DEBUG"] = 70] = "DEBUG";
-      DiagLogLevel2[DiagLogLevel2["VERBOSE"] = 80] = "VERBOSE";
-      DiagLogLevel2[DiagLogLevel2["ALL"] = 9999] = "ALL";
-    })(DiagLogLevel || (DiagLogLevel = {}));
-  }
-});
-function createLogLevelDiagLogger(maxLevel, logger) {
-  if (maxLevel < DiagLogLevel.NONE) {
-    maxLevel = DiagLogLevel.NONE;
-  } else if (maxLevel > DiagLogLevel.ALL) {
-    maxLevel = DiagLogLevel.ALL;
-  }
-  logger = logger || {};
-  function _filterFunc(funcName, theLevel) {
-    var theFunc = logger[funcName];
-    if (typeof theFunc === "function" && maxLevel >= theLevel) {
-      return theFunc.bind(logger);
-    }
-    return function() {
-    };
-  }
-  __name(_filterFunc, "_filterFunc");
-  return {
-    error: _filterFunc("error", DiagLogLevel.ERROR),
-    warn: _filterFunc("warn", DiagLogLevel.WARN),
-    info: _filterFunc("info", DiagLogLevel.INFO),
-    debug: _filterFunc("debug", DiagLogLevel.DEBUG),
-    verbose: _filterFunc("verbose", DiagLogLevel.VERBOSE)
-  };
-}
-__name(createLogLevelDiagLogger, "createLogLevelDiagLogger");
-var init_logLevelLogger = __esm3({
-  "../node_modules/@opentelemetry/api/build/esm/diag/internal/logLevelLogger.js"() {
-    "use strict";
-    init_types();
-  }
-});
-var __read2;
-var __spreadArray2;
-var API_NAME;
-var DiagAPI;
-var init_diag = __esm3({
-  "../node_modules/@opentelemetry/api/build/esm/api/diag.js"() {
-    "use strict";
-    init_ComponentLogger();
-    init_logLevelLogger();
-    init_types();
-    init_global_utils();
-    __read2 = /* @__PURE__ */ __name(function(o, n) {
-      var m = typeof Symbol === "function" && o[Symbol.iterator];
-      if (!m) return o;
-      var i = m.call(o), r, ar = [], e;
-      try {
-        while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
-      } catch (error22) {
-        e = { error: error22 };
-      } finally {
-        try {
-          if (r && !r.done && (m = i["return"])) m.call(i);
-        } finally {
-          if (e) throw e.error;
-        }
-      }
-      return ar;
-    }, "__read2");
-    __spreadArray2 = /* @__PURE__ */ __name(function(to, from, pack) {
-      if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
-        if (ar || !(i in from)) {
-          if (!ar) ar = Array.prototype.slice.call(from, 0, i);
-          ar[i] = from[i];
-        }
-      }
-      return to.concat(ar || Array.prototype.slice.call(from));
-    }, "__spreadArray2");
-    API_NAME = "diag";
-    DiagAPI = /** @class */
-    function() {
-      function DiagAPI2() {
-        function _logProxy(funcName) {
-          return function() {
-            var args = [];
-            for (var _i = 0; _i < arguments.length; _i++) {
-              args[_i] = arguments[_i];
-            }
-            var logger = getGlobal("diag");
-            if (!logger)
-              return;
-            return logger[funcName].apply(logger, __spreadArray2([], __read2(args), false));
-          };
-        }
-        __name(_logProxy, "_logProxy");
-        var self = this;
-        var setLogger = /* @__PURE__ */ __name(function(logger, optionsOrLogLevel) {
-          var _a4, _b, _c;
-          if (optionsOrLogLevel === void 0) {
-            optionsOrLogLevel = { logLevel: DiagLogLevel.INFO };
-          }
-          if (logger === self) {
-            var err = new Error("Cannot use diag as the logger for itself. Please use a DiagLogger implementation like ConsoleDiagLogger or a custom implementation");
-            self.error((_a4 = err.stack) !== null && _a4 !== void 0 ? _a4 : err.message);
-            return false;
-          }
-          if (typeof optionsOrLogLevel === "number") {
-            optionsOrLogLevel = {
-              logLevel: optionsOrLogLevel
-            };
-          }
-          var oldLogger = getGlobal("diag");
-          var newLogger = createLogLevelDiagLogger((_b = optionsOrLogLevel.logLevel) !== null && _b !== void 0 ? _b : DiagLogLevel.INFO, logger);
-          if (oldLogger && !optionsOrLogLevel.suppressOverrideMessage) {
-            var stack = (_c = new Error().stack) !== null && _c !== void 0 ? _c : "<failed to generate stacktrace>";
-            oldLogger.warn("Current logger will be overwritten from " + stack);
-            newLogger.warn("Current logger will overwrite one already registered from " + stack);
-          }
-          return registerGlobal("diag", newLogger, self, true);
-        }, "setLogger");
-        self.setLogger = setLogger;
-        self.disable = function() {
-          unregisterGlobal(API_NAME, self);
-        };
-        self.createComponentLogger = function(options) {
-          return new DiagComponentLogger(options);
-        };
-        self.verbose = _logProxy("verbose");
-        self.debug = _logProxy("debug");
-        self.info = _logProxy("info");
-        self.warn = _logProxy("warn");
-        self.error = _logProxy("error");
-      }
-      __name(DiagAPI2, "DiagAPI2");
-      DiagAPI2.instance = function() {
-        if (!this._instance) {
-          this._instance = new DiagAPI2();
-        }
-        return this._instance;
-      };
-      return DiagAPI2;
-    }();
-  }
-});
-var __read3;
-var __values;
-var BaggageImpl;
-var init_baggage_impl = __esm3({
-  "../node_modules/@opentelemetry/api/build/esm/baggage/internal/baggage-impl.js"() {
-    "use strict";
-    __read3 = /* @__PURE__ */ __name(function(o, n) {
-      var m = typeof Symbol === "function" && o[Symbol.iterator];
-      if (!m) return o;
-      var i = m.call(o), r, ar = [], e;
-      try {
-        while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
-      } catch (error22) {
-        e = { error: error22 };
-      } finally {
-        try {
-          if (r && !r.done && (m = i["return"])) m.call(i);
-        } finally {
-          if (e) throw e.error;
-        }
-      }
-      return ar;
-    }, "__read3");
-    __values = /* @__PURE__ */ __name(function(o) {
-      var s = typeof Symbol === "function" && Symbol.iterator, m = s && o[s], i = 0;
-      if (m) return m.call(o);
-      if (o && typeof o.length === "number") return {
-        next: /* @__PURE__ */ __name(function() {
-          if (o && i >= o.length) o = void 0;
-          return { value: o && o[i++], done: !o };
-        }, "next")
-      };
-      throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");
-    }, "__values");
-    BaggageImpl = /** @class */
-    function() {
-      function BaggageImpl2(entries) {
-        this._entries = entries ? new Map(entries) : /* @__PURE__ */ new Map();
-      }
-      __name(BaggageImpl2, "BaggageImpl2");
-      BaggageImpl2.prototype.getEntry = function(key) {
-        var entry = this._entries.get(key);
-        if (!entry) {
-          return void 0;
-        }
-        return Object.assign({}, entry);
-      };
-      BaggageImpl2.prototype.getAllEntries = function() {
-        return Array.from(this._entries.entries()).map(function(_a4) {
-          var _b = __read3(_a4, 2), k = _b[0], v = _b[1];
-          return [k, v];
-        });
-      };
-      BaggageImpl2.prototype.setEntry = function(key, entry) {
-        var newBaggage = new BaggageImpl2(this._entries);
-        newBaggage._entries.set(key, entry);
-        return newBaggage;
-      };
-      BaggageImpl2.prototype.removeEntry = function(key) {
-        var newBaggage = new BaggageImpl2(this._entries);
-        newBaggage._entries.delete(key);
-        return newBaggage;
-      };
-      BaggageImpl2.prototype.removeEntries = function() {
-        var e_1, _a4;
-        var keys = [];
-        for (var _i = 0; _i < arguments.length; _i++) {
-          keys[_i] = arguments[_i];
-        }
-        var newBaggage = new BaggageImpl2(this._entries);
-        try {
-          for (var keys_1 = __values(keys), keys_1_1 = keys_1.next(); !keys_1_1.done; keys_1_1 = keys_1.next()) {
-            var key = keys_1_1.value;
-            newBaggage._entries.delete(key);
-          }
-        } catch (e_1_1) {
-          e_1 = { error: e_1_1 };
-        } finally {
-          try {
-            if (keys_1_1 && !keys_1_1.done && (_a4 = keys_1.return)) _a4.call(keys_1);
-          } finally {
-            if (e_1) throw e_1.error;
-          }
-        }
-        return newBaggage;
-      };
-      BaggageImpl2.prototype.clear = function() {
-        return new BaggageImpl2();
-      };
-      return BaggageImpl2;
-    }();
-  }
-});
-var baggageEntryMetadataSymbol;
-var init_symbol = __esm3({
-  "../node_modules/@opentelemetry/api/build/esm/baggage/internal/symbol.js"() {
-    "use strict";
-    baggageEntryMetadataSymbol = Symbol("BaggageEntryMetadata");
-  }
-});
-function createBaggage(entries) {
-  if (entries === void 0) {
-    entries = {};
-  }
-  return new BaggageImpl(new Map(Object.entries(entries)));
-}
-__name(createBaggage, "createBaggage");
-function baggageEntryMetadataFromString(str2) {
-  if (typeof str2 !== "string") {
-    diag.error("Cannot create baggage metadata from unknown type: " + typeof str2);
-    str2 = "";
-  }
-  return {
-    __TYPE__: baggageEntryMetadataSymbol,
-    toString: /* @__PURE__ */ __name(function() {
-      return str2;
-    }, "toString")
-  };
-}
-__name(baggageEntryMetadataFromString, "baggageEntryMetadataFromString");
-var diag;
-var init_utils3 = __esm3({
-  "../node_modules/@opentelemetry/api/build/esm/baggage/utils.js"() {
-    "use strict";
-    init_diag();
-    init_baggage_impl();
-    init_symbol();
-    diag = DiagAPI.instance();
-  }
-});
-function createContextKey(description) {
-  return Symbol.for(description);
-}
-__name(createContextKey, "createContextKey");
-var BaseContext;
-var ROOT_CONTEXT;
-var init_context = __esm3({
-  "../node_modules/@opentelemetry/api/build/esm/context/context.js"() {
-    "use strict";
-    BaseContext = /** @class */
-    /* @__PURE__ */ function() {
-      function BaseContext2(parentContext) {
-        var self = this;
-        self._currentContext = parentContext ? new Map(parentContext) : /* @__PURE__ */ new Map();
-        self.getValue = function(key) {
-          return self._currentContext.get(key);
-        };
-        self.setValue = function(key, value) {
-          var context22 = new BaseContext2(self._currentContext);
-          context22._currentContext.set(key, value);
-          return context22;
-        };
-        self.deleteValue = function(key) {
-          var context22 = new BaseContext2(self._currentContext);
-          context22._currentContext.delete(key);
-          return context22;
-        };
-      }
-      __name(BaseContext2, "BaseContext2");
-      return BaseContext2;
-    }();
-    ROOT_CONTEXT = new BaseContext();
-  }
-});
-var consoleMap;
-var DiagConsoleLogger;
-var init_consoleLogger = __esm3({
-  "../node_modules/@opentelemetry/api/build/esm/diag/consoleLogger.js"() {
-    "use strict";
-    consoleMap = [
-      { n: "error", c: "error" },
-      { n: "warn", c: "warn" },
-      { n: "info", c: "info" },
-      { n: "debug", c: "debug" },
-      { n: "verbose", c: "trace" }
-    ];
-    DiagConsoleLogger = /** @class */
-    /* @__PURE__ */ function() {
-      function DiagConsoleLogger2() {
-        function _consoleFunc(funcName) {
-          return function() {
-            var args = [];
-            for (var _i = 0; _i < arguments.length; _i++) {
-              args[_i] = arguments[_i];
-            }
-            if (console) {
-              var theFunc = console[funcName];
-              if (typeof theFunc !== "function") {
-                theFunc = console.log;
-              }
-              if (typeof theFunc === "function") {
-                return theFunc.apply(console, args);
-              }
-            }
-          };
-        }
-        __name(_consoleFunc, "_consoleFunc");
-        for (var i = 0; i < consoleMap.length; i++) {
-          this[consoleMap[i].n] = _consoleFunc(consoleMap[i].c);
-        }
-      }
-      __name(DiagConsoleLogger2, "DiagConsoleLogger2");
-      return DiagConsoleLogger2;
-    }();
-  }
-});
-function createNoopMeter() {
-  return NOOP_METER;
-}
-__name(createNoopMeter, "createNoopMeter");
-var __extends;
-var NoopMeter;
-var NoopMetric;
-var NoopCounterMetric;
-var NoopUpDownCounterMetric;
-var NoopGaugeMetric;
-var NoopHistogramMetric;
-var NoopObservableMetric;
-var NoopObservableCounterMetric;
-var NoopObservableGaugeMetric;
-var NoopObservableUpDownCounterMetric;
-var NOOP_METER;
-var NOOP_COUNTER_METRIC;
-var NOOP_GAUGE_METRIC;
-var NOOP_HISTOGRAM_METRIC;
-var NOOP_UP_DOWN_COUNTER_METRIC;
-var NOOP_OBSERVABLE_COUNTER_METRIC;
-var NOOP_OBSERVABLE_GAUGE_METRIC;
-var NOOP_OBSERVABLE_UP_DOWN_COUNTER_METRIC;
-var init_NoopMeter = __esm3({
-  "../node_modules/@opentelemetry/api/build/esm/metrics/NoopMeter.js"() {
-    "use strict";
-    __extends = /* @__PURE__ */ function() {
-      var extendStatics = /* @__PURE__ */ __name(function(d, b) {
-        extendStatics = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function(d2, b2) {
-          d2.__proto__ = b2;
-        } || function(d2, b2) {
-          for (var p in b2) if (Object.prototype.hasOwnProperty.call(b2, p)) d2[p] = b2[p];
-        };
-        return extendStatics(d, b);
-      }, "extendStatics");
-      return function(d, b) {
-        if (typeof b !== "function" && b !== null)
-          throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() {
-          this.constructor = d;
-        }
-        __name(__, "__");
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-      };
-    }();
-    NoopMeter = /** @class */
-    function() {
-      function NoopMeter2() {
-      }
-      __name(NoopMeter2, "NoopMeter2");
-      NoopMeter2.prototype.createGauge = function(_name, _options) {
-        return NOOP_GAUGE_METRIC;
-      };
-      NoopMeter2.prototype.createHistogram = function(_name, _options) {
-        return NOOP_HISTOGRAM_METRIC;
-      };
-      NoopMeter2.prototype.createCounter = function(_name, _options) {
-        return NOOP_COUNTER_METRIC;
-      };
-      NoopMeter2.prototype.createUpDownCounter = function(_name, _options) {
-        return NOOP_UP_DOWN_COUNTER_METRIC;
-      };
-      NoopMeter2.prototype.createObservableGauge = function(_name, _options) {
-        return NOOP_OBSERVABLE_GAUGE_METRIC;
-      };
-      NoopMeter2.prototype.createObservableCounter = function(_name, _options) {
-        return NOOP_OBSERVABLE_COUNTER_METRIC;
-      };
-      NoopMeter2.prototype.createObservableUpDownCounter = function(_name, _options) {
-        return NOOP_OBSERVABLE_UP_DOWN_COUNTER_METRIC;
-      };
-      NoopMeter2.prototype.addBatchObservableCallback = function(_callback, _observables) {
-      };
-      NoopMeter2.prototype.removeBatchObservableCallback = function(_callback) {
-      };
-      return NoopMeter2;
-    }();
-    NoopMetric = /** @class */
-    /* @__PURE__ */ function() {
-      function NoopMetric2() {
-      }
-      __name(NoopMetric2, "NoopMetric2");
-      return NoopMetric2;
-    }();
-    NoopCounterMetric = /** @class */
-    function(_super) {
-      __extends(NoopCounterMetric2, _super);
-      function NoopCounterMetric2() {
-        return _super !== null && _super.apply(this, arguments) || this;
-      }
-      __name(NoopCounterMetric2, "NoopCounterMetric2");
-      NoopCounterMetric2.prototype.add = function(_value, _attributes) {
-      };
-      return NoopCounterMetric2;
-    }(NoopMetric);
-    NoopUpDownCounterMetric = /** @class */
-    function(_super) {
-      __extends(NoopUpDownCounterMetric2, _super);
-      function NoopUpDownCounterMetric2() {
-        return _super !== null && _super.apply(this, arguments) || this;
-      }
-      __name(NoopUpDownCounterMetric2, "NoopUpDownCounterMetric2");
-      NoopUpDownCounterMetric2.prototype.add = function(_value, _attributes) {
-      };
-      return NoopUpDownCounterMetric2;
-    }(NoopMetric);
-    NoopGaugeMetric = /** @class */
-    function(_super) {
-      __extends(NoopGaugeMetric2, _super);
-      function NoopGaugeMetric2() {
-        return _super !== null && _super.apply(this, arguments) || this;
-      }
-      __name(NoopGaugeMetric2, "NoopGaugeMetric2");
-      NoopGaugeMetric2.prototype.record = function(_value, _attributes) {
-      };
-      return NoopGaugeMetric2;
-    }(NoopMetric);
-    NoopHistogramMetric = /** @class */
-    function(_super) {
-      __extends(NoopHistogramMetric2, _super);
-      function NoopHistogramMetric2() {
-        return _super !== null && _super.apply(this, arguments) || this;
-      }
-      __name(NoopHistogramMetric2, "NoopHistogramMetric2");
-      NoopHistogramMetric2.prototype.record = function(_value, _attributes) {
-      };
-      return NoopHistogramMetric2;
-    }(NoopMetric);
-    NoopObservableMetric = /** @class */
-    function() {
-      function NoopObservableMetric2() {
-      }
-      __name(NoopObservableMetric2, "NoopObservableMetric2");
-      NoopObservableMetric2.prototype.addCallback = function(_callback) {
-      };
-      NoopObservableMetric2.prototype.removeCallback = function(_callback) {
-      };
-      return NoopObservableMetric2;
-    }();
-    NoopObservableCounterMetric = /** @class */
-    function(_super) {
-      __extends(NoopObservableCounterMetric2, _super);
-      function NoopObservableCounterMetric2() {
-        return _super !== null && _super.apply(this, arguments) || this;
-      }
-      __name(NoopObservableCounterMetric2, "NoopObservableCounterMetric2");
-      return NoopObservableCounterMetric2;
-    }(NoopObservableMetric);
-    NoopObservableGaugeMetric = /** @class */
-    function(_super) {
-      __extends(NoopObservableGaugeMetric2, _super);
-      function NoopObservableGaugeMetric2() {
-        return _super !== null && _super.apply(this, arguments) || this;
-      }
-      __name(NoopObservableGaugeMetric2, "NoopObservableGaugeMetric2");
-      return NoopObservableGaugeMetric2;
-    }(NoopObservableMetric);
-    NoopObservableUpDownCounterMetric = /** @class */
-    function(_super) {
-      __extends(NoopObservableUpDownCounterMetric2, _super);
-      function NoopObservableUpDownCounterMetric2() {
-        return _super !== null && _super.apply(this, arguments) || this;
-      }
-      __name(NoopObservableUpDownCounterMetric2, "NoopObservableUpDownCounterMetric2");
-      return NoopObservableUpDownCounterMetric2;
-    }(NoopObservableMetric);
-    NOOP_METER = new NoopMeter();
-    NOOP_COUNTER_METRIC = new NoopCounterMetric();
-    NOOP_GAUGE_METRIC = new NoopGaugeMetric();
-    NOOP_HISTOGRAM_METRIC = new NoopHistogramMetric();
-    NOOP_UP_DOWN_COUNTER_METRIC = new NoopUpDownCounterMetric();
-    NOOP_OBSERVABLE_COUNTER_METRIC = new NoopObservableCounterMetric();
-    NOOP_OBSERVABLE_GAUGE_METRIC = new NoopObservableGaugeMetric();
-    NOOP_OBSERVABLE_UP_DOWN_COUNTER_METRIC = new NoopObservableUpDownCounterMetric();
-  }
-});
-var ValueType;
-var init_Metric = __esm3({
-  "../node_modules/@opentelemetry/api/build/esm/metrics/Metric.js"() {
-    "use strict";
-    (function(ValueType2) {
-      ValueType2[ValueType2["INT"] = 0] = "INT";
-      ValueType2[ValueType2["DOUBLE"] = 1] = "DOUBLE";
-    })(ValueType || (ValueType = {}));
-  }
-});
-var defaultTextMapGetter;
-var defaultTextMapSetter;
-var init_TextMapPropagator = __esm3({
-  "../node_modules/@opentelemetry/api/build/esm/propagation/TextMapPropagator.js"() {
-    "use strict";
-    defaultTextMapGetter = {
-      get: /* @__PURE__ */ __name(function(carrier, key) {
-        if (carrier == null) {
-          return void 0;
-        }
-        return carrier[key];
-      }, "get"),
-      keys: /* @__PURE__ */ __name(function(carrier) {
-        if (carrier == null) {
-          return [];
-        }
-        return Object.keys(carrier);
-      }, "keys")
-    };
-    defaultTextMapSetter = {
-      set: /* @__PURE__ */ __name(function(carrier, key, value) {
-        if (carrier == null) {
-          return;
-        }
-        carrier[key] = value;
-      }, "set")
-    };
-  }
-});
-var __read4;
-var __spreadArray3;
-var NoopContextManager;
-var init_NoopContextManager = __esm3({
-  "../node_modules/@opentelemetry/api/build/esm/context/NoopContextManager.js"() {
-    "use strict";
-    init_context();
-    __read4 = /* @__PURE__ */ __name(function(o, n) {
-      var m = typeof Symbol === "function" && o[Symbol.iterator];
-      if (!m) return o;
-      var i = m.call(o), r, ar = [], e;
-      try {
-        while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
-      } catch (error22) {
-        e = { error: error22 };
-      } finally {
-        try {
-          if (r && !r.done && (m = i["return"])) m.call(i);
-        } finally {
-          if (e) throw e.error;
-        }
-      }
-      return ar;
-    }, "__read4");
-    __spreadArray3 = /* @__PURE__ */ __name(function(to, from, pack) {
-      if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
-        if (ar || !(i in from)) {
-          if (!ar) ar = Array.prototype.slice.call(from, 0, i);
-          ar[i] = from[i];
-        }
-      }
-      return to.concat(ar || Array.prototype.slice.call(from));
-    }, "__spreadArray3");
-    NoopContextManager = /** @class */
-    function() {
-      function NoopContextManager2() {
-      }
-      __name(NoopContextManager2, "NoopContextManager2");
-      NoopContextManager2.prototype.active = function() {
-        return ROOT_CONTEXT;
-      };
-      NoopContextManager2.prototype.with = function(_context, fn, thisArg) {
-        var args = [];
-        for (var _i = 3; _i < arguments.length; _i++) {
-          args[_i - 3] = arguments[_i];
-        }
-        return fn.call.apply(fn, __spreadArray3([thisArg], __read4(args), false));
-      };
-      NoopContextManager2.prototype.bind = function(_context, target) {
-        return target;
-      };
-      NoopContextManager2.prototype.enable = function() {
-        return this;
-      };
-      NoopContextManager2.prototype.disable = function() {
-        return this;
-      };
-      return NoopContextManager2;
-    }();
-  }
-});
-var __read5;
-var __spreadArray4;
-var API_NAME2;
-var NOOP_CONTEXT_MANAGER;
-var ContextAPI;
-var init_context2 = __esm3({
-  "../node_modules/@opentelemetry/api/build/esm/api/context.js"() {
-    "use strict";
-    init_NoopContextManager();
-    init_global_utils();
-    init_diag();
-    __read5 = /* @__PURE__ */ __name(function(o, n) {
-      var m = typeof Symbol === "function" && o[Symbol.iterator];
-      if (!m) return o;
-      var i = m.call(o), r, ar = [], e;
-      try {
-        while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
-      } catch (error22) {
-        e = { error: error22 };
-      } finally {
-        try {
-          if (r && !r.done && (m = i["return"])) m.call(i);
-        } finally {
-          if (e) throw e.error;
-        }
-      }
-      return ar;
-    }, "__read5");
-    __spreadArray4 = /* @__PURE__ */ __name(function(to, from, pack) {
-      if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
-        if (ar || !(i in from)) {
-          if (!ar) ar = Array.prototype.slice.call(from, 0, i);
-          ar[i] = from[i];
-        }
-      }
-      return to.concat(ar || Array.prototype.slice.call(from));
-    }, "__spreadArray4");
-    API_NAME2 = "context";
-    NOOP_CONTEXT_MANAGER = new NoopContextManager();
-    ContextAPI = /** @class */
-    function() {
-      function ContextAPI2() {
-      }
-      __name(ContextAPI2, "ContextAPI2");
-      ContextAPI2.getInstance = function() {
-        if (!this._instance) {
-          this._instance = new ContextAPI2();
-        }
-        return this._instance;
-      };
-      ContextAPI2.prototype.setGlobalContextManager = function(contextManager) {
-        return registerGlobal(API_NAME2, contextManager, DiagAPI.instance());
-      };
-      ContextAPI2.prototype.active = function() {
-        return this._getContextManager().active();
-      };
-      ContextAPI2.prototype.with = function(context22, fn, thisArg) {
-        var _a4;
-        var args = [];
-        for (var _i = 3; _i < arguments.length; _i++) {
-          args[_i - 3] = arguments[_i];
-        }
-        return (_a4 = this._getContextManager()).with.apply(_a4, __spreadArray4([context22, fn, thisArg], __read5(args), false));
-      };
-      ContextAPI2.prototype.bind = function(context22, target) {
-        return this._getContextManager().bind(context22, target);
-      };
-      ContextAPI2.prototype._getContextManager = function() {
-        return getGlobal(API_NAME2) || NOOP_CONTEXT_MANAGER;
-      };
-      ContextAPI2.prototype.disable = function() {
-        this._getContextManager().disable();
-        unregisterGlobal(API_NAME2, DiagAPI.instance());
-      };
-      return ContextAPI2;
-    }();
-  }
-});
-var TraceFlags;
-var init_trace_flags = __esm3({
-  "../node_modules/@opentelemetry/api/build/esm/trace/trace_flags.js"() {
-    "use strict";
-    (function(TraceFlags2) {
-      TraceFlags2[TraceFlags2["NONE"] = 0] = "NONE";
-      TraceFlags2[TraceFlags2["SAMPLED"] = 1] = "SAMPLED";
-    })(TraceFlags || (TraceFlags = {}));
-  }
-});
-var INVALID_SPANID;
-var INVALID_TRACEID;
-var INVALID_SPAN_CONTEXT;
-var init_invalid_span_constants = __esm3({
-  "../node_modules/@opentelemetry/api/build/esm/trace/invalid-span-constants.js"() {
-    "use strict";
-    init_trace_flags();
-    INVALID_SPANID = "0000000000000000";
-    INVALID_TRACEID = "00000000000000000000000000000000";
-    INVALID_SPAN_CONTEXT = {
-      traceId: INVALID_TRACEID,
-      spanId: INVALID_SPANID,
-      traceFlags: TraceFlags.NONE
-    };
-  }
-});
-var NonRecordingSpan;
-var init_NonRecordingSpan = __esm3({
-  "../node_modules/@opentelemetry/api/build/esm/trace/NonRecordingSpan.js"() {
-    "use strict";
-    init_invalid_span_constants();
-    NonRecordingSpan = /** @class */
-    function() {
-      function NonRecordingSpan2(_spanContext) {
-        if (_spanContext === void 0) {
-          _spanContext = INVALID_SPAN_CONTEXT;
-        }
-        this._spanContext = _spanContext;
-      }
-      __name(NonRecordingSpan2, "NonRecordingSpan2");
-      NonRecordingSpan2.prototype.spanContext = function() {
-        return this._spanContext;
-      };
-      NonRecordingSpan2.prototype.setAttribute = function(_key, _value) {
-        return this;
-      };
-      NonRecordingSpan2.prototype.setAttributes = function(_attributes) {
-        return this;
-      };
-      NonRecordingSpan2.prototype.addEvent = function(_name, _attributes) {
-        return this;
-      };
-      NonRecordingSpan2.prototype.addLink = function(_link) {
-        return this;
-      };
-      NonRecordingSpan2.prototype.addLinks = function(_links) {
-        return this;
-      };
-      NonRecordingSpan2.prototype.setStatus = function(_status) {
-        return this;
-      };
-      NonRecordingSpan2.prototype.updateName = function(_name) {
-        return this;
-      };
-      NonRecordingSpan2.prototype.end = function(_endTime) {
-      };
-      NonRecordingSpan2.prototype.isRecording = function() {
-        return false;
-      };
-      NonRecordingSpan2.prototype.recordException = function(_exception, _time) {
-      };
-      return NonRecordingSpan2;
-    }();
-  }
-});
-function getSpan(context22) {
-  return context22.getValue(SPAN_KEY) || void 0;
-}
-__name(getSpan, "getSpan");
-function getActiveSpan() {
-  return getSpan(ContextAPI.getInstance().active());
-}
-__name(getActiveSpan, "getActiveSpan");
-function setSpan(context22, span) {
-  return context22.setValue(SPAN_KEY, span);
-}
-__name(setSpan, "setSpan");
-function deleteSpan(context22) {
-  return context22.deleteValue(SPAN_KEY);
-}
-__name(deleteSpan, "deleteSpan");
-function setSpanContext(context22, spanContext) {
-  return setSpan(context22, new NonRecordingSpan(spanContext));
-}
-__name(setSpanContext, "setSpanContext");
-function getSpanContext(context22) {
-  var _a4;
-  return (_a4 = getSpan(context22)) === null || _a4 === void 0 ? void 0 : _a4.spanContext();
-}
-__name(getSpanContext, "getSpanContext");
-var SPAN_KEY;
-var init_context_utils = __esm3({
-  "../node_modules/@opentelemetry/api/build/esm/trace/context-utils.js"() {
-    "use strict";
-    init_context();
-    init_NonRecordingSpan();
-    init_context2();
-    SPAN_KEY = createContextKey("OpenTelemetry Context Key SPAN");
-  }
-});
-function isValidTraceId(traceId) {
-  return VALID_TRACEID_REGEX.test(traceId) && traceId !== INVALID_TRACEID;
-}
-__name(isValidTraceId, "isValidTraceId");
-function isValidSpanId(spanId) {
-  return VALID_SPANID_REGEX.test(spanId) && spanId !== INVALID_SPANID;
-}
-__name(isValidSpanId, "isValidSpanId");
-function isSpanContextValid(spanContext) {
-  return isValidTraceId(spanContext.traceId) && isValidSpanId(spanContext.spanId);
-}
-__name(isSpanContextValid, "isSpanContextValid");
-function wrapSpanContext(spanContext) {
-  return new NonRecordingSpan(spanContext);
-}
-__name(wrapSpanContext, "wrapSpanContext");
-var VALID_TRACEID_REGEX;
-var VALID_SPANID_REGEX;
-var init_spancontext_utils = __esm3({
-  "../node_modules/@opentelemetry/api/build/esm/trace/spancontext-utils.js"() {
-    "use strict";
-    init_invalid_span_constants();
-    init_NonRecordingSpan();
-    VALID_TRACEID_REGEX = /^([0-9a-f]{32})$/i;
-    VALID_SPANID_REGEX = /^[0-9a-f]{16}$/i;
-  }
-});
-function isSpanContext(spanContext) {
-  return typeof spanContext === "object" && typeof spanContext["spanId"] === "string" && typeof spanContext["traceId"] === "string" && typeof spanContext["traceFlags"] === "number";
-}
-__name(isSpanContext, "isSpanContext");
-var contextApi;
-var NoopTracer;
-var init_NoopTracer = __esm3({
-  "../node_modules/@opentelemetry/api/build/esm/trace/NoopTracer.js"() {
-    "use strict";
-    init_context2();
-    init_context_utils();
-    init_NonRecordingSpan();
-    init_spancontext_utils();
-    contextApi = ContextAPI.getInstance();
-    NoopTracer = /** @class */
-    function() {
-      function NoopTracer2() {
-      }
-      __name(NoopTracer2, "NoopTracer2");
-      NoopTracer2.prototype.startSpan = function(name, options, context22) {
-        if (context22 === void 0) {
-          context22 = contextApi.active();
-        }
-        var root = Boolean(options === null || options === void 0 ? void 0 : options.root);
-        if (root) {
-          return new NonRecordingSpan();
-        }
-        var parentFromContext = context22 && getSpanContext(context22);
-        if (isSpanContext(parentFromContext) && isSpanContextValid(parentFromContext)) {
-          return new NonRecordingSpan(parentFromContext);
-        } else {
-          return new NonRecordingSpan();
-        }
-      };
-      NoopTracer2.prototype.startActiveSpan = function(name, arg2, arg3, arg4) {
-        var opts;
-        var ctx;
-        var fn;
-        if (arguments.length < 2) {
-          return;
-        } else if (arguments.length === 2) {
-          fn = arg2;
-        } else if (arguments.length === 3) {
-          opts = arg2;
-          fn = arg3;
-        } else {
-          opts = arg2;
-          ctx = arg3;
-          fn = arg4;
-        }
-        var parentContext = ctx !== null && ctx !== void 0 ? ctx : contextApi.active();
-        var span = this.startSpan(name, opts, parentContext);
-        var contextWithSpanSet = setSpan(parentContext, span);
-        return contextApi.with(contextWithSpanSet, fn, void 0, span);
-      };
-      return NoopTracer2;
-    }();
-  }
-});
-var NOOP_TRACER;
-var ProxyTracer;
-var init_ProxyTracer = __esm3({
-  "../node_modules/@opentelemetry/api/build/esm/trace/ProxyTracer.js"() {
-    "use strict";
-    init_NoopTracer();
-    NOOP_TRACER = new NoopTracer();
-    ProxyTracer = /** @class */
-    function() {
-      function ProxyTracer2(_provider, name, version2, options) {
-        this._provider = _provider;
-        this.name = name;
-        this.version = version2;
-        this.options = options;
-      }
-      __name(ProxyTracer2, "ProxyTracer2");
-      ProxyTracer2.prototype.startSpan = function(name, options, context22) {
-        return this._getTracer().startSpan(name, options, context22);
-      };
-      ProxyTracer2.prototype.startActiveSpan = function(_name, _options, _context, _fn) {
-        var tracer = this._getTracer();
-        return Reflect.apply(tracer.startActiveSpan, tracer, arguments);
-      };
-      ProxyTracer2.prototype._getTracer = function() {
-        if (this._delegate) {
-          return this._delegate;
-        }
-        var tracer = this._provider.getDelegateTracer(this.name, this.version, this.options);
-        if (!tracer) {
-          return NOOP_TRACER;
-        }
-        this._delegate = tracer;
-        return this._delegate;
-      };
-      return ProxyTracer2;
-    }();
-  }
-});
-var NoopTracerProvider;
-var init_NoopTracerProvider = __esm3({
-  "../node_modules/@opentelemetry/api/build/esm/trace/NoopTracerProvider.js"() {
-    "use strict";
-    init_NoopTracer();
-    NoopTracerProvider = /** @class */
-    function() {
-      function NoopTracerProvider2() {
-      }
-      __name(NoopTracerProvider2, "NoopTracerProvider2");
-      NoopTracerProvider2.prototype.getTracer = function(_name, _version, _options) {
-        return new NoopTracer();
-      };
-      return NoopTracerProvider2;
-    }();
-  }
-});
-var NOOP_TRACER_PROVIDER;
-var ProxyTracerProvider;
-var init_ProxyTracerProvider = __esm3({
-  "../node_modules/@opentelemetry/api/build/esm/trace/ProxyTracerProvider.js"() {
-    "use strict";
-    init_ProxyTracer();
-    init_NoopTracerProvider();
-    NOOP_TRACER_PROVIDER = new NoopTracerProvider();
-    ProxyTracerProvider = /** @class */
-    function() {
-      function ProxyTracerProvider2() {
-      }
-      __name(ProxyTracerProvider2, "ProxyTracerProvider2");
-      ProxyTracerProvider2.prototype.getTracer = function(name, version2, options) {
-        var _a4;
-        return (_a4 = this.getDelegateTracer(name, version2, options)) !== null && _a4 !== void 0 ? _a4 : new ProxyTracer(this, name, version2, options);
-      };
-      ProxyTracerProvider2.prototype.getDelegate = function() {
-        var _a4;
-        return (_a4 = this._delegate) !== null && _a4 !== void 0 ? _a4 : NOOP_TRACER_PROVIDER;
-      };
-      ProxyTracerProvider2.prototype.setDelegate = function(delegate) {
-        this._delegate = delegate;
-      };
-      ProxyTracerProvider2.prototype.getDelegateTracer = function(name, version2, options) {
-        var _a4;
-        return (_a4 = this._delegate) === null || _a4 === void 0 ? void 0 : _a4.getTracer(name, version2, options);
-      };
-      return ProxyTracerProvider2;
-    }();
-  }
-});
-var SamplingDecision;
-var init_SamplingResult = __esm3({
-  "../node_modules/@opentelemetry/api/build/esm/trace/SamplingResult.js"() {
-    "use strict";
-    (function(SamplingDecision2) {
-      SamplingDecision2[SamplingDecision2["NOT_RECORD"] = 0] = "NOT_RECORD";
-      SamplingDecision2[SamplingDecision2["RECORD"] = 1] = "RECORD";
-      SamplingDecision2[SamplingDecision2["RECORD_AND_SAMPLED"] = 2] = "RECORD_AND_SAMPLED";
-    })(SamplingDecision || (SamplingDecision = {}));
-  }
-});
-var SpanKind;
-var init_span_kind = __esm3({
-  "../node_modules/@opentelemetry/api/build/esm/trace/span_kind.js"() {
-    "use strict";
-    (function(SpanKind2) {
-      SpanKind2[SpanKind2["INTERNAL"] = 0] = "INTERNAL";
-      SpanKind2[SpanKind2["SERVER"] = 1] = "SERVER";
-      SpanKind2[SpanKind2["CLIENT"] = 2] = "CLIENT";
-      SpanKind2[SpanKind2["PRODUCER"] = 3] = "PRODUCER";
-      SpanKind2[SpanKind2["CONSUMER"] = 4] = "CONSUMER";
-    })(SpanKind || (SpanKind = {}));
-  }
-});
-var SpanStatusCode;
-var init_status2 = __esm3({
-  "../node_modules/@opentelemetry/api/build/esm/trace/status.js"() {
-    "use strict";
-    (function(SpanStatusCode2) {
-      SpanStatusCode2[SpanStatusCode2["UNSET"] = 0] = "UNSET";
-      SpanStatusCode2[SpanStatusCode2["OK"] = 1] = "OK";
-      SpanStatusCode2[SpanStatusCode2["ERROR"] = 2] = "ERROR";
-    })(SpanStatusCode || (SpanStatusCode = {}));
-  }
-});
-function validateKey(key) {
-  return VALID_KEY_REGEX.test(key);
-}
-__name(validateKey, "validateKey");
-function validateValue(value) {
-  return VALID_VALUE_BASE_REGEX.test(value) && !INVALID_VALUE_COMMA_EQUAL_REGEX.test(value);
-}
-__name(validateValue, "validateValue");
-var VALID_KEY_CHAR_RANGE;
-var VALID_KEY;
-var VALID_VENDOR_KEY;
-var VALID_KEY_REGEX;
-var VALID_VALUE_BASE_REGEX;
-var INVALID_VALUE_COMMA_EQUAL_REGEX;
-var init_tracestate_validators = __esm3({
-  "../node_modules/@opentelemetry/api/build/esm/trace/internal/tracestate-validators.js"() {
-    "use strict";
-    VALID_KEY_CHAR_RANGE = "[_0-9a-z-*/]";
-    VALID_KEY = "[a-z]" + VALID_KEY_CHAR_RANGE + "{0,255}";
-    VALID_VENDOR_KEY = "[a-z0-9]" + VALID_KEY_CHAR_RANGE + "{0,240}@[a-z]" + VALID_KEY_CHAR_RANGE + "{0,13}";
-    VALID_KEY_REGEX = new RegExp("^(?:" + VALID_KEY + "|" + VALID_VENDOR_KEY + ")$");
-    VALID_VALUE_BASE_REGEX = /^[ -~]{0,255}[!-~]$/;
-    INVALID_VALUE_COMMA_EQUAL_REGEX = /,|=/;
-  }
-});
-var MAX_TRACE_STATE_ITEMS;
-var MAX_TRACE_STATE_LEN;
-var LIST_MEMBERS_SEPARATOR;
-var LIST_MEMBER_KEY_VALUE_SPLITTER;
-var TraceStateImpl;
-var init_tracestate_impl = __esm3({
-  "../node_modules/@opentelemetry/api/build/esm/trace/internal/tracestate-impl.js"() {
-    "use strict";
-    init_tracestate_validators();
-    MAX_TRACE_STATE_ITEMS = 32;
-    MAX_TRACE_STATE_LEN = 512;
-    LIST_MEMBERS_SEPARATOR = ",";
-    LIST_MEMBER_KEY_VALUE_SPLITTER = "=";
-    TraceStateImpl = /** @class */
-    function() {
-      function TraceStateImpl2(rawTraceState) {
-        this._internalState = /* @__PURE__ */ new Map();
-        if (rawTraceState)
-          this._parse(rawTraceState);
-      }
-      __name(TraceStateImpl2, "TraceStateImpl2");
-      TraceStateImpl2.prototype.set = function(key, value) {
-        var traceState = this._clone();
-        if (traceState._internalState.has(key)) {
-          traceState._internalState.delete(key);
-        }
-        traceState._internalState.set(key, value);
-        return traceState;
-      };
-      TraceStateImpl2.prototype.unset = function(key) {
-        var traceState = this._clone();
-        traceState._internalState.delete(key);
-        return traceState;
-      };
-      TraceStateImpl2.prototype.get = function(key) {
-        return this._internalState.get(key);
-      };
-      TraceStateImpl2.prototype.serialize = function() {
-        var _this = this;
-        return this._keys().reduce(function(agg, key) {
-          agg.push(key + LIST_MEMBER_KEY_VALUE_SPLITTER + _this.get(key));
-          return agg;
-        }, []).join(LIST_MEMBERS_SEPARATOR);
-      };
-      TraceStateImpl2.prototype._parse = function(rawTraceState) {
-        if (rawTraceState.length > MAX_TRACE_STATE_LEN)
-          return;
-        this._internalState = rawTraceState.split(LIST_MEMBERS_SEPARATOR).reverse().reduce(function(agg, part) {
-          var listMember = part.trim();
-          var i = listMember.indexOf(LIST_MEMBER_KEY_VALUE_SPLITTER);
-          if (i !== -1) {
-            var key = listMember.slice(0, i);
-            var value = listMember.slice(i + 1, part.length);
-            if (validateKey(key) && validateValue(value)) {
-              agg.set(key, value);
-            } else {
-            }
-          }
-          return agg;
-        }, /* @__PURE__ */ new Map());
-        if (this._internalState.size > MAX_TRACE_STATE_ITEMS) {
-          this._internalState = new Map(Array.from(this._internalState.entries()).reverse().slice(0, MAX_TRACE_STATE_ITEMS));
-        }
-      };
-      TraceStateImpl2.prototype._keys = function() {
-        return Array.from(this._internalState.keys()).reverse();
-      };
-      TraceStateImpl2.prototype._clone = function() {
-        var traceState = new TraceStateImpl2();
-        traceState._internalState = new Map(this._internalState);
-        return traceState;
-      };
-      return TraceStateImpl2;
-    }();
-  }
-});
-function createTraceState(rawTraceState) {
-  return new TraceStateImpl(rawTraceState);
-}
-__name(createTraceState, "createTraceState");
-var init_utils22 = __esm3({
-  "../node_modules/@opentelemetry/api/build/esm/trace/internal/utils.js"() {
-    "use strict";
-    init_tracestate_impl();
-  }
-});
-var context2;
-var init_context_api = __esm3({
-  "../node_modules/@opentelemetry/api/build/esm/context-api.js"() {
-    "use strict";
-    init_context2();
-    context2 = ContextAPI.getInstance();
-  }
-});
-var diag2;
-var init_diag_api = __esm3({
-  "../node_modules/@opentelemetry/api/build/esm/diag-api.js"() {
-    "use strict";
-    init_diag();
-    diag2 = DiagAPI.instance();
-  }
-});
-var NoopMeterProvider;
-var NOOP_METER_PROVIDER;
-var init_NoopMeterProvider = __esm3({
-  "../node_modules/@opentelemetry/api/build/esm/metrics/NoopMeterProvider.js"() {
-    "use strict";
-    init_NoopMeter();
-    NoopMeterProvider = /** @class */
-    function() {
-      function NoopMeterProvider2() {
-      }
-      __name(NoopMeterProvider2, "NoopMeterProvider2");
-      NoopMeterProvider2.prototype.getMeter = function(_name, _version, _options) {
-        return NOOP_METER;
-      };
-      return NoopMeterProvider2;
-    }();
-    NOOP_METER_PROVIDER = new NoopMeterProvider();
-  }
-});
-var API_NAME3;
-var MetricsAPI;
-var init_metrics = __esm3({
-  "../node_modules/@opentelemetry/api/build/esm/api/metrics.js"() {
-    "use strict";
-    init_NoopMeterProvider();
-    init_global_utils();
-    init_diag();
-    API_NAME3 = "metrics";
-    MetricsAPI = /** @class */
-    function() {
-      function MetricsAPI2() {
-      }
-      __name(MetricsAPI2, "MetricsAPI2");
-      MetricsAPI2.getInstance = function() {
-        if (!this._instance) {
-          this._instance = new MetricsAPI2();
-        }
-        return this._instance;
-      };
-      MetricsAPI2.prototype.setGlobalMeterProvider = function(provider) {
-        return registerGlobal(API_NAME3, provider, DiagAPI.instance());
-      };
-      MetricsAPI2.prototype.getMeterProvider = function() {
-        return getGlobal(API_NAME3) || NOOP_METER_PROVIDER;
-      };
-      MetricsAPI2.prototype.getMeter = function(name, version2, options) {
-        return this.getMeterProvider().getMeter(name, version2, options);
-      };
-      MetricsAPI2.prototype.disable = function() {
-        unregisterGlobal(API_NAME3, DiagAPI.instance());
-      };
-      return MetricsAPI2;
-    }();
-  }
-});
-var metrics;
-var init_metrics_api = __esm3({
-  "../node_modules/@opentelemetry/api/build/esm/metrics-api.js"() {
-    "use strict";
-    init_metrics();
-    metrics = MetricsAPI.getInstance();
-  }
-});
-var NoopTextMapPropagator;
-var init_NoopTextMapPropagator = __esm3({
-  "../node_modules/@opentelemetry/api/build/esm/propagation/NoopTextMapPropagator.js"() {
-    "use strict";
-    NoopTextMapPropagator = /** @class */
-    function() {
-      function NoopTextMapPropagator2() {
-      }
-      __name(NoopTextMapPropagator2, "NoopTextMapPropagator2");
-      NoopTextMapPropagator2.prototype.inject = function(_context, _carrier) {
-      };
-      NoopTextMapPropagator2.prototype.extract = function(context22, _carrier) {
-        return context22;
-      };
-      NoopTextMapPropagator2.prototype.fields = function() {
-        return [];
-      };
-      return NoopTextMapPropagator2;
-    }();
-  }
-});
-function getBaggage(context22) {
-  return context22.getValue(BAGGAGE_KEY) || void 0;
-}
-__name(getBaggage, "getBaggage");
-function getActiveBaggage() {
-  return getBaggage(ContextAPI.getInstance().active());
-}
-__name(getActiveBaggage, "getActiveBaggage");
-function setBaggage(context22, baggage) {
-  return context22.setValue(BAGGAGE_KEY, baggage);
-}
-__name(setBaggage, "setBaggage");
-function deleteBaggage(context22) {
-  return context22.deleteValue(BAGGAGE_KEY);
-}
-__name(deleteBaggage, "deleteBaggage");
-var BAGGAGE_KEY;
-var init_context_helpers = __esm3({
-  "../node_modules/@opentelemetry/api/build/esm/baggage/context-helpers.js"() {
-    "use strict";
-    init_context2();
-    init_context();
-    BAGGAGE_KEY = createContextKey("OpenTelemetry Baggage Key");
-  }
-});
-var API_NAME4;
-var NOOP_TEXT_MAP_PROPAGATOR;
-var PropagationAPI;
-var init_propagation = __esm3({
-  "../node_modules/@opentelemetry/api/build/esm/api/propagation.js"() {
-    "use strict";
-    init_global_utils();
-    init_NoopTextMapPropagator();
-    init_TextMapPropagator();
-    init_context_helpers();
-    init_utils3();
-    init_diag();
-    API_NAME4 = "propagation";
-    NOOP_TEXT_MAP_PROPAGATOR = new NoopTextMapPropagator();
-    PropagationAPI = /** @class */
-    function() {
-      function PropagationAPI2() {
-        this.createBaggage = createBaggage;
-        this.getBaggage = getBaggage;
-        this.getActiveBaggage = getActiveBaggage;
-        this.setBaggage = setBaggage;
-        this.deleteBaggage = deleteBaggage;
-      }
-      __name(PropagationAPI2, "PropagationAPI2");
-      PropagationAPI2.getInstance = function() {
-        if (!this._instance) {
-          this._instance = new PropagationAPI2();
-        }
-        return this._instance;
-      };
-      PropagationAPI2.prototype.setGlobalPropagator = function(propagator) {
-        return registerGlobal(API_NAME4, propagator, DiagAPI.instance());
-      };
-      PropagationAPI2.prototype.inject = function(context22, carrier, setter) {
-        if (setter === void 0) {
-          setter = defaultTextMapSetter;
-        }
-        return this._getGlobalPropagator().inject(context22, carrier, setter);
-      };
-      PropagationAPI2.prototype.extract = function(context22, carrier, getter) {
-        if (getter === void 0) {
-          getter = defaultTextMapGetter;
-        }
-        return this._getGlobalPropagator().extract(context22, carrier, getter);
-      };
-      PropagationAPI2.prototype.fields = function() {
-        return this._getGlobalPropagator().fields();
-      };
-      PropagationAPI2.prototype.disable = function() {
-        unregisterGlobal(API_NAME4, DiagAPI.instance());
-      };
-      PropagationAPI2.prototype._getGlobalPropagator = function() {
-        return getGlobal(API_NAME4) || NOOP_TEXT_MAP_PROPAGATOR;
-      };
-      return PropagationAPI2;
-    }();
-  }
-});
-var propagation;
-var init_propagation_api = __esm3({
-  "../node_modules/@opentelemetry/api/build/esm/propagation-api.js"() {
-    "use strict";
-    init_propagation();
-    propagation = PropagationAPI.getInstance();
-  }
-});
-var API_NAME5;
-var TraceAPI;
-var init_trace = __esm3({
-  "../node_modules/@opentelemetry/api/build/esm/api/trace.js"() {
-    "use strict";
-    init_global_utils();
-    init_ProxyTracerProvider();
-    init_spancontext_utils();
-    init_context_utils();
-    init_diag();
-    API_NAME5 = "trace";
-    TraceAPI = /** @class */
-    function() {
-      function TraceAPI2() {
-        this._proxyTracerProvider = new ProxyTracerProvider();
-        this.wrapSpanContext = wrapSpanContext;
-        this.isSpanContextValid = isSpanContextValid;
-        this.deleteSpan = deleteSpan;
-        this.getSpan = getSpan;
-        this.getActiveSpan = getActiveSpan;
-        this.getSpanContext = getSpanContext;
-        this.setSpan = setSpan;
-        this.setSpanContext = setSpanContext;
-      }
-      __name(TraceAPI2, "TraceAPI2");
-      TraceAPI2.getInstance = function() {
-        if (!this._instance) {
-          this._instance = new TraceAPI2();
-        }
-        return this._instance;
-      };
-      TraceAPI2.prototype.setGlobalTracerProvider = function(provider) {
-        var success = registerGlobal(API_NAME5, this._proxyTracerProvider, DiagAPI.instance());
-        if (success) {
-          this._proxyTracerProvider.setDelegate(provider);
-        }
-        return success;
-      };
-      TraceAPI2.prototype.getTracerProvider = function() {
-        return getGlobal(API_NAME5) || this._proxyTracerProvider;
-      };
-      TraceAPI2.prototype.getTracer = function(name, version2) {
-        return this.getTracerProvider().getTracer(name, version2);
-      };
-      TraceAPI2.prototype.disable = function() {
-        unregisterGlobal(API_NAME5, DiagAPI.instance());
-        this._proxyTracerProvider = new ProxyTracerProvider();
-      };
-      return TraceAPI2;
-    }();
-  }
-});
-var trace3;
-var init_trace_api = __esm3({
-  "../node_modules/@opentelemetry/api/build/esm/trace-api.js"() {
-    "use strict";
-    init_trace();
-    trace3 = TraceAPI.getInstance();
-  }
-});
-var esm_exports = {};
-__export3(esm_exports, {
-  DiagConsoleLogger: /* @__PURE__ */ __name(() => DiagConsoleLogger, "DiagConsoleLogger"),
-  DiagLogLevel: /* @__PURE__ */ __name(() => DiagLogLevel, "DiagLogLevel"),
-  INVALID_SPANID: /* @__PURE__ */ __name(() => INVALID_SPANID, "INVALID_SPANID"),
-  INVALID_SPAN_CONTEXT: /* @__PURE__ */ __name(() => INVALID_SPAN_CONTEXT, "INVALID_SPAN_CONTEXT"),
-  INVALID_TRACEID: /* @__PURE__ */ __name(() => INVALID_TRACEID, "INVALID_TRACEID"),
-  ProxyTracer: /* @__PURE__ */ __name(() => ProxyTracer, "ProxyTracer"),
-  ProxyTracerProvider: /* @__PURE__ */ __name(() => ProxyTracerProvider, "ProxyTracerProvider"),
-  ROOT_CONTEXT: /* @__PURE__ */ __name(() => ROOT_CONTEXT, "ROOT_CONTEXT"),
-  SamplingDecision: /* @__PURE__ */ __name(() => SamplingDecision, "SamplingDecision"),
-  SpanKind: /* @__PURE__ */ __name(() => SpanKind, "SpanKind"),
-  SpanStatusCode: /* @__PURE__ */ __name(() => SpanStatusCode, "SpanStatusCode"),
-  TraceFlags: /* @__PURE__ */ __name(() => TraceFlags, "TraceFlags"),
-  ValueType: /* @__PURE__ */ __name(() => ValueType, "ValueType"),
-  baggageEntryMetadataFromString: /* @__PURE__ */ __name(() => baggageEntryMetadataFromString, "baggageEntryMetadataFromString"),
-  context: /* @__PURE__ */ __name(() => context2, "context"),
-  createContextKey: /* @__PURE__ */ __name(() => createContextKey, "createContextKey"),
-  createNoopMeter: /* @__PURE__ */ __name(() => createNoopMeter, "createNoopMeter"),
-  createTraceState: /* @__PURE__ */ __name(() => createTraceState, "createTraceState"),
-  default: /* @__PURE__ */ __name(() => esm_default, "default"),
-  defaultTextMapGetter: /* @__PURE__ */ __name(() => defaultTextMapGetter, "defaultTextMapGetter"),
-  defaultTextMapSetter: /* @__PURE__ */ __name(() => defaultTextMapSetter, "defaultTextMapSetter"),
-  diag: /* @__PURE__ */ __name(() => diag2, "diag"),
-  isSpanContextValid: /* @__PURE__ */ __name(() => isSpanContextValid, "isSpanContextValid"),
-  isValidSpanId: /* @__PURE__ */ __name(() => isValidSpanId, "isValidSpanId"),
-  isValidTraceId: /* @__PURE__ */ __name(() => isValidTraceId, "isValidTraceId"),
-  metrics: /* @__PURE__ */ __name(() => metrics, "metrics"),
-  propagation: /* @__PURE__ */ __name(() => propagation, "propagation"),
-  trace: /* @__PURE__ */ __name(() => trace3, "trace")
-});
-var esm_default;
-var init_esm = __esm3({
-  "../node_modules/@opentelemetry/api/build/esm/index.js"() {
-    "use strict";
-    init_utils3();
-    init_context();
-    init_consoleLogger();
-    init_types();
-    init_NoopMeter();
-    init_Metric();
-    init_TextMapPropagator();
-    init_ProxyTracer();
-    init_ProxyTracerProvider();
-    init_SamplingResult();
-    init_span_kind();
-    init_status2();
-    init_trace_flags();
-    init_utils22();
-    init_spancontext_utils();
-    init_invalid_span_constants();
-    init_context_api();
-    init_diag_api();
-    init_metrics_api();
-    init_propagation_api();
-    init_trace_api();
-    esm_default = {
-      context: context2,
-      diag: diag2,
-      metrics,
-      propagation,
-      trace: trace3
-    };
-  }
-});
 var context_exports = {};
-__export3(context_exports, {
+__export2(context_exports, {
   OtelContextManager: /* @__PURE__ */ __name(() => OtelContextManager, "OtelContextManager")
 });
 function isOtelSpan(span) {
@@ -21159,7 +17570,7 @@ var otelTrace;
 var otelContext;
 var OTEL_AVAILABLE;
 var OtelContextManager;
-var init_context3 = __esm3({
+var init_context3 = __esm2({
   "src/otel/context.ts"() {
     "use strict";
     init_logger();
@@ -21168,7 +17579,7 @@ var init_context3 = __esm3({
     otelContext = null;
     OTEL_AVAILABLE = false;
     try {
-      const otelApi2 = (init_esm(), __toCommonJS2(esm_exports));
+      const otelApi2 = (init_esm(), __toCommonJS(esm_exports));
       otelTrace = otelApi2.trace;
       otelContext = otelApi2.context;
       OTEL_AVAILABLE = true;
@@ -21276,7 +17687,7 @@ function getContextManager() {
   const useOtel = typeof process !== "undefined" && process.env?.BRAINTRUST_OTEL_COMPAT?.toLowerCase() === "true";
   if (useOtel) {
     try {
-      const { OtelContextManager: OtelContextManager2 } = (init_context3(), __toCommonJS2(context_exports));
+      const { OtelContextManager: OtelContextManager2 } = (init_context3(), __toCommonJS(context_exports));
       return new OtelContextManager2();
     } catch {
       console.warn(
@@ -21437,7 +17848,7 @@ function updateSpan({
   ...event
 }) {
   const resolvedState = state ?? _globalState;
-  const components = getSpanComponentsClass().fromStr(exported);
+  const components = SpanComponentsV3.fromStr(exported);
   if (!components.data.row_id) {
     throw new Error("Exported span must have a row id");
   }
@@ -21524,7 +17935,7 @@ async function permalink(slug, opts) {
     return state.appUrl;
   }, "getAppUrl");
   try {
-    const components = getSpanComponentsClass().fromStr(slug);
+    const components = SpanComponentsV3.fromStr(slug);
     const object_type = spanObjectTypeV3ToString(components.data.object_type);
     const [orgName, appUrl, object_id] = await Promise.all([
       getOrgName(),
@@ -21553,7 +17964,7 @@ function startSpanParentArgs(args) {
     if (args.parentSpanIds) {
       throw new Error("Cannot specify both parent and parentSpanIds");
     }
-    const parentComponents = getSpanComponentsClass().fromStr(args.parent);
+    const parentComponents = SpanComponentsV3.fromStr(args.parent);
     if (args.parentObjectType !== parentComponents.data.object_type) {
       throw new Error(
         `Mismatch between expected span parent object type ${args.parentObjectType} and provided type ${parentComponents.data.object_type}`
@@ -22236,7 +18647,7 @@ function getSpanParentObject(options) {
     return parentSpan;
   }
   const parentStr = options?.parent ?? state.currentParent.getStore();
-  if (parentStr) return getSpanComponentsClass().fromStr(parentStr);
+  if (parentStr) return SpanComponentsV3.fromStr(parentStr);
   const experiment = currentExperiment();
   if (experiment) {
     return experiment;
@@ -22468,7 +18879,7 @@ function startSpanAndIsLogger(args) {
     parent: args?.parent,
     state
   });
-  if (parentObject instanceof SpanComponentsV3 || parentObject instanceof SpanComponentsV4) {
+  if (parentObject instanceof SpanComponentsV3) {
     const parentSpanIds = parentObject.data.row_id ? {
       spanId: parentObject.data.span_id,
       rootSpanId: parentObject.data.root_span_id
@@ -23054,7 +19465,7 @@ var Dataset2;
 var Prompt2;
 var TEST_API_KEY;
 var _exportsForTestingOnly;
-var init_logger = __esm3({
+var init_logger = __esm2({
   "src/logger.ts"() {
     "use strict";
     init_queue();
@@ -25881,6 +22292,3294 @@ View complete results in Braintrust or run experiment.summarize() again.`
     };
   }
 });
+var progress_exports = {};
+__export2(progress_exports, {
+  BarProgressReporter: /* @__PURE__ */ __name(() => BarProgressReporter, "BarProgressReporter"),
+  SimpleProgressReporter: /* @__PURE__ */ __name(() => SimpleProgressReporter, "SimpleProgressReporter")
+});
+function fitNameToSpaces(name, length) {
+  const padded = name.padEnd(length);
+  if (padded.length <= length) {
+    return padded;
+  }
+  return padded.substring(0, length - 3) + "...";
+}
+__name(fitNameToSpaces, "fitNameToSpaces");
+var cliProgress;
+var MAX_NAME_LENGTH;
+var SimpleProgressReporter;
+var BarProgressReporter;
+var init_progress = __esm2({
+  "src/progress.ts"() {
+    "use strict";
+    try {
+      cliProgress = __require2("cli-progress");
+    } catch {
+      cliProgress = null;
+    }
+    MAX_NAME_LENGTH = 40;
+    SimpleProgressReporter = class {
+      static {
+        __name(this, "SimpleProgressReporter");
+      }
+      start(name, _total) {
+        console.log(`Running evaluator ${name}`);
+      }
+      stop() {
+      }
+      increment(_name) {
+      }
+    };
+    BarProgressReporter = class {
+      static {
+        __name(this, "BarProgressReporter");
+      }
+      multiBar;
+      // cliProgress.MultiBar (typed as any for conditional import)
+      bars = {};
+      // Record<string, cliProgress.SingleBar>
+      constructor() {
+        if (!cliProgress) {
+          throw new Error(
+            "BarProgressReporter requires cli-progress which is only available in Node.js environments. Use SimpleProgressReporter in edge/browser environments instead."
+          );
+        }
+        this.multiBar = new cliProgress.MultiBar(
+          {
+            clearOnComplete: false,
+            format: " {bar} | {evaluator} | {percentage}% | {value}/{total} datapoints",
+            autopadding: true
+          },
+          cliProgress.Presets.shades_grey
+        );
+      }
+      start(name, total) {
+        const bar = this.multiBar.create(total, 0);
+        this.bars[name] = bar;
+      }
+      stop() {
+        this.multiBar.stop();
+      }
+      increment(name) {
+        this.bars[name].increment({
+          evaluator: fitNameToSpaces(name, MAX_NAME_LENGTH)
+        });
+      }
+    };
+  }
+});
+function suppressTracing(context22) {
+  return context22.setValue(SUPPRESS_TRACING_KEY, true);
+}
+__name(suppressTracing, "suppressTracing");
+function isTracingSuppressed(context22) {
+  return context22.getValue(SUPPRESS_TRACING_KEY) === true;
+}
+__name(isTracingSuppressed, "isTracingSuppressed");
+var SUPPRESS_TRACING_KEY;
+var init_suppress_tracing = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+core@2.0.1_@opentelemetry+api@1.9.0/node_modules/@opentelemetry/core/build/esm/trace/suppress-tracing.js"() {
+    "use strict";
+    init_esm();
+    SUPPRESS_TRACING_KEY = createContextKey("OpenTelemetry SDK Context Key SUPPRESS_TRACING");
+  }
+});
+function sanitizeAttributes(attributes) {
+  const out = {};
+  if (typeof attributes !== "object" || attributes == null) {
+    return out;
+  }
+  for (const [key, val] of Object.entries(attributes)) {
+    if (!isAttributeKey(key)) {
+      diag.warn(`Invalid attribute key: ${key}`);
+      continue;
+    }
+    if (!isAttributeValue(val)) {
+      diag.warn(`Invalid attribute value set for key: ${key}`);
+      continue;
+    }
+    if (Array.isArray(val)) {
+      out[key] = val.slice();
+    } else {
+      out[key] = val;
+    }
+  }
+  return out;
+}
+__name(sanitizeAttributes, "sanitizeAttributes");
+function isAttributeKey(key) {
+  return typeof key === "string" && key.length > 0;
+}
+__name(isAttributeKey, "isAttributeKey");
+function isAttributeValue(val) {
+  if (val == null) {
+    return true;
+  }
+  if (Array.isArray(val)) {
+    return isHomogeneousAttributeValueArray(val);
+  }
+  return isValidPrimitiveAttributeValue(val);
+}
+__name(isAttributeValue, "isAttributeValue");
+function isHomogeneousAttributeValueArray(arr) {
+  let type;
+  for (const element of arr) {
+    if (element == null)
+      continue;
+    if (!type) {
+      if (isValidPrimitiveAttributeValue(element)) {
+        type = typeof element;
+        continue;
+      }
+      return false;
+    }
+    if (typeof element === type) {
+      continue;
+    }
+    return false;
+  }
+  return true;
+}
+__name(isHomogeneousAttributeValueArray, "isHomogeneousAttributeValueArray");
+function isValidPrimitiveAttributeValue(val) {
+  switch (typeof val) {
+    case "number":
+    case "boolean":
+    case "string":
+      return true;
+  }
+  return false;
+}
+__name(isValidPrimitiveAttributeValue, "isValidPrimitiveAttributeValue");
+var init_attributes = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+core@2.0.1_@opentelemetry+api@1.9.0/node_modules/@opentelemetry/core/build/esm/common/attributes.js"() {
+    "use strict";
+    init_esm();
+  }
+});
+function loggingErrorHandler() {
+  return (ex) => {
+    diag.error(stringifyException(ex));
+  };
+}
+__name(loggingErrorHandler, "loggingErrorHandler");
+function stringifyException(ex) {
+  if (typeof ex === "string") {
+    return ex;
+  } else {
+    return JSON.stringify(flattenException(ex));
+  }
+}
+__name(stringifyException, "stringifyException");
+function flattenException(ex) {
+  const result = {};
+  let current = ex;
+  while (current !== null) {
+    Object.getOwnPropertyNames(current).forEach((propertyName) => {
+      if (result[propertyName])
+        return;
+      const value = current[propertyName];
+      if (value) {
+        result[propertyName] = String(value);
+      }
+    });
+    current = Object.getPrototypeOf(current);
+  }
+  return result;
+}
+__name(flattenException, "flattenException");
+var init_logging_error_handler = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+core@2.0.1_@opentelemetry+api@1.9.0/node_modules/@opentelemetry/core/build/esm/common/logging-error-handler.js"() {
+    "use strict";
+    init_esm();
+  }
+});
+function globalErrorHandler(ex) {
+  try {
+    delegateHandler(ex);
+  } catch {
+  }
+}
+__name(globalErrorHandler, "globalErrorHandler");
+var delegateHandler;
+var init_global_error_handler = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+core@2.0.1_@opentelemetry+api@1.9.0/node_modules/@opentelemetry/core/build/esm/common/global-error-handler.js"() {
+    "use strict";
+    init_logging_error_handler();
+    delegateHandler = loggingErrorHandler();
+  }
+});
+function getNumberFromEnv(key) {
+  const raw = process.env[key];
+  if (raw == null || raw.trim() === "") {
+    return void 0;
+  }
+  const value = Number(raw);
+  if (isNaN(value)) {
+    diag.warn(`Unknown value ${inspect(raw)} for ${key}, expected a number, using defaults`);
+    return void 0;
+  }
+  return value;
+}
+__name(getNumberFromEnv, "getNumberFromEnv");
+function getStringFromEnv(key) {
+  const raw = process.env[key];
+  if (raw == null || raw.trim() === "") {
+    return void 0;
+  }
+  return raw;
+}
+__name(getStringFromEnv, "getStringFromEnv");
+var init_environment = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+core@2.0.1_@opentelemetry+api@1.9.0/node_modules/@opentelemetry/core/build/esm/platform/node/environment.js"() {
+    "use strict";
+    init_esm();
+  }
+});
+var otperformance;
+var init_performance3 = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+core@2.0.1_@opentelemetry+api@1.9.0/node_modules/@opentelemetry/core/build/esm/platform/node/performance.js"() {
+    "use strict";
+    otperformance = performance;
+  }
+});
+var VERSION2;
+var init_version3 = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+core@2.0.1_@opentelemetry+api@1.9.0/node_modules/@opentelemetry/core/build/esm/version.js"() {
+    "use strict";
+    VERSION2 = "2.0.1";
+  }
+});
+var init_SemanticAttributes = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+semantic-conventions@1.37.0/node_modules/@opentelemetry/semantic-conventions/build/esm/trace/SemanticAttributes.js"() {
+    "use strict";
+  }
+});
+var init_trace2 = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+semantic-conventions@1.37.0/node_modules/@opentelemetry/semantic-conventions/build/esm/trace/index.js"() {
+    "use strict";
+    init_SemanticAttributes();
+  }
+});
+var init_SemanticResourceAttributes = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+semantic-conventions@1.37.0/node_modules/@opentelemetry/semantic-conventions/build/esm/resource/SemanticResourceAttributes.js"() {
+    "use strict";
+  }
+});
+var init_resource = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+semantic-conventions@1.37.0/node_modules/@opentelemetry/semantic-conventions/build/esm/resource/index.js"() {
+    "use strict";
+    init_SemanticResourceAttributes();
+  }
+});
+var ATTR_EXCEPTION_MESSAGE;
+var ATTR_EXCEPTION_STACKTRACE;
+var ATTR_EXCEPTION_TYPE;
+var ATTR_SERVICE_NAME;
+var ATTR_TELEMETRY_SDK_LANGUAGE;
+var TELEMETRY_SDK_LANGUAGE_VALUE_NODEJS;
+var ATTR_TELEMETRY_SDK_NAME;
+var ATTR_TELEMETRY_SDK_VERSION;
+var init_stable_attributes = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+semantic-conventions@1.37.0/node_modules/@opentelemetry/semantic-conventions/build/esm/stable_attributes.js"() {
+    "use strict";
+    ATTR_EXCEPTION_MESSAGE = "exception.message";
+    ATTR_EXCEPTION_STACKTRACE = "exception.stacktrace";
+    ATTR_EXCEPTION_TYPE = "exception.type";
+    ATTR_SERVICE_NAME = "service.name";
+    ATTR_TELEMETRY_SDK_LANGUAGE = "telemetry.sdk.language";
+    TELEMETRY_SDK_LANGUAGE_VALUE_NODEJS = "nodejs";
+    ATTR_TELEMETRY_SDK_NAME = "telemetry.sdk.name";
+    ATTR_TELEMETRY_SDK_VERSION = "telemetry.sdk.version";
+  }
+});
+var init_stable_metrics = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+semantic-conventions@1.37.0/node_modules/@opentelemetry/semantic-conventions/build/esm/stable_metrics.js"() {
+    "use strict";
+  }
+});
+var init_stable_events = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+semantic-conventions@1.37.0/node_modules/@opentelemetry/semantic-conventions/build/esm/stable_events.js"() {
+    "use strict";
+  }
+});
+var init_esm2 = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+semantic-conventions@1.37.0/node_modules/@opentelemetry/semantic-conventions/build/esm/index.js"() {
+    "use strict";
+    init_trace2();
+    init_resource();
+    init_stable_attributes();
+    init_stable_metrics();
+    init_stable_events();
+  }
+});
+var ATTR_PROCESS_RUNTIME_NAME;
+var init_semconv = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+core@2.0.1_@opentelemetry+api@1.9.0/node_modules/@opentelemetry/core/build/esm/semconv.js"() {
+    "use strict";
+    ATTR_PROCESS_RUNTIME_NAME = "process.runtime.name";
+  }
+});
+var SDK_INFO;
+var init_sdk_info = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+core@2.0.1_@opentelemetry+api@1.9.0/node_modules/@opentelemetry/core/build/esm/platform/node/sdk-info.js"() {
+    "use strict";
+    init_version3();
+    init_esm2();
+    init_semconv();
+    SDK_INFO = {
+      [ATTR_TELEMETRY_SDK_NAME]: "opentelemetry",
+      [ATTR_PROCESS_RUNTIME_NAME]: "node",
+      [ATTR_TELEMETRY_SDK_LANGUAGE]: TELEMETRY_SDK_LANGUAGE_VALUE_NODEJS,
+      [ATTR_TELEMETRY_SDK_VERSION]: VERSION2
+    };
+  }
+});
+function unrefTimer(timer) {
+  timer.unref();
+}
+__name(unrefTimer, "unrefTimer");
+var init_timer_util = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+core@2.0.1_@opentelemetry+api@1.9.0/node_modules/@opentelemetry/core/build/esm/platform/node/timer-util.js"() {
+    "use strict";
+  }
+});
+var init_node2 = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+core@2.0.1_@opentelemetry+api@1.9.0/node_modules/@opentelemetry/core/build/esm/platform/node/index.js"() {
+    "use strict";
+    init_environment();
+    init_performance3();
+    init_sdk_info();
+    init_timer_util();
+  }
+});
+var init_platform2 = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+core@2.0.1_@opentelemetry+api@1.9.0/node_modules/@opentelemetry/core/build/esm/platform/index.js"() {
+    "use strict";
+    init_node2();
+  }
+});
+function millisToHrTime(epochMillis) {
+  const epochSeconds = epochMillis / 1e3;
+  const seconds = Math.trunc(epochSeconds);
+  const nanos = Math.round(epochMillis % 1e3 * MILLISECONDS_TO_NANOSECONDS);
+  return [seconds, nanos];
+}
+__name(millisToHrTime, "millisToHrTime");
+function getTimeOrigin() {
+  let timeOrigin = otperformance.timeOrigin;
+  if (typeof timeOrigin !== "number") {
+    const perf = otperformance;
+    timeOrigin = perf.timing && perf.timing.fetchStart;
+  }
+  return timeOrigin;
+}
+__name(getTimeOrigin, "getTimeOrigin");
+function hrTime(performanceNow) {
+  const timeOrigin = millisToHrTime(getTimeOrigin());
+  const now2 = millisToHrTime(typeof performanceNow === "number" ? performanceNow : otperformance.now());
+  return addHrTimes(timeOrigin, now2);
+}
+__name(hrTime, "hrTime");
+function hrTimeDuration(startTime, endTime) {
+  let seconds = endTime[0] - startTime[0];
+  let nanos = endTime[1] - startTime[1];
+  if (nanos < 0) {
+    seconds -= 1;
+    nanos += SECOND_TO_NANOSECONDS;
+  }
+  return [seconds, nanos];
+}
+__name(hrTimeDuration, "hrTimeDuration");
+function hrTimeToMicroseconds(time3) {
+  return time3[0] * 1e6 + time3[1] / 1e3;
+}
+__name(hrTimeToMicroseconds, "hrTimeToMicroseconds");
+function isTimeInputHrTime(value) {
+  return Array.isArray(value) && value.length === 2 && typeof value[0] === "number" && typeof value[1] === "number";
+}
+__name(isTimeInputHrTime, "isTimeInputHrTime");
+function isTimeInput(value) {
+  return isTimeInputHrTime(value) || typeof value === "number" || value instanceof Date;
+}
+__name(isTimeInput, "isTimeInput");
+function addHrTimes(time1, time22) {
+  const out = [time1[0] + time22[0], time1[1] + time22[1]];
+  if (out[1] >= SECOND_TO_NANOSECONDS) {
+    out[1] -= SECOND_TO_NANOSECONDS;
+    out[0] += 1;
+  }
+  return out;
+}
+__name(addHrTimes, "addHrTimes");
+var NANOSECOND_DIGITS;
+var NANOSECOND_DIGITS_IN_MILLIS;
+var MILLISECONDS_TO_NANOSECONDS;
+var SECOND_TO_NANOSECONDS;
+var init_time = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+core@2.0.1_@opentelemetry+api@1.9.0/node_modules/@opentelemetry/core/build/esm/common/time.js"() {
+    "use strict";
+    init_platform2();
+    NANOSECOND_DIGITS = 9;
+    NANOSECOND_DIGITS_IN_MILLIS = 6;
+    MILLISECONDS_TO_NANOSECONDS = Math.pow(10, NANOSECOND_DIGITS_IN_MILLIS);
+    SECOND_TO_NANOSECONDS = Math.pow(10, NANOSECOND_DIGITS);
+  }
+});
+var ExportResultCode;
+var init_ExportResult = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+core@2.0.1_@opentelemetry+api@1.9.0/node_modules/@opentelemetry/core/build/esm/ExportResult.js"() {
+    "use strict";
+    (function(ExportResultCode3) {
+      ExportResultCode3[ExportResultCode3["SUCCESS"] = 0] = "SUCCESS";
+      ExportResultCode3[ExportResultCode3["FAILED"] = 1] = "FAILED";
+    })(ExportResultCode || (ExportResultCode = {}));
+  }
+});
+function isPlainObject(value) {
+  if (!isObjectLike(value) || baseGetTag(value) !== objectTag) {
+    return false;
+  }
+  const proto = getPrototypeOf(value);
+  if (proto === null) {
+    return true;
+  }
+  const Ctor = hasOwnProperty.call(proto, "constructor") && proto.constructor;
+  return typeof Ctor == "function" && Ctor instanceof Ctor && funcToString.call(Ctor) === objectCtorString;
+}
+__name(isPlainObject, "isPlainObject");
+function isObjectLike(value) {
+  return value != null && typeof value == "object";
+}
+__name(isObjectLike, "isObjectLike");
+function baseGetTag(value) {
+  if (value == null) {
+    return value === void 0 ? undefinedTag : nullTag;
+  }
+  return symToStringTag && symToStringTag in Object(value) ? getRawTag(value) : objectToString3(value);
+}
+__name(baseGetTag, "baseGetTag");
+function getRawTag(value) {
+  const isOwn = hasOwnProperty.call(value, symToStringTag), tag = value[symToStringTag];
+  let unmasked = false;
+  try {
+    value[symToStringTag] = void 0;
+    unmasked = true;
+  } catch (e) {
+  }
+  const result = nativeObjectToString.call(value);
+  if (unmasked) {
+    if (isOwn) {
+      value[symToStringTag] = tag;
+    } else {
+      delete value[symToStringTag];
+    }
+  }
+  return result;
+}
+__name(getRawTag, "getRawTag");
+function objectToString3(value) {
+  return nativeObjectToString.call(value);
+}
+__name(objectToString3, "objectToString");
+var objectTag;
+var nullTag;
+var undefinedTag;
+var funcProto;
+var funcToString;
+var objectCtorString;
+var getPrototypeOf;
+var objectProto;
+var hasOwnProperty;
+var symToStringTag;
+var nativeObjectToString;
+var init_lodash_merge = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+core@2.0.1_@opentelemetry+api@1.9.0/node_modules/@opentelemetry/core/build/esm/utils/lodash.merge.js"() {
+    "use strict";
+    objectTag = "[object Object]";
+    nullTag = "[object Null]";
+    undefinedTag = "[object Undefined]";
+    funcProto = Function.prototype;
+    funcToString = funcProto.toString;
+    objectCtorString = funcToString.call(Object);
+    getPrototypeOf = Object.getPrototypeOf;
+    objectProto = Object.prototype;
+    hasOwnProperty = objectProto.hasOwnProperty;
+    symToStringTag = Symbol ? Symbol.toStringTag : void 0;
+    nativeObjectToString = objectProto.toString;
+  }
+});
+function merge(...args) {
+  let result = args.shift();
+  const objects = /* @__PURE__ */ new WeakMap();
+  while (args.length > 0) {
+    result = mergeTwoObjects(result, args.shift(), 0, objects);
+  }
+  return result;
+}
+__name(merge, "merge");
+function takeValue(value) {
+  if (isArray22(value)) {
+    return value.slice();
+  }
+  return value;
+}
+__name(takeValue, "takeValue");
+function mergeTwoObjects(one, two, level = 0, objects) {
+  let result;
+  if (level > MAX_LEVEL) {
+    return void 0;
+  }
+  level++;
+  if (isPrimitive(one) || isPrimitive(two) || isFunction2(two)) {
+    result = takeValue(two);
+  } else if (isArray22(one)) {
+    result = one.slice();
+    if (isArray22(two)) {
+      for (let i = 0, j = two.length; i < j; i++) {
+        result.push(takeValue(two[i]));
+      }
+    } else if (isObject2(two)) {
+      const keys = Object.keys(two);
+      for (let i = 0, j = keys.length; i < j; i++) {
+        const key = keys[i];
+        result[key] = takeValue(two[key]);
+      }
+    }
+  } else if (isObject2(one)) {
+    if (isObject2(two)) {
+      if (!shouldMerge(one, two)) {
+        return two;
+      }
+      result = Object.assign({}, one);
+      const keys = Object.keys(two);
+      for (let i = 0, j = keys.length; i < j; i++) {
+        const key = keys[i];
+        const twoValue = two[key];
+        if (isPrimitive(twoValue)) {
+          if (typeof twoValue === "undefined") {
+            delete result[key];
+          } else {
+            result[key] = twoValue;
+          }
+        } else {
+          const obj1 = result[key];
+          const obj2 = twoValue;
+          if (wasObjectReferenced(one, key, objects) || wasObjectReferenced(two, key, objects)) {
+            delete result[key];
+          } else {
+            if (isObject2(obj1) && isObject2(obj2)) {
+              const arr1 = objects.get(obj1) || [];
+              const arr2 = objects.get(obj2) || [];
+              arr1.push({ obj: one, key });
+              arr2.push({ obj: two, key });
+              objects.set(obj1, arr1);
+              objects.set(obj2, arr2);
+            }
+            result[key] = mergeTwoObjects(result[key], twoValue, level, objects);
+          }
+        }
+      }
+    } else {
+      result = two;
+    }
+  }
+  return result;
+}
+__name(mergeTwoObjects, "mergeTwoObjects");
+function wasObjectReferenced(obj, key, objects) {
+  const arr = objects.get(obj[key]) || [];
+  for (let i = 0, j = arr.length; i < j; i++) {
+    const info3 = arr[i];
+    if (info3.key === key && info3.obj === obj) {
+      return true;
+    }
+  }
+  return false;
+}
+__name(wasObjectReferenced, "wasObjectReferenced");
+function isArray22(value) {
+  return Array.isArray(value);
+}
+__name(isArray22, "isArray2");
+function isFunction2(value) {
+  return typeof value === "function";
+}
+__name(isFunction2, "isFunction");
+function isObject2(value) {
+  return !isPrimitive(value) && !isArray22(value) && !isFunction2(value) && typeof value === "object";
+}
+__name(isObject2, "isObject2");
+function isPrimitive(value) {
+  return typeof value === "string" || typeof value === "number" || typeof value === "boolean" || typeof value === "undefined" || value instanceof Date || value instanceof RegExp || value === null;
+}
+__name(isPrimitive, "isPrimitive");
+function shouldMerge(one, two) {
+  if (!isPlainObject(one) || !isPlainObject(two)) {
+    return false;
+  }
+  return true;
+}
+__name(shouldMerge, "shouldMerge");
+var MAX_LEVEL;
+var init_merge2 = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+core@2.0.1_@opentelemetry+api@1.9.0/node_modules/@opentelemetry/core/build/esm/utils/merge.js"() {
+    "use strict";
+    init_lodash_merge();
+    MAX_LEVEL = 20;
+  }
+});
+var Deferred;
+var init_promise = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+core@2.0.1_@opentelemetry+api@1.9.0/node_modules/@opentelemetry/core/build/esm/utils/promise.js"() {
+    "use strict";
+    Deferred = class {
+      static {
+        __name(this, "Deferred");
+      }
+      _promise;
+      _resolve;
+      _reject;
+      constructor() {
+        this._promise = new Promise((resolve, reject2) => {
+          this._resolve = resolve;
+          this._reject = reject2;
+        });
+      }
+      get promise() {
+        return this._promise;
+      }
+      resolve(val) {
+        this._resolve(val);
+      }
+      reject(err) {
+        this._reject(err);
+      }
+    };
+  }
+});
+var BindOnceFuture;
+var init_callback = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+core@2.0.1_@opentelemetry+api@1.9.0/node_modules/@opentelemetry/core/build/esm/utils/callback.js"() {
+    "use strict";
+    init_promise();
+    BindOnceFuture = class {
+      static {
+        __name(this, "BindOnceFuture");
+      }
+      _callback;
+      _that;
+      _isCalled = false;
+      _deferred = new Deferred();
+      constructor(_callback, _that) {
+        this._callback = _callback;
+        this._that = _that;
+      }
+      get isCalled() {
+        return this._isCalled;
+      }
+      get promise() {
+        return this._deferred.promise;
+      }
+      call(...args) {
+        if (!this._isCalled) {
+          this._isCalled = true;
+          try {
+            Promise.resolve(this._callback.call(this._that, ...args)).then((val) => this._deferred.resolve(val), (err) => this._deferred.reject(err));
+          } catch (err) {
+            this._deferred.reject(err);
+          }
+        }
+        return this._deferred.promise;
+      }
+    };
+  }
+});
+function _export(exporter, arg) {
+  return new Promise((resolve) => {
+    context2.with(suppressTracing(context2.active()), () => {
+      exporter.export(arg, (result) => {
+        resolve(result);
+      });
+    });
+  });
+}
+__name(_export, "_export");
+var init_exporter = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+core@2.0.1_@opentelemetry+api@1.9.0/node_modules/@opentelemetry/core/build/esm/internal/exporter.js"() {
+    "use strict";
+    init_esm();
+    init_suppress_tracing();
+  }
+});
+var internal;
+var init_esm3 = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+core@2.0.1_@opentelemetry+api@1.9.0/node_modules/@opentelemetry/core/build/esm/index.js"() {
+    "use strict";
+    init_attributes();
+    init_global_error_handler();
+    init_time();
+    init_ExportResult();
+    init_platform2();
+    init_suppress_tracing();
+    init_merge2();
+    init_callback();
+    init_exporter();
+    internal = {
+      _export
+    };
+  }
+});
+function defaultServiceName() {
+  return `unknown_service:${process.argv0}`;
+}
+__name(defaultServiceName, "defaultServiceName");
+var init_default_service_name = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+resources@2.0.1_@opentelemetry+api@1.9.0/node_modules/@opentelemetry/resources/build/esm/platform/node/default-service-name.js"() {
+    "use strict";
+  }
+});
+var init_node22 = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+resources@2.0.1_@opentelemetry+api@1.9.0/node_modules/@opentelemetry/resources/build/esm/platform/node/index.js"() {
+    "use strict";
+    init_default_service_name();
+  }
+});
+var init_platform22 = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+resources@2.0.1_@opentelemetry+api@1.9.0/node_modules/@opentelemetry/resources/build/esm/platform/index.js"() {
+    "use strict";
+    init_node22();
+  }
+});
+var isPromiseLike;
+var init_utils4 = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+resources@2.0.1_@opentelemetry+api@1.9.0/node_modules/@opentelemetry/resources/build/esm/utils.js"() {
+    "use strict";
+    isPromiseLike = /* @__PURE__ */ __name((val) => {
+      return val !== null && typeof val === "object" && typeof val.then === "function";
+    }, "isPromiseLike");
+  }
+});
+function resourceFromAttributes(attributes) {
+  return ResourceImpl.FromAttributeList(Object.entries(attributes));
+}
+__name(resourceFromAttributes, "resourceFromAttributes");
+function defaultResource() {
+  return resourceFromAttributes({
+    [ATTR_SERVICE_NAME]: defaultServiceName(),
+    [ATTR_TELEMETRY_SDK_LANGUAGE]: SDK_INFO[ATTR_TELEMETRY_SDK_LANGUAGE],
+    [ATTR_TELEMETRY_SDK_NAME]: SDK_INFO[ATTR_TELEMETRY_SDK_NAME],
+    [ATTR_TELEMETRY_SDK_VERSION]: SDK_INFO[ATTR_TELEMETRY_SDK_VERSION]
+  });
+}
+__name(defaultResource, "defaultResource");
+function guardedRawAttributes(attributes) {
+  return attributes.map(([k, v]) => {
+    if (isPromiseLike(v)) {
+      return [
+        k,
+        v.catch((err) => {
+          diag.debug("promise rejection for resource attribute: %s - %s", k, err);
+          return void 0;
+        })
+      ];
+    }
+    return [k, v];
+  });
+}
+__name(guardedRawAttributes, "guardedRawAttributes");
+var ResourceImpl;
+var init_ResourceImpl = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+resources@2.0.1_@opentelemetry+api@1.9.0/node_modules/@opentelemetry/resources/build/esm/ResourceImpl.js"() {
+    "use strict";
+    init_esm();
+    init_esm3();
+    init_esm2();
+    init_platform22();
+    init_utils4();
+    ResourceImpl = class _ResourceImpl {
+      static {
+        __name(this, "_ResourceImpl");
+      }
+      _rawAttributes;
+      _asyncAttributesPending = false;
+      _memoizedAttributes;
+      static FromAttributeList(attributes) {
+        const res = new _ResourceImpl({});
+        res._rawAttributes = guardedRawAttributes(attributes);
+        res._asyncAttributesPending = attributes.filter(([_, val]) => isPromiseLike(val)).length > 0;
+        return res;
+      }
+      constructor(resource) {
+        const attributes = resource.attributes ?? {};
+        this._rawAttributes = Object.entries(attributes).map(([k, v]) => {
+          if (isPromiseLike(v)) {
+            this._asyncAttributesPending = true;
+          }
+          return [k, v];
+        });
+        this._rawAttributes = guardedRawAttributes(this._rawAttributes);
+      }
+      get asyncAttributesPending() {
+        return this._asyncAttributesPending;
+      }
+      async waitForAsyncAttributes() {
+        if (!this.asyncAttributesPending) {
+          return;
+        }
+        for (let i = 0; i < this._rawAttributes.length; i++) {
+          const [k, v] = this._rawAttributes[i];
+          this._rawAttributes[i] = [k, isPromiseLike(v) ? await v : v];
+        }
+        this._asyncAttributesPending = false;
+      }
+      get attributes() {
+        if (this.asyncAttributesPending) {
+          diag.error("Accessing resource attributes before async attributes settled");
+        }
+        if (this._memoizedAttributes) {
+          return this._memoizedAttributes;
+        }
+        const attrs = {};
+        for (const [k, v] of this._rawAttributes) {
+          if (isPromiseLike(v)) {
+            diag.debug(`Unsettled resource attribute ${k} skipped`);
+            continue;
+          }
+          if (v != null) {
+            attrs[k] ??= v;
+          }
+        }
+        if (!this._asyncAttributesPending) {
+          this._memoizedAttributes = attrs;
+        }
+        return attrs;
+      }
+      getRawAttributes() {
+        return this._rawAttributes;
+      }
+      merge(resource) {
+        if (resource == null)
+          return this;
+        return _ResourceImpl.FromAttributeList([
+          ...resource.getRawAttributes(),
+          ...this.getRawAttributes()
+        ]);
+      }
+    };
+  }
+});
+var init_esm4 = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+resources@2.0.1_@opentelemetry+api@1.9.0/node_modules/@opentelemetry/resources/build/esm/index.js"() {
+    "use strict";
+    init_ResourceImpl();
+  }
+});
+var ExceptionEventName;
+var init_enums = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+sdk-trace-base@2.0.1_@opentelemetry+api@1.9.0/node_modules/@opentelemetry/sdk-trace-base/build/esm/enums.js"() {
+    "use strict";
+    ExceptionEventName = "exception";
+  }
+});
+var SpanImpl2;
+var init_Span = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+sdk-trace-base@2.0.1_@opentelemetry+api@1.9.0/node_modules/@opentelemetry/sdk-trace-base/build/esm/Span.js"() {
+    "use strict";
+    init_esm();
+    init_esm3();
+    init_esm2();
+    init_enums();
+    SpanImpl2 = class {
+      static {
+        __name(this, "SpanImpl2");
+      }
+      // Below properties are included to implement ReadableSpan for export
+      // purposes but are not intended to be written-to directly.
+      _spanContext;
+      kind;
+      parentSpanContext;
+      attributes = {};
+      links = [];
+      events = [];
+      startTime;
+      resource;
+      instrumentationScope;
+      _droppedAttributesCount = 0;
+      _droppedEventsCount = 0;
+      _droppedLinksCount = 0;
+      name;
+      status = {
+        code: SpanStatusCode.UNSET
+      };
+      endTime = [0, 0];
+      _ended = false;
+      _duration = [-1, -1];
+      _spanProcessor;
+      _spanLimits;
+      _attributeValueLengthLimit;
+      _performanceStartTime;
+      _performanceOffset;
+      _startTimeProvided;
+      /**
+       * Constructs a new SpanImpl instance.
+       */
+      constructor(opts) {
+        const now2 = Date.now();
+        this._spanContext = opts.spanContext;
+        this._performanceStartTime = otperformance.now();
+        this._performanceOffset = now2 - (this._performanceStartTime + getTimeOrigin());
+        this._startTimeProvided = opts.startTime != null;
+        this._spanLimits = opts.spanLimits;
+        this._attributeValueLengthLimit = this._spanLimits.attributeValueLengthLimit || 0;
+        this._spanProcessor = opts.spanProcessor;
+        this.name = opts.name;
+        this.parentSpanContext = opts.parentSpanContext;
+        this.kind = opts.kind;
+        this.links = opts.links || [];
+        this.startTime = this._getTime(opts.startTime ?? now2);
+        this.resource = opts.resource;
+        this.instrumentationScope = opts.scope;
+        if (opts.attributes != null) {
+          this.setAttributes(opts.attributes);
+        }
+        this._spanProcessor.onStart(this, opts.context);
+      }
+      spanContext() {
+        return this._spanContext;
+      }
+      setAttribute(key, value) {
+        if (value == null || this._isSpanEnded())
+          return this;
+        if (key.length === 0) {
+          diag.warn(`Invalid attribute key: ${key}`);
+          return this;
+        }
+        if (!isAttributeValue(value)) {
+          diag.warn(`Invalid attribute value set for key: ${key}`);
+          return this;
+        }
+        const { attributeCountLimit } = this._spanLimits;
+        if (attributeCountLimit !== void 0 && Object.keys(this.attributes).length >= attributeCountLimit && !Object.prototype.hasOwnProperty.call(this.attributes, key)) {
+          this._droppedAttributesCount++;
+          return this;
+        }
+        this.attributes[key] = this._truncateToSize(value);
+        return this;
+      }
+      setAttributes(attributes) {
+        for (const [k, v] of Object.entries(attributes)) {
+          this.setAttribute(k, v);
+        }
+        return this;
+      }
+      /**
+       *
+       * @param name Span Name
+       * @param [attributesOrStartTime] Span attributes or start time
+       *     if type is {@type TimeInput} and 3rd param is undefined
+       * @param [timeStamp] Specified time stamp for the event
+       */
+      addEvent(name, attributesOrStartTime, timeStamp3) {
+        if (this._isSpanEnded())
+          return this;
+        const { eventCountLimit } = this._spanLimits;
+        if (eventCountLimit === 0) {
+          diag.warn("No events allowed.");
+          this._droppedEventsCount++;
+          return this;
+        }
+        if (eventCountLimit !== void 0 && this.events.length >= eventCountLimit) {
+          if (this._droppedEventsCount === 0) {
+            diag.debug("Dropping extra events.");
+          }
+          this.events.shift();
+          this._droppedEventsCount++;
+        }
+        if (isTimeInput(attributesOrStartTime)) {
+          if (!isTimeInput(timeStamp3)) {
+            timeStamp3 = attributesOrStartTime;
+          }
+          attributesOrStartTime = void 0;
+        }
+        const attributes = sanitizeAttributes(attributesOrStartTime);
+        this.events.push({
+          name,
+          attributes,
+          time: this._getTime(timeStamp3),
+          droppedAttributesCount: 0
+        });
+        return this;
+      }
+      addLink(link3) {
+        this.links.push(link3);
+        return this;
+      }
+      addLinks(links) {
+        this.links.push(...links);
+        return this;
+      }
+      setStatus(status) {
+        if (this._isSpanEnded())
+          return this;
+        this.status = { ...status };
+        if (this.status.message != null && typeof status.message !== "string") {
+          diag.warn(`Dropping invalid status.message of type '${typeof status.message}', expected 'string'`);
+          delete this.status.message;
+        }
+        return this;
+      }
+      updateName(name) {
+        if (this._isSpanEnded())
+          return this;
+        this.name = name;
+        return this;
+      }
+      end(endTime) {
+        if (this._isSpanEnded()) {
+          diag.error(`${this.name} ${this._spanContext.traceId}-${this._spanContext.spanId} - You can only call end() on a span once.`);
+          return;
+        }
+        this._ended = true;
+        this.endTime = this._getTime(endTime);
+        this._duration = hrTimeDuration(this.startTime, this.endTime);
+        if (this._duration[0] < 0) {
+          diag.warn("Inconsistent start and end time, startTime > endTime. Setting span duration to 0ms.", this.startTime, this.endTime);
+          this.endTime = this.startTime.slice();
+          this._duration = [0, 0];
+        }
+        if (this._droppedEventsCount > 0) {
+          diag.warn(`Dropped ${this._droppedEventsCount} events because eventCountLimit reached`);
+        }
+        this._spanProcessor.onEnd(this);
+      }
+      _getTime(inp) {
+        if (typeof inp === "number" && inp <= otperformance.now()) {
+          return hrTime(inp + this._performanceOffset);
+        }
+        if (typeof inp === "number") {
+          return millisToHrTime(inp);
+        }
+        if (inp instanceof Date) {
+          return millisToHrTime(inp.getTime());
+        }
+        if (isTimeInputHrTime(inp)) {
+          return inp;
+        }
+        if (this._startTimeProvided) {
+          return millisToHrTime(Date.now());
+        }
+        const msDuration = otperformance.now() - this._performanceStartTime;
+        return addHrTimes(this.startTime, millisToHrTime(msDuration));
+      }
+      isRecording() {
+        return this._ended === false;
+      }
+      recordException(exception, time3) {
+        const attributes = {};
+        if (typeof exception === "string") {
+          attributes[ATTR_EXCEPTION_MESSAGE] = exception;
+        } else if (exception) {
+          if (exception.code) {
+            attributes[ATTR_EXCEPTION_TYPE] = exception.code.toString();
+          } else if (exception.name) {
+            attributes[ATTR_EXCEPTION_TYPE] = exception.name;
+          }
+          if (exception.message) {
+            attributes[ATTR_EXCEPTION_MESSAGE] = exception.message;
+          }
+          if (exception.stack) {
+            attributes[ATTR_EXCEPTION_STACKTRACE] = exception.stack;
+          }
+        }
+        if (attributes[ATTR_EXCEPTION_TYPE] || attributes[ATTR_EXCEPTION_MESSAGE]) {
+          this.addEvent(ExceptionEventName, attributes, time3);
+        } else {
+          diag.warn(`Failed to record an exception ${exception}`);
+        }
+      }
+      get duration() {
+        return this._duration;
+      }
+      get ended() {
+        return this._ended;
+      }
+      get droppedAttributesCount() {
+        return this._droppedAttributesCount;
+      }
+      get droppedEventsCount() {
+        return this._droppedEventsCount;
+      }
+      get droppedLinksCount() {
+        return this._droppedLinksCount;
+      }
+      _isSpanEnded() {
+        if (this._ended) {
+          const error22 = new Error(`Operation attempted on ended Span {traceId: ${this._spanContext.traceId}, spanId: ${this._spanContext.spanId}}`);
+          diag.warn(`Cannot execute the operation on ended Span {traceId: ${this._spanContext.traceId}, spanId: ${this._spanContext.spanId}}`, error22);
+        }
+        return this._ended;
+      }
+      // Utility function to truncate given value within size
+      // for value type of string, will truncate to given limit
+      // for type of non-string, will return same value
+      _truncateToLimitUtil(value, limit2) {
+        if (value.length <= limit2) {
+          return value;
+        }
+        return value.substring(0, limit2);
+      }
+      /**
+       * If the given attribute value is of type string and has more characters than given {@code attributeValueLengthLimit} then
+       * return string with truncated to {@code attributeValueLengthLimit} characters
+       *
+       * If the given attribute value is array of strings then
+       * return new array of strings with each element truncated to {@code attributeValueLengthLimit} characters
+       *
+       * Otherwise return same Attribute {@code value}
+       *
+       * @param value Attribute value
+       * @returns truncated attribute value if required, otherwise same value
+       */
+      _truncateToSize(value) {
+        const limit2 = this._attributeValueLengthLimit;
+        if (limit2 <= 0) {
+          diag.warn(`Attribute value limit must be positive, got ${limit2}`);
+          return value;
+        }
+        if (typeof value === "string") {
+          return this._truncateToLimitUtil(value, limit2);
+        }
+        if (Array.isArray(value)) {
+          return value.map((val) => typeof val === "string" ? this._truncateToLimitUtil(val, limit2) : val);
+        }
+        return value;
+      }
+    };
+  }
+});
+var SamplingDecision2;
+var init_Sampler = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+sdk-trace-base@2.0.1_@opentelemetry+api@1.9.0/node_modules/@opentelemetry/sdk-trace-base/build/esm/Sampler.js"() {
+    "use strict";
+    (function(SamplingDecision3) {
+      SamplingDecision3[SamplingDecision3["NOT_RECORD"] = 0] = "NOT_RECORD";
+      SamplingDecision3[SamplingDecision3["RECORD"] = 1] = "RECORD";
+      SamplingDecision3[SamplingDecision3["RECORD_AND_SAMPLED"] = 2] = "RECORD_AND_SAMPLED";
+    })(SamplingDecision2 || (SamplingDecision2 = {}));
+  }
+});
+var AlwaysOffSampler;
+var init_AlwaysOffSampler = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+sdk-trace-base@2.0.1_@opentelemetry+api@1.9.0/node_modules/@opentelemetry/sdk-trace-base/build/esm/sampler/AlwaysOffSampler.js"() {
+    "use strict";
+    init_Sampler();
+    AlwaysOffSampler = class {
+      static {
+        __name(this, "AlwaysOffSampler");
+      }
+      shouldSample() {
+        return {
+          decision: SamplingDecision2.NOT_RECORD
+        };
+      }
+      toString() {
+        return "AlwaysOffSampler";
+      }
+    };
+  }
+});
+var AlwaysOnSampler;
+var init_AlwaysOnSampler = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+sdk-trace-base@2.0.1_@opentelemetry+api@1.9.0/node_modules/@opentelemetry/sdk-trace-base/build/esm/sampler/AlwaysOnSampler.js"() {
+    "use strict";
+    init_Sampler();
+    AlwaysOnSampler = class {
+      static {
+        __name(this, "AlwaysOnSampler");
+      }
+      shouldSample() {
+        return {
+          decision: SamplingDecision2.RECORD_AND_SAMPLED
+        };
+      }
+      toString() {
+        return "AlwaysOnSampler";
+      }
+    };
+  }
+});
+var ParentBasedSampler;
+var init_ParentBasedSampler = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+sdk-trace-base@2.0.1_@opentelemetry+api@1.9.0/node_modules/@opentelemetry/sdk-trace-base/build/esm/sampler/ParentBasedSampler.js"() {
+    "use strict";
+    init_esm();
+    init_esm3();
+    init_AlwaysOffSampler();
+    init_AlwaysOnSampler();
+    ParentBasedSampler = class {
+      static {
+        __name(this, "ParentBasedSampler");
+      }
+      _root;
+      _remoteParentSampled;
+      _remoteParentNotSampled;
+      _localParentSampled;
+      _localParentNotSampled;
+      constructor(config2) {
+        this._root = config2.root;
+        if (!this._root) {
+          globalErrorHandler(new Error("ParentBasedSampler must have a root sampler configured"));
+          this._root = new AlwaysOnSampler();
+        }
+        this._remoteParentSampled = config2.remoteParentSampled ?? new AlwaysOnSampler();
+        this._remoteParentNotSampled = config2.remoteParentNotSampled ?? new AlwaysOffSampler();
+        this._localParentSampled = config2.localParentSampled ?? new AlwaysOnSampler();
+        this._localParentNotSampled = config2.localParentNotSampled ?? new AlwaysOffSampler();
+      }
+      shouldSample(context22, traceId, spanName, spanKind, attributes, links) {
+        const parentContext = trace3.getSpanContext(context22);
+        if (!parentContext || !isSpanContextValid(parentContext)) {
+          return this._root.shouldSample(context22, traceId, spanName, spanKind, attributes, links);
+        }
+        if (parentContext.isRemote) {
+          if (parentContext.traceFlags & TraceFlags.SAMPLED) {
+            return this._remoteParentSampled.shouldSample(context22, traceId, spanName, spanKind, attributes, links);
+          }
+          return this._remoteParentNotSampled.shouldSample(context22, traceId, spanName, spanKind, attributes, links);
+        }
+        if (parentContext.traceFlags & TraceFlags.SAMPLED) {
+          return this._localParentSampled.shouldSample(context22, traceId, spanName, spanKind, attributes, links);
+        }
+        return this._localParentNotSampled.shouldSample(context22, traceId, spanName, spanKind, attributes, links);
+      }
+      toString() {
+        return `ParentBased{root=${this._root.toString()}, remoteParentSampled=${this._remoteParentSampled.toString()}, remoteParentNotSampled=${this._remoteParentNotSampled.toString()}, localParentSampled=${this._localParentSampled.toString()}, localParentNotSampled=${this._localParentNotSampled.toString()}}`;
+      }
+    };
+  }
+});
+var TraceIdRatioBasedSampler;
+var init_TraceIdRatioBasedSampler = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+sdk-trace-base@2.0.1_@opentelemetry+api@1.9.0/node_modules/@opentelemetry/sdk-trace-base/build/esm/sampler/TraceIdRatioBasedSampler.js"() {
+    "use strict";
+    init_esm();
+    init_Sampler();
+    TraceIdRatioBasedSampler = class {
+      static {
+        __name(this, "TraceIdRatioBasedSampler");
+      }
+      _ratio;
+      _upperBound;
+      constructor(_ratio = 0) {
+        this._ratio = _ratio;
+        this._ratio = this._normalize(_ratio);
+        this._upperBound = Math.floor(this._ratio * 4294967295);
+      }
+      shouldSample(context22, traceId) {
+        return {
+          decision: isValidTraceId(traceId) && this._accumulate(traceId) < this._upperBound ? SamplingDecision2.RECORD_AND_SAMPLED : SamplingDecision2.NOT_RECORD
+        };
+      }
+      toString() {
+        return `TraceIdRatioBased{${this._ratio}}`;
+      }
+      _normalize(ratio) {
+        if (typeof ratio !== "number" || isNaN(ratio))
+          return 0;
+        return ratio >= 1 ? 1 : ratio <= 0 ? 0 : ratio;
+      }
+      _accumulate(traceId) {
+        let accumulation = 0;
+        for (let i = 0; i < traceId.length / 8; i++) {
+          const pos = i * 8;
+          const part = parseInt(traceId.slice(pos, pos + 8), 16);
+          accumulation = (accumulation ^ part) >>> 0;
+        }
+        return accumulation;
+      }
+    };
+  }
+});
+function loadDefaultConfig() {
+  return {
+    sampler: buildSamplerFromEnv(),
+    forceFlushTimeoutMillis: 3e4,
+    generalLimits: {
+      attributeValueLengthLimit: getNumberFromEnv("OTEL_ATTRIBUTE_VALUE_LENGTH_LIMIT") ?? Infinity,
+      attributeCountLimit: getNumberFromEnv("OTEL_ATTRIBUTE_COUNT_LIMIT") ?? 128
+    },
+    spanLimits: {
+      attributeValueLengthLimit: getNumberFromEnv("OTEL_SPAN_ATTRIBUTE_VALUE_LENGTH_LIMIT") ?? Infinity,
+      attributeCountLimit: getNumberFromEnv("OTEL_SPAN_ATTRIBUTE_COUNT_LIMIT") ?? 128,
+      linkCountLimit: getNumberFromEnv("OTEL_SPAN_LINK_COUNT_LIMIT") ?? 128,
+      eventCountLimit: getNumberFromEnv("OTEL_SPAN_EVENT_COUNT_LIMIT") ?? 128,
+      attributePerEventCountLimit: getNumberFromEnv("OTEL_SPAN_ATTRIBUTE_PER_EVENT_COUNT_LIMIT") ?? 128,
+      attributePerLinkCountLimit: getNumberFromEnv("OTEL_SPAN_ATTRIBUTE_PER_LINK_COUNT_LIMIT") ?? 128
+    }
+  };
+}
+__name(loadDefaultConfig, "loadDefaultConfig");
+function buildSamplerFromEnv() {
+  const sampler = getStringFromEnv("OTEL_TRACES_SAMPLER") ?? "parentbased_always_on";
+  switch (sampler) {
+    case "always_on":
+      return new AlwaysOnSampler();
+    case "always_off":
+      return new AlwaysOffSampler();
+    case "parentbased_always_on":
+      return new ParentBasedSampler({
+        root: new AlwaysOnSampler()
+      });
+    case "parentbased_always_off":
+      return new ParentBasedSampler({
+        root: new AlwaysOffSampler()
+      });
+    case "traceidratio":
+      return new TraceIdRatioBasedSampler(getSamplerProbabilityFromEnv());
+    case "parentbased_traceidratio":
+      return new ParentBasedSampler({
+        root: new TraceIdRatioBasedSampler(getSamplerProbabilityFromEnv())
+      });
+    default:
+      diag.error(`OTEL_TRACES_SAMPLER value "${sampler}" invalid, defaulting to "${"parentbased_always_on"}".`);
+      return new ParentBasedSampler({
+        root: new AlwaysOnSampler()
+      });
+  }
+}
+__name(buildSamplerFromEnv, "buildSamplerFromEnv");
+function getSamplerProbabilityFromEnv() {
+  const probability = getNumberFromEnv("OTEL_TRACES_SAMPLER_ARG");
+  if (probability == null) {
+    diag.error(`OTEL_TRACES_SAMPLER_ARG is blank, defaulting to ${DEFAULT_RATIO}.`);
+    return DEFAULT_RATIO;
+  }
+  if (probability < 0 || probability > 1) {
+    diag.error(`OTEL_TRACES_SAMPLER_ARG=${probability} was given, but it is out of range ([0..1]), defaulting to ${DEFAULT_RATIO}.`);
+    return DEFAULT_RATIO;
+  }
+  return probability;
+}
+__name(getSamplerProbabilityFromEnv, "getSamplerProbabilityFromEnv");
+var DEFAULT_RATIO;
+var init_config2 = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+sdk-trace-base@2.0.1_@opentelemetry+api@1.9.0/node_modules/@opentelemetry/sdk-trace-base/build/esm/config.js"() {
+    "use strict";
+    init_esm();
+    init_esm3();
+    init_AlwaysOffSampler();
+    init_AlwaysOnSampler();
+    init_ParentBasedSampler();
+    init_TraceIdRatioBasedSampler();
+    DEFAULT_RATIO = 1;
+  }
+});
+function mergeConfig(userConfig) {
+  const perInstanceDefaults = {
+    sampler: buildSamplerFromEnv()
+  };
+  const DEFAULT_CONFIG = loadDefaultConfig();
+  const target = Object.assign({}, DEFAULT_CONFIG, perInstanceDefaults, userConfig);
+  target.generalLimits = Object.assign({}, DEFAULT_CONFIG.generalLimits, userConfig.generalLimits || {});
+  target.spanLimits = Object.assign({}, DEFAULT_CONFIG.spanLimits, userConfig.spanLimits || {});
+  return target;
+}
+__name(mergeConfig, "mergeConfig");
+function reconfigureLimits(userConfig) {
+  const spanLimits = Object.assign({}, userConfig.spanLimits);
+  spanLimits.attributeCountLimit = userConfig.spanLimits?.attributeCountLimit ?? userConfig.generalLimits?.attributeCountLimit ?? getNumberFromEnv("OTEL_SPAN_ATTRIBUTE_COUNT_LIMIT") ?? getNumberFromEnv("OTEL_ATTRIBUTE_COUNT_LIMIT") ?? DEFAULT_ATTRIBUTE_COUNT_LIMIT;
+  spanLimits.attributeValueLengthLimit = userConfig.spanLimits?.attributeValueLengthLimit ?? userConfig.generalLimits?.attributeValueLengthLimit ?? getNumberFromEnv("OTEL_SPAN_ATTRIBUTE_VALUE_LENGTH_LIMIT") ?? getNumberFromEnv("OTEL_ATTRIBUTE_VALUE_LENGTH_LIMIT") ?? DEFAULT_ATTRIBUTE_VALUE_LENGTH_LIMIT;
+  return Object.assign({}, userConfig, { spanLimits });
+}
+__name(reconfigureLimits, "reconfigureLimits");
+var DEFAULT_ATTRIBUTE_COUNT_LIMIT;
+var DEFAULT_ATTRIBUTE_VALUE_LENGTH_LIMIT;
+var init_utility = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+sdk-trace-base@2.0.1_@opentelemetry+api@1.9.0/node_modules/@opentelemetry/sdk-trace-base/build/esm/utility.js"() {
+    "use strict";
+    init_config2();
+    init_esm3();
+    DEFAULT_ATTRIBUTE_COUNT_LIMIT = 128;
+    DEFAULT_ATTRIBUTE_VALUE_LENGTH_LIMIT = Infinity;
+  }
+});
+var BatchSpanProcessorBase;
+var init_BatchSpanProcessorBase = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+sdk-trace-base@2.0.1_@opentelemetry+api@1.9.0/node_modules/@opentelemetry/sdk-trace-base/build/esm/export/BatchSpanProcessorBase.js"() {
+    "use strict";
+    init_esm();
+    init_esm3();
+    BatchSpanProcessorBase = class {
+      static {
+        __name(this, "BatchSpanProcessorBase");
+      }
+      _exporter;
+      _maxExportBatchSize;
+      _maxQueueSize;
+      _scheduledDelayMillis;
+      _exportTimeoutMillis;
+      _isExporting = false;
+      _finishedSpans = [];
+      _timer;
+      _shutdownOnce;
+      _droppedSpansCount = 0;
+      constructor(_exporter, config2) {
+        this._exporter = _exporter;
+        this._maxExportBatchSize = typeof config2?.maxExportBatchSize === "number" ? config2.maxExportBatchSize : getNumberFromEnv("OTEL_BSP_MAX_EXPORT_BATCH_SIZE") ?? 512;
+        this._maxQueueSize = typeof config2?.maxQueueSize === "number" ? config2.maxQueueSize : getNumberFromEnv("OTEL_BSP_MAX_QUEUE_SIZE") ?? 2048;
+        this._scheduledDelayMillis = typeof config2?.scheduledDelayMillis === "number" ? config2.scheduledDelayMillis : getNumberFromEnv("OTEL_BSP_SCHEDULE_DELAY") ?? 5e3;
+        this._exportTimeoutMillis = typeof config2?.exportTimeoutMillis === "number" ? config2.exportTimeoutMillis : getNumberFromEnv("OTEL_BSP_EXPORT_TIMEOUT") ?? 3e4;
+        this._shutdownOnce = new BindOnceFuture(this._shutdown, this);
+        if (this._maxExportBatchSize > this._maxQueueSize) {
+          diag.warn("BatchSpanProcessor: maxExportBatchSize must be smaller or equal to maxQueueSize, setting maxExportBatchSize to match maxQueueSize");
+          this._maxExportBatchSize = this._maxQueueSize;
+        }
+      }
+      forceFlush() {
+        if (this._shutdownOnce.isCalled) {
+          return this._shutdownOnce.promise;
+        }
+        return this._flushAll();
+      }
+      // does nothing.
+      onStart(_span, _parentContext) {
+      }
+      onEnd(span) {
+        if (this._shutdownOnce.isCalled) {
+          return;
+        }
+        if ((span.spanContext().traceFlags & TraceFlags.SAMPLED) === 0) {
+          return;
+        }
+        this._addToBuffer(span);
+      }
+      shutdown() {
+        return this._shutdownOnce.call();
+      }
+      _shutdown() {
+        return Promise.resolve().then(() => {
+          return this.onShutdown();
+        }).then(() => {
+          return this._flushAll();
+        }).then(() => {
+          return this._exporter.shutdown();
+        });
+      }
+      /** Add a span in the buffer. */
+      _addToBuffer(span) {
+        if (this._finishedSpans.length >= this._maxQueueSize) {
+          if (this._droppedSpansCount === 0) {
+            diag.debug("maxQueueSize reached, dropping spans");
+          }
+          this._droppedSpansCount++;
+          return;
+        }
+        if (this._droppedSpansCount > 0) {
+          diag.warn(`Dropped ${this._droppedSpansCount} spans because maxQueueSize reached`);
+          this._droppedSpansCount = 0;
+        }
+        this._finishedSpans.push(span);
+        this._maybeStartTimer();
+      }
+      /**
+       * Send all spans to the exporter respecting the batch size limit
+       * This function is used only on forceFlush or shutdown,
+       * for all other cases _flush should be used
+       * */
+      _flushAll() {
+        return new Promise((resolve, reject2) => {
+          const promises = [];
+          const count3 = Math.ceil(this._finishedSpans.length / this._maxExportBatchSize);
+          for (let i = 0, j = count3; i < j; i++) {
+            promises.push(this._flushOneBatch());
+          }
+          Promise.all(promises).then(() => {
+            resolve();
+          }).catch(reject2);
+        });
+      }
+      _flushOneBatch() {
+        this._clearTimer();
+        if (this._finishedSpans.length === 0) {
+          return Promise.resolve();
+        }
+        return new Promise((resolve, reject2) => {
+          const timer = setTimeout(() => {
+            reject2(new Error("Timeout"));
+          }, this._exportTimeoutMillis);
+          context2.with(suppressTracing(context2.active()), () => {
+            let spans;
+            if (this._finishedSpans.length <= this._maxExportBatchSize) {
+              spans = this._finishedSpans;
+              this._finishedSpans = [];
+            } else {
+              spans = this._finishedSpans.splice(0, this._maxExportBatchSize);
+            }
+            const doExport = /* @__PURE__ */ __name(() => this._exporter.export(spans, (result) => {
+              clearTimeout(timer);
+              if (result.code === ExportResultCode.SUCCESS) {
+                resolve();
+              } else {
+                reject2(result.error ?? new Error("BatchSpanProcessor: span export failed"));
+              }
+            }), "doExport");
+            let pendingResources = null;
+            for (let i = 0, len = spans.length; i < len; i++) {
+              const span = spans[i];
+              if (span.resource.asyncAttributesPending && span.resource.waitForAsyncAttributes) {
+                pendingResources ??= [];
+                pendingResources.push(span.resource.waitForAsyncAttributes());
+              }
+            }
+            if (pendingResources === null) {
+              doExport();
+            } else {
+              Promise.all(pendingResources).then(doExport, (err) => {
+                globalErrorHandler(err);
+                reject2(err);
+              });
+            }
+          });
+        });
+      }
+      _maybeStartTimer() {
+        if (this._isExporting)
+          return;
+        const flush2 = /* @__PURE__ */ __name(() => {
+          this._isExporting = true;
+          this._flushOneBatch().finally(() => {
+            this._isExporting = false;
+            if (this._finishedSpans.length > 0) {
+              this._clearTimer();
+              this._maybeStartTimer();
+            }
+          }).catch((e) => {
+            this._isExporting = false;
+            globalErrorHandler(e);
+          });
+        }, "flush2");
+        if (this._finishedSpans.length >= this._maxExportBatchSize) {
+          return flush2();
+        }
+        if (this._timer !== void 0)
+          return;
+        this._timer = setTimeout(() => flush2(), this._scheduledDelayMillis);
+        unrefTimer(this._timer);
+      }
+      _clearTimer() {
+        if (this._timer !== void 0) {
+          clearTimeout(this._timer);
+          this._timer = void 0;
+        }
+      }
+    };
+  }
+});
+var BatchSpanProcessor;
+var init_BatchSpanProcessor = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+sdk-trace-base@2.0.1_@opentelemetry+api@1.9.0/node_modules/@opentelemetry/sdk-trace-base/build/esm/platform/node/export/BatchSpanProcessor.js"() {
+    "use strict";
+    init_BatchSpanProcessorBase();
+    BatchSpanProcessor = class extends BatchSpanProcessorBase {
+      static {
+        __name(this, "BatchSpanProcessor");
+      }
+      onShutdown() {
+      }
+    };
+  }
+});
+function getIdGenerator2(bytes) {
+  return /* @__PURE__ */ __name(function generateId() {
+    for (let i = 0; i < bytes / 4; i++) {
+      SHARED_BUFFER.writeUInt32BE(Math.random() * 2 ** 32 >>> 0, i * 4);
+    }
+    for (let i = 0; i < bytes; i++) {
+      if (SHARED_BUFFER[i] > 0) {
+        break;
+      } else if (i === bytes - 1) {
+        SHARED_BUFFER[bytes - 1] = 1;
+      }
+    }
+    return SHARED_BUFFER.toString("hex", 0, bytes);
+  }, "generateId");
+}
+__name(getIdGenerator2, "getIdGenerator2");
+var SPAN_ID_BYTES;
+var TRACE_ID_BYTES;
+var RandomIdGenerator;
+var SHARED_BUFFER;
+var init_RandomIdGenerator = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+sdk-trace-base@2.0.1_@opentelemetry+api@1.9.0/node_modules/@opentelemetry/sdk-trace-base/build/esm/platform/node/RandomIdGenerator.js"() {
+    "use strict";
+    SPAN_ID_BYTES = 8;
+    TRACE_ID_BYTES = 16;
+    RandomIdGenerator = class {
+      static {
+        __name(this, "RandomIdGenerator");
+      }
+      /**
+       * Returns a random 16-byte trace ID formatted/encoded as a 32 lowercase hex
+       * characters corresponding to 128 bits.
+       */
+      generateTraceId = getIdGenerator2(TRACE_ID_BYTES);
+      /**
+       * Returns a random 8-byte span ID formatted/encoded as a 16 lowercase hex
+       * characters corresponding to 64 bits.
+       */
+      generateSpanId = getIdGenerator2(SPAN_ID_BYTES);
+    };
+    SHARED_BUFFER = Buffer.allocUnsafe(TRACE_ID_BYTES);
+  }
+});
+var init_node3 = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+sdk-trace-base@2.0.1_@opentelemetry+api@1.9.0/node_modules/@opentelemetry/sdk-trace-base/build/esm/platform/node/index.js"() {
+    "use strict";
+    init_BatchSpanProcessor();
+    init_RandomIdGenerator();
+  }
+});
+var init_platform3 = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+sdk-trace-base@2.0.1_@opentelemetry+api@1.9.0/node_modules/@opentelemetry/sdk-trace-base/build/esm/platform/index.js"() {
+    "use strict";
+    init_node3();
+  }
+});
+var Tracer;
+var init_Tracer = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+sdk-trace-base@2.0.1_@opentelemetry+api@1.9.0/node_modules/@opentelemetry/sdk-trace-base/build/esm/Tracer.js"() {
+    "use strict";
+    init_esm();
+    init_esm3();
+    init_Span();
+    init_utility();
+    init_platform3();
+    Tracer = class {
+      static {
+        __name(this, "Tracer");
+      }
+      _sampler;
+      _generalLimits;
+      _spanLimits;
+      _idGenerator;
+      instrumentationScope;
+      _resource;
+      _spanProcessor;
+      /**
+       * Constructs a new Tracer instance.
+       */
+      constructor(instrumentationScope, config2, resource, spanProcessor) {
+        const localConfig = mergeConfig(config2);
+        this._sampler = localConfig.sampler;
+        this._generalLimits = localConfig.generalLimits;
+        this._spanLimits = localConfig.spanLimits;
+        this._idGenerator = config2.idGenerator || new RandomIdGenerator();
+        this._resource = resource;
+        this._spanProcessor = spanProcessor;
+        this.instrumentationScope = instrumentationScope;
+      }
+      /**
+       * Starts a new Span or returns the default NoopSpan based on the sampling
+       * decision.
+       */
+      startSpan(name, options = {}, context22 = context2.active()) {
+        if (options.root) {
+          context22 = trace3.deleteSpan(context22);
+        }
+        const parentSpan = trace3.getSpan(context22);
+        if (isTracingSuppressed(context22)) {
+          diag.debug("Instrumentation suppressed, returning Noop Span");
+          const nonRecordingSpan = trace3.wrapSpanContext(INVALID_SPAN_CONTEXT);
+          return nonRecordingSpan;
+        }
+        const parentSpanContext = parentSpan?.spanContext();
+        const spanId = this._idGenerator.generateSpanId();
+        let validParentSpanContext;
+        let traceId;
+        let traceState;
+        if (!parentSpanContext || !trace3.isSpanContextValid(parentSpanContext)) {
+          traceId = this._idGenerator.generateTraceId();
+        } else {
+          traceId = parentSpanContext.traceId;
+          traceState = parentSpanContext.traceState;
+          validParentSpanContext = parentSpanContext;
+        }
+        const spanKind = options.kind ?? SpanKind.INTERNAL;
+        const links = (options.links ?? []).map((link3) => {
+          return {
+            context: link3.context,
+            attributes: sanitizeAttributes(link3.attributes)
+          };
+        });
+        const attributes = sanitizeAttributes(options.attributes);
+        const samplingResult = this._sampler.shouldSample(context22, traceId, name, spanKind, attributes, links);
+        traceState = samplingResult.traceState ?? traceState;
+        const traceFlags = samplingResult.decision === SamplingDecision.RECORD_AND_SAMPLED ? TraceFlags.SAMPLED : TraceFlags.NONE;
+        const spanContext = { traceId, spanId, traceFlags, traceState };
+        if (samplingResult.decision === SamplingDecision.NOT_RECORD) {
+          diag.debug("Recording is off, propagating context in a non-recording span");
+          const nonRecordingSpan = trace3.wrapSpanContext(spanContext);
+          return nonRecordingSpan;
+        }
+        const initAttributes = sanitizeAttributes(Object.assign(attributes, samplingResult.attributes));
+        const span = new SpanImpl2({
+          resource: this._resource,
+          scope: this.instrumentationScope,
+          context: context22,
+          spanContext,
+          name,
+          kind: spanKind,
+          links,
+          parentSpanContext: validParentSpanContext,
+          attributes: initAttributes,
+          startTime: options.startTime,
+          spanProcessor: this._spanProcessor,
+          spanLimits: this._spanLimits
+        });
+        return span;
+      }
+      startActiveSpan(name, arg2, arg3, arg4) {
+        let opts;
+        let ctx;
+        let fn;
+        if (arguments.length < 2) {
+          return;
+        } else if (arguments.length === 2) {
+          fn = arg2;
+        } else if (arguments.length === 3) {
+          opts = arg2;
+          fn = arg3;
+        } else {
+          opts = arg2;
+          ctx = arg3;
+          fn = arg4;
+        }
+        const parentContext = ctx ?? context2.active();
+        const span = this.startSpan(name, opts, parentContext);
+        const contextWithSpanSet = trace3.setSpan(parentContext, span);
+        return context2.with(contextWithSpanSet, fn, void 0, span);
+      }
+      /** Returns the active {@link GeneralLimits}. */
+      getGeneralLimits() {
+        return this._generalLimits;
+      }
+      /** Returns the active {@link SpanLimits}. */
+      getSpanLimits() {
+        return this._spanLimits;
+      }
+    };
+  }
+});
+var MultiSpanProcessor;
+var init_MultiSpanProcessor = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+sdk-trace-base@2.0.1_@opentelemetry+api@1.9.0/node_modules/@opentelemetry/sdk-trace-base/build/esm/MultiSpanProcessor.js"() {
+    "use strict";
+    init_esm3();
+    MultiSpanProcessor = class {
+      static {
+        __name(this, "MultiSpanProcessor");
+      }
+      _spanProcessors;
+      constructor(_spanProcessors) {
+        this._spanProcessors = _spanProcessors;
+      }
+      forceFlush() {
+        const promises = [];
+        for (const spanProcessor of this._spanProcessors) {
+          promises.push(spanProcessor.forceFlush());
+        }
+        return new Promise((resolve) => {
+          Promise.all(promises).then(() => {
+            resolve();
+          }).catch((error22) => {
+            globalErrorHandler(error22 || new Error("MultiSpanProcessor: forceFlush failed"));
+            resolve();
+          });
+        });
+      }
+      onStart(span, context22) {
+        for (const spanProcessor of this._spanProcessors) {
+          spanProcessor.onStart(span, context22);
+        }
+      }
+      onEnd(span) {
+        for (const spanProcessor of this._spanProcessors) {
+          spanProcessor.onEnd(span);
+        }
+      }
+      shutdown() {
+        const promises = [];
+        for (const spanProcessor of this._spanProcessors) {
+          promises.push(spanProcessor.shutdown());
+        }
+        return new Promise((resolve, reject2) => {
+          Promise.all(promises).then(() => {
+            resolve();
+          }, reject2);
+        });
+      }
+    };
+  }
+});
+var ForceFlushState;
+var BasicTracerProvider;
+var init_BasicTracerProvider = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+sdk-trace-base@2.0.1_@opentelemetry+api@1.9.0/node_modules/@opentelemetry/sdk-trace-base/build/esm/BasicTracerProvider.js"() {
+    "use strict";
+    init_esm3();
+    init_esm4();
+    init_Tracer();
+    init_config2();
+    init_MultiSpanProcessor();
+    init_utility();
+    (function(ForceFlushState2) {
+      ForceFlushState2[ForceFlushState2["resolved"] = 0] = "resolved";
+      ForceFlushState2[ForceFlushState2["timeout"] = 1] = "timeout";
+      ForceFlushState2[ForceFlushState2["error"] = 2] = "error";
+      ForceFlushState2[ForceFlushState2["unresolved"] = 3] = "unresolved";
+    })(ForceFlushState || (ForceFlushState = {}));
+    BasicTracerProvider = class {
+      static {
+        __name(this, "BasicTracerProvider");
+      }
+      _config;
+      _tracers = /* @__PURE__ */ new Map();
+      _resource;
+      _activeSpanProcessor;
+      constructor(config2 = {}) {
+        const mergedConfig = merge({}, loadDefaultConfig(), reconfigureLimits(config2));
+        this._resource = mergedConfig.resource ?? defaultResource();
+        this._config = Object.assign({}, mergedConfig, {
+          resource: this._resource
+        });
+        const spanProcessors = [];
+        if (config2.spanProcessors?.length) {
+          spanProcessors.push(...config2.spanProcessors);
+        }
+        this._activeSpanProcessor = new MultiSpanProcessor(spanProcessors);
+      }
+      getTracer(name, version2, options) {
+        const key = `${name}@${version2 || ""}:${options?.schemaUrl || ""}`;
+        if (!this._tracers.has(key)) {
+          this._tracers.set(key, new Tracer({ name, version: version2, schemaUrl: options?.schemaUrl }, this._config, this._resource, this._activeSpanProcessor));
+        }
+        return this._tracers.get(key);
+      }
+      forceFlush() {
+        const timeout = this._config.forceFlushTimeoutMillis;
+        const promises = this._activeSpanProcessor["_spanProcessors"].map((spanProcessor) => {
+          return new Promise((resolve) => {
+            let state;
+            const timeoutInterval = setTimeout(() => {
+              resolve(new Error(`Span processor did not completed within timeout period of ${timeout} ms`));
+              state = ForceFlushState.timeout;
+            }, timeout);
+            spanProcessor.forceFlush().then(() => {
+              clearTimeout(timeoutInterval);
+              if (state !== ForceFlushState.timeout) {
+                state = ForceFlushState.resolved;
+                resolve(state);
+              }
+            }).catch((error22) => {
+              clearTimeout(timeoutInterval);
+              state = ForceFlushState.error;
+              resolve(error22);
+            });
+          });
+        });
+        return new Promise((resolve, reject2) => {
+          Promise.all(promises).then((results) => {
+            const errors = results.filter((result) => result !== ForceFlushState.resolved);
+            if (errors.length > 0) {
+              reject2(errors);
+            } else {
+              resolve();
+            }
+          }).catch((error22) => reject2([error22]));
+        });
+      }
+      shutdown() {
+        return this._activeSpanProcessor.shutdown();
+      }
+    };
+  }
+});
+var ConsoleSpanExporter;
+var init_ConsoleSpanExporter = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+sdk-trace-base@2.0.1_@opentelemetry+api@1.9.0/node_modules/@opentelemetry/sdk-trace-base/build/esm/export/ConsoleSpanExporter.js"() {
+    "use strict";
+    init_esm3();
+    ConsoleSpanExporter = class {
+      static {
+        __name(this, "ConsoleSpanExporter");
+      }
+      /**
+       * Export spans.
+       * @param spans
+       * @param resultCallback
+       */
+      export(spans, resultCallback) {
+        return this._sendSpans(spans, resultCallback);
+      }
+      /**
+       * Shutdown the exporter.
+       */
+      shutdown() {
+        this._sendSpans([]);
+        return this.forceFlush();
+      }
+      /**
+       * Exports any pending spans in exporter
+       */
+      forceFlush() {
+        return Promise.resolve();
+      }
+      /**
+       * converts span info into more readable format
+       * @param span
+       */
+      _exportInfo(span) {
+        return {
+          resource: {
+            attributes: span.resource.attributes
+          },
+          instrumentationScope: span.instrumentationScope,
+          traceId: span.spanContext().traceId,
+          parentSpanContext: span.parentSpanContext,
+          traceState: span.spanContext().traceState?.serialize(),
+          name: span.name,
+          id: span.spanContext().spanId,
+          kind: span.kind,
+          timestamp: hrTimeToMicroseconds(span.startTime),
+          duration: hrTimeToMicroseconds(span.duration),
+          attributes: span.attributes,
+          status: span.status,
+          events: span.events,
+          links: span.links
+        };
+      }
+      /**
+       * Showing spans in console
+       * @param spans
+       * @param done
+       */
+      _sendSpans(spans, done) {
+        for (const span of spans) {
+          console.dir(this._exportInfo(span), { depth: 3 });
+        }
+        if (done) {
+          return done({ code: ExportResultCode.SUCCESS });
+        }
+      }
+    };
+  }
+});
+var InMemorySpanExporter;
+var init_InMemorySpanExporter = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+sdk-trace-base@2.0.1_@opentelemetry+api@1.9.0/node_modules/@opentelemetry/sdk-trace-base/build/esm/export/InMemorySpanExporter.js"() {
+    "use strict";
+    init_esm3();
+    InMemorySpanExporter = class {
+      static {
+        __name(this, "InMemorySpanExporter");
+      }
+      _finishedSpans = [];
+      /**
+       * Indicates if the exporter has been "shutdown."
+       * When false, exported spans will not be stored in-memory.
+       */
+      _stopped = false;
+      export(spans, resultCallback) {
+        if (this._stopped)
+          return resultCallback({
+            code: ExportResultCode.FAILED,
+            error: new Error("Exporter has been stopped")
+          });
+        this._finishedSpans.push(...spans);
+        setTimeout(() => resultCallback({ code: ExportResultCode.SUCCESS }), 0);
+      }
+      shutdown() {
+        this._stopped = true;
+        this._finishedSpans = [];
+        return this.forceFlush();
+      }
+      /**
+       * Exports any pending spans in the exporter
+       */
+      forceFlush() {
+        return Promise.resolve();
+      }
+      reset() {
+        this._finishedSpans = [];
+      }
+      getFinishedSpans() {
+        return this._finishedSpans;
+      }
+    };
+  }
+});
+var SimpleSpanProcessor;
+var init_SimpleSpanProcessor = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+sdk-trace-base@2.0.1_@opentelemetry+api@1.9.0/node_modules/@opentelemetry/sdk-trace-base/build/esm/export/SimpleSpanProcessor.js"() {
+    "use strict";
+    init_esm();
+    init_esm3();
+    SimpleSpanProcessor = class {
+      static {
+        __name(this, "SimpleSpanProcessor");
+      }
+      _exporter;
+      _shutdownOnce;
+      _pendingExports;
+      constructor(_exporter) {
+        this._exporter = _exporter;
+        this._shutdownOnce = new BindOnceFuture(this._shutdown, this);
+        this._pendingExports = /* @__PURE__ */ new Set();
+      }
+      async forceFlush() {
+        await Promise.all(Array.from(this._pendingExports));
+        if (this._exporter.forceFlush) {
+          await this._exporter.forceFlush();
+        }
+      }
+      onStart(_span, _parentContext) {
+      }
+      onEnd(span) {
+        if (this._shutdownOnce.isCalled) {
+          return;
+        }
+        if ((span.spanContext().traceFlags & TraceFlags.SAMPLED) === 0) {
+          return;
+        }
+        const pendingExport = this._doExport(span).catch((err) => globalErrorHandler(err));
+        this._pendingExports.add(pendingExport);
+        pendingExport.finally(() => this._pendingExports.delete(pendingExport));
+      }
+      async _doExport(span) {
+        if (span.resource.asyncAttributesPending) {
+          await span.resource.waitForAsyncAttributes?.();
+        }
+        const result = await internal._export(this._exporter, [span]);
+        if (result.code !== ExportResultCode.SUCCESS) {
+          throw result.error ?? new Error(`SimpleSpanProcessor: span export failed (status ${result})`);
+        }
+      }
+      shutdown() {
+        return this._shutdownOnce.call();
+      }
+      _shutdown() {
+        return this._exporter.shutdown();
+      }
+    };
+  }
+});
+var NoopSpanProcessor;
+var init_NoopSpanProcessor = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+sdk-trace-base@2.0.1_@opentelemetry+api@1.9.0/node_modules/@opentelemetry/sdk-trace-base/build/esm/export/NoopSpanProcessor.js"() {
+    "use strict";
+    NoopSpanProcessor = class {
+      static {
+        __name(this, "NoopSpanProcessor");
+      }
+      onStart(_span, _context) {
+      }
+      onEnd(_span) {
+      }
+      shutdown() {
+        return Promise.resolve();
+      }
+      forceFlush() {
+        return Promise.resolve();
+      }
+    };
+  }
+});
+var esm_exports2 = {};
+__export2(esm_exports2, {
+  AlwaysOffSampler: /* @__PURE__ */ __name(() => AlwaysOffSampler, "AlwaysOffSampler"),
+  AlwaysOnSampler: /* @__PURE__ */ __name(() => AlwaysOnSampler, "AlwaysOnSampler"),
+  BasicTracerProvider: /* @__PURE__ */ __name(() => BasicTracerProvider, "BasicTracerProvider"),
+  BatchSpanProcessor: /* @__PURE__ */ __name(() => BatchSpanProcessor, "BatchSpanProcessor"),
+  ConsoleSpanExporter: /* @__PURE__ */ __name(() => ConsoleSpanExporter, "ConsoleSpanExporter"),
+  InMemorySpanExporter: /* @__PURE__ */ __name(() => InMemorySpanExporter, "InMemorySpanExporter"),
+  NoopSpanProcessor: /* @__PURE__ */ __name(() => NoopSpanProcessor, "NoopSpanProcessor"),
+  ParentBasedSampler: /* @__PURE__ */ __name(() => ParentBasedSampler, "ParentBasedSampler"),
+  RandomIdGenerator: /* @__PURE__ */ __name(() => RandomIdGenerator, "RandomIdGenerator"),
+  SamplingDecision: /* @__PURE__ */ __name(() => SamplingDecision2, "SamplingDecision"),
+  SimpleSpanProcessor: /* @__PURE__ */ __name(() => SimpleSpanProcessor, "SimpleSpanProcessor"),
+  TraceIdRatioBasedSampler: /* @__PURE__ */ __name(() => TraceIdRatioBasedSampler, "TraceIdRatioBasedSampler")
+});
+var init_esm5 = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+sdk-trace-base@2.0.1_@opentelemetry+api@1.9.0/node_modules/@opentelemetry/sdk-trace-base/build/esm/index.js"() {
+    "use strict";
+    init_BasicTracerProvider();
+    init_platform3();
+    init_ConsoleSpanExporter();
+    init_InMemorySpanExporter();
+    init_SimpleSpanProcessor();
+    init_NoopSpanProcessor();
+    init_AlwaysOffSampler();
+    init_AlwaysOnSampler();
+    init_ParentBasedSampler();
+    init_TraceIdRatioBasedSampler();
+    init_Sampler();
+  }
+});
+var OTLPExporterBase;
+var init_OTLPExporterBase = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+otlp-exporter-base@0.200.0_@opentelemetry+api@1.9.0/node_modules/@opentelemetry/otlp-exporter-base/build/esm/OTLPExporterBase.js"() {
+    "use strict";
+    OTLPExporterBase = class {
+      static {
+        __name(this, "OTLPExporterBase");
+      }
+      _delegate;
+      constructor(_delegate) {
+        this._delegate = _delegate;
+      }
+      /**
+       * Export items.
+       * @param items
+       * @param resultCallback
+       */
+      export(items, resultCallback) {
+        this._delegate.export(items, resultCallback);
+      }
+      forceFlush() {
+        return this._delegate.forceFlush();
+      }
+      shutdown() {
+        return this._delegate.shutdown();
+      }
+    };
+  }
+});
+var OTLPExporterError;
+var init_types2 = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+otlp-exporter-base@0.200.0_@opentelemetry+api@1.9.0/node_modules/@opentelemetry/otlp-exporter-base/build/esm/types.js"() {
+    "use strict";
+    OTLPExporterError = class extends Error {
+      static {
+        __name(this, "OTLPExporterError");
+      }
+      code;
+      name = "OTLPExporterError";
+      data;
+      constructor(message, code, data) {
+        super(message);
+        this.data = data;
+        this.code = code;
+      }
+    };
+  }
+});
+function validateTimeoutMillis(timeoutMillis) {
+  if (Number.isFinite(timeoutMillis) && timeoutMillis > 0) {
+    return timeoutMillis;
+  }
+  throw new Error(`Configuration: timeoutMillis is invalid, expected number greater than 0 (actual: '${timeoutMillis}')`);
+}
+__name(validateTimeoutMillis, "validateTimeoutMillis");
+function wrapStaticHeadersInFunction(headers) {
+  if (headers == null) {
+    return void 0;
+  }
+  return () => headers;
+}
+__name(wrapStaticHeadersInFunction, "wrapStaticHeadersInFunction");
+function mergeOtlpSharedConfigurationWithDefaults(userProvidedConfiguration, fallbackConfiguration, defaultConfiguration) {
+  return {
+    timeoutMillis: validateTimeoutMillis(userProvidedConfiguration.timeoutMillis ?? fallbackConfiguration.timeoutMillis ?? defaultConfiguration.timeoutMillis),
+    concurrencyLimit: userProvidedConfiguration.concurrencyLimit ?? fallbackConfiguration.concurrencyLimit ?? defaultConfiguration.concurrencyLimit,
+    compression: userProvidedConfiguration.compression ?? fallbackConfiguration.compression ?? defaultConfiguration.compression
+  };
+}
+__name(mergeOtlpSharedConfigurationWithDefaults, "mergeOtlpSharedConfigurationWithDefaults");
+function getSharedConfigurationDefaults() {
+  return {
+    timeoutMillis: 1e4,
+    concurrencyLimit: 30,
+    compression: "none"
+  };
+}
+__name(getSharedConfigurationDefaults, "getSharedConfigurationDefaults");
+var init_shared_configuration = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+otlp-exporter-base@0.200.0_@opentelemetry+api@1.9.0/node_modules/@opentelemetry/otlp-exporter-base/build/esm/configuration/shared-configuration.js"() {
+    "use strict";
+  }
+});
+function createBoundedQueueExportPromiseHandler(options) {
+  return new BoundedQueueExportPromiseHandler(options.concurrencyLimit);
+}
+__name(createBoundedQueueExportPromiseHandler, "createBoundedQueueExportPromiseHandler");
+var BoundedQueueExportPromiseHandler;
+var init_bounded_queue_export_promise_handler = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+otlp-exporter-base@0.200.0_@opentelemetry+api@1.9.0/node_modules/@opentelemetry/otlp-exporter-base/build/esm/bounded-queue-export-promise-handler.js"() {
+    "use strict";
+    BoundedQueueExportPromiseHandler = class {
+      static {
+        __name(this, "BoundedQueueExportPromiseHandler");
+      }
+      _concurrencyLimit;
+      _sendingPromises = [];
+      /**
+       * @param concurrencyLimit maximum promises allowed in a queue at the same time.
+       */
+      constructor(concurrencyLimit) {
+        this._concurrencyLimit = concurrencyLimit;
+      }
+      pushPromise(promise) {
+        if (this.hasReachedLimit()) {
+          throw new Error("Concurrency Limit reached");
+        }
+        this._sendingPromises.push(promise);
+        const popPromise = /* @__PURE__ */ __name(() => {
+          const index = this._sendingPromises.indexOf(promise);
+          this._sendingPromises.splice(index, 1);
+        }, "popPromise");
+        promise.then(popPromise, popPromise);
+      }
+      hasReachedLimit() {
+        return this._sendingPromises.length >= this._concurrencyLimit;
+      }
+      async awaitAll() {
+        await Promise.all(this._sendingPromises);
+      }
+    };
+  }
+});
+var BAGGAGE_KEY_PAIR_SEPARATOR;
+var BAGGAGE_PROPERTIES_SEPARATOR;
+var BAGGAGE_ITEMS_SEPARATOR;
+var init_constants2 = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+core@2.0.0_@opentelemetry+api@1.9.0/node_modules/@opentelemetry/core/build/esm/baggage/constants.js"() {
+    "use strict";
+    BAGGAGE_KEY_PAIR_SEPARATOR = "=";
+    BAGGAGE_PROPERTIES_SEPARATOR = ";";
+    BAGGAGE_ITEMS_SEPARATOR = ",";
+  }
+});
+function parsePairKeyValue(entry) {
+  const valueProps = entry.split(BAGGAGE_PROPERTIES_SEPARATOR);
+  if (valueProps.length <= 0)
+    return;
+  const keyPairPart = valueProps.shift();
+  if (!keyPairPart)
+    return;
+  const separatorIndex = keyPairPart.indexOf(BAGGAGE_KEY_PAIR_SEPARATOR);
+  if (separatorIndex <= 0)
+    return;
+  const key = decodeURIComponent(keyPairPart.substring(0, separatorIndex).trim());
+  const value = decodeURIComponent(keyPairPart.substring(separatorIndex + 1).trim());
+  let metadata;
+  if (valueProps.length > 0) {
+    metadata = baggageEntryMetadataFromString(valueProps.join(BAGGAGE_PROPERTIES_SEPARATOR));
+  }
+  return { key, value, metadata };
+}
+__name(parsePairKeyValue, "parsePairKeyValue");
+function parseKeyPairsIntoRecord(value) {
+  if (typeof value !== "string" || value.length === 0)
+    return {};
+  return value.split(BAGGAGE_ITEMS_SEPARATOR).map((entry) => {
+    return parsePairKeyValue(entry);
+  }).filter((keyPair) => keyPair !== void 0 && keyPair.value.length > 0).reduce((headers, keyPair) => {
+    headers[keyPair.key] = keyPair.value;
+    return headers;
+  }, {});
+}
+__name(parseKeyPairsIntoRecord, "parseKeyPairsIntoRecord");
+var init_utils23 = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+core@2.0.0_@opentelemetry+api@1.9.0/node_modules/@opentelemetry/core/build/esm/baggage/utils.js"() {
+    "use strict";
+    init_esm();
+    init_constants2();
+  }
+});
+function hrTimeToNanoseconds2(time3) {
+  return time3[0] * SECOND_TO_NANOSECONDS2 + time3[1];
+}
+__name(hrTimeToNanoseconds2, "hrTimeToNanoseconds2");
+var NANOSECOND_DIGITS2;
+var NANOSECOND_DIGITS_IN_MILLIS2;
+var MILLISECONDS_TO_NANOSECONDS2;
+var SECOND_TO_NANOSECONDS2;
+var init_time2 = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+core@2.0.0_@opentelemetry+api@1.9.0/node_modules/@opentelemetry/core/build/esm/common/time.js"() {
+    "use strict";
+    NANOSECOND_DIGITS2 = 9;
+    NANOSECOND_DIGITS_IN_MILLIS2 = 6;
+    MILLISECONDS_TO_NANOSECONDS2 = Math.pow(10, NANOSECOND_DIGITS_IN_MILLIS2);
+    SECOND_TO_NANOSECONDS2 = Math.pow(10, NANOSECOND_DIGITS2);
+  }
+});
+var ExportResultCode2;
+var init_ExportResult2 = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+core@2.0.0_@opentelemetry+api@1.9.0/node_modules/@opentelemetry/core/build/esm/ExportResult.js"() {
+    "use strict";
+    (function(ExportResultCode3) {
+      ExportResultCode3[ExportResultCode3["SUCCESS"] = 0] = "SUCCESS";
+      ExportResultCode3[ExportResultCode3["FAILED"] = 1] = "FAILED";
+    })(ExportResultCode2 || (ExportResultCode2 = {}));
+  }
+});
+var init_esm6 = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+core@2.0.0_@opentelemetry+api@1.9.0/node_modules/@opentelemetry/core/build/esm/index.js"() {
+    "use strict";
+    init_time2();
+    init_ExportResult2();
+    init_utils23();
+  }
+});
+function isPartialSuccessResponse(response) {
+  return Object.prototype.hasOwnProperty.call(response, "partialSuccess");
+}
+__name(isPartialSuccessResponse, "isPartialSuccessResponse");
+function createLoggingPartialSuccessResponseHandler() {
+  return {
+    handleResponse(response) {
+      if (response == null || !isPartialSuccessResponse(response) || response.partialSuccess == null || Object.keys(response.partialSuccess).length === 0) {
+        return;
+      }
+      diag.warn("Received Partial Success response:", JSON.stringify(response.partialSuccess));
+    }
+  };
+}
+__name(createLoggingPartialSuccessResponseHandler, "createLoggingPartialSuccessResponseHandler");
+var init_logging_response_handler = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+otlp-exporter-base@0.200.0_@opentelemetry+api@1.9.0/node_modules/@opentelemetry/otlp-exporter-base/build/esm/logging-response-handler.js"() {
+    "use strict";
+    init_esm();
+  }
+});
+function createOtlpExportDelegate(components, settings) {
+  return new OTLPExportDelegate(components.transport, components.serializer, createLoggingPartialSuccessResponseHandler(), components.promiseHandler, settings.timeout);
+}
+__name(createOtlpExportDelegate, "createOtlpExportDelegate");
+var OTLPExportDelegate;
+var init_otlp_export_delegate = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+otlp-exporter-base@0.200.0_@opentelemetry+api@1.9.0/node_modules/@opentelemetry/otlp-exporter-base/build/esm/otlp-export-delegate.js"() {
+    "use strict";
+    init_esm6();
+    init_types2();
+    init_logging_response_handler();
+    init_esm();
+    OTLPExportDelegate = class {
+      static {
+        __name(this, "OTLPExportDelegate");
+      }
+      _transport;
+      _serializer;
+      _responseHandler;
+      _promiseQueue;
+      _timeout;
+      _diagLogger;
+      constructor(_transport, _serializer, _responseHandler, _promiseQueue, _timeout) {
+        this._transport = _transport;
+        this._serializer = _serializer;
+        this._responseHandler = _responseHandler;
+        this._promiseQueue = _promiseQueue;
+        this._timeout = _timeout;
+        this._diagLogger = diag.createComponentLogger({
+          namespace: "OTLPExportDelegate"
+        });
+      }
+      export(internalRepresentation, resultCallback) {
+        this._diagLogger.debug("items to be sent", internalRepresentation);
+        if (this._promiseQueue.hasReachedLimit()) {
+          resultCallback({
+            code: ExportResultCode2.FAILED,
+            error: new Error("Concurrent export limit reached")
+          });
+          return;
+        }
+        const serializedRequest = this._serializer.serializeRequest(internalRepresentation);
+        if (serializedRequest == null) {
+          resultCallback({
+            code: ExportResultCode2.FAILED,
+            error: new Error("Nothing to send")
+          });
+          return;
+        }
+        this._promiseQueue.pushPromise(this._transport.send(serializedRequest, this._timeout).then((response) => {
+          if (response.status === "success") {
+            if (response.data != null) {
+              try {
+                this._responseHandler.handleResponse(this._serializer.deserializeResponse(response.data));
+              } catch (e) {
+                this._diagLogger.warn("Export succeeded but could not deserialize response - is the response specification compliant?", e, response.data);
+              }
+            }
+            resultCallback({
+              code: ExportResultCode2.SUCCESS
+            });
+            return;
+          } else if (response.status === "failure" && response.error) {
+            resultCallback({
+              code: ExportResultCode2.FAILED,
+              error: response.error
+            });
+            return;
+          } else if (response.status === "retryable") {
+            resultCallback({
+              code: ExportResultCode2.FAILED,
+              error: new OTLPExporterError("Export failed with retryable status")
+            });
+          } else {
+            resultCallback({
+              code: ExportResultCode2.FAILED,
+              error: new OTLPExporterError("Export failed with unknown error")
+            });
+          }
+        }, (reason) => resultCallback({
+          code: ExportResultCode2.FAILED,
+          error: reason
+        })));
+      }
+      forceFlush() {
+        return this._promiseQueue.awaitAll();
+      }
+      async shutdown() {
+        this._diagLogger.debug("shutdown started");
+        await this.forceFlush();
+        this._transport.shutdown();
+      }
+    };
+  }
+});
+var init_esm7 = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+otlp-exporter-base@0.200.0_@opentelemetry+api@1.9.0/node_modules/@opentelemetry/otlp-exporter-base/build/esm/index.js"() {
+    "use strict";
+    init_OTLPExporterBase();
+  }
+});
+var VERSION22;
+var init_version22 = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+exporter-trace-otlp-http@0.200.0_@opentelemetry+api@1.9.0/node_modules/@opentelemetry/exporter-trace-otlp-http/build/esm/version.js"() {
+    "use strict";
+    VERSION22 = "0.200.0";
+  }
+});
+function intValue(charCode) {
+  if (charCode >= 48 && charCode <= 57) {
+    return charCode - 48;
+  }
+  if (charCode >= 97 && charCode <= 102) {
+    return charCode - 87;
+  }
+  return charCode - 55;
+}
+__name(intValue, "intValue");
+function hexToBinary(hexStr) {
+  const buf = new Uint8Array(hexStr.length / 2);
+  let offset = 0;
+  for (let i = 0; i < hexStr.length; i += 2) {
+    const hi = intValue(hexStr.charCodeAt(i));
+    const lo = intValue(hexStr.charCodeAt(i + 1));
+    buf[offset++] = hi << 4 | lo;
+  }
+  return buf;
+}
+__name(hexToBinary, "hexToBinary");
+var init_hex_to_binary = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+otlp-transformer@0.200.0_@opentelemetry+api@1.9.0/node_modules/@opentelemetry/otlp-transformer/build/esm/common/hex-to-binary.js"() {
+    "use strict";
+  }
+});
+function hrTimeToNanos(hrTime3) {
+  const NANOSECONDS = BigInt(1e9);
+  return BigInt(hrTime3[0]) * NANOSECONDS + BigInt(hrTime3[1]);
+}
+__name(hrTimeToNanos, "hrTimeToNanos");
+function toLongBits(value) {
+  const low = Number(BigInt.asUintN(32, value));
+  const high = Number(BigInt.asUintN(32, value >> BigInt(32)));
+  return { low, high };
+}
+__name(toLongBits, "toLongBits");
+function encodeAsLongBits(hrTime3) {
+  const nanos = hrTimeToNanos(hrTime3);
+  return toLongBits(nanos);
+}
+__name(encodeAsLongBits, "encodeAsLongBits");
+function encodeAsString(hrTime3) {
+  const nanos = hrTimeToNanos(hrTime3);
+  return nanos.toString();
+}
+__name(encodeAsString, "encodeAsString");
+function identity(value) {
+  return value;
+}
+__name(identity, "identity");
+function optionalHexToBinary(str2) {
+  if (str2 === void 0)
+    return void 0;
+  return hexToBinary(str2);
+}
+__name(optionalHexToBinary, "optionalHexToBinary");
+function getOtlpEncoder(options) {
+  if (options === void 0) {
+    return DEFAULT_ENCODER;
+  }
+  const useLongBits = options.useLongBits ?? true;
+  const useHex = options.useHex ?? false;
+  return {
+    encodeHrTime: useLongBits ? encodeAsLongBits : encodeTimestamp,
+    encodeSpanContext: useHex ? identity : hexToBinary,
+    encodeOptionalSpanContext: useHex ? identity : optionalHexToBinary
+  };
+}
+__name(getOtlpEncoder, "getOtlpEncoder");
+var encodeTimestamp;
+var DEFAULT_ENCODER;
+var init_utils32 = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+otlp-transformer@0.200.0_@opentelemetry+api@1.9.0/node_modules/@opentelemetry/otlp-transformer/build/esm/common/utils.js"() {
+    "use strict";
+    init_esm6();
+    init_hex_to_binary();
+    encodeTimestamp = typeof BigInt !== "undefined" ? encodeAsString : hrTimeToNanoseconds2;
+    DEFAULT_ENCODER = {
+      encodeHrTime: encodeAsLongBits,
+      encodeSpanContext: hexToBinary,
+      encodeOptionalSpanContext: optionalHexToBinary
+    };
+  }
+});
+function createResource(resource) {
+  return {
+    attributes: toAttributes(resource.attributes),
+    droppedAttributesCount: 0
+  };
+}
+__name(createResource, "createResource");
+function createInstrumentationScope(scope) {
+  return {
+    name: scope.name,
+    version: scope.version
+  };
+}
+__name(createInstrumentationScope, "createInstrumentationScope");
+function toAttributes(attributes) {
+  return Object.keys(attributes).map((key) => toKeyValue(key, attributes[key]));
+}
+__name(toAttributes, "toAttributes");
+function toKeyValue(key, value) {
+  return {
+    key,
+    value: toAnyValue(value)
+  };
+}
+__name(toKeyValue, "toKeyValue");
+function toAnyValue(value) {
+  const t = typeof value;
+  if (t === "string")
+    return { stringValue: value };
+  if (t === "number") {
+    if (!Number.isInteger(value))
+      return { doubleValue: value };
+    return { intValue: value };
+  }
+  if (t === "boolean")
+    return { boolValue: value };
+  if (value instanceof Uint8Array)
+    return { bytesValue: value };
+  if (Array.isArray(value))
+    return { arrayValue: { values: value.map(toAnyValue) } };
+  if (t === "object" && value != null)
+    return {
+      kvlistValue: {
+        values: Object.entries(value).map(([k, v]) => toKeyValue(k, v))
+      }
+    };
+  return {};
+}
+__name(toAnyValue, "toAnyValue");
+var init_internal = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+otlp-transformer@0.200.0_@opentelemetry+api@1.9.0/node_modules/@opentelemetry/otlp-transformer/build/esm/common/internal.js"() {
+    "use strict";
+  }
+});
+function sdkSpanToOtlpSpan(span, encoder) {
+  const ctx = span.spanContext();
+  const status = span.status;
+  const parentSpanId = span.parentSpanContext?.spanId ? encoder.encodeSpanContext(span.parentSpanContext?.spanId) : void 0;
+  return {
+    traceId: encoder.encodeSpanContext(ctx.traceId),
+    spanId: encoder.encodeSpanContext(ctx.spanId),
+    parentSpanId,
+    traceState: ctx.traceState?.serialize(),
+    name: span.name,
+    // Span kind is offset by 1 because the API does not define a value for unset
+    kind: span.kind == null ? 0 : span.kind + 1,
+    startTimeUnixNano: encoder.encodeHrTime(span.startTime),
+    endTimeUnixNano: encoder.encodeHrTime(span.endTime),
+    attributes: toAttributes(span.attributes),
+    droppedAttributesCount: span.droppedAttributesCount,
+    events: span.events.map((event) => toOtlpSpanEvent(event, encoder)),
+    droppedEventsCount: span.droppedEventsCount,
+    status: {
+      // API and proto enums share the same values
+      code: status.code,
+      message: status.message
+    },
+    links: span.links.map((link3) => toOtlpLink(link3, encoder)),
+    droppedLinksCount: span.droppedLinksCount
+  };
+}
+__name(sdkSpanToOtlpSpan, "sdkSpanToOtlpSpan");
+function toOtlpLink(link3, encoder) {
+  return {
+    attributes: link3.attributes ? toAttributes(link3.attributes) : [],
+    spanId: encoder.encodeSpanContext(link3.context.spanId),
+    traceId: encoder.encodeSpanContext(link3.context.traceId),
+    traceState: link3.context.traceState?.serialize(),
+    droppedAttributesCount: link3.droppedAttributesCount || 0
+  };
+}
+__name(toOtlpLink, "toOtlpLink");
+function toOtlpSpanEvent(timedEvent, encoder) {
+  return {
+    attributes: timedEvent.attributes ? toAttributes(timedEvent.attributes) : [],
+    name: timedEvent.name,
+    timeUnixNano: encoder.encodeHrTime(timedEvent.time),
+    droppedAttributesCount: timedEvent.droppedAttributesCount || 0
+  };
+}
+__name(toOtlpSpanEvent, "toOtlpSpanEvent");
+function createExportTraceServiceRequest(spans, options) {
+  const encoder = getOtlpEncoder(options);
+  return {
+    resourceSpans: spanRecordsToResourceSpans(spans, encoder)
+  };
+}
+__name(createExportTraceServiceRequest, "createExportTraceServiceRequest");
+function createResourceMap(readableSpans) {
+  const resourceMap = /* @__PURE__ */ new Map();
+  for (const record of readableSpans) {
+    let ilsMap = resourceMap.get(record.resource);
+    if (!ilsMap) {
+      ilsMap = /* @__PURE__ */ new Map();
+      resourceMap.set(record.resource, ilsMap);
+    }
+    const instrumentationScopeKey = `${record.instrumentationScope.name}@${record.instrumentationScope.version || ""}:${record.instrumentationScope.schemaUrl || ""}`;
+    let records = ilsMap.get(instrumentationScopeKey);
+    if (!records) {
+      records = [];
+      ilsMap.set(instrumentationScopeKey, records);
+    }
+    records.push(record);
+  }
+  return resourceMap;
+}
+__name(createResourceMap, "createResourceMap");
+function spanRecordsToResourceSpans(readableSpans, encoder) {
+  const resourceMap = createResourceMap(readableSpans);
+  const out = [];
+  const entryIterator = resourceMap.entries();
+  let entry = entryIterator.next();
+  while (!entry.done) {
+    const [resource, ilmMap] = entry.value;
+    const scopeResourceSpans = [];
+    const ilmIterator = ilmMap.values();
+    let ilmEntry = ilmIterator.next();
+    while (!ilmEntry.done) {
+      const scopeSpans = ilmEntry.value;
+      if (scopeSpans.length > 0) {
+        const spans = scopeSpans.map((readableSpan) => sdkSpanToOtlpSpan(readableSpan, encoder));
+        scopeResourceSpans.push({
+          scope: createInstrumentationScope(scopeSpans[0].instrumentationScope),
+          spans,
+          schemaUrl: scopeSpans[0].instrumentationScope.schemaUrl
+        });
+      }
+      ilmEntry = ilmIterator.next();
+    }
+    const transformedSpans = {
+      resource: createResource(resource),
+      scopeSpans: scopeResourceSpans,
+      schemaUrl: void 0
+    };
+    out.push(transformedSpans);
+    entry = entryIterator.next();
+  }
+  return out;
+}
+__name(spanRecordsToResourceSpans, "spanRecordsToResourceSpans");
+var init_internal2 = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+otlp-transformer@0.200.0_@opentelemetry+api@1.9.0/node_modules/@opentelemetry/otlp-transformer/build/esm/trace/internal.js"() {
+    "use strict";
+    init_internal();
+    init_utils32();
+  }
+});
+var JsonTraceSerializer;
+var init_trace22 = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+otlp-transformer@0.200.0_@opentelemetry+api@1.9.0/node_modules/@opentelemetry/otlp-transformer/build/esm/trace/json/trace.js"() {
+    "use strict";
+    init_internal2();
+    JsonTraceSerializer = {
+      serializeRequest: /* @__PURE__ */ __name((arg) => {
+        const request3 = createExportTraceServiceRequest(arg, {
+          useHex: true,
+          useLongBits: false
+        });
+        const encoder = new TextEncoder();
+        return encoder.encode(JSON.stringify(request3));
+      }, "serializeRequest"),
+      deserializeResponse: /* @__PURE__ */ __name((arg) => {
+        const decoder = new TextDecoder();
+        return JSON.parse(decoder.decode(arg));
+      }, "deserializeResponse")
+    };
+  }
+});
+var init_json = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+otlp-transformer@0.200.0_@opentelemetry+api@1.9.0/node_modules/@opentelemetry/otlp-transformer/build/esm/trace/json/index.js"() {
+    "use strict";
+    init_trace22();
+  }
+});
+var init_esm8 = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+otlp-transformer@0.200.0_@opentelemetry+api@1.9.0/node_modules/@opentelemetry/otlp-transformer/build/esm/index.js"() {
+    "use strict";
+    init_json();
+  }
+});
+function isExportRetryable(statusCode) {
+  const retryCodes = [429, 502, 503, 504];
+  return retryCodes.includes(statusCode);
+}
+__name(isExportRetryable, "isExportRetryable");
+function parseRetryAfterToMills(retryAfter) {
+  if (retryAfter == null) {
+    return void 0;
+  }
+  const seconds = Number.parseInt(retryAfter, 10);
+  if (Number.isInteger(seconds)) {
+    return seconds > 0 ? seconds * 1e3 : -1;
+  }
+  const delay2 = new Date(retryAfter).getTime() - Date.now();
+  if (delay2 >= 0) {
+    return delay2;
+  }
+  return 0;
+}
+__name(parseRetryAfterToMills, "parseRetryAfterToMills");
+var init_is_export_retryable = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+otlp-exporter-base@0.200.0_@opentelemetry+api@1.9.0/node_modules/@opentelemetry/otlp-exporter-base/build/esm/is-export-retryable.js"() {
+    "use strict";
+  }
+});
+var http_transport_utils_exports = {};
+__export2(http_transport_utils_exports, {
+  compressAndSend: /* @__PURE__ */ __name(() => compressAndSend, "compressAndSend"),
+  createHttpAgent: /* @__PURE__ */ __name(() => createHttpAgent, "createHttpAgent"),
+  sendWithHttp: /* @__PURE__ */ __name(() => sendWithHttp, "sendWithHttp")
+});
+function sendWithHttp(params, agent, data, onDone, timeoutMillis) {
+  const parsedUrl = new URL(params.url);
+  const nodeVersion = Number(process.versions.node.split(".")[0]);
+  const options = {
+    hostname: parsedUrl.hostname,
+    port: parsedUrl.port,
+    path: parsedUrl.pathname,
+    method: "POST",
+    headers: {
+      ...params.headers()
+    },
+    agent
+  };
+  const request3 = parsedUrl.protocol === "http:" ? request : request2;
+  const req = request3(options, (res) => {
+    const responseData = [];
+    res.on("data", (chunk) => responseData.push(chunk));
+    res.on("end", () => {
+      if (res.statusCode && res.statusCode < 299) {
+        onDone({
+          status: "success",
+          data: Buffer.concat(responseData)
+        });
+      } else if (res.statusCode && isExportRetryable(res.statusCode)) {
+        onDone({
+          status: "retryable",
+          retryInMillis: parseRetryAfterToMills(res.headers["retry-after"])
+        });
+      } else {
+        const error22 = new OTLPExporterError(res.statusMessage, res.statusCode, Buffer.concat(responseData).toString());
+        onDone({
+          status: "failure",
+          error: error22
+        });
+      }
+    });
+  });
+  req.setTimeout(timeoutMillis, () => {
+    req.destroy();
+    onDone({
+      status: "failure",
+      error: new Error("Request Timeout")
+    });
+  });
+  req.on("error", (error22) => {
+    onDone({
+      status: "failure",
+      error: error22
+    });
+  });
+  const reportTimeoutErrorEvent = nodeVersion >= 14 ? "close" : "abort";
+  req.on(reportTimeoutErrorEvent, () => {
+    onDone({
+      status: "failure",
+      error: new Error("Request timed out")
+    });
+  });
+  compressAndSend(req, params.compression, data, (error22) => {
+    onDone({
+      status: "failure",
+      error: error22
+    });
+  });
+}
+__name(sendWithHttp, "sendWithHttp");
+function compressAndSend(req, compression, data, onError2) {
+  let dataStream = readableFromUint8Array(data);
+  if (compression === "gzip") {
+    req.setHeader("Content-Encoding", "gzip");
+    dataStream = dataStream.on("error", onError2).pipe(zlib2.createGzip()).on("error", onError2);
+  }
+  dataStream.pipe(req).on("error", onError2);
+}
+__name(compressAndSend, "compressAndSend");
+function readableFromUint8Array(buff) {
+  const readable = new Readable();
+  readable.push(buff);
+  readable.push(null);
+  return readable;
+}
+__name(readableFromUint8Array, "readableFromUint8Array");
+function createHttpAgent(rawUrl, agentOptions) {
+  const parsedUrl = new URL(rawUrl);
+  const Agent3 = parsedUrl.protocol === "http:" ? Agent : Agent2;
+  return new Agent3(agentOptions);
+}
+__name(createHttpAgent, "createHttpAgent");
+var init_http_transport_utils = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+otlp-exporter-base@0.200.0_@opentelemetry+api@1.9.0/node_modules/@opentelemetry/otlp-exporter-base/build/esm/transport/http-transport-utils.js"() {
+    "use strict";
+    init_is_export_retryable();
+    init_types2();
+  }
+});
+function createHttpExporterTransport(parameters) {
+  return new HttpExporterTransport(parameters);
+}
+__name(createHttpExporterTransport, "createHttpExporterTransport");
+var HttpExporterTransport;
+var init_http_exporter_transport = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+otlp-exporter-base@0.200.0_@opentelemetry+api@1.9.0/node_modules/@opentelemetry/otlp-exporter-base/build/esm/transport/http-exporter-transport.js"() {
+    "use strict";
+    HttpExporterTransport = class {
+      static {
+        __name(this, "HttpExporterTransport");
+      }
+      _parameters;
+      _utils = null;
+      constructor(_parameters) {
+        this._parameters = _parameters;
+      }
+      async send(data, timeoutMillis) {
+        const { agent, send: send2 } = this._loadUtils();
+        return new Promise((resolve) => {
+          send2(this._parameters, agent, data, (result) => {
+            resolve(result);
+          }, timeoutMillis);
+        });
+      }
+      shutdown() {
+      }
+      _loadUtils() {
+        let utils = this._utils;
+        if (utils === null) {
+          const {
+            sendWithHttp: sendWithHttp2,
+            createHttpAgent: createHttpAgent2
+            // eslint-disable-next-line @typescript-eslint/no-var-requires
+          } = (init_http_transport_utils(), __toCommonJS(http_transport_utils_exports));
+          utils = this._utils = {
+            agent: createHttpAgent2(this._parameters.url, this._parameters.agentOptions),
+            send: sendWithHttp2
+          };
+        }
+        return utils;
+      }
+    };
+  }
+});
+function getJitter() {
+  return Math.random() * (2 * JITTER) - JITTER;
+}
+__name(getJitter, "getJitter");
+function createRetryingTransport(options) {
+  return new RetryingTransport(options.transport);
+}
+__name(createRetryingTransport, "createRetryingTransport");
+var MAX_ATTEMPTS;
+var INITIAL_BACKOFF;
+var MAX_BACKOFF;
+var BACKOFF_MULTIPLIER;
+var JITTER;
+var RetryingTransport;
+var init_retrying_transport = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+otlp-exporter-base@0.200.0_@opentelemetry+api@1.9.0/node_modules/@opentelemetry/otlp-exporter-base/build/esm/retrying-transport.js"() {
+    "use strict";
+    MAX_ATTEMPTS = 5;
+    INITIAL_BACKOFF = 1e3;
+    MAX_BACKOFF = 5e3;
+    BACKOFF_MULTIPLIER = 1.5;
+    JITTER = 0.2;
+    RetryingTransport = class {
+      static {
+        __name(this, "RetryingTransport");
+      }
+      _transport;
+      constructor(_transport) {
+        this._transport = _transport;
+      }
+      retry(data, timeoutMillis, inMillis) {
+        return new Promise((resolve, reject2) => {
+          setTimeout(() => {
+            this._transport.send(data, timeoutMillis).then(resolve, reject2);
+          }, inMillis);
+        });
+      }
+      async send(data, timeoutMillis) {
+        const deadline = Date.now() + timeoutMillis;
+        let result = await this._transport.send(data, timeoutMillis);
+        let attempts = MAX_ATTEMPTS;
+        let nextBackoff = INITIAL_BACKOFF;
+        while (result.status === "retryable" && attempts > 0) {
+          attempts--;
+          const backoff = Math.max(Math.min(nextBackoff, MAX_BACKOFF) + getJitter(), 0);
+          nextBackoff = nextBackoff * BACKOFF_MULTIPLIER;
+          const retryInMillis = result.retryInMillis ?? backoff;
+          const remainingTimeoutMillis = deadline - Date.now();
+          if (retryInMillis > remainingTimeoutMillis) {
+            return result;
+          }
+          result = await this.retry(data, remainingTimeoutMillis, retryInMillis);
+        }
+        return result;
+      }
+      shutdown() {
+        return this._transport.shutdown();
+      }
+    };
+  }
+});
+function createOtlpHttpExportDelegate(options, serializer) {
+  return createOtlpExportDelegate({
+    transport: createRetryingTransport({
+      transport: createHttpExporterTransport(options)
+    }),
+    serializer,
+    promiseHandler: createBoundedQueueExportPromiseHandler(options)
+  }, { timeout: options.timeoutMillis });
+}
+__name(createOtlpHttpExportDelegate, "createOtlpHttpExportDelegate");
+var init_otlp_http_export_delegate = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+otlp-exporter-base@0.200.0_@opentelemetry+api@1.9.0/node_modules/@opentelemetry/otlp-exporter-base/build/esm/otlp-http-export-delegate.js"() {
+    "use strict";
+    init_otlp_export_delegate();
+    init_http_exporter_transport();
+    init_bounded_queue_export_promise_handler();
+    init_retrying_transport();
+  }
+});
+function parseAndValidateTimeoutFromEnv(timeoutEnvVar) {
+  const envTimeout = process.env[timeoutEnvVar]?.trim();
+  if (envTimeout != null && envTimeout !== "") {
+    const definedTimeout = Number(envTimeout);
+    if (Number.isFinite(definedTimeout) && definedTimeout > 0) {
+      return definedTimeout;
+    }
+    diag.warn(`Configuration: ${timeoutEnvVar} is invalid, expected number greater than 0 (actual: ${envTimeout})`);
+  }
+  return void 0;
+}
+__name(parseAndValidateTimeoutFromEnv, "parseAndValidateTimeoutFromEnv");
+function getTimeoutFromEnv(signalIdentifier) {
+  const specificTimeout = parseAndValidateTimeoutFromEnv(`OTEL_EXPORTER_OTLP_${signalIdentifier}_TIMEOUT`);
+  const nonSpecificTimeout = parseAndValidateTimeoutFromEnv("OTEL_EXPORTER_OTLP_TIMEOUT");
+  return specificTimeout ?? nonSpecificTimeout;
+}
+__name(getTimeoutFromEnv, "getTimeoutFromEnv");
+function parseAndValidateCompressionFromEnv(compressionEnvVar) {
+  const compression = process.env[compressionEnvVar]?.trim();
+  if (compression === "") {
+    return void 0;
+  }
+  if (compression == null || compression === "none" || compression === "gzip") {
+    return compression;
+  }
+  diag.warn(`Configuration: ${compressionEnvVar} is invalid, expected 'none' or 'gzip' (actual: '${compression}')`);
+  return void 0;
+}
+__name(parseAndValidateCompressionFromEnv, "parseAndValidateCompressionFromEnv");
+function getCompressionFromEnv(signalIdentifier) {
+  const specificCompression = parseAndValidateCompressionFromEnv(`OTEL_EXPORTER_OTLP_${signalIdentifier}_COMPRESSION`);
+  const nonSpecificCompression = parseAndValidateCompressionFromEnv("OTEL_EXPORTER_OTLP_COMPRESSION");
+  return specificCompression ?? nonSpecificCompression;
+}
+__name(getCompressionFromEnv, "getCompressionFromEnv");
+function getSharedConfigurationFromEnvironment(signalIdentifier) {
+  return {
+    timeoutMillis: getTimeoutFromEnv(signalIdentifier),
+    compression: getCompressionFromEnv(signalIdentifier)
+  };
+}
+__name(getSharedConfigurationFromEnvironment, "getSharedConfigurationFromEnvironment");
+var init_shared_env_configuration = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+otlp-exporter-base@0.200.0_@opentelemetry+api@1.9.0/node_modules/@opentelemetry/otlp-exporter-base/build/esm/configuration/shared-env-configuration.js"() {
+    "use strict";
+    init_esm();
+  }
+});
+function validateAndNormalizeHeaders(partialHeaders) {
+  return () => {
+    const headers = {};
+    Object.entries(partialHeaders?.() ?? {}).forEach(([key, value]) => {
+      if (typeof value !== "undefined") {
+        headers[key] = String(value);
+      } else {
+        diag.warn(`Header "${key}" has invalid value (${value}) and will be ignored`);
+      }
+    });
+    return headers;
+  };
+}
+__name(validateAndNormalizeHeaders, "validateAndNormalizeHeaders");
+var init_util3 = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+otlp-exporter-base@0.200.0_@opentelemetry+api@1.9.0/node_modules/@opentelemetry/otlp-exporter-base/build/esm/util.js"() {
+    "use strict";
+    init_esm();
+  }
+});
+function mergeHeaders(userProvidedHeaders, fallbackHeaders, defaultHeaders) {
+  const requiredHeaders = {
+    ...defaultHeaders()
+  };
+  const headers = {};
+  return () => {
+    if (fallbackHeaders != null) {
+      Object.assign(headers, fallbackHeaders());
+    }
+    if (userProvidedHeaders != null) {
+      Object.assign(headers, userProvidedHeaders());
+    }
+    return Object.assign(headers, requiredHeaders);
+  };
+}
+__name(mergeHeaders, "mergeHeaders");
+function validateUserProvidedUrl(url) {
+  if (url == null) {
+    return void 0;
+  }
+  try {
+    new URL(url);
+    return url;
+  } catch (e) {
+    throw new Error(`Configuration: Could not parse user-provided export URL: '${url}'`);
+  }
+}
+__name(validateUserProvidedUrl, "validateUserProvidedUrl");
+function mergeOtlpHttpConfigurationWithDefaults(userProvidedConfiguration, fallbackConfiguration, defaultConfiguration) {
+  return {
+    ...mergeOtlpSharedConfigurationWithDefaults(userProvidedConfiguration, fallbackConfiguration, defaultConfiguration),
+    headers: mergeHeaders(validateAndNormalizeHeaders(userProvidedConfiguration.headers), fallbackConfiguration.headers, defaultConfiguration.headers),
+    url: validateUserProvidedUrl(userProvidedConfiguration.url) ?? fallbackConfiguration.url ?? defaultConfiguration.url,
+    agentOptions: userProvidedConfiguration.agentOptions ?? fallbackConfiguration.agentOptions ?? defaultConfiguration.agentOptions
+  };
+}
+__name(mergeOtlpHttpConfigurationWithDefaults, "mergeOtlpHttpConfigurationWithDefaults");
+function getHttpConfigurationDefaults(requiredHeaders, signalResourcePath) {
+  return {
+    ...getSharedConfigurationDefaults(),
+    headers: /* @__PURE__ */ __name(() => requiredHeaders, "headers"),
+    url: "http://localhost:4318/" + signalResourcePath,
+    agentOptions: { keepAlive: true }
+  };
+}
+__name(getHttpConfigurationDefaults, "getHttpConfigurationDefaults");
+var init_otlp_http_configuration = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+otlp-exporter-base@0.200.0_@opentelemetry+api@1.9.0/node_modules/@opentelemetry/otlp-exporter-base/build/esm/configuration/otlp-http-configuration.js"() {
+    "use strict";
+    init_shared_configuration();
+    init_util3();
+  }
+});
+function getStaticHeadersFromEnv(signalIdentifier) {
+  const signalSpecificRawHeaders = process.env[`OTEL_EXPORTER_OTLP_${signalIdentifier}_HEADERS`]?.trim();
+  const nonSignalSpecificRawHeaders = process.env["OTEL_EXPORTER_OTLP_HEADERS"]?.trim();
+  const signalSpecificHeaders = parseKeyPairsIntoRecord(signalSpecificRawHeaders);
+  const nonSignalSpecificHeaders = parseKeyPairsIntoRecord(nonSignalSpecificRawHeaders);
+  if (Object.keys(signalSpecificHeaders).length === 0 && Object.keys(nonSignalSpecificHeaders).length === 0) {
+    return void 0;
+  }
+  return Object.assign({}, parseKeyPairsIntoRecord(nonSignalSpecificRawHeaders), parseKeyPairsIntoRecord(signalSpecificRawHeaders));
+}
+__name(getStaticHeadersFromEnv, "getStaticHeadersFromEnv");
+function appendRootPathToUrlIfNeeded(url) {
+  try {
+    const parsedUrl = new URL(url);
+    return parsedUrl.toString();
+  } catch {
+    diag.warn(`Configuration: Could not parse environment-provided export URL: '${url}', falling back to undefined`);
+    return void 0;
+  }
+}
+__name(appendRootPathToUrlIfNeeded, "appendRootPathToUrlIfNeeded");
+function appendResourcePathToUrl(url, path32) {
+  try {
+    new URL(url);
+  } catch {
+    diag.warn(`Configuration: Could not parse environment-provided export URL: '${url}', falling back to undefined`);
+    return void 0;
+  }
+  if (!url.endsWith("/")) {
+    url = url + "/";
+  }
+  url += path32;
+  try {
+    new URL(url);
+  } catch {
+    diag.warn(`Configuration: Provided URL appended with '${path32}' is not a valid URL, using 'undefined' instead of '${url}'`);
+    return void 0;
+  }
+  return url;
+}
+__name(appendResourcePathToUrl, "appendResourcePathToUrl");
+function getNonSpecificUrlFromEnv(signalResourcePath) {
+  const envUrl = process.env.OTEL_EXPORTER_OTLP_ENDPOINT?.trim();
+  if (envUrl == null || envUrl === "") {
+    return void 0;
+  }
+  return appendResourcePathToUrl(envUrl, signalResourcePath);
+}
+__name(getNonSpecificUrlFromEnv, "getNonSpecificUrlFromEnv");
+function getSpecificUrlFromEnv(signalIdentifier) {
+  const envUrl = process.env[`OTEL_EXPORTER_OTLP_${signalIdentifier}_ENDPOINT`]?.trim();
+  if (envUrl == null || envUrl === "") {
+    return void 0;
+  }
+  return appendRootPathToUrlIfNeeded(envUrl);
+}
+__name(getSpecificUrlFromEnv, "getSpecificUrlFromEnv");
+function getHttpConfigurationFromEnvironment(signalIdentifier, signalResourcePath) {
+  return {
+    ...getSharedConfigurationFromEnvironment(signalIdentifier),
+    url: getSpecificUrlFromEnv(signalIdentifier) ?? getNonSpecificUrlFromEnv(signalResourcePath),
+    headers: wrapStaticHeadersInFunction(getStaticHeadersFromEnv(signalIdentifier))
+  };
+}
+__name(getHttpConfigurationFromEnvironment, "getHttpConfigurationFromEnvironment");
+var init_otlp_http_env_configuration = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+otlp-exporter-base@0.200.0_@opentelemetry+api@1.9.0/node_modules/@opentelemetry/otlp-exporter-base/build/esm/configuration/otlp-http-env-configuration.js"() {
+    "use strict";
+    init_esm6();
+    init_esm();
+    init_shared_env_configuration();
+    init_shared_configuration();
+  }
+});
+function convertLegacyAgentOptions(config2) {
+  if (config2?.keepAlive != null) {
+    if (config2.httpAgentOptions != null) {
+      if (config2.httpAgentOptions.keepAlive == null) {
+        config2.httpAgentOptions.keepAlive = config2.keepAlive;
+      }
+    } else {
+      config2.httpAgentOptions = {
+        keepAlive: config2.keepAlive
+      };
+    }
+  }
+  return config2.httpAgentOptions;
+}
+__name(convertLegacyAgentOptions, "convertLegacyAgentOptions");
+function convertLegacyHttpOptions(config2, signalIdentifier, signalResourcePath, requiredHeaders) {
+  if (config2.metadata) {
+    diag.warn("Metadata cannot be set when using http");
+  }
+  return mergeOtlpHttpConfigurationWithDefaults({
+    url: config2.url,
+    headers: wrapStaticHeadersInFunction(config2.headers),
+    concurrencyLimit: config2.concurrencyLimit,
+    timeoutMillis: config2.timeoutMillis,
+    compression: config2.compression,
+    agentOptions: convertLegacyAgentOptions(config2)
+  }, getHttpConfigurationFromEnvironment(signalIdentifier, signalResourcePath), getHttpConfigurationDefaults(requiredHeaders, signalResourcePath));
+}
+__name(convertLegacyHttpOptions, "convertLegacyHttpOptions");
+var init_convert_legacy_node_http_options = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+otlp-exporter-base@0.200.0_@opentelemetry+api@1.9.0/node_modules/@opentelemetry/otlp-exporter-base/build/esm/configuration/convert-legacy-node-http-options.js"() {
+    "use strict";
+    init_otlp_http_configuration();
+    init_otlp_http_env_configuration();
+    init_esm();
+    init_shared_configuration();
+  }
+});
+var init_index_node_http = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+otlp-exporter-base@0.200.0_@opentelemetry+api@1.9.0/node_modules/@opentelemetry/otlp-exporter-base/build/esm/index-node-http.js"() {
+    "use strict";
+    init_otlp_http_export_delegate();
+    init_convert_legacy_node_http_options();
+  }
+});
+var OTLPTraceExporter;
+var init_OTLPTraceExporter = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+exporter-trace-otlp-http@0.200.0_@opentelemetry+api@1.9.0/node_modules/@opentelemetry/exporter-trace-otlp-http/build/esm/platform/node/OTLPTraceExporter.js"() {
+    "use strict";
+    init_esm7();
+    init_version22();
+    init_esm8();
+    init_index_node_http();
+    OTLPTraceExporter = class extends OTLPExporterBase {
+      static {
+        __name(this, "OTLPTraceExporter");
+      }
+      constructor(config2 = {}) {
+        super(createOtlpHttpExportDelegate(convertLegacyHttpOptions(config2, "TRACES", "v1/traces", {
+          "User-Agent": `OTel-OTLP-Exporter-JavaScript/${VERSION22}`,
+          "Content-Type": "application/json"
+        }), JsonTraceSerializer));
+      }
+    };
+  }
+});
+var init_node4 = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+exporter-trace-otlp-http@0.200.0_@opentelemetry+api@1.9.0/node_modules/@opentelemetry/exporter-trace-otlp-http/build/esm/platform/node/index.js"() {
+    "use strict";
+    init_OTLPTraceExporter();
+  }
+});
+var init_platform4 = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+exporter-trace-otlp-http@0.200.0_@opentelemetry+api@1.9.0/node_modules/@opentelemetry/exporter-trace-otlp-http/build/esm/platform/index.js"() {
+    "use strict";
+    init_node4();
+  }
+});
+var esm_exports3 = {};
+__export2(esm_exports3, {
+  OTLPTraceExporter: /* @__PURE__ */ __name(() => OTLPTraceExporter, "OTLPTraceExporter")
+});
+var init_esm9 = __esm2({
+  "../../node_modules/.pnpm/@opentelemetry+exporter-trace-otlp-http@0.200.0_@opentelemetry+api@1.9.0/node_modules/@opentelemetry/exporter-trace-otlp-http/build/esm/index.js"() {
+    "use strict";
+    init_platform4();
+  }
+});
 init_isomorph();
 var COMMON_BASE_BRANCHES = ["main", "master", "develop"];
 async function currentRepo() {
@@ -26130,7 +25829,7 @@ function configureNode() {
 }
 __name(configureNode, "configureNode");
 var exports_node_exports = {};
-__export3(exports_node_exports, {
+__export2(exports_node_exports, {
   AISpanProcessor: /* @__PURE__ */ __name(() => AISpanProcessor, "AISpanProcessor"),
   Attachment: /* @__PURE__ */ __name(() => Attachment, "Attachment"),
   BaseAttachment: /* @__PURE__ */ __name(() => BaseAttachment, "BaseAttachment"),
@@ -26285,7 +25984,7 @@ async function invoke(args) {
       `Invalid function ID arguments: ${functionId.error.message}`
     );
   }
-  const request = {
+  const request3 = {
     ...functionId.data,
     input,
     messages,
@@ -26296,7 +25995,7 @@ async function invoke(args) {
     mode,
     strict
   };
-  const resp = await state.proxyConn().post(`function/invoke`, request, {
+  const resp = await state.proxyConn().post(`function/invoke`, request3, {
     headers: {
       Accept: stream ? "text/event-stream" : "application/json"
     }
@@ -26472,6 +26171,7 @@ function isArrayLike2(value) {
 }
 __name(isArrayLike2, "isArrayLike");
 var breakLoop = {};
+var breakLoop$1 = breakLoop;
 function once2(fn) {
   function wrapper(...args) {
     if (fn === null) return;
@@ -26491,14 +26191,14 @@ __name(getIterator, "getIterator");
 function createArrayIterator(coll) {
   var i = -1;
   var len = coll.length;
-  return /* @__PURE__ */ __name(function next2() {
+  return /* @__PURE__ */ __name(function next() {
     return ++i < len ? { value: coll[i], key: i } : null;
   }, "next");
 }
 __name(createArrayIterator, "createArrayIterator");
 function createES2015Iterator(iterator) {
   var i = -1;
-  return /* @__PURE__ */ __name(function next2() {
+  return /* @__PURE__ */ __name(function next() {
     var item = iterator.next();
     if (item.done)
       return null;
@@ -26511,10 +26211,10 @@ function createObjectIterator(obj) {
   var okeys = obj ? Object.keys(obj) : [];
   var i = -1;
   var len = okeys.length;
-  return /* @__PURE__ */ __name(function next2() {
+  return /* @__PURE__ */ __name(function next() {
     var key = okeys[++i];
     if (key === "__proto__") {
-      return next2();
+      return next();
     }
     return i < len ? { value: obj[key], key } : null;
   }, "next");
@@ -26572,7 +26272,7 @@ function asyncEachOfLimit(generator, limit2, iteratee, callback) {
       canceled = true;
       return;
     }
-    if (result === breakLoop || done && running <= 0) {
+    if (result === breakLoop$1 || done && running <= 0) {
       done = true;
       return callback(null);
     }
@@ -26618,7 +26318,7 @@ var eachOfLimit$2 = /* @__PURE__ */ __name((limit2) => {
       } else if (err === false) {
         done = true;
         canceled = true;
-      } else if (value === breakLoop || done && running <= 0) {
+      } else if (value === breakLoop$1 || done && running <= 0) {
         done = true;
         return callback(null);
       } else if (!looping) {
@@ -26664,7 +26364,7 @@ function eachOfArrayLike(coll, iteratee, callback) {
     if (canceled === true) return;
     if (err) {
       callback(err);
-    } else if (++completed === length || value === breakLoop) {
+    } else if (++completed === length || value === breakLoop$1) {
       callback(null);
     }
   }
@@ -26766,11 +26466,11 @@ var DLL = class {
   remove(testFn) {
     var curr = this.head;
     while (curr) {
-      var { next: next2 } = curr;
+      var { next } = curr;
       if (testFn(curr)) {
         this.removeLink(curr);
       }
-      curr = next2;
+      curr = next;
     }
     return this;
   }
@@ -27085,7 +26785,7 @@ function _createTester(check, getResult) {
         if (check(result) && !testResult) {
           testPassed = true;
           testResult = getResult(true, value);
-          return callback(null, breakLoop);
+          return callback(null, breakLoop$1);
         }
         callback();
       });
@@ -27131,18 +26831,18 @@ function doWhilst(iteratee, test, callback) {
   var _fn = wrapAsync(iteratee);
   var _test = wrapAsync(test);
   var results;
-  function next2(err, ...args) {
+  function next(err, ...args) {
     if (err) return callback(err);
     if (err === false) return;
     results = args;
     _test(...args, check);
   }
-  __name(next2, "next");
+  __name(next, "next");
   function check(err, truth) {
     if (err) return callback(err);
     if (err === false) return;
     if (!truth) return callback(null, ...results);
-    _fn(next2);
+    _fn(next);
   }
   __name(check, "check");
   return check(null, true);
@@ -27256,13 +26956,13 @@ var filterSeries$1 = awaitify(filterSeries, 3);
 function forever(fn, errback) {
   var done = onlyOnce(errback);
   var task = wrapAsync(ensureAsync(fn));
-  function next2(err) {
+  function next(err) {
     if (err) return done(err);
     if (err === false) return;
-    task(next2);
+    task(next);
   }
-  __name(next2, "next");
-  return next2();
+  __name(next, "next");
+  return next();
 }
 __name(forever, "forever");
 var forever$1 = awaitify(forever, 2);
@@ -27275,12 +26975,12 @@ function groupByLimit(coll, limit2, iteratee, callback) {
     });
   }, (err, mapResults) => {
     var result = {};
-    var { hasOwnProperty } = Object.prototype;
+    var { hasOwnProperty: hasOwnProperty2 } = Object.prototype;
     for (var i = 0; i < mapResults.length; i++) {
       if (mapResults[i]) {
         var { key } = mapResults[i];
         var { val } = mapResults[i];
-        if (hasOwnProperty.call(result, key)) {
+        if (hasOwnProperty2.call(result, key)) {
           result[key].push(val);
         } else {
           result[key] = [val];
@@ -27297,11 +26997,11 @@ function mapValuesLimit(obj, limit2, iteratee, callback) {
   callback = once2(callback);
   var newObj = {};
   var _iteratee = wrapAsync(iteratee);
-  return eachOfLimit$2(limit2)(obj, (val, key, next2) => {
+  return eachOfLimit$2(limit2)(obj, (val, key, next) => {
     _iteratee(val, key, (err, result) => {
-      if (err) return next2(err);
+      if (err) return next(err);
       newObj[key] = result;
-      next2(err);
+      next(err);
     });
   }, (err) => callback(err, newObj));
 }
@@ -27426,18 +27126,18 @@ function whilst(test, iteratee, callback) {
   var _fn = wrapAsync(iteratee);
   var _test = wrapAsync(test);
   var results = [];
-  function next2(err, ...rest) {
+  function next(err, ...rest) {
     if (err) return callback(err);
     results = rest;
     if (err === false) return;
     _test(check);
   }
-  __name(next2, "next");
+  __name(next, "next");
   function check(err, truth) {
     if (err) return callback(err);
     if (err === false) return;
     if (!truth) return callback(null, ...results);
-    _fn(next2);
+    _fn(next);
   }
   __name(check, "check");
   return _test(check);
@@ -27451,60 +27151,23 @@ function waterfall(tasks, callback) {
   var taskIndex = 0;
   function nextTask(args) {
     var task = wrapAsync(tasks[taskIndex++]);
-    task(...args, onlyOnce(next2));
+    task(...args, onlyOnce(next));
   }
   __name(nextTask, "nextTask");
-  function next2(err, ...args) {
+  function next(err, ...args) {
     if (err === false) return;
     if (err || taskIndex === tasks.length) {
       return callback(err, ...args);
     }
     nextTask(args);
   }
-  __name(next2, "next");
+  __name(next, "next");
   nextTask([]);
 }
 __name(waterfall, "waterfall");
 var waterfall$1 = awaitify(waterfall);
 init_logger();
-var MAX_NAME_LENGTH = 40;
-function fitNameToSpaces(name, length) {
-  const padded = name.padEnd(length);
-  if (padded.length <= length) {
-    return padded;
-  }
-  return padded.substring(0, length - 3) + "...";
-}
-__name(fitNameToSpaces, "fitNameToSpaces");
-var BarProgressReporter = class {
-  static {
-    __name(this, "BarProgressReporter");
-  }
-  multiBar;
-  bars = {};
-  constructor() {
-    this.multiBar = new cliProgress.MultiBar(
-      {
-        clearOnComplete: false,
-        format: " {bar} | {evaluator} | {percentage}% | {value}/{total} datapoints",
-        autopadding: true
-      },
-      cliProgress.Presets.shades_grey
-    );
-  }
-  start(name, total) {
-    const bar = this.multiBar.create(total, 0);
-    this.bars[name] = bar;
-  }
-  stop() {
-    this.multiBar.stop();
-  }
-  increment(name) {
-    this.bars[name].increment({
-      evaluator: fitNameToSpaces(name, MAX_NAME_LENGTH)
-    });
-  }
-};
+init_progress();
 init_util22();
 init_logger();
 init_generated_types();
@@ -27921,6 +27584,15 @@ function validateParameters(parameters, parameterSchema) {
   );
 }
 __name(validateParameters, "validateParameters");
+var chalk;
+try {
+  chalk = __require2("chalk");
+} catch {
+  chalk = {
+    bold: { red: /* @__PURE__ */ __name((s) => s, "red") },
+    hex: /* @__PURE__ */ __name(() => (s) => s, "hex")
+  };
+}
 function BaseExperiment(options = {}) {
   return { _type: "BaseExperiment", ...options };
 }
@@ -28011,7 +27683,17 @@ async function Eval(name, evaluator, reporterOrOpts) {
       []
     );
   }
-  const progressReporter = options.progress ?? new BarProgressReporter();
+  let progressReporter;
+  if (options.progress) {
+    progressReporter = options.progress;
+  } else {
+    try {
+      const { BarProgressReporter: BarProgressReporter2 } = (init_progress(), __toCommonJS(progress_exports));
+      progressReporter = new BarProgressReporter2();
+    } catch (error22) {
+      progressReporter = new SimpleProgressReporter();
+    }
+  }
   if (typeof options.reporter === "string") {
     throw new Error(
       "Must specify a reporter object, not a name. Can only specify reporter names when running 'braintrust eval'"
@@ -28444,8 +28126,8 @@ async function runEvaluatorInternal(experiment, evaluator, progressReporter, fil
   return new EvalResultWithSummary(summary, results);
 }
 __name(runEvaluatorInternal, "runEvaluatorInternal");
-var error3 = import_chalk.default.bold.red;
-var warning = import_chalk.default.hex("#FFA500");
+var error3 = chalk.bold.red;
+var warning = chalk.hex("#FFA500");
 function logError2(e, verbose) {
   if (!verbose) {
     console.error(`${e}`);
@@ -28565,7 +28247,7 @@ function formatMetricSummary(summary, longestMetricName) {
 }
 __name(formatMetricSummary, "formatMetricSummary");
 var graph_framework_exports = {};
-__export3(graph_framework_exports, {
+__export2(graph_framework_exports, {
   AggregatorNode: /* @__PURE__ */ __name(() => AggregatorNode, "AggregatorNode"),
   GateNode: /* @__PURE__ */ __name(() => GateNode, "GateNode"),
   GraphBuilder: /* @__PURE__ */ __name(() => GraphBuilder, "GraphBuilder"),
@@ -31329,8 +31011,8 @@ var otelApi = null;
 var otelSdk = null;
 var OTEL_AVAILABLE2 = false;
 try {
-  otelApi = (init_esm(), __toCommonJS2(esm_exports));
-  otelSdk = __require2("@opentelemetry/sdk-trace-base");
+  otelApi = (init_esm(), __toCommonJS(esm_exports));
+  otelSdk = (init_esm5(), __toCommonJS(esm_exports2));
   OTEL_AVAILABLE2 = true;
 } catch {
   console.warn(
@@ -31472,15 +31154,15 @@ var BraintrustSpanProcessor = class _BraintrustSpanProcessor {
     let exporter;
     try {
       const {
-        OTLPTraceExporter
-      } = __require2("@opentelemetry/exporter-trace-otlp-http");
+        OTLPTraceExporter: OTLPTraceExporter2
+      } = (init_esm9(), __toCommonJS(esm_exports3));
       const headers = {
         Authorization: `Bearer ${apiKey}`,
         "Content-Type": "application/json",
         "x-bt-parent": parent,
         ...options.headers
       };
-      const baseExporter = new OTLPTraceExporter({
+      const baseExporter = new OTLPTraceExporter2({
         url: new URL("otel/v1/traces", apiUrl).href,
         headers
       });
@@ -31986,7 +31668,7 @@ init_performance2();
 init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_process();
 init_virtual_unenv_global_polyfill_cloudflare_unenv_preset_node_console();
 init_performance2();
-var VERSION2 = "6.4.0";
+var VERSION3 = "6.4.0";
 
 // node_modules/openai/internal/detect-platform.mjs
 var isRunningInBrowser = /* @__PURE__ */ __name(() => {
@@ -32015,7 +31697,7 @@ var getPlatformProperties = /* @__PURE__ */ __name(() => {
   if (detectedPlatform === "deno") {
     return {
       "X-Stainless-Lang": "js",
-      "X-Stainless-Package-Version": VERSION2,
+      "X-Stainless-Package-Version": VERSION3,
       "X-Stainless-OS": normalizePlatform(Deno.build.os),
       "X-Stainless-Arch": normalizeArch(Deno.build.arch),
       "X-Stainless-Runtime": "deno",
@@ -32025,7 +31707,7 @@ var getPlatformProperties = /* @__PURE__ */ __name(() => {
   if (typeof EdgeRuntime !== "undefined") {
     return {
       "X-Stainless-Lang": "js",
-      "X-Stainless-Package-Version": VERSION2,
+      "X-Stainless-Package-Version": VERSION3,
       "X-Stainless-OS": "Unknown",
       "X-Stainless-Arch": `other:${EdgeRuntime}`,
       "X-Stainless-Runtime": "edge",
@@ -32035,7 +31717,7 @@ var getPlatformProperties = /* @__PURE__ */ __name(() => {
   if (detectedPlatform === "node") {
     return {
       "X-Stainless-Lang": "js",
-      "X-Stainless-Package-Version": VERSION2,
+      "X-Stainless-Package-Version": VERSION3,
       "X-Stainless-OS": normalizePlatform(globalThis.process.platform ?? "unknown"),
       "X-Stainless-Arch": normalizeArch(globalThis.process.arch ?? "unknown"),
       "X-Stainless-Runtime": "node",
@@ -32046,7 +31728,7 @@ var getPlatformProperties = /* @__PURE__ */ __name(() => {
   if (browserInfo) {
     return {
       "X-Stainless-Lang": "js",
-      "X-Stainless-Package-Version": VERSION2,
+      "X-Stainless-Package-Version": VERSION3,
       "X-Stainless-OS": "Unknown",
       "X-Stainless-Arch": "unknown",
       "X-Stainless-Runtime": `browser:${browserInfo.browser}`,
@@ -32055,7 +31737,7 @@ var getPlatformProperties = /* @__PURE__ */ __name(() => {
   }
   return {
     "X-Stainless-Lang": "js",
-    "X-Stainless-Package-Version": VERSION2,
+    "X-Stainless-Package-Version": VERSION3,
     "X-Stainless-OS": "Unknown",
     "X-Stainless-Arch": "unknown",
     "X-Stainless-Runtime": "unknown",
@@ -33250,8 +32932,8 @@ var PagePromise = class extends APIPromise {
   static {
     __name(this, "PagePromise");
   }
-  constructor(client, request, Page2) {
-    super(client, request, async (client2, props) => new Page2(client2, props.response, await defaultParseResponse(client2, props), props.options));
+  constructor(client, request3, Page2) {
+    super(client, request3, async (client2, props) => new Page2(client2, props.response, await defaultParseResponse(client2, props), props.options));
   }
   /**
    * Allow auto-paginating iteration on an unawaited list call, eg:
@@ -38875,7 +38557,7 @@ var OpenAI = class {
     return stringify2(query, { arrayFormat: "brackets" });
   }
   getUserAgent() {
-    return `${this.constructor.name}/JS ${VERSION2}`;
+    return `${this.constructor.name}/JS ${VERSION3}`;
   }
   defaultIdempotencyKey() {
     return `stainless-node-retry-${uuid4()}`;
@@ -38929,7 +38611,7 @@ var OpenAI = class {
    * This is useful for cases where you want to add certain headers based off of
    * the request properties, e.g. `method` or `url`.
    */
-  async prepareRequest(request, { url, options }) {
+  async prepareRequest(request3, { url, options }) {
   }
   get(path4, opts) {
     return this.methodRequest("get", path4, opts);
@@ -39056,8 +38738,8 @@ var OpenAI = class {
     return this.requestAPIList(Page2, { method: "get", path: path4, ...opts });
   }
   requestAPIList(Page2, options) {
-    const request = this.makeRequest(options, null, void 0);
-    return new PagePromise(this, request, Page2);
+    const request3 = this.makeRequest(options, null, void 0);
+    return new PagePromise(this, request3, Page2);
   }
   async fetchWithTimeout(url, init2, ms, controller) {
     const { signal, method, ...options } = init2 || {};
@@ -39673,8 +39355,8 @@ async function runExperimentWithLogging(env2) {
 }
 __name(runExperimentWithLogging, "runExperimentWithLogging");
 var index_default = {
-  async fetch(request, env2, ctx) {
-    const url = new URL(request.url);
+  async fetch(request3, env2, ctx) {
+    const url = new URL(request3.url);
     if (url.pathname === "/trace") {
       try {
         const result = await runTracingExample(env2, ctx);
