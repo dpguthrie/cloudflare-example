@@ -1,64 +1,279 @@
-# Braintrust Eval on Cloudflare Workers
+# Braintrust SDK on Cloudflare Workers
 
-This example shows how to run Braintrust evaluations on Cloudflare Workers, both on-demand (via HTTP) and on a schedule (via Cron Triggers).
+Example implementation showing how to run Braintrust evaluations and experiments on Cloudflare Workers using two different approaches.
+
+## Quick Start
+
+```bash
+# Install dependencies
+npm install
+
+# Set up local environment
+echo "BRAINTRUST_API_KEY=your-key" > .dev.vars
+echo "OPENAI_API_KEY=your-key" >> .dev.vars
+
+# Run locally
+npm run dev
+
+# Test the endpoints
+curl http://localhost:8787/run-eval
+curl http://localhost:8787/run-experiment
+
+# Deploy to production
+npm run deploy
+```
+
+## Three Approaches
+
+This example demonstrates **three ways** to run Braintrust experiments on Cloudflare Workers:
+
+1. **Eval()** - SDK approach (requires HTTP testing in Vitest)
+2. **Logging SDK** - SDK approach (requires HTTP testing in Vitest)
+3. **Direct API** - No SDK, works with direct imports in Vitest! ✨
+
+**🎯 Want to use Braintrust with Vitest?** See [docs/VITEST_SOLUTION.md](./docs/VITEST_SOLUTION.md) for the complete guide.
+
+### Approach 1: Eval() Function
+
+**Best for:** Simple, standard evaluations with minimal setup.
+
+**Code:**
+```typescript
+import { Eval, login } from 'braintrust';
+
+const result = await Eval("my-experiment", {
+  data: () => [
+    { input: "What is 2+2?", expected: "4" },
+  ],
+  task: async (input) => {
+    // Your LLM call
+    return await callOpenAI(input);
+  },
+  scores: [
+    (output, expected) => ({
+      name: "contains_expected",
+      score: output.includes(expected.expected) ? 1 : 0,
+    }),
+  ],
+});
+```
+
+**Endpoints:**
+- Production: `https://your-worker.workers.dev/run-eval`
+- Local: `http://localhost:8787/run-eval`
+
+**Implementation:** See `src/index.ts:207-264`
+
+### Approach 2: Logging SDK (init + traced + log)
+
+**Best for:** Custom evaluation logic, framework integration, more control.
+
+**Features:**
+- ✅ Automatic nested tracing with `wrapOpenAI()`
+- ✅ Full control over execution flow
+- ✅ Custom metadata and scoring
+
+**Code:**
+```typescript
+import { init, login, wrapOpenAI } from 'braintrust';
+import OpenAI from 'openai';
+
+// Wrap OpenAI for automatic nested tracing
+const client = wrapOpenAI(new OpenAI({ apiKey: env.OPENAI_API_KEY }));
+
+// Initialize experiment
+const experiment = init({
+  project: "my-project",
+  experiment: "my-experiment",
+  apiKey: env.BRAINTRUST_API_KEY,
+});
+
+// Run test cases
+for (const { input, expected } of dataset) {
+  await experiment.traced(async (span) => {
+    // wrapOpenAI automatically creates nested spans for API calls
+    const response = await client.chat.completions.create({
+      model: "gpt-4o-mini",
+      messages: [{ role: "user", content: input }],
+    });
+
+    const output = response.choices[0].message.content;
+    const score = output.includes(expected) ? 1 : 0;
+
+    span.log({
+      input,
+      output,
+      expected,
+      scores: { contains_expected: score },
+      metadata: { model: response.model, usage: response.usage },
+    });
+  });
+}
+
+const summary = await experiment.summarize();
+```
+
+**Endpoints:**
+- Production: `https://your-worker.workers.dev/run-experiment`
+- Local: `http://localhost:8787/run-experiment`
+
+**Implementation:** See `src/index.ts:279-371`
+
+### Approach 3: Direct REST API + OpenTelemetry ✨
+
+**Best for:** Testing with Vitest, maximum control, no SDK dependencies.
+
+**Key Advantage:** ✅ **Can be directly imported and tested in Vitest!**
+
+**Code:**
+```typescript
+import { runExperimentWithDirectAPI } from './direct-api';
+
+// Create experiment using REST API
+const result = await runExperimentWithDirectAPI(env);
+
+// Insert events
+await insertExperimentEvents(apiKey, experimentId, [
+  {
+    input: 'What is 2+2?',
+    output: '4',
+    expected: '4',
+    scores: { correctness: 1 },
+  },
+]);
+
+// Get summary
+const summary = await summarizeExperiment(apiKey, experimentId);
+```
+
+**Endpoints:**
+- Production: `https://your-worker.workers.dev/run-direct-api`
+- Local: `http://localhost:8787/run-direct-api`
+
+**Implementation:** See `src/direct-api.ts`
+
+**Vitest Testing:**
+```typescript
+// ✅ This WORKS - direct import in Vitest!
+import { runExperimentWithDirectAPI } from './direct-api';
+
+test('my test', async () => {
+  const result = await runExperimentWithDirectAPI(env);
+  expect(result.summary).toBeDefined();
+});
+```
+
+**APIs Used:**
+- [Create Experiment](https://www.braintrust.dev/docs/reference/api/Experiments#create-experiment)
+- [Insert Events](https://www.braintrust.dev/docs/reference/api/Experiments#insert-experiment-events)
+- [Summarize](https://www.braintrust.dev/docs/reference/api/Experiments#summarize-experiment)
+- [OpenTelemetry Integration](https://www.braintrust.dev/docs/integrations/opentelemetry)
+
+### Which Should You Use?
+
+| Feature | Eval() | Logging SDK | Direct API |
+|---------|--------|-------------|------------|
+| **Setup** | Minimal | More code | More code |
+| **Control** | Framework-managed | Full control | Full control |
+| **Nested tracing** | Automatic | Automatic (wrapOpenAI) | Manual (OTEL) |
+| **Best for** | Standard evals | Custom logic | Testing in Vitest |
+| **Learning curve** | Easy | Moderate | Moderate |
+| **Vitest direct import** | ❌ No | ❌ No | ✅ **YES!** |
+| **SDK dependency** | ✅ Yes | ✅ Yes | ❌ No |
+
+**See [docs/APPROACHES_COMPARISON.md](./docs/APPROACHES_COMPARISON.md) for detailed comparison.**
 
 ## Setup
 
-### 1. Install dependencies
+### 1. Install Dependencies
 
 ```bash
-cd ~/repos/cloudflare-example
 npm install
 ```
 
-### 2. Set up secrets
+### 2. Configure API Keys
 
-You need to configure your API keys as Cloudflare secrets:
+#### For Local Development
+
+Create a `.dev.vars` file (don't commit this!):
 
 ```bash
-# Set your Braintrust API key
-npx wrangler secret put BRAINTRUST_API_KEY
+echo "BRAINTRUST_API_KEY=your-braintrust-key" > .dev.vars
+echo "OPENAI_API_KEY=your-openai-key" >> .dev.vars
+```
 
-# Set your OpenAI API key
+Get your Braintrust API key from: https://www.braintrust.dev/app/settings?subroute=api-keys
+
+#### For Production
+
+Set secrets in Cloudflare:
+
+```bash
+npx wrangler secret put BRAINTRUST_API_KEY
 npx wrangler secret put OPENAI_API_KEY
 ```
 
-When prompted, paste your API keys (you can find your Braintrust API key at https://www.braintrust.dev/app/settings?subroute=api-keys).
+### 3. Enable Node.js Compatibility
 
-### 3. Deploy to Cloudflare
+Already configured in `wrangler.toml`:
+
+```toml
+compatibility_flags = ["nodejs_compat"]
+```
+
+This is **required** for the Braintrust SDK to work on Cloudflare Workers.
+
+## Local Development
+
+### Start the Dev Server
+
+```bash
+npm run dev
+```
+
+This starts a local server at `http://localhost:8787`.
+
+### Test Both Approaches
+
+**Important:** Local dev uses `http://` (not `https://`)
+
+```bash
+# Eval() approach
+curl http://localhost:8787/run-eval
+
+# Logging SDK approach
+curl http://localhost:8787/run-experiment
+
+# View available endpoints
+curl http://localhost:8787/
+```
+
+**Common mistake:** Using `https://localhost:8787` will fail. Local dev is HTTP only.
+
+### Watch for Changes
+
+The dev server automatically reloads when you edit `src/index.ts`.
+
+## Deployment
+
+### Deploy to Production
 
 ```bash
 npm run deploy
 ```
 
-This will deploy your worker and give you a URL like `https://braintrust-eval-worker.your-subdomain.workers.dev`
+You'll get a URL like: `https://braintrust-eval-worker.your-subdomain.workers.dev`
 
-## Usage
-
-### Run eval via HTTP (on-demand)
-
-After deploying, trigger the eval by visiting or curling the `/run-eval` endpoint:
+### Test Production
 
 ```bash
-curl https://braintrust-eval-worker.your-subdomain.workers.dev/run-eval
+curl https://your-worker.workers.dev/run-eval
+curl https://your-worker.workers.dev/run-experiment
 ```
 
-You'll get a JSON response with the eval results:
+### Schedule Automatic Runs
 
-```json
-{
-  "success": true,
-  "summary": {
-    "score": 1.0,
-    "num_scores": 3
-  },
-  "results": [...]
-}
-```
-
-### Run eval on a schedule (cron)
-
-To run the eval automatically on a schedule, uncomment the `[triggers]` section in `wrangler.toml`:
+Edit `wrangler.toml` to enable cron triggers:
 
 ```toml
 [triggers]
@@ -71,32 +286,123 @@ Then redeploy:
 npm run deploy
 ```
 
-**Cron schedule examples:**
-- `"0 0 * * *"` - Daily at midnight UTC
+**Cron examples:**
+- `"0 0 * * *"` - Daily at midnight
 - `"0 */6 * * *"` - Every 6 hours
-- `"0 9 * * 1"` - Every Monday at 9am UTC
 - `"*/15 * * * *"` - Every 15 minutes
 
-## Local Development
+## Testing
 
-Test your worker locally before deploying:
+### Run Integration Tests
 
 ```bash
-npm run dev
+npm test
 ```
 
-This starts a local server at `http://localhost:8787`. You can test it with:
+Output:
+```
+✓ test/integration/worker.test.ts (4 tests) 42ms
+  ✓ should respond to fetch requests
+  ✓ should have run-eval endpoint available
+  ✓ should be able to run eval with proper environment
+  ✓ should run experiment using logging SDK
 
-```bash
-curl http://localhost:8787/run-eval
+Test Files  1 passed (1)
+     Tests  4 passed (4)
 ```
 
-**Note:** For local dev, you'll need to set secrets locally or use a `.dev.vars` file:
+### Vitest Testing
 
-```bash
-# Create .dev.vars (don't commit this!)
-echo "BRAINTRUST_API_KEY=your-key-here" > .dev.vars
-echo "OPENAI_API_KEY=your-key-here" >> .dev.vars
+**SDK Approaches (Eval, Logging SDK):** Cannot be directly imported in Vitest tests.
+
+```typescript
+// ❌ SDK approaches don't work with direct imports in Vitest
+import { Eval, init } from 'braintrust';
+
+test('my test', async () => {
+  await Eval('test', { ... }); // Error: Module resolution
+  const experiment = init({ ... }); // Error: Module resolution
+});
+```
+
+**Why:** Vitest's Workers integration doesn't provide all Node.js modules that the Braintrust SDK requires (uuid, node:os, node:child_process, etc.).
+
+**Solutions:**
+
+**Option 1: Use Direct API Approach (Recommended for Testing)**
+```typescript
+// ✅ Direct API approach works with direct imports!
+import { runExperimentWithDirectAPI } from './direct-api';
+
+test('my test', async () => {
+  const result = await runExperimentWithDirectAPI(env);
+  expect(result.summary).toBeDefined();
+});
+```
+
+See `test/integration/direct-import-works.test.ts` for working example.
+
+**Option 2: Test SDK approaches via HTTP endpoints**
+
+```typescript
+// ✅ This WORKS
+import { SELF } from 'cloudflare:test';
+
+test('my test', async () => {
+  const response = await SELF.fetch('http://example.com/run-eval');
+  expect(response.status).toBe(200);
+});
+```
+
+Our tests use a **workaround**: build with wrangler first (which includes all polyfills), then test the compiled output. This ensures we're testing the same code that runs in production.
+
+**See [test/README.md](./test/README.md) for testing details.**
+
+## Customization
+
+Edit `src/index.ts` to customize:
+
+### Change the Dataset
+
+```typescript
+const dataset = [
+  { input: "Your question here", expected: "Expected answer" },
+  // Add more test cases
+];
+```
+
+### Change the Model
+
+```typescript
+model: "gpt-4o",  // or gpt-4, gpt-3.5-turbo, etc.
+```
+
+### Change Scoring
+
+```typescript
+// Custom scoring logic
+const score = myCustomScoringFunction(output, expected);
+
+span.log({
+  scores: {
+    custom_metric: score,
+    another_metric: anotherScore,
+  },
+});
+```
+
+### Use Different LLM Providers
+
+Replace the OpenAI call with any other provider:
+
+```typescript
+// Anthropic
+const response = await fetch('https://api.anthropic.com/v1/messages', ...);
+
+// Gemini
+const response = await fetch('https://generativelanguage.googleapis.com/v1/...', ...);
+
+// Or any other API
 ```
 
 ## Project Structure
@@ -104,54 +410,95 @@ echo "OPENAI_API_KEY=your-key-here" >> .dev.vars
 ```
 cloudflare-example/
 ├── src/
-│   └── index.ts          # Main worker code with eval logic
-├── wrangler.toml         # Cloudflare Worker configuration
-├── tsconfig.json         # TypeScript configuration
-├── package.json          # Dependencies
-└── README.md             # This file
+│   └── index.ts              # Worker code (both approaches)
+├── test/
+│   ├── integration/
+│   │   ├── vitest.config.ts  # Test configuration
+│   │   └── worker.test.ts    # Integration tests
+│   └── README.md             # Testing guide
+├── docs/
+│   └── APPROACHES_COMPARISON.md  # Detailed comparison
+├── wrangler.toml             # Worker configuration
+├── package.json              # Dependencies and scripts
+└── README.md                 # This file
 ```
-
-## How It Works
-
-1. **HTTP Endpoint (`/run-eval`)**: Triggers the eval when you make a GET/POST request
-2. **Scheduled Event**: Runs the eval automatically based on cron schedule
-3. **Eval Logic**:
-   - Fetches test cases from the `data` array
-   - Calls OpenAI API for each test case
-   - Scores responses using custom scoring function
-   - Returns results to Braintrust
-
-## Customizing the Eval
-
-Edit `src/index.ts` to customize:
-
-- **Test data**: Update the `data` array with your own questions/expected answers
-- **Model**: Change `gpt-4o-mini` to any OpenAI model
-- **Scoring**: Modify the scoring function to match your evaluation criteria
-- **Task**: Replace the OpenAI call with any AI API or custom logic
 
 ## Monitoring
 
-View your worker logs in the Cloudflare dashboard:
+### View Logs
+
 1. Go to https://dash.cloudflare.com
 2. Select "Workers & Pages"
 3. Click on your worker
-4. View real-time logs and metrics
+4. View real-time logs
+
+### View Results in Braintrust
+
+After running an evaluation, visit the experiment URL:
+
+```
+https://www.braintrust.dev/app/projects/{project}/experiments/{id}
+```
+
+The URL is returned in the response from both endpoints.
 
 ## Troubleshooting
 
-**"Error: No API key found"**
-- Make sure you ran `wrangler secret put BRAINTRUST_API_KEY` and `wrangler secret put OPENAI_API_KEY`
+### "Error: No API key found"
 
-**"Worker exceeded CPU time limit"**
-- Free tier has 10ms CPU limit, paid tier ($5/mo) has 30s limit
-- Reduce the number of test cases or optimize your eval
+**Solution:** Set your API keys (see Setup section above).
 
-**"Module not found"**
-- Run `npm install` to ensure all dependencies are installed
+### "Worker exceeded CPU time limit"
+
+**Cause:** Free tier has 10ms CPU time limit.
+
+**Solutions:**
+- Upgrade to paid tier ($5/mo) for 30s limit
+- Reduce number of test cases
+- Use faster models
+
+### "Module not found"
+
+**Solution:** Run `npm install` to install dependencies.
+
+### Tests fail with "No such module 'node:os'"
+
+**This is expected** if trying to import Braintrust SDK directly in tests.
+
+**Solution:** Use integration tests via HTTP (already set up in this repo).
+
+### Local dev not working
+
+**Check:**
+1. `.dev.vars` file exists with valid API keys
+2. Port 8787 is not in use
+3. Run `npm install` first
+
+## FAQ
+
+**Q: Does Braintrust Eval() work on Cloudflare Workers?**
+A: Yes! Both Eval() and the Logging SDK work perfectly with `nodejs_compat` enabled.
+
+**Q: Can I test Braintrust code with Vitest?**
+A: Yes, but only via integration tests (HTTP endpoints), not direct imports. See Testing section above.
+
+**Q: Which approach should I use?**
+A: Use Eval() for simple cases, Logging SDK for custom logic. Both work equally well on Workers.
+
+**Q: Can I use other AI providers besides OpenAI?**
+A: Yes! Replace the API call with any provider (Anthropic, Gemini, etc.).
+
+**Q: How do I add more test cases?**
+A: Edit the `dataset` array in `src/index.ts`.
 
 ## Resources
 
+- [Braintrust Eval() Docs](https://www.braintrust.dev/docs/guides/evals)
+- [Braintrust Logging SDK Docs](https://www.braintrust.dev/docs/platform/experiments/write#logging-sdk)
 - [Cloudflare Workers Docs](https://developers.cloudflare.com/workers/)
-- [Braintrust SDK Docs](https://www.braintrust.dev/docs)
 - [Wrangler CLI Docs](https://developers.cloudflare.com/workers/wrangler/)
+- [Node.js Compatibility](https://developers.cloudflare.com/workers/runtime-apis/nodejs/)
+
+## License
+
+MIT

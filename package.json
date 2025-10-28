@@ -4,19 +4,29 @@
   "main": "src/index.ts",
   "scripts": {
     "dev": "wrangler dev",
-    "deploy": "wrangler deploy"
+    "deploy": "wrangler deploy",
+    "build:test": "wrangler deploy --dry-run --outdir=.wrangler-test-build",
+    "test:integration": "npm run build:test && vitest run --config test/integration/vitest.config.ts",
+    "test": "npm run test:integration"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "Cloudflare Worker running Braintrust evals",
   "dependencies": {
+    "@opentelemetry/api": "^1.9.0",
+    "@opentelemetry/exporter-trace-otlp-http": "^0.207.0",
+    "@opentelemetry/resources": "^2.2.0",
+    "@opentelemetry/sdk-trace-base": "^2.2.0",
+    "@opentelemetry/semantic-conventions": "^1.37.0",
     "braintrust": "^0.4.5",
     "openai": "^6.4.0"
   },
   "devDependencies": {
+    "@cloudflare/vitest-pool-workers": "^0.10.1",
     "@cloudflare/workers-types": "^4.20241127.0",
     "typescript": "^5.7.2",
+    "vitest": "^3.0.5",
     "wrangler": "^4.43.0"
   }
 }

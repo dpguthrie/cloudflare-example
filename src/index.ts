@@ -1,5 +1,6 @@
-import { Eval, login, initLogger, wrapOpenAI, wrapTraced } from "braintrust";
+import { Eval, init, login, initLogger, wrapOpenAI, wrapTraced } from "braintrust";
 import OpenAI from "openai";
+import { runExperimentWithDirectAPI } from "./direct-api";
 
 export interface Env {
   BRAINTRUST_API_KEY: string;
@@ -250,8 +251,8 @@ async function runEval(env: Env) {
     },
     scores: [
       (output, expected) => {
-        const outputLower = output?.toLowerCase() || "";
-        const expectedLower = expected?.expected?.toLowerCase() || "";
+        const outputLower = String(output || "").toLowerCase();
+        const expectedLower = String(expected?.expected || "").toLowerCase();
         return {
           name: "contains_expected",
           score: outputLower.includes(expectedLower) ? 1 : 0,
@@ -261,6 +262,106 @@ async function runEval(env: Env) {
   });
 
   return result;
+}
+
+/**
+ * Run an experiment using the Logging SDK approach
+ *
+ * This is an alternative to Eval() that gives more control over the experiment.
+ * Uses: init() -> experiment.traced() -> span.log()
+ *
+ * Benefits:
+ * - More lightweight than Eval()
+ * - Better for custom evaluation logic
+ * - More control over logging and scoring
+ *
+ * Based on: https://www.braintrust.dev/docs/platform/experiments/write#logging-sdk
+ */
+async function runExperimentWithLogging(env: Env) {
+  // Authenticate with Braintrust
+  await login({
+    apiKey: env.BRAINTRUST_API_KEY,
+  });
+
+  // Initialize an experiment
+  const experiment = init({
+    project: "cloudflare-worker-logging-sdk",
+    experiment: "question-answering",
+    apiKey: env.BRAINTRUST_API_KEY,
+  });
+
+  // Wrap OpenAI client for automatic nested tracing
+  const client = wrapOpenAI(
+    new OpenAI({
+      apiKey: env.OPENAI_API_KEY,
+    })
+  );
+
+  // Test dataset
+  const dataset = [
+    { input: "What is 2+2?", expected: "4" },
+    { input: "What is the capital of France?", expected: "Paris" },
+    { input: "What color is the sky?", expected: "blue" },
+  ];
+
+  // Run all test cases in parallel
+  const promises = [];
+  for (const { input, expected } of dataset) {
+    promises.push(
+      experiment.traced(async (span) => {
+        // Call OpenAI API - wrapOpenAI creates automatic nested tracing
+        const response = await client.chat.completions.create({
+          model: "gpt-4o-mini",
+          messages: [
+            {
+              role: "system",
+              content: "You are a helpful assistant. Answer questions concisely.",
+            },
+            {
+              role: "user",
+              content: input,
+            },
+          ],
+          temperature: 0,
+        });
+
+        const output = response.choices[0].message.content;
+
+        // Score the output
+        const outputLower = output?.toLowerCase() || "";
+        const expectedLower = expected?.toLowerCase() || "";
+        const score = outputLower.includes(expectedLower) ? 1 : 0;
+
+        // Log the result to the experiment
+        span.log({
+          input,
+          output,
+          expected,
+          scores: {
+            contains_expected: score,
+          },
+          metadata: {
+            model: response.model,
+            usage: response.usage,
+          },
+        });
+
+        return { input, output, expected, score };
+      })
+    );
+  }
+
+  // Wait for all test cases to complete
+  const results = await Promise.all(promises);
+
+  // Get the experiment summary
+  const summary = await experiment.summarize();
+
+  return {
+    results,
+    summary,
+    experimentUrl: `https://www.braintrust.dev/app/projects/${experiment.project}/experiments/${experiment.id}`,
+  };
 }
 
 export default {
@@ -330,12 +431,70 @@ export default {
       }
     }
 
+    if (url.pathname === "/run-experiment") {
+      try {
+        const result = await runExperimentWithLogging(env);
+
+        return new Response(
+          JSON.stringify({
+            success: true,
+            ...result,
+          }),
+          {
+            headers: { "Content-Type": "application/json" },
+          }
+        );
+      } catch (error) {
+        return new Response(
+          JSON.stringify({
+            success: false,
+            error: error instanceof Error ? error.message : String(error),
+            stack: error instanceof Error ? error.stack : undefined,
+          }),
+          {
+            status: 500,
+            headers: { "Content-Type": "application/json" },
+          }
+        );
+      }
+    }
+
+    if (url.pathname === "/run-direct-api") {
+      try {
+        const result = await runExperimentWithDirectAPI(env);
+
+        return new Response(
+          JSON.stringify({
+            success: true,
+            ...result,
+          }),
+          {
+            headers: { "Content-Type": "application/json" },
+          }
+        );
+      } catch (error) {
+        return new Response(
+          JSON.stringify({
+            success: false,
+            error: error instanceof Error ? error.message : String(error),
+            stack: error instanceof Error ? error.stack : undefined,
+          }),
+          {
+            status: 500,
+            headers: { "Content-Type": "application/json" },
+          }
+        );
+      }
+    }
+
     return new Response(
       JSON.stringify({
         message: "Braintrust Eval Worker",
         endpoints: {
           "/trace": "Run tracing example with OpenAI tool calls",
-          "/run-eval": "Run the evaluation",
+          "/run-eval": "Run evaluation using Eval() function",
+          "/run-experiment": "Run experiment using Logging SDK (init + traced + log)",
+          "/run-direct-api": "Run experiment using direct REST API calls (NO SDK - works in Vitest!)",
         },
       }),
       {
