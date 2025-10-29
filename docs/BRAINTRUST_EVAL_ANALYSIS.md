@@ -1,8 +1,8 @@
-# Analysis: Why Eval() Is Excluded from Browser/Edge Builds
+# Analysis: Eval() and Browser/Edge Builds
 
-## Root Cause Identified
+## Observations
 
-`Eval()` is intentionally excluded from browser builds due to **CLI-specific dependencies** that don't work in browser/edge environments.
+`Eval()` is not exported in browser builds. Investigation shows this is related to **CLI-specific dependencies** used in the implementation.
 
 ## Source Code Evidence
 
@@ -74,15 +74,13 @@ export const warning = chalk.hex("#FFA500");
 
 `chalk` is a **Node.js library** for ANSI terminal colors that doesn't work in browsers.
 
-## Is This Necessary?
+## Analysis of Dependencies
 
-**NO! This is NOT a fundamental limitation.**
-
-Both dependencies are for **CLI user experience only**:
+Both dependencies are for **CLI user experience**:
 - Progress bars for visual feedback in terminal
 - Colored text for error/warning messages
 
-Neither is required for the core `Eval()` functionality.
+These are not required for core evaluation functionality.
 
 ## Comparison: Why Logging SDK Works
 
@@ -105,11 +103,11 @@ The Logging SDK (`init`, `traced`, `log`) is exported from `src/logger.ts` which
 - OR esbuild tree-shakes `Eval` due to CLI dependencies
 - Result: `Eval` is not available in tests
 
-## Recommended Fixes
+## Potential Approaches
 
-### Option 1: Make Eval() Edge-Compatible (RECOMMENDED)
+### Option 1: Make Eval() Edge-Compatible
 
-Create conditional implementations for CLI features:
+Conditional implementations for CLI features could enable edge compatibility:
 
 **File: `src/progress.ts`**
 ```typescript
@@ -157,25 +155,23 @@ const progressReporter = options.progress ??
     : new SimpleProgressReporter());
 ```
 
-**Result:**
-- ✅ `Eval()` works in all environments
-- ✅ No breaking changes for existing users
-- ✅ Graceful degradation in edge/browser
-- ✅ Can be exported from browser builds
-- ✅ Works with Vitest deps.optimizer
+**Would enable:**
+- `Eval()` in all environments
+- No breaking changes for existing users
+- Graceful degradation in edge/browser
+- Export from browser builds
+- Work with Vitest deps.optimizer
 
-### Option 2: Move CLI-Specific Code to Separate Package
+### Option 2: Separate CLI Package
 
-Create `@braintrust/cli-eval` for CLI-only features:
+Alternative architecture:
 - Keep core `Eval()` logic environment-agnostic
 - Move progress bars and chalk to separate CLI wrapper
 - Export clean `Eval()` from browser builds
 
-### Option 3: Document Current Behavior (Quick Fix)
+### Option 3: Document Current Behavior
 
-If keeping current architecture:
-
-**Add runtime check with helpful error:**
+Alternative: Add runtime check with helpful error:
 ```typescript
 export async function Eval(...) {
   if (typeof process === 'undefined' || !process.versions?.node) {
@@ -224,32 +220,22 @@ To verify Option 1 works:
 
 ## Summary
 
-**Question:** "Is this a limitation/bug on the Braintrust side?"
-
-**Answer:** Yes, this is a **fixable limitation**, not a fundamental requirement.
-
-**The Issue:**
+**Current State:**
 - `Eval()` depends on Node.js CLI libraries (`cli-progress`, `chalk`)
-- These are for **user experience only** (progress bars, colored text)
-- They're not required for core evaluation logic
+- These are for user experience (progress bars, colored text)
+- Not required for core evaluation logic
+- Results in `Eval()` not being exported in browser/edge builds
 
-**The Fix:**
-- Make CLI dependencies optional/conditional
-- Provide no-op fallbacks for edge environments
-- Export `Eval()` from browser builds
+**What Works in This Example Repo:**
+- ✅ `Eval()` works in production with `nodejs_compat`
+- ✅ Logging SDK works everywhere (production + Vitest with `deps.optimizer`)
+- ✅ Direct API works everywhere (production + Vitest)
+- ✅ Tracing works everywhere (production + Vitest with `deps.optimizer`)
+- ❌ `Eval()` does not work with Vitest direct imports
 
-**Impact:**
-- Zero breaking changes for existing users
-- Enables `Eval()` in Cloudflare Workers, Vercel Edge, Deno Deploy, etc.
-- Makes the SDK truly isomorphic
-- Solves the Vitest issue completely
+**Testing Workarounds:**
+- Option 1: Use Logging SDK (works with `deps.optimizer`)
+- Option 2: Use Direct API (no SDK dependency)
+- Option 3: Test `Eval()` via HTTP endpoints
 
-## Recommendation
-
-Implement **Option 1** (Make Eval() Edge-Compatible):
-- Low implementation effort
-- No breaking changes
-- Maximum compatibility
-- Aligns with "isomorphic" library goal stated in docs
-
-Would you like me to create a PR with the implementation?
+See [VITEST_SOLUTION.md](./VITEST_SOLUTION.md) for complete testing guide.

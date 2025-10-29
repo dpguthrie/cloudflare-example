@@ -1,13 +1,15 @@
-# Braintrust SDK Approaches in Cloudflare Workers
+# Braintrust Approaches in Cloudflare Workers
 
-This document compares two ways to run experiments with the Braintrust SDK on Cloudflare Workers.
+This example repo demonstrates four ways to use Braintrust on Cloudflare Workers.
 
-## ✅ Both Approaches Work!
+## ✅ All Approaches Work in Production!
 
-We've tested **both approaches** and confirmed they work in Cloudflare Workers with the `nodejs_compat` flag:
+All approaches work in Cloudflare Workers with the `nodejs_compat` flag:
 
 1. **Eval()** - High-level declarative API
 2. **Logging SDK** - Lower-level imperative API (init + traced + log)
+3. **Direct API** - Pure REST API calls, no SDK
+4. **Tracing** - Real-time observability with tool calls
 
 ## Test Results
 
@@ -157,16 +159,18 @@ async function runExperiment(env: Env) {
 
 ## Key Differences
 
-| Feature | Eval() | Logging SDK |
-|---------|--------|-------------|
-| **Code Style** | Declarative config | Imperative code |
-| **Boilerplate** | Minimal | More |
-| **Flexibility** | Limited | Full |
-| **Learning Curve** | Easy | Moderate |
-| **Nested Tracing** | Automatic | Automatic (with wrapOpenAI) |
-| **Parallel Execution** | Automatic | Manual (Promise.all) |
-| **Custom Scoring** | Via callback | Via span.log() |
-| **Integration** | Standalone | Easy to embed |
+| Feature | Eval() | Logging SDK | Direct API | Tracing |
+|---------|--------|-------------|------------|---------|
+| **Code Style** | Declarative | Imperative | Imperative | Imperative |
+| **Boilerplate** | Minimal | Moderate | More | Minimal |
+| **Flexibility** | Limited | Full | Full | Full |
+| **Learning Curve** | Easy | Moderate | Moderate | Easy |
+| **SDK Dependency** | Yes | Yes | No | Yes |
+| **Vitest Direct Import** | ❌ No | ✅ Yes | ✅ Yes | ✅ Yes |
+| **Nested Tracing** | Automatic | Automatic | Manual (OTEL) | Automatic |
+| **Use Case** | Evaluations | Experiments | Testing/Custom | Observability |
+| **Parallel Execution** | Automatic | Manual | Manual | N/A |
+| **Custom Scoring** | Via callback | Via span.log() | Via API | N/A |
 
 ## Both Work in Cloudflare Workers!
 
@@ -181,68 +185,201 @@ compatibility_flags = ["nodejs_compat"]
 
 ### Testing
 
-**Important:** You cannot directly import the Braintrust SDK in Vitest tests. This applies to **both** Eval() and Logging SDK approaches.
+**Vitest Testing with `deps.optimizer`:**
+
+| Approach | Direct Import in Vitest | HTTP Testing |
+|----------|------------------------|--------------|
+| **Logging SDK** | ✅ YES (with deps.optimizer) | ✅ YES |
+| **Tracing** | ✅ YES (with deps.optimizer) | ✅ YES |
+| **Direct API** | ✅ YES | ✅ YES |
+| **Eval()** | ❌ NO | ✅ YES |
+
+**Working example with direct imports:**
 
 ```typescript
-// ❌ Neither approach works with direct imports in Vitest
-import { Eval, init } from 'braintrust';
+// ✅ This WORKS with deps.optimizer configuration!
+import { init, login, wrapOpenAI } from 'braintrust';
+
+test('logging SDK', async () => {
+  await login({ apiKey: env.BRAINTRUST_API_KEY });
+  const experiment = init({ project: 'test', experiment: 'test' });
+  await experiment.traced(async (span) => {
+    span.log({ input: 'test', output: 'result' });
+  });
+  const summary = await experiment.summarize();
+  expect(summary).toBeDefined();
+});
 ```
 
-**Solution:** Both approaches work in Vitest using HTTP-based integration tests:
+**Configuration:** See `test/integration/vitest.config.ts` for `deps.optimizer` setup.
 
-```bash
-# Build with wrangler (includes polyfills)
-npm run build:test
+**See working examples:**
+- `test/integration/logging-sdk-optimizer.test.ts` - Logging SDK with direct imports
+- `test/integration/direct-import-works.test.ts` - Direct API with direct imports
+- `test/integration/worker.test.ts` - HTTP-based tests for all approaches
 
-# Test via HTTP endpoints
-npm run test:integration
+## Approach 3: Direct REST API
+
+### Code Example
+
+```typescript
+// Create experiment
+const project = await fetch('https://api.braintrust.dev/v1/project', {
+  method: 'POST',
+  headers: { 'Authorization': `Bearer ${apiKey}` },
+  body: JSON.stringify({ name: 'my-project' }),
+});
+
+const experiment = await fetch('https://api.braintrust.dev/v1/experiment', {
+  method: 'POST',
+  headers: { 'Authorization': `Bearer ${apiKey}` },
+  body: JSON.stringify({ project_id, name: 'my-experiment' }),
+});
+
+// Insert events
+await fetch(`https://api.braintrust.dev/v1/experiment/${experimentId}/insert`, {
+  method: 'POST',
+  body: JSON.stringify({
+    events: [{ input, output, expected, scores }]
+  }),
+});
 ```
 
-This tests your production code (the compiled worker) via HTTP, which is how it will actually run in production.
+### Characteristics
+
+| Aspect | Details |
+|--------|---------|
+| **Complexity** | More code, pure HTTP |
+| **Control** | Complete control |
+| **Setup** | No SDK dependency |
+| **Use Case** | Testing, custom integrations |
+| **Endpoint** | `/run-direct-api` in this repo |
+
+### When to Use
+
+- ✅ Writing Vitest tests with direct imports
+- ✅ You want zero SDK dependencies
+- ✅ Maximum control over API calls
+- ✅ Building custom integrations
+
+## Approach 4: Real-Time Tracing
+
+### Code Example
+
+```typescript
+import { initLogger, wrapOpenAI, wrapTraced } from 'braintrust';
+
+const logger = initLogger({
+  projectName: "my-app",
+  apiKey: env.BRAINTRUST_API_KEY,
+  asyncFlush: true,
+});
+
+const client = wrapOpenAI(new OpenAI({ apiKey: env.OPENAI_API_KEY }));
+
+const getTool = wrapTraced(async (arg: string) => {
+  return result;
+}, { name: "getTool" });
+
+await logger.traced(async (span) => {
+  const response = await client.chat.completions.create({...});
+  const result = await getTool(arg);
+  span.log({ input, output: result });
+});
+
+ctx.waitUntil(logger.flush());
+```
+
+### Characteristics
+
+| Aspect | Details |
+|--------|---------|
+| **Complexity** | Simple, automatic tracing |
+| **Control** | Full control |
+| **Setup** | Minimal code |
+| **Use Case** | Observability, monitoring |
+| **Endpoint** | `/trace` in this repo |
+
+### When to Use
+
+- ✅ Real-time observability of LLM applications
+- ✅ Monitoring tool calling behavior
+- ✅ Debugging production issues
+- ✅ Understanding nested LLM calls
 
 ## Which Should You Use?
 
 ### Choose Eval() if:
 - 🎯 You want the simplest possible setup
 - 🎯 Standard evaluation patterns work for you
-- 🎯 You're just getting started with Braintrust
+- 🎯 You're just getting started
 
 ### Choose Logging SDK if:
 - 🎯 You need custom evaluation orchestration
 - 🎯 Integrating with existing test framework
 - 🎯 You want maximum control
 - 🎯 You have complex scoring/metadata needs
+- 🎯 You want to test with Vitest direct imports
+
+### Choose Direct API if:
+- 🎯 Writing Vitest tests (best testability)
+- 🎯 You want zero SDK dependencies
+- 🎯 Building custom integrations
+- 🎯 Maximum control over HTTP calls
+
+### Choose Tracing if:
+- 🎯 Real-time observability is your primary need
+- 🎯 Monitoring production LLM applications
+- 🎯 Understanding tool calling flows
+- 🎯 Not running evaluations/experiments
 
 ## Example Endpoints
 
-Try both approaches in this repo:
+Try all approaches in this repo:
 
 ```bash
+# Tracing
+curl https://your-worker.workers.dev/trace
+
 # Eval() approach
 curl https://your-worker.workers.dev/run-eval
 
 # Logging SDK approach
 curl https://your-worker.workers.dev/run-experiment
+
+# Direct API approach
+curl https://your-worker.workers.dev/run-direct-api
 ```
 
 ## Code Location
 
-- **Eval() implementation:** `src/index.ts:207-264`
-- **Logging SDK implementation:** `src/index.ts:279-371`
-- **Test coverage:** `test/integration/worker.test.ts`
+- **Tracing implementation:** `src/index.ts:10-206`
+- **Eval() implementation:** `src/index.ts:208-265`
+- **Logging SDK implementation:** `src/index.ts:280-365`
+- **Direct API implementation:** `src/direct-api.ts`
+- **Test coverage:** `test/integration/`
 
 ## Resources
 
 - [Braintrust Eval() Docs](https://www.braintrust.dev/docs/guides/evals)
 - [Braintrust Logging SDK Docs](https://www.braintrust.dev/docs/platform/experiments/write#logging-sdk)
-- [Testing Guide](./WORKAROUND.md)
-- [Technical Findings](./VITEST_FINDINGS.md)
+- [Braintrust REST API Docs](https://www.braintrust.dev/docs/reference/api/Experiments)
+- [Testing Guide](../test/README.md)
+- [Why Eval() Doesn't Work in Vitest](./WHY_EVAL_DOESNT_WORK.md)
+- [Vitest Solution Guide](./VITEST_SOLUTION.md)
 
 ## Conclusion
 
-**Both approaches are viable** on Cloudflare Workers. Choose based on your needs:
+**All four approaches work in production** on Cloudflare Workers with `nodejs_compat`.
 
-- **Simple evaluations** → Use Eval()
-- **Custom/complex logic** → Use Logging SDK
+**For Vitest testing:**
+- ✅ **Logging SDK** - Works with `deps.optimizer` (RECOMMENDED for testing)
+- ✅ **Direct API** - Works with direct imports (RECOMMENDED for testing)
+- ✅ **Tracing** - Works with `deps.optimizer`
+- ❌ **Eval()** - Use HTTP-based tests
 
-The testing workaround works for both, so there's no difference in testability.
+Choose based on your use case:
+- **Simple evaluations** → Eval()
+- **Custom experiments + testing** → Logging SDK
+- **Maximum testability, no SDK** → Direct API
+- **Observability** → Tracing

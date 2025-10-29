@@ -270,6 +270,10 @@ Tests  7 passed (7)
 
 ## Conclusion
 
-**For Vitest testing:** Use the **Direct REST API approach** for the best developer experience. You can write proper unit tests with direct imports, just like any other code.
+**For Vitest testing with direct imports:**
+- ✅ **Logging SDK** - Works with `deps.optimizer`, full SDK features
+- ✅ **Direct API** - Works without SDK, pure REST calls
+- ✅ **Tracing** - Works with `deps.optimizer`, for observability
+- ❌ **Eval()** - Use HTTP-based tests
 
-**For production:** All three approaches work. Choose based on your needs for convenience vs. control.
+**For production:** All four approaches work with `nodejs_compat`. Choose based on your use case.

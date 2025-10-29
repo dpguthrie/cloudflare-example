@@ -112,25 +112,19 @@ The Logging SDK (`init`, `traced`, `log`) consists of lower-level primitives tha
 - Are designed to work in edge/browser environments
 - Have minimal dependencies
 
-## Confirmed: Eval is Browser-Incompatible
+## Observation: Eval Not Exported in Browser Build
 
 Looking at the type definitions:
 - **index.d.ts** (Node.js): Exports `Eval` ✅
 - **browser.d.ts** (Browser): Does NOT export `Eval` ❌
 
-This is intentional by the Braintrust team! `Eval()` is **not designed for browser/edge environments**.
+`Eval()` is not exported in browser/edge builds.
 
 ## Why This Matters for Cloudflare Workers
 
 Cloudflare Workers use the V8 isolate runtime (similar to browsers), not full Node.js. While `nodejs_compat` adds some Node.js APIs, it's not a complete Node.js environment.
 
-The Braintrust SDK's `Eval()` function likely requires:
-- File system access for loading datasets
-- Process spawning for running evaluators
-- OS-level APIs for parallelization
-- Other Node.js features not available in Workers
-
-## Solution: Use Logging SDK or Direct API
+## What Works in This Example Repo
 
 ### Option 1: Logging SDK (Recommended for Vitest)
 
@@ -187,8 +181,17 @@ const response = await SELF.fetch('http://example.com/run-eval');
 
 ## Conclusion
 
-**`Eval()` is intentionally not exported for browser/edge environments** by the Braintrust SDK team. The `deps.optimizer` bundles the package correctly, but `Eval()` is excluded because it requires Node.js-specific features that don't exist in Cloudflare Workers.
+**What We Observe:**
+- `Eval()` is not exported in browser/edge builds
+- The `deps.optimizer` bundles the package, but `Eval()` is not available
+- Likely due to CLI-specific dependencies (progress bars, terminal colors)
 
-**Use the Logging SDK instead** - it's designed for edge environments and works perfectly with `deps.optimizer` in Vitest.
+**What Works in This Example:**
+- ✅ **Logging SDK** - Works with `deps.optimizer` in Vitest
+- ✅ **Direct API** - Works with direct imports in Vitest
+- ✅ **Tracing** - Works with `deps.optimizer` in Vitest
+- ❌ **Eval()** - Must use HTTP-based tests in Vitest
 
-The mystery is solved: Both approaches are from the same package, but `Eval()` is Node.js-only while the Logging SDK is environment-agnostic!
+**Production Note:** All approaches work in production with `nodejs_compat`, including `Eval()`.
+
+See [VITEST_SOLUTION.md](./VITEST_SOLUTION.md) for complete testing guide.
